@@ -1,3 +1,77 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 @tailwind base;
 @tailwind components;
-@tailwind utilities;/*# sourceMappingURL=style.css.map */
+@tailwind utilities;
+@keyframes fade-in {
+  from {
+    visibility: hidden;
+    opacity: 0;
+  }
+  1% {
+    visibility: visible;
+    opacity: 0;
+  }
+  to {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+.fade-in {
+  animation: fade-in 300ms ease-in-out forwards;
+}
+
+@keyframes fade-out {
+  from {
+    visibility: visible;
+    opacity: 1;
+  }
+  99% {
+    visibility: visible;
+    opacity: 0;
+  }
+  to {
+    visibility: hidden;
+    opacity: 0;
+  }
+}
+.fade-out {
+  animation: fade-out 300ms ease-in-out forwards;
+}
+
+@keyframes fade-width-increase {
+  from {
+    width: 0vw;
+  }
+  to {
+    width: 45vw;
+  }
+}
+.fade-width-increase {
+  animation: fade-width-increase 300ms ease-in-out forwards;
+}
+
+@keyframes fade-width-decrease {
+  from {
+    width: 45vw;
+  }
+  to {
+    width: 0vw;
+  }
+}
+.fade-width-decrease {
+  animation: fade-width-decrease 300ms ease-in-out forwards;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+}
+
+header {
+  padding: 1.652rem 2.125rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}/*# sourceMappingURL=style.css.map */

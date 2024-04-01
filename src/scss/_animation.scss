@@ -1,0 +1,61 @@
+// animation: name duration timing-funtion delay itaration-count direction;
+@keyframes fade-in{
+    from{
+    visibility: hidden;
+    opacity: 0;
+    }
+    1%{
+        visibility: visible;
+        opacity: 0;
+    }
+    to{
+        visibility: visible;
+        opacity: 1;
+    }
+}
+.fade-in{
+    animation: fade-in 300ms ease-in-out forwards;
+}
+@keyframes fade-out{
+    from{
+    visibility: visible;
+    opacity: 1;
+    }
+    99%{
+        visibility: visible;
+        opacity: 0;
+    }
+    to{
+        visibility: hidden;
+        opacity: 0;
+    }
+}
+.fade-out{
+    animation: fade-out 300ms ease-in-out forwards;
+}
+
+
+
+@keyframes fade-width-increase{
+    from{
+    width: 0vw;
+    }
+    to{
+        width: $width+vw;
+    }
+}
+.fade-width-increase{
+    animation: fade-width-increase 300ms ease-in-out forwards;
+}
+@keyframes fade-width-decrease{
+    from{
+    width: $width+vw;
+    }
+    to{
+        width: 0vw;
+    }
+}
+.fade-width-decrease{
+    animation: fade-width-decrease 300ms ease-in-out forwards;
+}
+
