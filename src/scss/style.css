@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Kaisei+HarunoUmi&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -67,11 +68,246 @@
   padding: 0;
   margin: 0;
   font-family: "Roboto", sans-serif;
+  @apply transition-all;
+  line-height: normal;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.padding-l, .padding {
+  padding-left: 7rem;
+}
+
+.padding-r, .padding {
+  padding-right: 7rem;
+}
+
+input {
+  background-color: transparent;
+  border: none;
+}
+input:focus {
+  outline: none;
+}
+input::-moz-placeholder {
+  color: currentColor;
+}
+input::placeholder {
+  color: currentColor;
+}
+
+.header-bg {
+  background: rgba(5, 36, 30, 0.8705882353);
+}
+
+.searchBox {
+  height: 3rem;
+  padding: 0.375rem;
+  border: 1px solid rgba(0, 0, 0, 0.168627451);
+  background: rgba(255, 255, 255, 0.5803921569);
+  border-radius: 0.75rem;
+  @apply flex items-center;
+}
+.searchBox input {
+  @apply text-sm w-full pl-4;
+  color: currentColor;
+}
+.searchBox button {
+  @apply h-10 w-10 rounded-full flex items-center justify-center;
+  background: rgba(21, 81, 71, 0.9215686275);
+  color: white;
+  flex-shrink: 0;
 }
 
 header {
   padding: 1.652rem 2.125rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  @apply flex items-center justify-between fixed top-0 left-0 w-full;
+}
+header .left {
+  @apply flex items-center gap-9;
+}
+header nav {
+  @apply flex items-center relative;
+  gap: 0.875rem;
+}
+header nav .navlinks {
+  @apply flex items-center cursor-pointer;
+  color: white;
+}
+header nav .navlinks:hover {
+  color: #03BFA1;
+}
+header nav .navlinks span {
+  @apply transition-all;
+}
+header nav .navlinks .nav-submenu {
+  @apply py-4 rounded-md shadow-md absolute top-full w-fit;
+  background-color: white;
+}
+header nav .navlinks .nav-submenu ul li {
+  white-space: nowrap;
+  @apply cursor-pointer px-4 py-1;
+  color: #505655;
+}
+header nav .navlinks .nav-submenu ul li:hover {
+  background-color: #03BFA1;
+  color: white;
+}
+header nav .toggle {
+  background-color: white;
+  color: #505655;
+  @apply relative flex items-center cursor-pointer gap-2;
+}
+header nav .toggle .text {
+  position: relative;
+  z-index: 2;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-align: left;
+}
+header nav .toggle input:checked + .toggleSlider {
+  @apply left-1/2;
+}
+header nav .toggle .toggleSlider {
+  @apply absolute rounded-full transition-all p-1 left-0 top-0 h-full w-1/2;
+  background-color: white;
+}
+header nav .toggle .toggleSlider .bg {
+  background: #03BFA1;
+  @apply h-full rounded-full w-full;
+}
+header nav .loginBtn {
+  padding: 0.375rem 1.125rem;
+  border: 1px solid rgba(255, 251, 251, 0.3882352941);
+  @apply rounded-full;
+  color: white;
+}
+header nav .loginBtn:hover {
+  background-color: #03BFA1;
+}
+header nav .hamburgerBtn {
+  @apply h-10 w-10;
+  color: white;
+}
+
+.home-banner {
+  @apply w-full flex flex-col items-center pb-24 justify-end;
+  height: 40rem;
+  background: url("../asset/images/banner1.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+}
+.home-banner h1 {
+  font-family: "Kaisei HarunoUmi";
+  font-size: 55px;
+  font-weight: 700;
+  text-align: center;
+  filter: drop-shadow(0 4px 3px rgba(0, 0, 0, 0.07)) drop-shadow(0 2px 2px rgba(0, 0, 0, 0.06));
+}
+.home-banner h3 {
+  font-size: 30px;
+  font-weight: 400;
+  text-align: left;
+  filter: drop-shadow(0 4px 3px rgba(0, 0, 0, 0.07)) drop-shadow(0 2px 2px rgba(0, 0, 0, 0.06));
+}
+.home-banner .latestProject {
+  @apply flex items-center gap-6;
+}
+.home-banner .latestProject p {
+  font-size: 29px;
+  font-weight: 500;
+  line-height: 37.41px;
+  text-align: left;
+}
+.home-banner .latestProject .btns {
+  @apply flex items-center gap-2.5;
+}
+.home-banner .latestProject .btns .projectBtn {
+  border: 1px solid #03BFA1;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 12.9px;
+  padding: 0.375rem 0.875rem;
+  color: #155147;
+  background-color: white;
+  @apply rounded-full flex items-center justify-center;
+}
+.home-banner .latestProject .btns .projectBtn.active, .home-banner .latestProject .btns .projectBtn:hover {
+  background: rgba(10, 67, 57, 0.7882352941);
+  color: white;
+  border-color: white;
+}
+
+.featured-projects-banner {
+  @apply w-full pt-6 pb-12;
+}
+.featured-projects-banner h3 {
+  font-size: 2.25rem;
+  color: #000000;
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 0.75rem;
+  text-decoration-color: #03BFA1;
+  @apply mb-8;
+}
+.featured-projects-banner p {
+  color: #505655;
+  font-size: 1.25rem;
+  @apply mb-10;
+}
+.featured-projects-banner .projects_slider {
+  @apply flex gap-6 items-center h-max justify-between w-full relative;
+}
+.featured-projects-banner .projects_slider .carosolBtn {
+  @apply absolute top-1/2 -translate-y-1/2 p-3 rounded-full flex items-center justify-center;
+  color: #155147;
+}
+.featured-projects-banner .projects_slider .carosolBtn span {
+  @apply h-8 w-8;
+}
+.featured-projects-banner .projects_slider .Featured_Project_Card {
+  width: 17.5rem;
+}
+.featured-projects-banner .projects_slider .Featured_Project_Card img {
+  @apply w-full object-contain rounded-2xl;
+  box-shadow: -5px 4px 28px 0px rgba(0, 0, 0, 0.2509803922);
+}
+.featured-projects-banner .projects_slider .Featured_Project_Card .content {
+  padding: 1.75rem 0.375rem 0rem 0.375rem;
+}
+.featured-projects-banner .projects_slider .Featured_Project_Card .content p {
+  @apply mb-0;
+}
+.featured-projects-banner .projects_slider .Featured_Project_Card .content .title {
+  color: #155147;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+.featured-projects-banner .projects_slider .Featured_Project_Card .content .location {
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: #000000;
+}
+.featured-projects-banner .projects_slider .Featured_Project_Card .content .price {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #03BFA1;
+}
+
+.assignments-sales-banner {
+  @apply w-full pt-6 pb-12;
+  background: rgba(237, 237, 237, 0.6);
+}
+.assignments-sales-banner h3 {
+  font-size: 2.25rem;
+  color: #000000;
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 0.75rem;
+  text-decoration-color: #03BFA1;
+  @apply mb-24;
 }/*# sourceMappingURL=style.css.map */
