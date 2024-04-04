@@ -2,6 +2,7 @@ import React from 'react'
 import Navbar from '../components/Navbar'
 import { left, right, searchLogo } from '../asset/staticData'
 import Featured_Project_Card from '../components/Featured_Project_Card'
+import Assignments_Sales_Card from '../components/Assignments_Sales_Card'
 
 function Home() {
     return (
@@ -69,10 +70,19 @@ function Home() {
                 </div>
             </section>
             <section className='padding assignments-sales-banner'>
-                <div className="flex justify-between items-center">
+                <div className="flex justify-between items-center mb-24">
                     <h3>
                         Assignment Sales
                     </h3>
+                    <button className='viewMoreBtn'>
+                        View More
+                        <span>
+                            {right}
+                        </span>
+                    </button>
+                </div>
+                <div className="assignments-salesBox">
+                    <Assignments_Sales_Card />
                 </div>
             </section>
         </>

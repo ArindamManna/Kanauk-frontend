@@ -4,6 +4,7 @@
 @import "variables";
 @import "mixins";
 @import "animation";
+@import "manna";
 
 * {
     box-sizing: border-box;
@@ -129,7 +130,7 @@ header {
                 text-align: left;
             }
 
-            input:checked + .toggleSlider {
+            input:checked+.toggleSlider {
                 @apply left-1/2;
 
                 // .bg {
@@ -312,6 +313,85 @@ header {
         color: #000000;
         font-weight: 500;
         text-decoration: underline;
+        text-underline-offset: .75rem;
+        text-decoration-color: #03BFA1;
+    }
+
+    .viewMoreBtn {
+        font-size: 1.5rem;
+        color: #000000;
+        @apply flex items-end;
+
+        span {
+            @apply h-6 w-6 ml-2;
+            color: #155147;
+
+            svg {
+                transition: none;
+            }
+        }
+
+        &:hover {
+            color: #03BFA1;
+
+            span {
+                color: #03BFA1;
+                @apply translate-x-2;
+
+            }
+        }
+    }
+
+    .assignments-salesBox {
+        @apply grid grid-cols-5 gap-5;
+
+        .Assignments_Sales_Card {
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            height: 300px;
+            @apply flex flex-col justify-between w-full;
+            border-radius: 45px 45px 0px 45px;
+
+            .top {
+                @apply mt-6 pr-6 flex items-center gap-2.5;
+
+                button {
+                    @apply h-7 w-7 rounded-full flex items-center justify-center;
+                    color: white;
+                    background-color: #1A2523CC;
+
+                    span {
+                        @apply h-4 w-4;
+                    }
+                }
+            }
+
+            .bottom {
+                @apply p-3;
+                border-radius: 0px 45px 0px 45px;
+                background: #FFFFFFF0;
+
+                .title {
+                    font-size: 1.125rem;
+
+                }
+
+                .location {
+                    font-size: .975rem;
+                }
+
+                .ratting {
+                    span {
+                        height: 1.125rem;
+                        width: 1.125rem;
+                        color: yellow;
+                    }
+                }
+            }
+
+        }
+
         text-underline-offset: 0.75rem;
         text-decoration-color: #03bfa1;
         @apply mb-24;
@@ -324,8 +404,10 @@ header {
     display: flex;
     padding: 3rem;
     font-family: Roboto;
+
     &_left {
         flex: 6;
+
         // border: 1px solid red;
         &_tags {
             display: flex;
@@ -333,6 +415,7 @@ header {
             padding-right: 2rem;
             font-weight: 500;
         }
+
         &_tagdetails {
             display: flex;
             justify-content: space-between;
@@ -340,12 +423,15 @@ header {
             margin-top: 2rem;
             border-radius: 15px;
             padding: 0.5rem 0.2rem 0.5rem 0.5rem;
+
             &_name {
                 font-weight: 500;
             }
+
             &_dropdown {
                 display: flex;
                 align-items: center;
+
                 &_btn {
                     font-size: 0.6rem;
                     color: white;
@@ -356,6 +442,7 @@ header {
             }
         }
     }
+
     &_right {
         flex: 4;
         border: 1px solid blue;
@@ -367,6 +454,7 @@ header {
     border-left: 5px solid transparent;
     border-right: 5px solid transparent;
     border-top: 6px solid #fff;
+
     &:focus {
         outline: none;
     }
