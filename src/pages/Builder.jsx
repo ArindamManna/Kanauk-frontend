@@ -26,7 +26,7 @@ const Builder = () => {
                         </div>
                     </div>
                     <div className="builder_left_cards">
-                        <div className="builder_left_cards_item"></div>
+                        <div className="builder_left_cards_item">Cards</div>
                     </div>
                 </div>
                 <div className="builder_right">
