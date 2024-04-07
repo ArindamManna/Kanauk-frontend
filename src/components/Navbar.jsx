@@ -3,19 +3,25 @@ import { downArrow, hamburgerIcon, searchLogo } from '../asset/staticData';
 import kaunuck_logo_black from "../asset/images/logo/kaunuck_logo_black.png";
 import kaunuck_logo_white from "../asset/images/logo/kaunuck_logo_white.png";
 import profilePic from "../asset/images/logo/profile.png";
+import { useLocation } from 'react-router-dom'
 
 function Navbar() {
     const [isSubMenuOpen, setIsSubMenuOpen] = useState({
         gallaery: false,
         articles: false,
     })
+    const location = useLocation();
+    console.log(location);
 
     const [navBg, setNavBg] = useState(false);
     // const isHome = props.name === 'Homepage' ? true : false;
 
     const changeNav = () => {
-        window.scrollY >= 400 ? setNavBg(true) : setNavBg(false);
-        console.log(window.scrollY);
+        if (location.pathname == "/") {
+
+            window.scrollY >= 400 ? setNavBg(true) : setNavBg(false);
+        }
+        // console.log(window.scrollY);
     }
 
     useEffect(() => {
@@ -24,9 +30,17 @@ function Navbar() {
             window.removeEventListener('scroll', changeNav);
         }
     }, [])
+
+    useEffect(() => {
+        if (location.pathname == "/") {
+            setNavBg(false)
+        } else {
+            setNavBg(true)
+        }
+    }, [location])
     return (
         <>
-            <header className={`${navBg ? "header-bg" : ""}`}>
+            <header className={`${navBg ? "header-bg sticky" : "fixed"}`}>
                 <div className="left">
 
                     <div className="logo">

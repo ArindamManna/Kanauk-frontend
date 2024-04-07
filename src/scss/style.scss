@@ -94,7 +94,7 @@ textarea {
 header {
     padding: 1.652rem 2.125rem;
 
-    @apply flex items-center justify-between fixed top-0 left-0 w-full z-50;
+    @apply flex items-center justify-between top-0 left-0 w-full z-50;
 
     .left {
         @apply flex items-center gap-9;
@@ -444,11 +444,11 @@ header {
 
 // Builder Scss
 .builder {
-    margin-top: 5rem;
+
     // display: flex;
     // padding: 3rem;
     font-family: Roboto;
-    @apply grid grid-cols-5 gap-9;
+    @apply grid grid-cols-5 gap-9 mt-10;
     @extend .padding;
 
     .left {
