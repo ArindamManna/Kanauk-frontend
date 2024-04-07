@@ -12,8 +12,22 @@
     margin: 0;
     font-family: "Roboto", sans-serif;
     // color: #505655;
-    @apply transition-all;
+    // @apply transition-all;
     line-height: normal;
+    background-repeat: no-repeat;
+}
+
+.carosolBtn {
+    @apply absolute top-1/2 -translate-y-1/2 p-3 rounded-full flex items-center justify-center;
+    color: #155147;
+
+    span {
+        @apply h-8 w-8;
+    }
+
+    // &.backBtn {
+    //     left: calc(-100% - 2rem);
+    // }
 }
 
 .hidden {
@@ -32,7 +46,8 @@
     @extend .padding-l, .padding-r;
 }
 
-input {
+input,
+textarea {
     background-color: transparent;
     border: none;
 
@@ -253,18 +268,7 @@ header {
     .projects_slider {
         @apply flex gap-6 items-center h-max justify-between w-full relative;
 
-        .carosolBtn {
-            @apply absolute top-1/2 -translate-y-1/2 p-3 rounded-full flex items-center justify-center;
-            color: #155147;
 
-            span {
-                @apply h-8 w-8;
-            }
-
-            // &.backBtn {
-            //     left: calc(-100% - 2rem);
-            // }
-        }
 
         .Featured_Project_Card {
             width: 17.5rem;
@@ -343,18 +347,19 @@ header {
     }
 
     .assignments-salesBox {
-        @apply grid grid-cols-5 gap-5;
+        @apply grid lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-5;
 
         .Assignments_Sales_Card {
             background-repeat: no-repeat;
             background-position: center;
             background-size: cover;
+
             height: 300px;
             @apply flex flex-col justify-between w-full;
             border-radius: 45px 45px 0px 45px;
 
             .top {
-                @apply mt-6 pr-6 flex items-center gap-2.5;
+                @apply mt-6 pr-6 flex items-center gap-2.5 justify-end;
 
                 button {
                     @apply h-7 w-7 rounded-full flex items-center justify-center;
@@ -369,23 +374,59 @@ header {
 
             .bottom {
                 @apply p-3;
-                border-radius: 0px 45px 0px 45px;
+                border-radius: 0px 45px 0px 43px;
                 background: #FFFFFFF0;
 
                 .title {
                     font-size: 1.125rem;
-
+                    font-weight: 700;
+                    @apply mb-1;
                 }
 
                 .location {
                     font-size: .975rem;
+                    @apply mb-2;
+                }
+
+                .details-box {
+                    @apply flex items-center py-1;
+
+                    .details {
+                        @apply px-1;
+
+                        span {
+                            display: inline-block;
+                            height: .75rem;
+                            width: .75rem;
+
+                            svg {
+                                color: #9ca3af;
+                            }
+                        }
+
+                        p {
+                            font-size: .75rem;
+                            color: #9ca3af;
+
+                        }
+
+                        &:not(:last-child) {
+                            @apply border-r-2 border-[#9ca3af];
+                        }
+                    }
                 }
 
                 .ratting {
                     span {
+                        display: inline-block;
                         height: 1.125rem;
                         width: 1.125rem;
                         color: yellow;
+                    }
+
+                    p {
+                        font-size: .625rem;
+                        font-weight: 600;
                     }
                 }
             }
@@ -394,7 +435,7 @@ header {
 
         text-underline-offset: 0.75rem;
         text-decoration-color: #03bfa1;
-        @apply mb-24;
+        // @apply mb-24;
     }
 }
 
@@ -457,5 +498,520 @@ header {
 
     &:focus {
         outline: none;
+    }
+}
+
+
+.featured-builder-banner {
+    @apply w-full pt-6 pb-12;
+
+    h3 {
+        font-size: 2.25rem;
+        color: #000000;
+        font-weight: 500;
+        text-decoration: underline;
+        text-underline-offset: .75rem;
+        text-decoration-color: #03BFA1;
+    }
+
+    .featured-builder-slider {
+        @apply flex items-center gap-8 relative;
+
+        .carosolBtn {
+            @apply absolute top-1/2 -translate-y-1/2 p-3 rounded-full flex items-center justify-center;
+
+
+            span {
+                @apply h-8 w-8;
+                color: white;
+                background-color: #155147;
+                @apply rounded-full;
+            }
+        }
+
+        img {
+            height: 8rem;
+            width: auto;
+        }
+    }
+}
+
+.featured-properties-banner {
+    @apply w-full pt-6;
+
+    h3 {
+        font-size: 2.25rem;
+        color: #000000;
+        font-weight: 500;
+        text-decoration: underline;
+        text-underline-offset: .75rem;
+        text-decoration-color: #03BFA1;
+        text-align: center;
+    }
+
+    .properties-box {
+
+        @apply grid grid-cols-3 h-[40rem] w-full;
+
+        .properties {
+            @apply h-full relative transition-all duration-300;
+            background-image: url("../asset//images/properties1.png");
+            background-position: center;
+
+            background-size: cover;
+
+            * {
+                @apply transition-all duration-300;
+            }
+
+
+            &:hover {
+                &::after {
+                    background: linear-gradient(195.63deg, rgba(14, 168, 142, 0) 24.59%, rgba(16, 90, 78, 0.8811) 72.33%);
+
+                }
+
+                .bottom {
+                    @apply bottom-full translate-y-full;
+
+                    .title,
+                    .description {
+                        color: white;
+                    }
+
+                    .viewMoreBtn {
+                        color: #080808;
+                        background: white;
+
+                    }
+                }
+            }
+
+
+
+
+
+
+
+
+            &::after {
+                content: "";
+                @apply absolute transition-all duration-300 left-0 top-0 h-full w-full;
+                z-index: 1;
+                background: linear-gradient(188.98deg, rgba(11, 70, 60, 0) 26.83%, rgba(255, 255, 255, 0.92) 70.1%);
+
+            }
+
+            .bottom {
+                @apply py-16 w-full px-5 flex flex-col gap-6 absolute bottom-0 left-0;
+                z-index: 2;
+
+                .title {
+                    color: #155147;
+                    font-size: 2.25rem;
+                    font-weight: 600;
+
+                }
+
+                .description {
+                    color: #535454;
+                    font-size: 1.25rem;
+
+                }
+
+                .viewMoreBtn {
+                    color: white;
+                    font-size: 1.25rem;
+                    background: #03BFA1;
+                    @apply w-fit flex px-4 py-2 items-center rounded-full;
+                    gap: 10px;
+
+
+
+                    span {
+                        height: 1rem;
+                        flex-shrink: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.featured-agents-banner {
+    @apply w-full pt-6 pb-12;
+
+    h3 {
+        font-size: 2.25rem;
+        color: #000000;
+        font-weight: 500;
+        text-decoration: underline;
+        text-underline-offset: .75rem;
+        text-decoration-color: #03BFA1;
+        text-align: center;
+    }
+
+    .agents-box {
+        @apply flex gap-10 w-full relative;
+
+        .Featured_Agents_Card {
+            @apply w-full flex flex-col gap-3 items-center py-5 px-4;
+            border-radius: 1.25rem;
+            background: #E0F0EE;
+            box-shadow: 7px 4px 19px 0px #0000000F;
+
+            img {
+                height: 7rem;
+                width: 7rem;
+                border-radius: 100%;
+            }
+
+            .title {
+                color: #155147;
+                @apply text-2xl font-bold text-center;
+            }
+
+            .subTitle {
+                color: #4B5755;
+
+                @apply text-base font-semibold text-center;
+            }
+
+            .microTitle {
+                color: #155147;
+
+                @apply text-lg font-bold text-center;
+            }
+
+            .description {
+                color: #4B5755;
+
+                @apply text-sm font-semibold text-center;
+            }
+
+            .callUsBtn {
+                @apply py-2 px-7 flex rounded-3xl items-center gap-2 text-sm font-extrabold text-white;
+                background: #155147;
+
+                img {
+                    @apply h-9 w-9;
+                }
+            }
+        }
+    }
+}
+
+.popular-cities-banner {
+    @apply w-full pt-6 pb-12;
+
+    .left {
+
+        h3 {
+            font-size: 2.25rem;
+            color: #000000;
+            font-weight: 500;
+            text-decoration: underline;
+            text-underline-offset: .75rem;
+            text-decoration-color: #03BFA1;
+            text-align: center;
+        }
+
+        .description {
+            color: #505655;
+            @apply text-xl;
+
+        }
+    }
+
+    .popularCities-box {
+        @apply w-full flex gap-8 relative justify-center;
+
+        .popularCities {
+            background-position: center;
+
+            background-size: cover;
+            @apply h-[12.5rem] w-[20rem] rounded-2xl relative overflow-hidden;
+
+            &::after {
+                content: "";
+                @apply absolute transition-all duration-300 left-0 top-0 h-full w-full;
+                z-index: 1;
+                background: linear-gradient(180deg, rgba(0, 0, 0, 0) 9.38%, #242828 92.71%);
+
+            }
+
+
+            .bottom {
+                @apply px-3 py-3 absolute w-full bottom-0 flex justify-between items-center;
+                z-index: 2;
+
+                .left {
+                    color: white;
+
+                    .title {
+                        font-size: 1.125rem;
+                        font-weight: 700;
+                        @apply mb-1;
+                    }
+
+                    .location {
+                        font-size: .975rem;
+                        @apply mb-2;
+                    }
+                }
+
+                .right {
+                    .ratting {
+                        span {
+                            display: inline-block;
+                            height: 1.125rem;
+                            width: 1.125rem;
+                            color: yellow;
+                        }
+
+                        p {
+                            font-size: .625rem;
+                            font-weight: 600;
+                            color: white;
+                        }
+                    }
+                }
+            }
+
+            .detailsBtn {
+                @apply px-4 py-2 rounded-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-xs font-semibold;
+                z-index: 2;
+                background: #FFFFFFCC;
+                color: #155147;
+
+            }
+        }
+    }
+}
+
+.our-blogs-banner {
+    @apply grid grid-cols-5 w-full pt-6 pb-6 gap-5 relative;
+    background: #EDEDED99;
+
+    h3 {
+        font-size: 2.25rem;
+        color: #000000;
+        font-weight: 500;
+        text-decoration: underline;
+        text-underline-offset: .75rem;
+        text-decoration-color: #03BFA1;
+        text-align: center;
+    }
+
+    .description {
+        color: #414D4B;
+        @apply text-lg;
+
+        a {
+            @apply text-xl font-bold;
+        }
+    }
+
+
+
+    .our_blog {
+        @apply h-[36rem] w-full overflow-hidden relative rounded-3xl;
+        background-position: center;
+        background-size: cover;
+
+        // &:not(:first-child) {
+        //     @apply scale-50;
+        // }
+
+        .bottom {
+            @apply absolute gap-2.5 bottom-0 w-full flex flex-col px-5 py-6;
+            background: #155147;
+            color: white;
+
+            .titleAndDate {
+                color: #0AFFD8;
+                @apply text-2xl font-bold;
+
+                .date {
+                    @apply text-xl font-semibold;
+                }
+
+            }
+
+            .title {
+                font-size: 1.75rem;
+                font-weight: 700;
+                color: white;
+            }
+
+            .profilePic {
+                @apply h-16 w-16 rounded-full;
+            }
+
+            .name {
+                @apply text-2xl;
+                color: white;
+            }
+
+            .time {
+                @apply text-base;
+                font-weight: 300;
+                color: white;
+            }
+        }
+    }
+
+    .our_blog.small {
+        @apply h-[22rem] rounded-3xl;
+
+
+        .bottom {
+            @apply gap-2.5 bottom-0 px-3 py-4;
+            background: #155147;
+            color: white;
+
+            .titleAndDate {
+                @apply text-xl;
+
+                .date {
+                    @apply text-sm;
+                }
+
+            }
+
+            .title {
+                font-size: 1.25rem;
+
+            }
+
+            .profilePic {
+                @apply h-14 w-14 rounded-full;
+            }
+
+            .name {
+                @apply text-xl;
+            }
+
+            .time {
+                @apply text-sm;
+            }
+        }
+    }
+
+
+    .carosolBtn {
+        @apply static translate-y-0 translate-x-0 p-3 rounded-full flex items-center justify-center;
+
+        &:hover {
+            span {
+                background-color: #15514780;
+
+            }
+        }
+
+        span {
+            @apply h-8 w-8;
+            color: white;
+            background-color: #155147;
+            @apply rounded-full;
+        }
+    }
+}
+
+.contactUs-banner {
+    @apply grid grid-cols-2 w-full pt-6 pb-6 relative;
+
+    h3 {
+        font-size: 2.25rem;
+        color: #000000;
+        font-weight: 500;
+        text-decoration: underline;
+        text-underline-offset: .75rem;
+        text-decoration-color: #03BFA1;
+        text-align: center;
+    }
+
+    .left {
+        img {
+            @apply w-full;
+        }
+    }
+
+    .right {
+        .phoneNo {
+            @apply text-xl flex items-center gap-2;
+
+            img {
+                @apply h-8;
+            }
+        }
+
+        .email,
+        .web {
+            @apply text-lg flex items-center gap-2;
+
+            img {
+                @apply h-8;
+            }
+        }
+
+
+
+    }
+
+    .contactUsForm {
+        @apply flex flex-col gap-3 w-full;
+
+        input,
+        textarea {
+            @apply px-4 text-base w-full py-5 rounded-xl;
+            border: 1px solid #15514761;
+            background: #DDFBF63B;
+            color: #656767;
+
+
+        }
+    }
+}
+
+footer {
+    @apply pt-14 pb-6 grid grid-cols-3 gap-14;
+    background: #2F3C3A;
+    color: white;
+
+    .description {
+        @apply text-base;
+    }
+
+    .title {
+        @apply text-2xl font-bold mb-6;
+    }
+
+    .contactDetails {
+        @apply text-xl;
+        font-weight: 300;
+    }
+
+    .newsletter {
+        @apply text-2xl font-medium mb-6;
+    }
+
+    input {
+        color: #00000080;
+        @apply px-4 py-2 rounded text-sm w-full mb-2;
+        background-color: white;
+
+    }
+
+    .subscribeBtn {
+        @apply w-full p-2;
+        background: #03BFA1;
+        color: #00000080;
+    }
+
+    .copyrightDiv {
+        @apply col-span-3 w-full text-center pt-6 text-sm;
+        font-weight: 300;
+        border-top: 1px solid #FFFFFF80;
     }
 }
