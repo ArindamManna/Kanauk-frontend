@@ -471,6 +471,7 @@ header {
             flex-direction: column;
             .builder_card {
                 position: relative;
+                border-bottom: 1px solid lightgray;
                 .card {
                     display: flex;
                     margin: 1rem;
@@ -503,14 +504,14 @@ header {
                 }
             }
 
-            .builder_card::after {
-                content: "";
-                width: 36rem;
-                height: 0.5px;
-                background: lightgray;
-                left: 1rem;
-                position: absolute;
-            }
+            // .builder_card::after {
+            //     content: "";
+            //     width: 36rem;
+            //     height: 0.5px;
+            //     background: lightgray;
+            //     left: 1rem;
+            //     position: absolute;
+            // }
         }
     }
 

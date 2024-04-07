@@ -137,7 +137,7 @@ header nav .navlinks {
   color: white;
 }
 header nav .navlinks:hover {
-  color: #03BFA1;
+  color: #03bfa1;
 }
 header nav .navlinks span {
   @apply transition-all;
@@ -152,7 +152,7 @@ header nav .navlinks .nav-submenu ul li {
   color: #505655;
 }
 header nav .navlinks .nav-submenu ul li:hover {
-  background-color: #03BFA1;
+  background-color: #03bfa1;
   color: white;
 }
 header nav .toggle {
@@ -175,7 +175,7 @@ header nav .toggle .toggleSlider {
   background-color: white;
 }
 header nav .toggle .toggleSlider .bg {
-  background: #03BFA1;
+  background: #03bfa1;
   @apply h-full rounded-full w-full;
 }
 header nav .loginBtn {
@@ -185,7 +185,7 @@ header nav .loginBtn {
   color: white;
 }
 header nav .loginBtn:hover {
-  background-color: #03BFA1;
+  background-color: #03bfa1;
 }
 header nav .hamburgerBtn {
   @apply h-10 w-10;
@@ -227,7 +227,7 @@ header nav .hamburgerBtn {
   @apply flex items-center gap-2.5;
 }
 .home-banner .latestProject .btns .projectBtn {
-  border: 1px solid #03BFA1;
+  border: 1px solid #03bfa1;
   font-size: 10px;
   font-weight: 500;
   line-height: 12.9px;
@@ -251,7 +251,7 @@ header nav .hamburgerBtn {
   font-weight: 500;
   text-decoration: underline;
   text-underline-offset: 0.75rem;
-  text-decoration-color: #03BFA1;
+  text-decoration-color: #03bfa1;
   @apply mb-8;
 }
 .featured-projects-banner p {
@@ -295,7 +295,7 @@ header nav .hamburgerBtn {
 .featured-projects-banner .projects_slider .Featured_Project_Card .content .price {
   font-size: 1rem;
   font-weight: 500;
-  color: #03BFA1;
+  color: #03bfa1;
 }
 
 .assignments-sales-banner {
@@ -308,7 +308,7 @@ header nav .hamburgerBtn {
   font-weight: 500;
   text-decoration: underline;
   text-underline-offset: 0.75rem;
-  text-decoration-color: #03BFA1;
+  text-decoration-color: #03bfa1;
 }
 .assignments-sales-banner .viewMoreBtn {
   font-size: 1.5rem;
@@ -323,14 +323,17 @@ header nav .hamburgerBtn {
   transition: none;
 }
 .assignments-sales-banner .viewMoreBtn:hover {
-  color: #03BFA1;
+  color: #03bfa1;
 }
 .assignments-sales-banner .viewMoreBtn:hover span {
-  color: #03BFA1;
+  color: #03bfa1;
   @apply translate-x-2;
 }
 .assignments-sales-banner .assignments-salesBox {
   @apply grid grid-cols-5 gap-5;
+  text-underline-offset: 0.75rem;
+  text-decoration-color: #03bfa1;
+  @apply mb-24;
 }
 .assignments-sales-banner .assignments-salesBox .Assignments_Sales_Card {
   background-repeat: no-repeat;
@@ -366,4 +369,199 @@ header nav .hamburgerBtn {
   height: 1.125rem;
   width: 1.125rem;
   color: yellow;
+}
+
+.builder {
+  margin-top: 5rem;
+  display: flex;
+  padding: 3rem;
+  font-family: Roboto;
+}
+.builder .left {
+  flex: 6;
+}
+.builder .left .tags {
+  display: flex;
+  justify-content: space-between;
+  padding-right: 2rem;
+  font-weight: 500;
+}
+.builder .left .tagdetails {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 0.5px solid lightgray;
+  margin-top: 2rem;
+  border-radius: 15px;
+  padding: 0.5rem 0.2rem 0.5rem 0.5rem;
+}
+.builder .left .tagdetails .name {
+  font-weight: 500;
+}
+.builder .left .tagdetails .dropdown {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+  cursor: pointer;
+}
+.builder .left .tagdetails .dropdown .nav-submenu {
+  @apply py-4 rounded-md shadow-md absolute top-full w-fit;
+  background-color: white;
+}
+.builder .left .tagdetails .dropdown .nav-submenu ul li {
+  white-space: nowrap;
+  @apply cursor-pointer px-4 py-1;
+  color: #505655;
+}
+.builder .left .tagdetails .dropdown .nav-submenu ul li:hover {
+  background-color: #03bfa1;
+  color: white;
+}
+.builder .left .tagdetails .dropdown .btn {
+  font-size: 0.6rem;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  background: #ff8a00;
+}
+.builder .left .tagdetails .dropdown .arrow {
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 6px solid black;
+}
+.builder .left .cards {
+  display: flex;
+  flex-direction: column;
+}
+.builder .left .cards .builder_card {
+  position: relative;
+  border-bottom: 1px solid lightgray;
+}
+.builder .left .cards .builder_card .card {
+  display: flex;
+  margin: 1rem;
+}
+.builder .left .cards .builder_card .card img {
+  width: 14rem;
+  height: 8rem;
+  border-radius: 5px;
+}
+.builder .left .cards .builder_card .card .content {
+  display: flex;
+  flex-direction: column;
+  padding: 0rem 0.5rem;
+  gap: 0.5rem;
+}
+.builder .left .cards .builder_card .card .content .title {
+  font-family: "circular";
+  font-size: 1rem;
+}
+.builder .left .cards .builder_card .card .content .price {
+  color: #2f3c3a;
+  font-family: "circular";
+  font-size: 0.9rem;
+}
+.builder .left .cards .builder_card .card .content .desc {
+  color: gray;
+  font-family: "circular";
+  font-size: 0.6rem;
+}
+.builder .right {
+  flex: 4;
+}
+.builder .right .card {
+  background: #d4f4ef;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 3rem 1rem;
+  border-radius: 10px;
+}
+.builder .right .card .title {
+  display: flex;
+  align-items: center;
+  padding: 1rem 0rem 1rem 3rem;
+}
+.builder .right .card .title .imgContainer {
+  position: relative;
+  overflow: hidden;
+  width: 5rem;
+  height: 1.5rem;
+}
+.builder .right .card .title .imgContainer img {
+  width: 5rem;
+  position: absolute;
+  clip: rect(0px, 1.5rem, 2rem, 0px);
+}
+.builder .right .card .title .text {
+  position: relative;
+  right: 3.2rem;
+  font-weight: 600;
+}
+.builder .right .card .subtitle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #2f3c3a;
+  gap: 0.2rem;
+}
+.builder .right .card .subtitle .text {
+  font-size: 0.8rem;
+}
+.builder .right .card .subtitle .review-count {
+  font-size: 0.5rem;
+  text-decoration: underline;
+}
+.builder .right .card .btn {
+  background: #03bfa1;
+  font-size: 0.7rem;
+  padding: 0.5rem 2rem;
+  margin: 1rem 0rem;
+  border-radius: 5px;
+}
+.builder .right .card .desc {
+  font-size: 0.7rem;
+  color: #2f3c3a;
+  text-align: center;
+  font-style: italic;
+  padding: 0rem 4rem;
+}
+.builder .right .card .desc .site {
+  padding: 1rem 0rem;
+  text-decoration: underline;
+}
+.builder .right .companynews .title {
+  color: #155147;
+  font-family: auto;
+  font-weight: 700;
+  font-size: 1.5rem;
+  text-decoration: underline;
+}
+.builder .right .companynews .cards {
+  display: flex;
+  flex-direction: column;
+}
+.builder .right .companynews .cards .newscard {
+  display: flex;
+  margin: 0.5rem 0rem;
+}
+.builder .right .companynews .cards .newscard img {
+  width: 6rem;
+  height: 7rem;
+  border-radius: 5px;
+}
+.builder .right .companynews .cards .newscard .content {
+  font-size: 0.9rem;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+}
+.builder .right .readmore .btn {
+  padding: 1rem 8rem;
+  border: 2px solid gray;
+  border-radius: 5px;
 }/*# sourceMappingURL=style.css.map */
