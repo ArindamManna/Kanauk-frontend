@@ -1,0 +1,838 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Kaisei+HarunoUmi&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@keyframes fade-in {
+  from {
+    visibility: hidden;
+    opacity: 0;
+  }
+  1% {
+    visibility: visible;
+    opacity: 0;
+  }
+  to {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+.fade-in {
+  animation: fade-in 300ms ease-in-out forwards;
+}
+
+@keyframes fade-out {
+  from {
+    visibility: visible;
+    opacity: 1;
+  }
+  99% {
+    visibility: visible;
+    opacity: 0;
+  }
+  to {
+    visibility: hidden;
+    opacity: 0;
+  }
+}
+.fade-out {
+  animation: fade-out 300ms ease-in-out forwards;
+}
+
+@keyframes fade-width-increase {
+  from {
+    width: 0vw;
+  }
+  to {
+    width: 45vw;
+  }
+}
+.fade-width-increase {
+  animation: fade-width-increase 300ms ease-in-out forwards;
+}
+
+@keyframes fade-width-decrease {
+  from {
+    width: 45vw;
+  }
+  to {
+    width: 0vw;
+  }
+}
+.fade-width-decrease {
+  animation: fade-width-decrease 300ms ease-in-out forwards;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  line-height: normal;
+  background-repeat: no-repeat;
+}
+
+.carosolBtn {
+  @apply absolute top-1/2 -translate-y-1/2 p-3 rounded-full flex items-center justify-center;
+  color: #155147;
+}
+.carosolBtn span {
+  @apply h-8 w-8;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.padding-l, .padding {
+  padding-left: 7rem;
+}
+
+.padding-r, .padding {
+  padding-right: 7rem;
+}
+
+input,
+textarea {
+  background-color: transparent;
+  border: none;
+}
+input:focus,
+textarea:focus {
+  outline: none;
+}
+input::-moz-placeholder, textarea::-moz-placeholder {
+  color: currentColor;
+}
+input::placeholder,
+textarea::placeholder {
+  color: currentColor;
+}
+
+.header-bg {
+  background: rgba(5, 36, 30, 0.8705882353);
+}
+
+.searchBox {
+  height: 3rem;
+  padding: 0.375rem;
+  border: 1px solid rgba(0, 0, 0, 0.168627451);
+  background: rgba(255, 255, 255, 0.5803921569);
+  border-radius: 0.75rem;
+  @apply flex items-center;
+}
+.searchBox input {
+  @apply text-sm w-full pl-4;
+  color: currentColor;
+}
+.searchBox button {
+  @apply h-10 w-10 rounded-full flex items-center justify-center;
+  background: rgba(21, 81, 71, 0.9215686275);
+  color: white;
+  flex-shrink: 0;
+}
+
+.header-bg {
+  background: rgba(5, 36, 30, 0.8705882353);
+}
+
+header {
+  padding: 1.652rem 2.125rem;
+  @apply flex items-center justify-between fixed top-0 left-0 w-full z-50;
+}
+header .left {
+  @apply flex items-center gap-9;
+}
+header nav {
+  @apply flex items-center relative;
+  gap: 0.875rem;
+}
+header nav .navlinks {
+  @apply flex items-center cursor-pointer;
+  color: white;
+}
+header nav .navlinks:hover {
+  color: #03bfa1;
+}
+header nav .navlinks span {
+  @apply transition-all;
+}
+header nav .navlinks .nav-submenu {
+  @apply py-4 rounded-md shadow-md absolute top-full w-fit;
+  background-color: white;
+}
+header nav .navlinks .nav-submenu ul li {
+  white-space: nowrap;
+  @apply cursor-pointer px-4 py-1;
+  color: #505655;
+}
+header nav .navlinks .nav-submenu ul li:hover {
+  background-color: #03bfa1;
+  color: white;
+}
+header nav .toggle {
+  background-color: white;
+  color: #505655;
+  @apply relative flex items-center cursor-pointer gap-2;
+}
+header nav .toggle .text {
+  position: relative;
+  z-index: 2;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-align: left;
+}
+header nav .toggle input:checked + .toggleSlider {
+  @apply left-1/2;
+}
+header nav .toggle .toggleSlider {
+  @apply absolute rounded-full transition-all p-1 left-0 top-0 h-full w-1/2;
+  background-color: white;
+}
+header nav .toggle .toggleSlider .bg {
+  background: #03bfa1;
+  @apply h-full rounded-full w-full;
+}
+header nav .loginBtn {
+  padding: 0.375rem 1.125rem;
+  border: 1px solid rgba(255, 251, 251, 0.3882352941);
+  @apply rounded-full;
+  color: white;
+}
+header nav .loginBtn:hover {
+  background-color: #03bfa1;
+}
+header nav .hamburgerBtn {
+  @apply h-10 w-10;
+  color: white;
+}
+
+.home-banner {
+  @apply w-full flex flex-col items-center pb-24 justify-end;
+  height: 40rem;
+  background: url("../asset/images/banner1.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+}
+.home-banner h1 {
+  font-family: "Kaisei HarunoUmi";
+  font-size: 55px;
+  font-weight: 700;
+  text-align: center;
+  filter: drop-shadow(0 4px 3px rgba(0, 0, 0, 0.07)) drop-shadow(0 2px 2px rgba(0, 0, 0, 0.06));
+}
+.home-banner h3 {
+  font-size: 30px;
+  font-weight: 400;
+  text-align: left;
+  filter: drop-shadow(0 4px 3px rgba(0, 0, 0, 0.07)) drop-shadow(0 2px 2px rgba(0, 0, 0, 0.06));
+}
+.home-banner .latestProject {
+  @apply flex items-center gap-6;
+}
+.home-banner .latestProject p {
+  font-size: 29px;
+  font-weight: 500;
+  line-height: 37.41px;
+  text-align: left;
+}
+.home-banner .latestProject .btns {
+  @apply flex items-center gap-2.5;
+}
+.home-banner .latestProject .btns .projectBtn {
+  border: 1px solid #03bfa1;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 12.9px;
+  padding: 0.375rem 0.875rem;
+  color: #155147;
+  background-color: white;
+  @apply rounded-full flex items-center justify-center;
+}
+.home-banner .latestProject .btns .projectBtn.active, .home-banner .latestProject .btns .projectBtn:hover {
+  background: rgba(10, 67, 57, 0.7882352941);
+  color: white;
+  border-color: white;
+}
+
+.featured-projects-banner {
+  @apply w-full pt-6 pb-12;
+}
+.featured-projects-banner h3 {
+  font-size: 2.25rem;
+  color: #000000;
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 0.75rem;
+  text-decoration-color: #03bfa1;
+  @apply mb-8;
+}
+.featured-projects-banner p {
+  color: #505655;
+  font-size: 1.25rem;
+  @apply mb-10;
+}
+.featured-projects-banner .projects_slider {
+  @apply flex gap-6 items-center h-max justify-between w-full relative;
+}
+.featured-projects-banner .projects_slider .Featured_Project_Card {
+  width: 17.5rem;
+}
+.featured-projects-banner .projects_slider .Featured_Project_Card img {
+  @apply w-full object-contain rounded-2xl;
+  box-shadow: -5px 4px 28px 0px rgba(0, 0, 0, 0.2509803922);
+}
+.featured-projects-banner .projects_slider .Featured_Project_Card .content {
+  padding: 1.75rem 0.375rem 0rem 0.375rem;
+}
+.featured-projects-banner .projects_slider .Featured_Project_Card .content p {
+  @apply mb-0;
+}
+.featured-projects-banner .projects_slider .Featured_Project_Card .content .title {
+  color: #155147;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+.featured-projects-banner .projects_slider .Featured_Project_Card .content .location {
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: #000000;
+}
+.featured-projects-banner .projects_slider .Featured_Project_Card .content .price {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #03bfa1;
+}
+
+.assignments-sales-banner {
+  @apply w-full pt-6 pb-12;
+  background: rgba(237, 237, 237, 0.6);
+}
+.assignments-sales-banner h3 {
+  font-size: 2.25rem;
+  color: #000000;
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 0.75rem;
+  text-decoration-color: #03BFA1;
+}
+.assignments-sales-banner .viewMoreBtn {
+  font-size: 1.5rem;
+  color: #000000;
+  @apply flex items-end;
+}
+.assignments-sales-banner .viewMoreBtn span {
+  @apply h-6 w-6 ml-2;
+  color: #155147;
+}
+.assignments-sales-banner .viewMoreBtn span svg {
+  transition: none;
+}
+.assignments-sales-banner .viewMoreBtn:hover {
+  color: #03BFA1;
+}
+.assignments-sales-banner .viewMoreBtn:hover span {
+  color: #03BFA1;
+  @apply translate-x-2;
+}
+.assignments-sales-banner .assignments-salesBox {
+  @apply grid lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-5;
+  text-underline-offset: 0.75rem;
+  text-decoration-color: #03bfa1;
+}
+.assignments-sales-banner .assignments-salesBox .Assignments_Sales_Card {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 300px;
+  @apply flex flex-col justify-between w-full;
+  border-radius: 45px 45px 0px 45px;
+}
+.assignments-sales-banner .assignments-salesBox .Assignments_Sales_Card .top {
+  @apply mt-6 pr-6 flex items-center gap-2.5 justify-end;
+}
+.assignments-sales-banner .assignments-salesBox .Assignments_Sales_Card .top button {
+  @apply h-7 w-7 rounded-full flex items-center justify-center;
+  color: white;
+  background-color: rgba(26, 37, 35, 0.8);
+}
+.assignments-sales-banner .assignments-salesBox .Assignments_Sales_Card .top button span {
+  @apply h-4 w-4;
+}
+.assignments-sales-banner .assignments-salesBox .Assignments_Sales_Card .bottom {
+  @apply p-3;
+  border-radius: 0px 45px 0px 43px;
+  background: rgba(255, 255, 255, 0.9411764706);
+}
+.assignments-sales-banner .assignments-salesBox .Assignments_Sales_Card .bottom .title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  @apply mb-1;
+}
+.assignments-sales-banner .assignments-salesBox .Assignments_Sales_Card .bottom .location {
+  font-size: 0.975rem;
+  @apply mb-2;
+}
+.assignments-sales-banner .assignments-salesBox .Assignments_Sales_Card .bottom .details-box {
+  @apply flex items-center py-1;
+}
+.assignments-sales-banner .assignments-salesBox .Assignments_Sales_Card .bottom .details-box .details {
+  @apply px-1;
+}
+.assignments-sales-banner .assignments-salesBox .Assignments_Sales_Card .bottom .details-box .details span {
+  display: inline-block;
+  height: 0.75rem;
+  width: 0.75rem;
+}
+.assignments-sales-banner .assignments-salesBox .Assignments_Sales_Card .bottom .details-box .details span svg {
+  color: #9ca3af;
+}
+.assignments-sales-banner .assignments-salesBox .Assignments_Sales_Card .bottom .details-box .details p {
+  font-size: 0.75rem;
+  color: #9ca3af;
+}
+.assignments-sales-banner .assignments-salesBox .Assignments_Sales_Card .bottom .details-box .details:not(:last-child) {
+  @apply border-r-2 border-[#9ca3af];
+}
+.assignments-sales-banner .assignments-salesBox .Assignments_Sales_Card .bottom .ratting span {
+  display: inline-block;
+  height: 1.125rem;
+  width: 1.125rem;
+  color: yellow;
+}
+.assignments-sales-banner .assignments-salesBox .Assignments_Sales_Card .bottom .ratting p {
+  font-size: 0.625rem;
+  font-weight: 600;
+}
+
+.builder {
+  margin-top: 5rem;
+  display: flex;
+  padding: 3rem;
+  font-family: Roboto;
+}
+.builder_left {
+  flex: 6;
+}
+.builder_left_tags {
+  display: flex;
+  justify-content: space-between;
+  padding-right: 2rem;
+  font-weight: 500;
+}
+.builder_left_tagdetails {
+  display: flex;
+  justify-content: space-between;
+  border: 0.5px solid lightgray;
+  margin-top: 2rem;
+  border-radius: 15px;
+  padding: 0.5rem 0.2rem 0.5rem 0.5rem;
+}
+.builder_left_tagdetails_name {
+  font-weight: 500;
+}
+.builder_left_tagdetails_dropdown {
+  display: flex;
+  align-items: center;
+}
+.builder_left_tagdetails_dropdown_btn {
+  font-size: 0.6rem;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  background: #ff8a00;
+}
+.builder_right {
+  flex: 4;
+  border: 1px solid blue;
+}
+
+#dropdown {
+  width: 1rem;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 6px solid #fff;
+}
+#dropdown:focus {
+  outline: none;
+}
+
+.featured-builder-banner {
+  @apply w-full pt-6 pb-12;
+}
+.featured-builder-banner h3 {
+  font-size: 2.25rem;
+  color: #000000;
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 0.75rem;
+  text-decoration-color: #03BFA1;
+}
+.featured-builder-banner .featured-builder-slider {
+  @apply flex items-center gap-8 relative;
+}
+.featured-builder-banner .featured-builder-slider .carosolBtn {
+  @apply absolute top-1/2 -translate-y-1/2 p-3 rounded-full flex items-center justify-center;
+}
+.featured-builder-banner .featured-builder-slider .carosolBtn span {
+  @apply h-8 w-8;
+  color: white;
+  background-color: #155147;
+  @apply rounded-full;
+}
+.featured-builder-banner .featured-builder-slider img {
+  height: 8rem;
+  width: auto;
+}
+
+.featured-properties-banner {
+  @apply w-full pt-6;
+}
+.featured-properties-banner h3 {
+  font-size: 2.25rem;
+  color: #000000;
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 0.75rem;
+  text-decoration-color: #03BFA1;
+  text-align: center;
+}
+.featured-properties-banner .properties-box {
+  @apply grid grid-cols-3 h-[40rem] w-full;
+}
+.featured-properties-banner .properties-box .properties {
+  @apply h-full relative transition-all duration-300;
+  background-image: url("../asset//images/properties1.png");
+  background-position: center;
+  background-size: cover;
+}
+.featured-properties-banner .properties-box .properties * {
+  @apply transition-all duration-300;
+}
+.featured-properties-banner .properties-box .properties:hover::after {
+  background: linear-gradient(195.63deg, rgba(14, 168, 142, 0) 24.59%, rgba(16, 90, 78, 0.8811) 72.33%);
+}
+.featured-properties-banner .properties-box .properties:hover .bottom {
+  @apply bottom-full translate-y-full;
+}
+.featured-properties-banner .properties-box .properties:hover .bottom .title,
+.featured-properties-banner .properties-box .properties:hover .bottom .description {
+  color: white;
+}
+.featured-properties-banner .properties-box .properties:hover .bottom .viewMoreBtn {
+  color: #080808;
+  background: white;
+}
+.featured-properties-banner .properties-box .properties::after {
+  content: "";
+  @apply absolute transition-all duration-300 left-0 top-0 h-full w-full;
+  z-index: 1;
+  background: linear-gradient(188.98deg, rgba(11, 70, 60, 0) 26.83%, rgba(255, 255, 255, 0.92) 70.1%);
+}
+.featured-properties-banner .properties-box .properties .bottom {
+  @apply py-16 w-full px-5 flex flex-col gap-6 absolute bottom-0 left-0;
+  z-index: 2;
+}
+.featured-properties-banner .properties-box .properties .bottom .title {
+  color: #155147;
+  font-size: 2.25rem;
+  font-weight: 600;
+}
+.featured-properties-banner .properties-box .properties .bottom .description {
+  color: #535454;
+  font-size: 1.25rem;
+}
+.featured-properties-banner .properties-box .properties .bottom .viewMoreBtn {
+  color: white;
+  font-size: 1.25rem;
+  background: #03BFA1;
+  @apply w-fit flex px-4 py-2 items-center rounded-full;
+  gap: 10px;
+}
+.featured-properties-banner .properties-box .properties .bottom .viewMoreBtn span {
+  height: 1rem;
+  flex-shrink: 0;
+}
+
+.featured-agents-banner {
+  @apply w-full pt-6 pb-12;
+}
+.featured-agents-banner h3 {
+  font-size: 2.25rem;
+  color: #000000;
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 0.75rem;
+  text-decoration-color: #03BFA1;
+  text-align: center;
+}
+.featured-agents-banner .agents-box {
+  @apply flex gap-10 w-full relative;
+}
+.featured-agents-banner .agents-box .Featured_Agents_Card {
+  @apply w-full flex flex-col gap-3 items-center py-5 px-4;
+  border-radius: 1.25rem;
+  background: #E0F0EE;
+  box-shadow: 7px 4px 19px 0px rgba(0, 0, 0, 0.0588235294);
+}
+.featured-agents-banner .agents-box .Featured_Agents_Card img {
+  height: 7rem;
+  width: 7rem;
+  border-radius: 100%;
+}
+.featured-agents-banner .agents-box .Featured_Agents_Card .title {
+  color: #155147;
+  @apply text-2xl font-bold text-center;
+}
+.featured-agents-banner .agents-box .Featured_Agents_Card .subTitle {
+  color: #4B5755;
+  @apply text-base font-semibold text-center;
+}
+.featured-agents-banner .agents-box .Featured_Agents_Card .microTitle {
+  color: #155147;
+  @apply text-lg font-bold text-center;
+}
+.featured-agents-banner .agents-box .Featured_Agents_Card .description {
+  color: #4B5755;
+  @apply text-sm font-semibold text-center;
+}
+.featured-agents-banner .agents-box .Featured_Agents_Card .callUsBtn {
+  @apply py-2 px-7 flex rounded-3xl items-center gap-2 text-sm font-extrabold text-white;
+  background: #155147;
+}
+.featured-agents-banner .agents-box .Featured_Agents_Card .callUsBtn img {
+  @apply h-9 w-9;
+}
+
+.popular-cities-banner {
+  @apply w-full pt-6 pb-12;
+}
+.popular-cities-banner .left h3 {
+  font-size: 2.25rem;
+  color: #000000;
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 0.75rem;
+  text-decoration-color: #03BFA1;
+  text-align: center;
+}
+.popular-cities-banner .left .description {
+  color: #505655;
+  @apply text-xl;
+}
+.popular-cities-banner .popularCities-box {
+  @apply w-full flex gap-8 relative justify-center;
+}
+.popular-cities-banner .popularCities-box .popularCities {
+  background-position: center;
+  background-size: cover;
+  @apply h-[12.5rem] w-[20rem] rounded-2xl relative overflow-hidden;
+}
+.popular-cities-banner .popularCities-box .popularCities::after {
+  content: "";
+  @apply absolute transition-all duration-300 left-0 top-0 h-full w-full;
+  z-index: 1;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 9.38%, #242828 92.71%);
+}
+.popular-cities-banner .popularCities-box .popularCities .bottom {
+  @apply px-3 py-3 absolute w-full bottom-0 flex justify-between items-center;
+  z-index: 2;
+}
+.popular-cities-banner .popularCities-box .popularCities .bottom .left {
+  color: white;
+}
+.popular-cities-banner .popularCities-box .popularCities .bottom .left .title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  @apply mb-1;
+}
+.popular-cities-banner .popularCities-box .popularCities .bottom .left .location {
+  font-size: 0.975rem;
+  @apply mb-2;
+}
+.popular-cities-banner .popularCities-box .popularCities .bottom .right .ratting span {
+  display: inline-block;
+  height: 1.125rem;
+  width: 1.125rem;
+  color: yellow;
+}
+.popular-cities-banner .popularCities-box .popularCities .bottom .right .ratting p {
+  font-size: 0.625rem;
+  font-weight: 600;
+  color: white;
+}
+.popular-cities-banner .popularCities-box .popularCities .detailsBtn {
+  @apply px-4 py-2 rounded-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-xs font-semibold;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.8);
+  color: #155147;
+}
+
+.our-blogs-banner {
+  @apply grid grid-cols-5 w-full pt-6 pb-6 gap-5 relative;
+  background: rgba(237, 237, 237, 0.6);
+}
+.our-blogs-banner h3 {
+  font-size: 2.25rem;
+  color: #000000;
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 0.75rem;
+  text-decoration-color: #03BFA1;
+  text-align: center;
+}
+.our-blogs-banner .description {
+  color: #414D4B;
+  @apply text-lg;
+}
+.our-blogs-banner .description a {
+  @apply text-xl font-bold;
+}
+.our-blogs-banner .our_blog {
+  @apply h-[36rem] w-full overflow-hidden relative rounded-3xl;
+  background-position: center;
+  background-size: cover;
+}
+.our-blogs-banner .our_blog .bottom {
+  @apply absolute gap-2.5 bottom-0 w-full flex flex-col px-5 py-6;
+  background: #155147;
+  color: white;
+}
+.our-blogs-banner .our_blog .bottom .titleAndDate {
+  color: #0AFFD8;
+  @apply text-2xl font-bold;
+}
+.our-blogs-banner .our_blog .bottom .titleAndDate .date {
+  @apply text-xl font-semibold;
+}
+.our-blogs-banner .our_blog .bottom .title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: white;
+}
+.our-blogs-banner .our_blog .bottom .profilePic {
+  @apply h-16 w-16 rounded-full;
+}
+.our-blogs-banner .our_blog .bottom .name {
+  @apply text-2xl;
+  color: white;
+}
+.our-blogs-banner .our_blog .bottom .time {
+  @apply text-base;
+  font-weight: 300;
+  color: white;
+}
+.our-blogs-banner .our_blog.small {
+  @apply h-[22rem] rounded-3xl;
+}
+.our-blogs-banner .our_blog.small .bottom {
+  @apply gap-2.5 bottom-0 px-3 py-4;
+  background: #155147;
+  color: white;
+}
+.our-blogs-banner .our_blog.small .bottom .titleAndDate {
+  @apply text-xl;
+}
+.our-blogs-banner .our_blog.small .bottom .titleAndDate .date {
+  @apply text-sm;
+}
+.our-blogs-banner .our_blog.small .bottom .title {
+  font-size: 1.25rem;
+}
+.our-blogs-banner .our_blog.small .bottom .profilePic {
+  @apply h-14 w-14 rounded-full;
+}
+.our-blogs-banner .our_blog.small .bottom .name {
+  @apply text-xl;
+}
+.our-blogs-banner .our_blog.small .bottom .time {
+  @apply text-sm;
+}
+.our-blogs-banner .carosolBtn {
+  @apply static translate-y-0 translate-x-0 p-3 rounded-full flex items-center justify-center;
+}
+.our-blogs-banner .carosolBtn:hover span {
+  background-color: rgba(21, 81, 71, 0.5019607843);
+}
+.our-blogs-banner .carosolBtn span {
+  @apply h-8 w-8;
+  color: white;
+  background-color: #155147;
+  @apply rounded-full;
+}
+
+.contactUs-banner {
+  @apply grid grid-cols-2 w-full pt-6 pb-6 relative;
+}
+.contactUs-banner h3 {
+  font-size: 2.25rem;
+  color: #000000;
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 0.75rem;
+  text-decoration-color: #03BFA1;
+  text-align: center;
+}
+.contactUs-banner .left img {
+  @apply w-full;
+}
+.contactUs-banner .right .phoneNo {
+  @apply text-xl flex items-center gap-2;
+}
+.contactUs-banner .right .phoneNo img {
+  @apply h-8;
+}
+.contactUs-banner .right .email,
+.contactUs-banner .right .web {
+  @apply text-lg flex items-center gap-2;
+}
+.contactUs-banner .right .email img,
+.contactUs-banner .right .web img {
+  @apply h-8;
+}
+.contactUs-banner .contactUsForm {
+  @apply flex flex-col gap-3 w-full;
+}
+.contactUs-banner .contactUsForm input,
+.contactUs-banner .contactUsForm textarea {
+  @apply px-4 text-base w-full py-5 rounded-xl;
+  border: 1px solid rgba(21, 81, 71, 0.3803921569);
+  background: rgba(221, 251, 246, 0.231372549);
+  color: #656767;
+}
+
+footer {
+  @apply pt-14 pb-6 grid grid-cols-3 gap-14;
+  background: #2F3C3A;
+  color: white;
+}
+footer .description {
+  @apply text-base;
+}
+footer .title {
+  @apply text-2xl font-bold mb-6;
+}
+footer .contactDetails {
+  @apply text-xl;
+  font-weight: 300;
+}
+footer .newsletter {
+  @apply text-2xl font-medium mb-6;
+}
+footer input {
+  color: rgba(0, 0, 0, 0.5019607843);
+  @apply px-4 py-2 rounded text-sm w-full mb-2;
+  background-color: white;
+}
+footer .subscribeBtn {
+  @apply w-full p-2;
+  background: #03BFA1;
+  color: rgba(0, 0, 0, 0.5019607843);
+}
+footer .copyrightDiv {
+  @apply col-span-3 w-full text-center pt-6 text-sm;
+  font-weight: 300;
+  border-top: 1px solid rgba(255, 255, 255, 0.5019607843);
+}/*# sourceMappingURL=style.css.map */
