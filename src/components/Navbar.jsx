@@ -10,32 +10,30 @@ function Navbar() {
         articles: false,
     })
 
-    // useEffect(() => {
-    //     document.addEventListener('click', (e) => {
-    //         e.preventDefault();
-    //         let clickOutsideElem = [...document.querySelectorAll('.clickOutsideElem')];
+    const [navBg, setNavBg] = useState(false);
+    // const isHome = props.name === 'Homepage' ? true : false;
 
-    //         clickOutsideElem.forEach((elem) => {
-    //             let clickOutsideFunc = elem.getAttribute("clickOutsideFunc");
+    const changeNav = () => {
+        window.scrollY >= 400 ? setNavBg(true) : setNavBg(false);
+        console.log(window.scrollY);
+    }
 
-
-    //             if (e.target !== elem && !elem.contains(e.target)) {
-    //                 // clickOutsideFunc()
-    //                 console.log(clickOutsideFunc);
-    //             }
-    //         })
-    //     })
-    // }, [])
+    useEffect(() => {
+        window.addEventListener('scroll', changeNav);
+        return () => {
+            window.removeEventListener('scroll', changeNav);
+        }
+    }, [])
     return (
         <>
-            <header>
+            <header className={`${navBg ? "header-bg" : ""}`}>
                 <div className="left">
 
                     <div className="logo">
-                        <img src={kaunuck_logo_black} alt="Kanuak Logo" srcset="" />
+                        <img src={navBg ? kaunuck_logo_white : kaunuck_logo_black} alt="Kanuak Logo" srcset="" />
                         {/* <img src={kaunuck_logo_white} alt="Kanuak Logo" srcset="" /> */}
                     </div>
-                    <div className="searchBox hidden">
+                    <div className={`searchBox w-[20rem] ${navBg ? "" : "hidden"} `}>
                         <input type="text" placeholder='Find your new construction ' />
                         <button>
                             <span className='h-5 w-5'>

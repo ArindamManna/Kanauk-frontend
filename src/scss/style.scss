@@ -86,10 +86,15 @@ textarea {
     }
 }
 
+.header-bg {
+    background: #05241EDE;
+
+}
+
 header {
     padding: 1.652rem 2.125rem;
 
-    @apply flex items-center justify-between fixed top-0 left-0 w-full;
+    @apply flex items-center justify-between fixed top-0 left-0 w-full z-50;
 
     .left {
         @apply flex items-center gap-9;
