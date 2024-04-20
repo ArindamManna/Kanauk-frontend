@@ -17,6 +17,11 @@
     background-repeat: no-repeat;
 }
 
+.hr {
+    height: 1px;
+    width: 100%;
+}
+
 .carosolBtn {
     @apply absolute top-1/2 -translate-y-1/2 p-3 rounded-full flex items-center justify-center;
     color: #155147;
@@ -50,6 +55,7 @@ input,
 textarea {
     background-color: transparent;
     border: none;
+    min-width: 10px;
 
     &:focus {
         outline: none;
@@ -1223,5 +1229,480 @@ footer {
         @apply col-span-3 w-full text-center pt-6 text-sm;
         font-weight: 300;
         border-top: 1px solid #FFFFFF80;
+    }
+}
+
+.pageBreadcrumb {
+    @apply flex justify-between items-center text-sm font-medium;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: #000000;
+
+    button {
+        @apply flex items-center gap-1 text-sm font-medium;
+
+        &:hover {
+            color: #03BFA1;
+        }
+
+        span {
+            @apply inline-block h-4 w-4;
+        }
+    }
+
+}
+
+.projectDetails-gallery {
+    .top {
+        @apply flex items-center justify-between mb-4;
+
+        h3 {
+            @apply text-4xl font-bold;
+        }
+
+        .right {
+            @apply flex items-center gap-10;
+
+            button {
+                @apply text-sm font-medium pb-2 px-1;
+
+                &.active {
+                    border-bottom: 2px solid #03BFA1;
+                }
+            }
+        }
+    }
+
+    .gallery {
+        @apply relative grid grid-cols-4 grid-rows-2 gap-4 mb-8;
+        max-height: 32rem;
+
+        img {
+            @apply rounded-md w-full h-full;
+        }
+
+        .imageCount-carosel {
+            @apply absolute bottom-5 right-4 flex gap-2 items-center;
+            color: white;
+
+            >div {
+                background: #000000A1;
+                @apply py-2 px-4 rounded-full;
+            }
+
+            .count {
+                @apply text-xl flex items-center gap-2;
+
+                span {
+                    @apply inline-block h-5;
+                }
+            }
+
+            .btns {
+
+                button {
+
+                    &:hover {
+                        color: #757575;
+                    }
+
+                    span {
+                        @apply inline-block h-6 w-6;
+                        ;
+                    }
+                }
+            }
+
+        }
+    }
+}
+
+.projectDetails-main {
+    @apply grid grid-cols-3 gap-4 mb-10;
+
+    .left {
+        @apply col-span-2;
+
+        .bilder {
+            @apply flex items-center gap-2 mb-1;
+
+            img {
+                @apply w-10;
+            }
+
+            .name {
+                @apply text-2xl font-semibold;
+            }
+        }
+
+        .locaiton {
+            @apply flex items-center gap-2 mb-1;
+
+            span {
+                @apply h-4 w-4;
+            }
+
+            color: #535454;
+
+            p {
+                @apply text-xl;
+
+
+            }
+        }
+
+        .review {
+            @apply flex items-center gap-2 mb-4;
+
+            span {
+                @apply h-5 w-5;
+                color: yellow;
+            }
+
+            p {
+                @apply font-medium text-xl;
+
+                span {
+                    @apply text-lg font-normal ml-2;
+                    color: #757575;
+
+
+                }
+            }
+        }
+
+        p.listing-status {
+            @apply text-2xl;
+
+            span {
+                @apply font-medium;
+                color: #FF8A00;
+
+            }
+        }
+
+        p.price {
+            color: #155147;
+            @apply text-3xl font-bold mb-4;
+
+        }
+
+        .project-highlights {
+            @apply grid grid-cols-3 pr-10 gap-4 mb-4;
+
+            .item {
+                p.title {
+                    color: #03BFA1;
+                    @apply text-xl font-medium;
+
+                }
+
+                span {
+                    img {
+                        width: 1.5rem;
+                        height: auto
+                    }
+                }
+
+                p {
+                    color: #000000;
+                    @apply text-sm font-medium;
+
+                }
+            }
+        }
+
+        p.description {
+            color: #535454;
+            @apply text-2xl italic;
+
+            span {
+                @apply font-semibold;
+            }
+
+        }
+
+        .avalilable-homes {
+            @apply mt-6;
+
+            p.title {
+                color: #155147;
+                @apply not-italic text-3xl mb-3 font-bold underline underline-offset-2;
+
+            }
+
+            .links {
+                @apply flex gap-4 items-center mb-3;
+
+                button {
+                    @apply text-xl font-medium;
+
+                    &:hover,
+                    &.active {
+                        color: #03BFA1;
+                    }
+                }
+
+            }
+
+            p.gray {
+
+                color: #535454;
+            }
+
+            p {
+                @apply text-lg italic mb-2;
+
+                span {
+                    @apply font-semibold;
+                }
+
+                a {
+                    @apply underline;
+                }
+
+            }
+
+        }
+
+
+    }
+
+    .right {
+        @apply col-span-1;
+
+        .contact-sales-center {
+            @apply w-full rounded-xl;
+            background: #155147D4;
+            color: white;
+            padding: 2rem 1rem;
+
+            .btn {
+                @apply w-full py-3.5 rounded-lg flex justify-center gap-1;
+
+
+                span {
+                    @apply h-5 w-5;
+                }
+            }
+
+            .top {
+                @apply px-10 flex flex-col items-center;
+
+                * {
+                    @apply text-center;
+                }
+
+                .img {
+                    height: 9rem;
+                    width: 9rem;
+                    border: 2px solid #FFFFFFF0;
+                    border-radius: 100%;
+                    @apply mb-4 overflow-hidden;
+
+
+                    img {
+                        width: 100%;
+                    }
+                }
+
+                .name {
+                    @apply text-2xl font-medium;
+
+                }
+
+                .designation {
+                    @apply text-xl mb-2;
+                }
+
+                .view-profile-link {
+                    @apply text-lg mb-4 font-medium;
+                    color: #0AFFD8;
+
+                }
+
+                .call-now-btn {
+                    background-color: white;
+                    color: #155147;
+                    @apply mb-3;
+
+                }
+
+                .msg-btn {
+                    color: white;
+                    background: #03BFA1;
+                    @apply mb-8;
+
+
+                }
+            }
+
+            .form {
+                @apply pt-5;
+
+                .title {
+                    @apply text-2xl mb-4 text-center font-semibold;
+
+                }
+
+                form {
+                    @apply grid grid-cols-2 gap-3;
+
+                    .inputBox {
+                        @apply p-3 text-lg rounded-md;
+                        font-weight: 300;
+                        background: #BDF1E830;
+
+                        input,
+                        textarea {
+                            @apply w-full
+                        }
+
+                    }
+
+                    .note-para {
+                        @apply text-xs;
+                        font-weight: 300;
+                    }
+
+                    .req-btn {
+                        background: #FF8A00;
+
+                    }
+                }
+            }
+        }
+    }
+
+    .highlited-details {
+        @apply px-10 py-8 rounded-lg mb-4 col-span-3;
+        background: #D9D9D966;
+
+        p.title {
+            @apply text-3xl mb-2 font-medium;
+
+        }
+
+        p.para {
+            @apply text-xl italic;
+            color: #000000B2;
+
+            a {
+                @apply underline underline-offset-2;
+            }
+
+        }
+    }
+
+    .features-amenitis-details {
+        @apply col-span-3 grid grid-cols-2 gap-4;
+
+        .feature-details {
+            @apply rounded-lg px-9 py-6;
+            background: #F7F7F7;
+
+            p.title {
+                @apply text-4xl mb-4 underline underline-offset-2 font-bold text-center;
+                color: #155147;
+
+            }
+
+            p.subtitle {
+                @apply text-xl text-center mb-8 font-medium;
+                // color: #155147;
+            }
+
+            p.para {
+                @apply text-lg italic;
+                color: #000000B2;
+
+                span {
+                    @apply font-bold;
+                }
+            }
+        }
+
+        .amenitis-details {
+            @apply rounded-lg px-9 py-6;
+            background: #F7F7F7;
+
+            p.title {
+                @apply text-4xl mb-10 underline underline-offset-2 font-bold text-center;
+                color: #155147;
+
+            }
+
+            .list {
+                @apply grid grid-cols-2 gap-4;
+
+                .item {
+                    @apply flex items-center mb-3 gap-2;
+                    color: #155147;
+
+                    span {
+                        height: 1.25rem;
+                        width: 1.25rem;
+                    }
+
+                    p {
+                        @apply text-lg;
+                    }
+                }
+
+            }
+        }
+    }
+}
+
+.constraction-banner-section {
+    @apply grid grid-cols-3;
+
+    img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .content {
+        @apply p-4;
+
+        p.title {
+            @apply text-2xl mb-3 font-bold text-center;
+            color: #155147;
+
+        }
+
+        p.para {
+            @apply text-lg italic text-center;
+            color: #000000B2;
+
+            span {
+                @apply font-bold;
+            }
+
+        }
+    }
+
+    .links-details {
+        @apply col-span-3 mt-10;
+
+        .highlited-details {
+            @apply px-10 py-8 rounded-lg mb-4 col-span-3;
+            background: #D9D9D966;
+
+            p.title {
+                @apply text-3xl mb-2 font-medium text-center;
+
+            }
+
+            p.para {
+                @apply text-xl italic text-center;
+                color: #000000B2;
+
+                a {
+                    @apply underline underline-offset-2;
+                }
+
+            }
+        }
     }
 }

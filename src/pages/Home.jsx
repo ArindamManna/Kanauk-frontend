@@ -17,7 +17,7 @@ import Footer from '../components/Footer'
 function Home() {
     return (
         <>
-            <Navbar />
+
             <section className='home-banner padding'>
                 <h1>
                     All you need is one click away
@@ -323,7 +323,7 @@ function Home() {
                 </div>
 
             </section>
-            <Footer />
+
         </>
     )
 }
