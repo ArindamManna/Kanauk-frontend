@@ -409,7 +409,7 @@ header nav .hamburgerBtn {
 
 .builder {
   font-family: Roboto;
-  @apply grid grid-cols-5 gap-9 mt-10;
+  @apply grid grid-cols-5 gap-9 my-10;
 }
 .builder .left {
   @apply col-span-3;
@@ -597,11 +597,38 @@ header nav .hamburgerBtn {
   gap: 1rem;
   padding: 1rem;
 }
+.builder .right .companynews .cards .newscard .content .text:hover {
+  color: #03bfa1;
+}
 .builder .right .readmore .btn {
   padding: 1rem 0rem;
   width: 100%;
   border: 2px solid gray;
   border-radius: 5px;
+}
+
+.property-listing .search .dropdown {
+  @apply flex items-center cursor-pointer;
+  color: white;
+}
+.property-listing .search .dropdown:hover {
+  color: #03bfa1;
+}
+.property-listing .search .dropdown span {
+  @apply transition-all;
+}
+.property-listing .search .dropdown .dropdown-list {
+  @apply py-4 rounded-md shadow-md absolute top-full w-fit;
+  background-color: white;
+}
+.property-listing .search .dropdown .dropdown-list ul li {
+  white-space: nowrap;
+  @apply cursor-pointer px-4 py-1;
+  color: #505655;
+}
+.property-listing .search .dropdown .dropdown-list ul li:hover {
+  background-color: #03bfa1;
+  color: white;
 }
 
 #dropdown {
@@ -623,7 +650,7 @@ header nav .hamburgerBtn {
   font-weight: 500;
   text-decoration: underline;
   text-underline-offset: 0.75rem;
-  text-decoration-color: #03BFA1;
+  text-decoration-color: #03bfa1;
 }
 .featured-builder-banner .featured-builder-slider {
   @apply flex items-center gap-8 relative;
@@ -651,7 +678,7 @@ header nav .hamburgerBtn {
   font-weight: 500;
   text-decoration: underline;
   text-underline-offset: 0.75rem;
-  text-decoration-color: #03BFA1;
+  text-decoration-color: #03bfa1;
   text-align: center;
 }
 .featured-properties-banner .properties-box {
@@ -702,7 +729,7 @@ header nav .hamburgerBtn {
 .featured-properties-banner .properties-box .properties .bottom .viewMoreBtn {
   color: white;
   font-size: 1.25rem;
-  background: #03BFA1;
+  background: #03bfa1;
   @apply w-fit flex px-4 py-2 items-center rounded-full;
   gap: 10px;
 }
@@ -720,7 +747,7 @@ header nav .hamburgerBtn {
   font-weight: 500;
   text-decoration: underline;
   text-underline-offset: 0.75rem;
-  text-decoration-color: #03BFA1;
+  text-decoration-color: #03bfa1;
   text-align: center;
 }
 .featured-agents-banner .agents-box {
@@ -729,7 +756,7 @@ header nav .hamburgerBtn {
 .featured-agents-banner .agents-box .Featured_Agents_Card {
   @apply w-full flex flex-col gap-3 items-center py-5 px-4;
   border-radius: 1.25rem;
-  background: #E0F0EE;
+  background: #e0f0ee;
   box-shadow: 7px 4px 19px 0px rgba(0, 0, 0, 0.0588235294);
 }
 .featured-agents-banner .agents-box .Featured_Agents_Card img {
@@ -742,7 +769,7 @@ header nav .hamburgerBtn {
   @apply text-2xl font-bold text-center;
 }
 .featured-agents-banner .agents-box .Featured_Agents_Card .subTitle {
-  color: #4B5755;
+  color: #4b5755;
   @apply text-base font-semibold text-center;
 }
 .featured-agents-banner .agents-box .Featured_Agents_Card .microTitle {
@@ -750,7 +777,7 @@ header nav .hamburgerBtn {
   @apply text-lg font-bold text-center;
 }
 .featured-agents-banner .agents-box .Featured_Agents_Card .description {
-  color: #4B5755;
+  color: #4b5755;
   @apply text-sm font-semibold text-center;
 }
 .featured-agents-banner .agents-box .Featured_Agents_Card .callUsBtn {
@@ -770,7 +797,7 @@ header nav .hamburgerBtn {
   font-weight: 500;
   text-decoration: underline;
   text-underline-offset: 0.75rem;
-  text-decoration-color: #03BFA1;
+  text-decoration-color: #03bfa1;
   text-align: center;
 }
 .popular-cities-banner .left .description {
@@ -835,11 +862,11 @@ header nav .hamburgerBtn {
   font-weight: 500;
   text-decoration: underline;
   text-underline-offset: 0.75rem;
-  text-decoration-color: #03BFA1;
+  text-decoration-color: #03bfa1;
   text-align: center;
 }
 .our-blogs-banner .description {
-  color: #414D4B;
+  color: #414d4b;
   @apply text-lg;
 }
 .our-blogs-banner .description a {
@@ -856,7 +883,7 @@ header nav .hamburgerBtn {
   color: white;
 }
 .our-blogs-banner .our_blog .bottom .titleAndDate {
-  color: #0AFFD8;
+  color: #0affd8;
   @apply text-2xl font-bold;
 }
 .our-blogs-banner .our_blog .bottom .titleAndDate .date {
@@ -927,7 +954,7 @@ header nav .hamburgerBtn {
   font-weight: 500;
   text-decoration: underline;
   text-underline-offset: 0.75rem;
-  text-decoration-color: #03BFA1;
+  text-decoration-color: #03bfa1;
   text-align: center;
 }
 .contactUs-banner .left img {
@@ -960,7 +987,7 @@ header nav .hamburgerBtn {
 
 footer {
   @apply pt-14 pb-6 grid grid-cols-3 gap-14;
-  background: #2F3C3A;
+  background: #2f3c3a;
   color: white;
 }
 footer .description {
@@ -983,7 +1010,7 @@ footer input {
 }
 footer .subscribeBtn {
   @apply w-full p-2;
-  background: #03BFA1;
+  background: #03bfa1;
   color: rgba(0, 0, 0, 0.5019607843);
 }
 footer .copyrightDiv {

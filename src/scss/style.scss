@@ -87,8 +87,7 @@ textarea {
 }
 
 .header-bg {
-    background: #05241EDE;
-
+    background: #05241ede;
 }
 
 header {
@@ -150,7 +149,7 @@ header {
                 text-align: left;
             }
 
-            input:checked+.toggleSlider {
+            input:checked + .toggleSlider {
                 @apply left-1/2;
 
                 // .bg {
@@ -273,8 +272,6 @@ header {
     .projects_slider {
         @apply flex gap-6 items-center h-max justify-between w-full relative;
 
-
-
         .Featured_Project_Card {
             width: 17.5rem;
 
@@ -379,7 +376,7 @@ header {
             .bottom {
                 @apply p-3;
                 border-radius: 0px 45px 0px 43px;
-                background: #FFFFFFF0;
+                background: #fffffff0;
 
                 .title {
                     font-size: 1.125rem;
@@ -388,7 +385,7 @@ header {
                 }
 
                 .location {
-                    font-size: .975rem;
+                    font-size: 0.975rem;
                     @apply mb-2;
                 }
 
@@ -400,8 +397,8 @@ header {
 
                         span {
                             display: inline-block;
-                            height: .75rem;
-                            width: .75rem;
+                            height: 0.75rem;
+                            width: 0.75rem;
 
                             svg {
                                 color: #9ca3af;
@@ -409,9 +406,8 @@ header {
                         }
 
                         p {
-                            font-size: .75rem;
+                            font-size: 0.75rem;
                             color: #9ca3af;
-
                         }
 
                         &:not(:last-child) {
@@ -429,7 +425,7 @@ header {
                     }
 
                     p {
-                        font-size: .625rem;
+                        font-size: 0.625rem;
                         font-weight: 600;
                     }
                 }
@@ -444,11 +440,8 @@ header {
 
 // Builder Scss
 .builder {
-
-    // display: flex;
-    // padding: 3rem;
     font-family: Roboto;
-    @apply grid grid-cols-5 gap-9 mt-10;
+    @apply grid grid-cols-5 gap-9 my-10;
     @extend .padding;
 
     .left {
@@ -524,7 +517,6 @@ header {
                 position: relative;
 
                 &:not(:last-child) {
-
                     border-bottom: 1px solid lightgray;
                 }
 
@@ -684,6 +676,10 @@ header {
                         flex-direction: column;
                         gap: 1rem;
                         padding: 1rem;
+
+                        .text:hover {
+                            color: #03bfa1;
+                        }
                     }
                 }
             }
@@ -700,6 +696,42 @@ header {
     }
 }
 
+//Property listing
+.property-listing {
+    .search {
+        .dropdown {
+            @apply flex items-center cursor-pointer;
+            color: white;
+
+            &:hover {
+                color: #03bfa1;
+            }
+
+            span {
+                @apply transition-all;
+            }
+
+            .dropdown-list {
+                @apply py-4 rounded-md shadow-md absolute top-full w-fit;
+                background-color: white;
+
+                ul {
+                    li {
+                        white-space: nowrap;
+                        @apply cursor-pointer px-4 py-1;
+                        color: #505655;
+
+                        &:hover {
+                            background-color: #03bfa1;
+                            color: white;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
 #dropdown {
     width: 1rem;
     border-left: 5px solid transparent;
@@ -711,7 +743,6 @@ header {
     }
 }
 
-
 .featured-builder-banner {
     @apply w-full pt-6 pb-12;
 
@@ -720,8 +751,8 @@ header {
         color: #000000;
         font-weight: 500;
         text-decoration: underline;
-        text-underline-offset: .75rem;
-        text-decoration-color: #03BFA1;
+        text-underline-offset: 0.75rem;
+        text-decoration-color: #03bfa1;
     }
 
     .featured-builder-slider {
@@ -729,7 +760,6 @@ header {
 
         .carosolBtn {
             @apply absolute top-1/2 -translate-y-1/2 p-3 rounded-full flex items-center justify-center;
-
 
             span {
                 @apply h-8 w-8;
@@ -754,13 +784,12 @@ header {
         color: #000000;
         font-weight: 500;
         text-decoration: underline;
-        text-underline-offset: .75rem;
-        text-decoration-color: #03BFA1;
+        text-underline-offset: 0.75rem;
+        text-decoration-color: #03bfa1;
         text-align: center;
     }
 
     .properties-box {
-
         @apply grid grid-cols-3 h-[40rem] w-full;
 
         .properties {
@@ -774,11 +803,9 @@ header {
                 @apply transition-all duration-300;
             }
 
-
             &:hover {
                 &::after {
                     background: linear-gradient(195.63deg, rgba(14, 168, 142, 0) 24.59%, rgba(16, 90, 78, 0.8811) 72.33%);
-
                 }
 
                 .bottom {
@@ -792,24 +819,15 @@ header {
                     .viewMoreBtn {
                         color: #080808;
                         background: white;
-
                     }
                 }
             }
-
-
-
-
-
-
-
 
             &::after {
                 content: "";
                 @apply absolute transition-all duration-300 left-0 top-0 h-full w-full;
                 z-index: 1;
                 background: linear-gradient(188.98deg, rgba(11, 70, 60, 0) 26.83%, rgba(255, 255, 255, 0.92) 70.1%);
-
             }
 
             .bottom {
@@ -820,23 +838,19 @@ header {
                     color: #155147;
                     font-size: 2.25rem;
                     font-weight: 600;
-
                 }
 
                 .description {
                     color: #535454;
                     font-size: 1.25rem;
-
                 }
 
                 .viewMoreBtn {
                     color: white;
                     font-size: 1.25rem;
-                    background: #03BFA1;
+                    background: #03bfa1;
                     @apply w-fit flex px-4 py-2 items-center rounded-full;
                     gap: 10px;
-
-
 
                     span {
                         height: 1rem;
@@ -856,8 +870,8 @@ header {
         color: #000000;
         font-weight: 500;
         text-decoration: underline;
-        text-underline-offset: .75rem;
-        text-decoration-color: #03BFA1;
+        text-underline-offset: 0.75rem;
+        text-decoration-color: #03bfa1;
         text-align: center;
     }
 
@@ -867,8 +881,8 @@ header {
         .Featured_Agents_Card {
             @apply w-full flex flex-col gap-3 items-center py-5 px-4;
             border-radius: 1.25rem;
-            background: #E0F0EE;
-            box-shadow: 7px 4px 19px 0px #0000000F;
+            background: #e0f0ee;
+            box-shadow: 7px 4px 19px 0px #0000000f;
 
             img {
                 height: 7rem;
@@ -882,7 +896,7 @@ header {
             }
 
             .subTitle {
-                color: #4B5755;
+                color: #4b5755;
 
                 @apply text-base font-semibold text-center;
             }
@@ -894,7 +908,7 @@ header {
             }
 
             .description {
-                color: #4B5755;
+                color: #4b5755;
 
                 @apply text-sm font-semibold text-center;
             }
@@ -915,21 +929,19 @@ header {
     @apply w-full pt-6 pb-12;
 
     .left {
-
         h3 {
             font-size: 2.25rem;
             color: #000000;
             font-weight: 500;
             text-decoration: underline;
-            text-underline-offset: .75rem;
-            text-decoration-color: #03BFA1;
+            text-underline-offset: 0.75rem;
+            text-decoration-color: #03bfa1;
             text-align: center;
         }
 
         .description {
             color: #505655;
             @apply text-xl;
-
         }
     }
 
@@ -947,9 +959,7 @@ header {
                 @apply absolute transition-all duration-300 left-0 top-0 h-full w-full;
                 z-index: 1;
                 background: linear-gradient(180deg, rgba(0, 0, 0, 0) 9.38%, #242828 92.71%);
-
             }
-
 
             .bottom {
                 @apply px-3 py-3 absolute w-full bottom-0 flex justify-between items-center;
@@ -965,7 +975,7 @@ header {
                     }
 
                     .location {
-                        font-size: .975rem;
+                        font-size: 0.975rem;
                         @apply mb-2;
                     }
                 }
@@ -980,7 +990,7 @@ header {
                         }
 
                         p {
-                            font-size: .625rem;
+                            font-size: 0.625rem;
                             font-weight: 600;
                             color: white;
                         }
@@ -991,9 +1001,8 @@ header {
             .detailsBtn {
                 @apply px-4 py-2 rounded-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-xs font-semibold;
                 z-index: 2;
-                background: #FFFFFFCC;
+                background: #ffffffcc;
                 color: #155147;
-
             }
         }
     }
@@ -1001,28 +1010,26 @@ header {
 
 .our-blogs-banner {
     @apply grid grid-cols-5 w-full pt-6 pb-6 gap-5 relative;
-    background: #EDEDED99;
+    background: #ededed99;
 
     h3 {
         font-size: 2.25rem;
         color: #000000;
         font-weight: 500;
         text-decoration: underline;
-        text-underline-offset: .75rem;
-        text-decoration-color: #03BFA1;
+        text-underline-offset: 0.75rem;
+        text-decoration-color: #03bfa1;
         text-align: center;
     }
 
     .description {
-        color: #414D4B;
+        color: #414d4b;
         @apply text-lg;
 
         a {
             @apply text-xl font-bold;
         }
     }
-
-
 
     .our_blog {
         @apply h-[36rem] w-full overflow-hidden relative rounded-3xl;
@@ -1039,13 +1046,12 @@ header {
             color: white;
 
             .titleAndDate {
-                color: #0AFFD8;
+                color: #0affd8;
                 @apply text-2xl font-bold;
 
                 .date {
                     @apply text-xl font-semibold;
                 }
-
             }
 
             .title {
@@ -1074,7 +1080,6 @@ header {
     .our_blog.small {
         @apply h-[22rem] rounded-3xl;
 
-
         .bottom {
             @apply gap-2.5 bottom-0 px-3 py-4;
             background: #155147;
@@ -1086,12 +1091,10 @@ header {
                 .date {
                     @apply text-sm;
                 }
-
             }
 
             .title {
                 font-size: 1.25rem;
-
             }
 
             .profilePic {
@@ -1108,14 +1111,12 @@ header {
         }
     }
 
-
     .carosolBtn {
         @apply static translate-y-0 translate-x-0 p-3 rounded-full flex items-center justify-center;
 
         &:hover {
             span {
                 background-color: #15514780;
-
             }
         }
 
@@ -1136,8 +1137,8 @@ header {
         color: #000000;
         font-weight: 500;
         text-decoration: underline;
-        text-underline-offset: .75rem;
-        text-decoration-color: #03BFA1;
+        text-underline-offset: 0.75rem;
+        text-decoration-color: #03bfa1;
         text-align: center;
     }
 
@@ -1164,9 +1165,6 @@ header {
                 @apply h-8;
             }
         }
-
-
-
     }
 
     .contactUsForm {
@@ -1176,17 +1174,15 @@ header {
         textarea {
             @apply px-4 text-base w-full py-5 rounded-xl;
             border: 1px solid #15514761;
-            background: #DDFBF63B;
+            background: #ddfbf63b;
             color: #656767;
-
-
         }
     }
 }
 
 footer {
     @apply pt-14 pb-6 grid grid-cols-3 gap-14;
-    background: #2F3C3A;
+    background: #2f3c3a;
     color: white;
 
     .description {
@@ -1210,18 +1206,17 @@ footer {
         color: #00000080;
         @apply px-4 py-2 rounded text-sm w-full mb-2;
         background-color: white;
-
     }
 
     .subscribeBtn {
         @apply w-full p-2;
-        background: #03BFA1;
+        background: #03bfa1;
         color: #00000080;
     }
 
     .copyrightDiv {
         @apply col-span-3 w-full text-center pt-6 text-sm;
         font-weight: 300;
-        border-top: 1px solid #FFFFFF80;
+        border-top: 1px solid #ffffff80;
     }
 }
