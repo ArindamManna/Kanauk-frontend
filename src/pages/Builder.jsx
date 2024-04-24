@@ -11,11 +11,10 @@ const Builder = () => {
     });
     return (
         <div>
-            <Navbar />
             <div className="builder">
                 <div className="left">
                     <div className="tags">
-                        <div>Communities</div>
+                        <div className="active">Communities</div>
                         <div>Master planned communities</div>
                         <div>Reviews</div>
                     </div>

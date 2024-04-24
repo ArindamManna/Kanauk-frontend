@@ -3,6 +3,7 @@ import { Route, Routes, useLocation } from "react-router-dom";
 import Home from "../pages/Home";
 import Builder from "../pages/Builder";
 import ProjectDetails from "../pages/ProjectDetails";
+import ProjectListing from "../pages/ProjectListing";
 
 function AppRouter() {
     let location = useLocation();
@@ -11,6 +12,7 @@ function AppRouter() {
             <Routes location={location} key={location.pathname}>
                 <Route exact={true} path="/" element={<Home />} />
                 <Route exact={true} path="/projectdetails" element={<ProjectDetails />} />
+                <Route exact={true} path="/projectlisting" element={<ProjectListing />} />
                 <Route exact={true} path="/builder" element={<Builder />} />
             </Routes>
         </>

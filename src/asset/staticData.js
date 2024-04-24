@@ -58,6 +58,10 @@ const locationIcon = <svg xmlns="http://www.w3.org/2000/svg" className="h-full w
 const tickCircle = <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="h-full w-full">
     <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
 </svg>
+const cardIcon = <svg xmlns="http://www.w3.org/2000/svg" className="h-full w-full" viewBox="0 0 20 20" fill="currentColor">
+    <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z" />
+    <path fillRule="evenodd" d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z" clipRule="evenodd" />
+</svg>
 
 
 
@@ -75,4 +79,4 @@ const tickCircle = <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="
 
 
 
-export { imageIcon, tickCircle, locationIcon, phoneIcon, downArrow, heartSolid, MailSolid, rightArrow, searchLogo, starFill, hamburgerIcon, left, right, heart, plusCircle, eye }
+export { imageIcon, cardIcon, tickCircle, locationIcon, phoneIcon, downArrow, heartSolid, MailSolid, rightArrow, searchLogo, starFill, hamburgerIcon, left, right, heart, plusCircle, eye }

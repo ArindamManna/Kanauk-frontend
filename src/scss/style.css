@@ -1161,7 +1161,7 @@ footer .copyrightDiv {
   @apply col-span-1;
 }
 .projectDetails-main .right .contact-sales-center {
-  @apply w-full rounded-xl;
+  @apply w-full rounded-xl mb-10;
   background: rgba(21, 81, 71, 0.831372549);
   color: white;
   padding: 2rem 1rem;
@@ -1232,6 +1232,13 @@ footer .copyrightDiv {
 }
 .projectDetails-main .right .contact-sales-center .form form .req-btn {
   background: #FF8A00;
+}
+.projectDetails-main .right .community-location p.title {
+  @apply text-xl font-medium mb-3;
+}
+.projectDetails-main .right .community-location iframe {
+  @apply w-full rounded-lg h-40;
+  box-shadow: 0px 1px 66px 0px rgba(0, 0, 0, 0.1411764706);
 }
 .projectDetails-main .highlited-details {
   @apply px-10 py-8 rounded-lg mb-4 col-span-3;
@@ -1328,4 +1335,116 @@ footer .copyrightDiv {
 }
 .constraction-banner-section .links-details .highlited-details p.para a {
   @apply underline underline-offset-2;
+}
+
+.projectliisting {
+  @apply mb-10;
+}
+.projectliisting .filterBox {
+  @apply my-10 w-full flex justify-between;
+}
+.projectliisting .filterBox .left,
+.projectliisting .filterBox .right {
+  @apply flex gap-2;
+}
+.projectliisting .filterBox .left .dropdown-btn button,
+.projectliisting .filterBox .right .dropdown-btn button {
+  @apply flex items-center px-2 py-3 rounded-md text-base font-medium;
+  background: #D9D9D9;
+}
+.projectliisting .filterBox .left .dropdown-btn button span,
+.projectliisting .filterBox .right .dropdown-btn button span {
+  height: 1rem;
+  width: 1rem;
+  @apply ml-4;
+}
+.projectliisting .listing-map-section {
+  @apply grid grid-cols-2 gap-6;
+  height: 32rem;
+}
+.projectliisting .listing-map-section iframe {
+  @apply w-full h-full rounded-lg;
+}
+.projectliisting .listing-map-section .listingBox {
+  @apply h-full overflow-auto rounded-lg;
+}
+.projectliisting .listing-map-section .listingBox p.noOfComments {
+  @apply text-base font-medium;
+}
+.projectliisting .listing-map-section .listingBox p.title {
+  color: #155147;
+  @apply text-2xl font-semibold;
+}
+.projectliisting .listing-map-section .listingBox .dropdown-btn button {
+  @apply whitespace-nowrap flex items-center px-2 py-3 rounded-md text-base font-medium;
+  background: #D9D9D9;
+}
+.projectliisting .listing-map-section .listingBox .dropdown-btn button span {
+  height: 1rem;
+  width: 1rem;
+  @apply ml-4;
+}
+.projectliisting .listing-map-section .listingBox .project-list-cards {
+  @apply grid grid-cols-2 gap-2 mb-2;
+}
+.projectliisting .listing-map-section .listingBox .project-list-cards .project-img {
+  height: 13rem;
+  @apply w-full mb-3 overflow-hidden rounded-lg relative;
+}
+.projectliisting .listing-map-section .listingBox .project-list-cards .project-img img {
+  @apply h-full w-full absolute top-0 left-0;
+  z-index: -1;
+}
+.projectliisting .listing-map-section .listingBox .project-list-cards .project-img .is-verified {
+  @apply bottom-2 right-2;
+}
+.projectliisting .listing-map-section .listingBox .project-list-cards .project-img .status {
+  @apply top-2 left-2;
+}
+.projectliisting .listing-map-section .listingBox .project-list-cards .project-img .watchList {
+  @apply absolute cursor-pointer top-2 right-2 h-5 w-5;
+  color: white;
+}
+.projectliisting .listing-map-section .listingBox .project-list-cards .project-img .status,
+.projectliisting .listing-map-section .listingBox .project-list-cards .project-img .is-verified {
+  @apply absolute py-1 px-2 rounded-md text-white text-xs;
+  font-weight: 300;
+  background-color: rgba(30, 29, 33, 0.7);
+}
+.projectliisting .listing-map-section .listingBox .project-list-cards .project-name {
+  @apply text-base font-semibold;
+  color: #1e1d21;
+}
+.projectliisting .listing-map-section .listingBox .project-list-cards p.price {
+  @apply text-base mb-2;
+  color: #1e1d21;
+}
+.projectliisting .listing-map-section .listingBox .project-list-cards p.builder-name {
+  color: #595959;
+  @apply text-xs mb-1;
+}
+.projectliisting .listing-map-section .listingBox .project-list-cards p.location {
+  color: #595959;
+  @apply text-xs mb-1 font-medium;
+}
+.projectliisting .listing-map-section .listingBox .project-list-cards .details-box {
+  @apply flex items-center py-1;
+}
+.projectliisting .listing-map-section .listingBox .project-list-cards .details-box .details {
+  @apply px-1;
+}
+.projectliisting .listing-map-section .listingBox .project-list-cards .details-box .details span {
+  display: inline-block;
+  height: 0.75rem;
+  width: 0.75rem;
+}
+.projectliisting .listing-map-section .listingBox .project-list-cards .details-box .details span svg {
+  color: #9ca3af;
+}
+.projectliisting .listing-map-section .listingBox .project-list-cards .details-box .details p {
+  font-size: 0.75rem;
+  color: #9ca3af;
+}
+.projectliisting .listing-map-section .listingBox .project-list-cards .details-box .details:not(:last-child) {
+  @apply border-r-2 border-[#9ca3af];
 }/*# sourceMappingURL=style.css.map */
