@@ -1,11 +1,52 @@
-import React from "react";
+import React, { useState } from "react";
 import "../sass/style.css";
 import { svg1, svg2, svg3, svg4 } from "../images/staticData";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { store_token } from "../store/slices/authSlice";
 
 const SigninAdmin = () => {
+    const [user, setUser] = useState({
+        email: "",
+        password: "",
+    });
+
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+
+    const handelInput = (e) => {
+        let name = e.target.name;
+        let value = e.target.value;
+
+        setUser({ ...user, [name]: value });
+    };
+
+    const handelSubmit = async (e) => {
+        e.preventDefault();
+
+        try {
+            const response = await fetch(`http://localhost:5000/api/admin/login`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(user),
+            });
+            if (response.ok) {
+                const data = await response.json();
+                dispatch(store_token(data.token));
+                setUser({ email: "", password: "" });
+                navigate("/home");
+            } else {
+                console.log("invalid credentials");
+            }
+        } catch (error) {
+            console.log("Login: ", error.message);
+        }
+    };
     return (
         <div classNameName="admin" style={{ width: "100vw", height: "100vh", display: "flex", alignItems: "center", justifyContent: "center" }}>
-            <form className="form_container">
+            <form className="form_container" onSubmit={handelSubmit}>
                 <div className="logo_container"></div>
                 <div className="title_container">
                     <p className="title">Login to your Account</p>
@@ -13,18 +54,14 @@ const SigninAdmin = () => {
                 </div>
                 <br />
                 <div className="input_container">
-                    <label className="input_label" for="email_field">
-                        Email
-                    </label>
+                    <label className="input_label">Email</label>
                     {svg1}
-                    <input placeholder="name@mail.com" title="Inpit title" name="input-name" type="text" className="input_field" id="email_field" />
+                    <input placeholder="name@mail.com" name="email" type="text" className="input_field" value={user.email} onChange={handelInput} />
                 </div>
                 <div className="input_container">
-                    <label className="input_label" for="password_field">
-                        Password
-                    </label>
+                    <label className="input_label">Password</label>
                     {svg2}
-                    <input placeholder="Password" title="Inpit title" name="input-name" type="password" className="input_field" id="password_field" />
+                    <input placeholder="Password" name="password" type="password" className="input_field" value={user.password} onChange={handelInput} />
                 </div>
                 <button title="Sign In" type="submit" className="sign-in_btn">
                     <span>Sign In</span>
