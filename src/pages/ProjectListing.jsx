@@ -1,10 +1,13 @@
 import React from 'react'
 import { downArrow, hamburgerIcon, heartSolid } from '../asset/staticData'
 import Project_List_Card from '../components/Project_List_Card'
+import Navbar from '../components/Navbar'
+import Footer from '../components/Footer'
 
 function ProjectListing() {
     return (
         <>
+            <Navbar />
             <section className="projectliisting padding">
 
                 <div className="filterBox">
@@ -98,6 +101,7 @@ function ProjectListing() {
 
                 </div>
             </section>
+            <Footer />
         </>
     )
 }

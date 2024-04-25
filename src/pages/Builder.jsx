@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar";
 import { useState } from "react";
 import BuilderLeftCard from "../components/Builder_Left_Card";
 import BuilderRightCard from "../components/Builder_Right_Card";
+import Footer from "../components/Footer";
 
 const Builder = () => {
     const [isSubMenuOpen, setIsSubMenuOpen] = useState({
@@ -10,7 +11,8 @@ const Builder = () => {
         articles: false,
     });
     return (
-        <div>
+        <>
+            <Navbar />
             <div className="builder">
                 <div className="left">
                     <div className="tags">
@@ -76,7 +78,8 @@ const Builder = () => {
                     </div>
                 </div>
             </div>
-        </div>
+            <Footer />
+        </>
     );
 };
 

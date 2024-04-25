@@ -7,10 +7,13 @@ import projectDetailsImage4 from "../asset/images/projectDetailsImage4.png"
 import agents1 from "../asset/images/agents1.png"
 import builderLogo from "../asset/images/builderLogo.png"
 import bedImg from "../asset/images/small/bed.png"
+import Navbar from '../components/Navbar'
+import Footer from '../components/Footer'
 
 function ProjectDetails() {
     return (
         <>
+            <Navbar />
             <section className='pageBreadcrumb padding'>
                 <p>
                     Home / NY / Newyork (Metropolitan Area) / Newyork Country / Manhattan / Theater / District / Central park tower
@@ -416,6 +419,7 @@ function ProjectDetails() {
 
                 </div>
             </section>
+            <Footer />
         </>
     )
 }
