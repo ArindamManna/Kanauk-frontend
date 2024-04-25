@@ -1,0 +1,24 @@
+const [CurrentStepNo, CurrentSection, doYouHaveRevokedLincence,formdata_contactInfo,isgetapiDone] = useSelector((state) => {
+    const { CurrentStepNo, CurrentSection ,isgetapiDone} = state?.GlobalSlice
+    let formdata = state?.SectionSlice?.[CurrentSection]?.[CurrentStepNo - 1]?.formdata;
+    let formdata_contactInfo = state?.SectionSlice?.["contactInformation"]?.[0]?.formdata;
+    return [CurrentStepNo, CurrentSection, formdata?.doYouHaveRevokedLincence,formdata_contactInfo,isgetapiDone]
+  });
+
+
+
+
+
+
+
+
+  const dispatch = useDispatch();
+
+      dispatch(updateFromdata({
+        CurrentSection,
+        CurrentStepNo,
+        formdata: {
+          applicationCompleteName:formdata_contactInfo?.name,
+          applicationCompleteTitle:formdata_contactInfo?.title,
+        }
+      }))

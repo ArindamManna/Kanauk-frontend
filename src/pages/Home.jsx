@@ -13,8 +13,19 @@ import webLogo from '../asset/images/logo/web.png'
 import PopularCities from '../components/PopularCities'
 import Our_blog from '../components/Our_blog'
 import Footer from '../components/Footer'
+import { useDispatch, useSelector } from 'react-redux'
+import { updateGlobalState } from '../Redux/GlobalSlice'
 
 function Home() {
+    // const Dispatch = useDispatch()
+    // const { count } = useSelector((state, action) => {
+    //     const { count } = state?.GlobalSlice
+    //     return {
+    //         count
+    //     }
+    // })
+    // console.log(count);
+
     return (
         <>
 
@@ -34,6 +45,7 @@ function Home() {
                         </span>
                     </button>
                 </div>
+
                 <div className='latestProject'>
                     <p>
                         Latest Projects:
