@@ -633,16 +633,19 @@ header nav .hamburgerBtn {
 
 .builder {
   font-family: Roboto;
-  @apply grid grid-cols-5 gap-9 mt-10;
+  @apply grid md:grid-cols-4 xl:grid-cols-5 gap-3 md:gap-6 xl:gap-9 mt-10;
 }
 .builder .left {
-  @apply col-span-3;
+  @apply col-span-2 xl:col-span-3;
 }
 .builder .left .tags {
-  display: flex;
-  justify-content: space-between;
-  padding-right: 2rem;
   font-weight: 500;
+  @apply flex md:mr-8 justify-between gap-3 whitespace-nowrap w-full;
+}
+.builder .left .tags .active {
+  text-decoration: underline;
+  text-underline-offset: 0.75rem;
+  text-decoration-color: #03bfa1;
 }
 .builder .left .tagdetails {
   display: flex;
@@ -703,8 +706,7 @@ header nav .hamburgerBtn {
   @apply my-4;
 }
 .builder .left .cards .builder_card .card img {
-  width: 14rem;
-  height: 8rem;
+  @apply lg:w-[14rem] md:w-[10rem] w-[8rem] lg:h-[8rem] md:h-[6rem] h-[5rem];
   border-radius: 5px;
 }
 .builder .left .cards .builder_card .card .content {
@@ -728,7 +730,7 @@ header nav .hamburgerBtn {
   font-size: 0.6rem;
 }
 .builder .right {
-  @apply col-span-2;
+  @apply col-span-2 mb-4;
 }
 .builder .right .card {
   background: #d4f4ef;

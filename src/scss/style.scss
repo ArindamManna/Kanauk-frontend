@@ -722,18 +722,23 @@ header {
     // display: flex;
     // padding: 3rem;
     font-family: Roboto;
-    @apply grid grid-cols-5 gap-9 mt-10;
+    @apply grid md:grid-cols-4 xl:grid-cols-5 gap-3 md:gap-6 xl:gap-9 mt-10;
     @extend .padding;
 
     .left {
-        @apply col-span-3;
+        @apply col-span-2 xl:col-span-3;
 
         // border: 1px solid red;
         .tags {
-            display: flex;
-            justify-content: space-between;
-            padding-right: 2rem;
+            // padding-right: 2rem;
             font-weight: 500;
+            @apply flex md:mr-8 justify-between gap-3 whitespace-nowrap w-full;
+
+            .active {
+                text-decoration: underline;
+                text-underline-offset: 0.75rem;
+                text-decoration-color: #03bfa1;
+            }
         }
 
         .tagdetails {
@@ -807,8 +812,9 @@ header {
                     @apply my-4;
 
                     img {
-                        width: 14rem;
-                        height: 8rem;
+                        @apply lg:w-[14rem] md:w-[10rem] w-[8rem] lg:h-[8rem] md:h-[6rem] h-[5rem];
+                        // width: 14rem;
+                        // height: 8rem;
                         border-radius: 5px;
                     }
 
@@ -851,7 +857,7 @@ header {
     }
 
     .right {
-        @apply col-span-2;
+        @apply col-span-2 mb-4;
 
         .card {
             background: #d4f4ef;
@@ -969,6 +975,7 @@ header {
                 width: 100%;
                 border: 2px solid gray;
                 border-radius: 5px;
+
             }
         }
     }
