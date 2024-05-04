@@ -27,6 +27,7 @@ function AppRouter() {
                 <Route exact={true} path="/admin"  >
                     <Route index element={<AdminDashboard />} />
                     <Route exact={true} path="addproject" element={<AddProject />} />
+                    <Route exact={true} path="login" element={<AdminLogin />} />
                 </Route>
             </Routes>
         </>
