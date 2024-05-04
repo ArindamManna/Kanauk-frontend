@@ -18,7 +18,7 @@ function ProjectDetails() {
                 <p>
                     Home / NY / Newyork (Metropolitan Area) / Newyork Country / Manhattan / Theater / District / Central park tower
                 </p>
-                <div className='flex items-center gap-4'>
+                <div className='flex justify-end items-center gap-4'>
                     <button>
                         <span>
                             {MailSolid}
@@ -40,7 +40,7 @@ function ProjectDetails() {
                     <h3>
                         Spring Valley Construction
                     </h3>
-                    <div className="right">
+                    <div className="right ml-auto">
                         <button className='active'>
                             Overview
                         </button>
@@ -54,9 +54,9 @@ function ProjectDetails() {
                 </div>
                 <div className="gallery">
                     <img src={projectDetailsImage1} alt="" className='col-span-2 row-span-2' />
-                    <img src={projectDetailsImage2} alt="" />
-                    <img src={projectDetailsImage3} alt="" />
-                    <img src={projectDetailsImage4} alt="" className='col-span-2' />
+                    <img src={projectDetailsImage2} alt="" className='hidden lg:block' />
+                    <img src={projectDetailsImage3} alt="" className='hidden lg:block' />
+                    <img src={projectDetailsImage4} alt="" className='col-span-2 hidden lg:block' />
                     <div className="imageCount-carosel">
                         <div className="count">
                             <span>
@@ -389,21 +389,24 @@ function ProjectDetails() {
             </section>
 
             <section className='constraction-banner-section'>
-                <img src={projectDetailsImage1} alt="" />
-                <div className="content">
-                    <p className="title">
-                        Spring Valley Construction Marketing Summary
-                    </p>
-                    <p className="para">
-                        INSPIRED BY HERITAGE, GLAMOUR, AND SOPHISTICATIONThe story of the Waldorf Astoria is, in many ways a story of New York City—a story of ambition, innovation, and achievement. From residential interior designer Jean-Louis Deniot, to architect Skidmore, Owings & Merrill, to hotel interior designer Pierre-Yves Rochon, the team behind the restoration of the Waldorf Astoria are all global icons in their own right.
-                        <br />
-                        <span>
-                            Source: The Towers of the Waldorf Astoria
-                        </span>
-                    </p>
+                <div className='bannerwraper'>
 
+                    <img src={projectDetailsImage1} alt="" />
+                    <div className="content">
+                        <p className="title">
+                            Spring Valley Construction Marketing Summary
+                        </p>
+                        <p className="para">
+                            INSPIRED BY HERITAGE, GLAMOUR, AND SOPHISTICATIONThe story of the Waldorf Astoria is, in many ways a story of New York City—a story of ambition, innovation, and achievement. From residential interior designer Jean-Louis Deniot, to architect Skidmore, Owings & Merrill, to hotel interior designer Pierre-Yves Rochon, the team behind the restoration of the Waldorf Astoria are all global icons in their own right.
+                            <br />
+                            <span>
+                                Source: The Towers of the Waldorf Astoria
+                            </span>
+                        </p>
+
+                    </div>
+                    <img src={projectDetailsImage1} alt="" className='hidden md:block' />
                 </div>
-                <img src={projectDetailsImage1} alt="" />
 
                 <div className="links-details padding">
 

@@ -1359,7 +1359,7 @@ footer .copyrightDiv {
 }
 
 .pageBreadcrumb {
-  @apply flex justify-between items-center text-sm font-medium;
+  @apply flex justify-between gap-2 lg:flex-row flex-col lg:items-center text-sm font-medium;
   margin-top: 2rem;
   margin-bottom: 1rem;
   color: #000000;
@@ -1375,13 +1375,13 @@ footer .copyrightDiv {
 }
 
 .projectDetails-gallery .top {
-  @apply flex items-center justify-between mb-4;
+  @apply flex flex-col lg:flex-row lg:items-center justify-between mb-4;
 }
 .projectDetails-gallery .top h3 {
-  @apply text-4xl font-bold;
+  @apply text-2xl lg:text-3xl xl:text-4xl font-bold;
 }
 .projectDetails-gallery .top .right {
-  @apply flex items-center gap-10;
+  @apply flex items-center gap-4 overflow-auto md:gap-10;
 }
 .projectDetails-gallery .top .right button {
   @apply text-sm font-medium pb-2 px-1;
@@ -1390,11 +1390,15 @@ footer .copyrightDiv {
   border-bottom: 2px solid #03BFA1;
 }
 .projectDetails-gallery .gallery {
-  @apply relative grid grid-cols-4 grid-rows-2 gap-4 mb-8;
-  max-height: 32rem;
+  @apply relative lg:grid grid-cols-4 grid-rows-2 gap-4 mb-8;
+}
+@media (min-width: 992px) {
+  .projectDetails-gallery .gallery {
+    max-height: 32rem;
+  }
 }
 .projectDetails-gallery .gallery img {
-  @apply rounded-md w-full h-full;
+  @apply rounded-md w-full lg:h-full;
 }
 .projectDetails-gallery .gallery .imageCount-carosel {
   @apply absolute bottom-5 right-4 flex gap-2 items-center;
@@ -1418,7 +1422,7 @@ footer .copyrightDiv {
 }
 
 .projectDetails-main {
-  @apply grid grid-cols-3 gap-4 mb-10;
+  @apply lg:grid grid-cols-3 gap-4 mb-10;
 }
 .projectDetails-main .left {
   @apply col-span-2;
@@ -1430,7 +1434,7 @@ footer .copyrightDiv {
   @apply w-10;
 }
 .projectDetails-main .left .bilder .name {
-  @apply text-2xl font-semibold;
+  @apply md:text-xl text-lg lg:text-2xl font-semibold;
 }
 .projectDetails-main .left .locaiton {
   @apply flex items-center gap-2 mb-1;
@@ -1440,7 +1444,7 @@ footer .copyrightDiv {
   @apply h-4 w-4;
 }
 .projectDetails-main .left .locaiton p {
-  @apply text-xl;
+  @apply text-base md:text-base lg:text-xl;
 }
 .projectDetails-main .left .review {
   @apply flex items-center gap-2 mb-4;
@@ -1453,11 +1457,11 @@ footer .copyrightDiv {
   @apply font-medium text-xl;
 }
 .projectDetails-main .left .review p span {
-  @apply text-lg font-normal ml-2;
+  @apply md:text-base text-sm lg:text-lg font-normal ml-2;
   color: #757575;
 }
 .projectDetails-main .left p.listing-status {
-  @apply text-2xl;
+  @apply md:text-xl text-lg lg:text-2xl;
 }
 .projectDetails-main .left p.listing-status span {
   @apply font-medium;
@@ -1465,14 +1469,14 @@ footer .copyrightDiv {
 }
 .projectDetails-main .left p.price {
   color: #155147;
-  @apply text-3xl font-bold mb-4;
+  @apply md:text-2xl text-xl lg:text-3xl font-bold mb-4;
 }
 .projectDetails-main .left .project-highlights {
   @apply grid grid-cols-3 pr-10 gap-4 mb-4;
 }
 .projectDetails-main .left .project-highlights .item p.title {
   color: #03BFA1;
-  @apply text-xl font-medium;
+  @apply md:text-lg text-base lg:text-xl font-medium;
 }
 .projectDetails-main .left .project-highlights .item span img {
   width: 1.5rem;
@@ -1484,7 +1488,7 @@ footer .copyrightDiv {
 }
 .projectDetails-main .left p.description {
   color: #535454;
-  @apply text-2xl italic;
+  @apply md:text-xl text-lg lg:text-2xl italic;
 }
 .projectDetails-main .left p.description span {
   @apply font-semibold;
@@ -1494,13 +1498,13 @@ footer .copyrightDiv {
 }
 .projectDetails-main .left .avalilable-homes p.title {
   color: #155147;
-  @apply not-italic text-3xl mb-3 font-bold underline underline-offset-2;
+  @apply not-italic md:text-2xl text-xl lg:text-3xl mb-3 font-bold underline underline-offset-2;
 }
 .projectDetails-main .left .avalilable-homes .links {
   @apply flex gap-4 items-center mb-3;
 }
 .projectDetails-main .left .avalilable-homes .links button {
-  @apply text-xl font-medium;
+  @apply md:text-lg text-base lg:text-xl font-medium;
 }
 .projectDetails-main .left .avalilable-homes .links button:hover, .projectDetails-main .left .avalilable-homes .links button.active {
   color: #03BFA1;
@@ -1509,7 +1513,7 @@ footer .copyrightDiv {
   color: #535454;
 }
 .projectDetails-main .left .avalilable-homes p {
-  @apply text-lg italic mb-2;
+  @apply text-base md:text-lg italic mb-2;
 }
 .projectDetails-main .left .avalilable-homes p span {
   @apply font-semibold;
@@ -1539,23 +1543,21 @@ footer .copyrightDiv {
   @apply text-center;
 }
 .projectDetails-main .right .contact-sales-center .top .img {
-  height: 9rem;
-  width: 9rem;
   border: 2px solid rgba(255, 255, 255, 0.9411764706);
   border-radius: 100%;
-  @apply mb-4 overflow-hidden;
+  @apply mb-2 md:mb-4 overflow-hidden md:h-[6rem] h-[5rem] lg:h-[9rem] md:w-[6rem] w-[5rem] lg:w-[9rem];
 }
 .projectDetails-main .right .contact-sales-center .top .img img {
   width: 100%;
 }
 .projectDetails-main .right .contact-sales-center .top .name {
-  @apply text-2xl font-medium;
+  @apply md:text-xl text-lg lg:text-2xl font-medium;
 }
 .projectDetails-main .right .contact-sales-center .top .designation {
-  @apply text-xl mb-2;
+  @apply md:text-lg text-base lg:text-xl mb-2;
 }
 .projectDetails-main .right .contact-sales-center .top .view-profile-link {
-  @apply text-lg mb-4 font-medium;
+  @apply md:text-base text-sm lg:text-lg mb-4 font-medium;
   color: #0AFFD8;
 }
 .projectDetails-main .right .contact-sales-center .top .call-now-btn {
@@ -1572,13 +1574,13 @@ footer .copyrightDiv {
   @apply pt-5;
 }
 .projectDetails-main .right .contact-sales-center .form .title {
-  @apply text-2xl mb-4 text-center font-semibold;
+  @apply md:text-xl text-lg lg:text-2xl mb-4 text-center font-semibold;
 }
 .projectDetails-main .right .contact-sales-center .form form {
   @apply grid grid-cols-2 gap-3;
 }
 .projectDetails-main .right .contact-sales-center .form form .inputBox {
-  @apply p-3 text-lg rounded-md;
+  @apply p-3 md:text-lg rounded-md;
   font-weight: 300;
   background: rgba(189, 241, 232, 0.1882352941);
 }
@@ -1594,103 +1596,106 @@ footer .copyrightDiv {
   background: #FF8A00;
 }
 .projectDetails-main .right .community-location p.title {
-  @apply text-xl font-medium mb-3;
+  @apply text-lg md:text-xl font-medium mb-3;
 }
 .projectDetails-main .right .community-location iframe {
   @apply w-full rounded-lg h-40;
   box-shadow: 0px 1px 66px 0px rgba(0, 0, 0, 0.1411764706);
 }
 .projectDetails-main .highlited-details {
-  @apply px-10 py-8 rounded-lg mb-4 col-span-3;
+  @apply md:px-6 px-4 lg:px-10 md:py-6 py-4 lg:py-8 rounded-lg md:mb-3 mb-2 lg:mb-4 col-span-3;
   background: rgba(217, 217, 217, 0.4);
 }
 .projectDetails-main .highlited-details p.title {
-  @apply text-3xl mb-2 font-medium;
+  @apply text-xl md:text-2xl lg:text-3xl mb-2 font-medium;
 }
 .projectDetails-main .highlited-details p.para {
-  @apply text-xl italic;
+  @apply md:text-lg text-base lg:text-xl italic;
   color: rgba(0, 0, 0, 0.6980392157);
 }
 .projectDetails-main .highlited-details p.para a {
   @apply underline underline-offset-2;
 }
 .projectDetails-main .features-amenitis-details {
-  @apply col-span-3 grid grid-cols-2 gap-4;
+  @apply col-span-3 grid lg:grid-cols-2 gap-4;
 }
 .projectDetails-main .features-amenitis-details .feature-details {
-  @apply rounded-lg px-9 py-6;
+  @apply rounded-lg md:px-6 px-4 lg:px-9 py-4 md:py-6;
   background: #F7F7F7;
 }
 .projectDetails-main .features-amenitis-details .feature-details p.title {
-  @apply text-4xl mb-4 underline underline-offset-2 font-bold text-center;
+  @apply xl:text-3xl lg:text-2xl md:text-xl text-lg 2xl:text-4xl md:mb-3 mb-2 lg:mb-4 underline underline-offset-2 font-bold text-center;
   color: #155147;
 }
 .projectDetails-main .features-amenitis-details .feature-details p.subtitle {
-  @apply text-xl text-center mb-8 font-medium;
+  @apply md:text-lg text-base lg:text-xl text-center md:mb-6 mb-4 lg:mb-8 font-medium;
 }
 .projectDetails-main .features-amenitis-details .feature-details p.para {
-  @apply text-lg italic;
+  @apply text-base md:text-lg italic;
   color: rgba(0, 0, 0, 0.6980392157);
 }
 .projectDetails-main .features-amenitis-details .feature-details p.para span {
   @apply font-bold;
 }
 .projectDetails-main .features-amenitis-details .amenitis-details {
-  @apply rounded-lg px-9 py-6;
+  @apply rounded-lg md:px-6 px-4 lg:px-9 py-4 md:py-6;
   background: #F7F7F7;
 }
 .projectDetails-main .features-amenitis-details .amenitis-details p.title {
-  @apply text-4xl mb-10 underline underline-offset-2 font-bold text-center;
+  @apply xl:text-3xl lg:text-2xl md:text-xl text-lg 2xl:text-4xl md:mb-3 mb-2 lg:mb-4 underline underline-offset-2 font-bold text-center;
   color: #155147;
 }
 .projectDetails-main .features-amenitis-details .amenitis-details .list {
   @apply grid grid-cols-2 gap-4;
 }
 .projectDetails-main .features-amenitis-details .amenitis-details .list .item {
-  @apply flex items-center mb-3 gap-2;
+  @apply flex items-center md:mb-2 mb-1 lg:mb-3 gap-1 md:gap-2;
   color: #155147;
 }
 .projectDetails-main .features-amenitis-details .amenitis-details .list .item span {
-  height: 1.25rem;
-  width: 1.25rem;
+  @apply lg:h-5 lg:w-5 md:h-4 md:w-4 h-3 w-3;
 }
 .projectDetails-main .features-amenitis-details .amenitis-details .list .item p {
-  @apply text-lg;
+  @apply md:text-base text-sm lg:text-lg;
 }
 
-.constraction-banner-section {
-  @apply grid grid-cols-3;
+.constraction-banner-section .bannerwraper {
+  @apply md:grid grid-cols-3 relative;
 }
-.constraction-banner-section img {
+.constraction-banner-section .bannerwraper img {
   width: 100%;
   height: 100%;
 }
-.constraction-banner-section .content {
-  @apply p-4;
+.constraction-banner-section .bannerwraper img:last-child {
+  @apply hidden md:block;
 }
-.constraction-banner-section .content p.title {
-  @apply text-2xl mb-3 font-bold text-center;
+.constraction-banner-section .bannerwraper .content {
+  @apply p-2 md:p-4 absolute md:static z-10 bg-opacity-70 bottom-4 rounded-md md:rounded-none left-4 right-4;
+  background-color: white;
+}
+.constraction-banner-section .bannerwraper .content p.title {
+  @apply md:text-xl text-lg lg:text-2xl mb-3 font-bold text-center;
   color: #155147;
 }
-.constraction-banner-section .content p.para {
-  @apply text-lg italic text-center;
+.constraction-banner-section .bannerwraper .content p.para {
+  @apply md:text-base text-sm lg:text-lg italic text-center;
   color: rgba(0, 0, 0, 0.6980392157);
 }
-.constraction-banner-section .content p.para span {
+.constraction-banner-section .bannerwraper .content p.para span {
   @apply font-bold;
 }
 .constraction-banner-section .links-details {
   @apply col-span-3 mt-10;
 }
 .constraction-banner-section .links-details .highlited-details {
-  @apply px-10 py-8 rounded-lg mb-4 col-span-3;
+  @apply md:px-6 px-4 lg:px-10 md:py-6 py-4 lg:py-8 rounded-lg md:mb-3 mb-2 lg:mb-4 col-span-3;
   background: rgba(217, 217, 217, 0.4);
 }
 .constraction-banner-section .links-details .highlited-details p.title {
-  @apply text-3xl mb-2 font-medium text-center;
+  @apply text-center text-xl md:text-2xl lg:text-3xl mb-2 font-medium;
 }
 .constraction-banner-section .links-details .highlited-details p.para {
-  @apply text-xl italic text-center;
+  @apply text-center md:text-lg text-base lg:text-xl italic;
   color: rgba(0, 0, 0, 0.6980392157);
 }
 .constraction-banner-section .links-details .highlited-details p.para a {
