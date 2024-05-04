@@ -15,6 +15,17 @@
     // @apply transition-all;
     line-height: normal;
     background-repeat: no-repeat;
+
+    &::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+        background-color: #F5F5F5;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        background-color: #03BFA1;
+    }
 }
 
 .hr {
@@ -2134,7 +2145,22 @@ footer {
     @apply mb-10;
 
     .filterBox {
-        @apply my-10 w-full flex justify-between;
+        @apply my-10 w-full gap-2 flex justify-between overflow-auto pb-2;
+
+        &::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+            background-color: #F5F5F5;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            background-color: #03BFA1;
+        }
+
+        * {
+            flex-shrink: 0;
+        }
 
         .left,
         .right {
@@ -2142,13 +2168,11 @@ footer {
 
             .dropdown-btn {
                 button {
-                    @apply flex items-center px-2 py-3 rounded-md text-base font-medium;
+                    @apply flex items-center px-2 md:py-3 py-2 rounded-md text-sm md:text-base font-medium;
                     background: #D9D9D9;
 
                     span {
-                        height: 1rem;
-                        width: 1rem;
-                        @apply ml-4;
+                        @apply ml-2 md:ml-4 md:w-4 w-3;
                     }
                 }
             }
@@ -2156,7 +2180,7 @@ footer {
     }
 
     .listing-map-section {
-        @apply grid grid-cols-2 gap-6;
+        @apply grid lg:grid-cols-2 gap-6;
         height: 32rem;
 
         iframe {
@@ -2167,12 +2191,12 @@ footer {
             @apply h-full overflow-auto rounded-lg;
 
             p.noOfComments {
-                @apply text-base font-medium
+                @apply text-sm md:text-base font-medium
             }
 
             p.title {
                 color: #155147;
-                @apply text-2xl font-semibold;
+                @apply md:text-xl text-lg lg:text-2xl font-semibold;
 
             }
 
@@ -2190,7 +2214,7 @@ footer {
             }
 
             .project-list-cards {
-                @apply grid grid-cols-2 gap-2 mb-2;
+                @apply grid md:grid-cols-2 gap-2 mb-2;
 
                 .project-img {
                     height: 13rem;

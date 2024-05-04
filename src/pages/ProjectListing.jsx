@@ -70,11 +70,11 @@ function ProjectListing() {
                         <p className="noOfComments">
                             256 Comments
                         </p>
-                        <div className="flex mb-4 justify-between gap-4">
+                        <div className="flex mb-4 flex-col md:flex-row justify-between gap-4">
                             <p className="title">
                                 New construction homes for sale in New York, NY
                             </p>
-                            <div className="dropdown-btn">
+                            <div className="dropdown-btn ml-auto">
                                 <button>
                                     Sort: Featured
                                     <span>

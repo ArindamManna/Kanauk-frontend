@@ -71,6 +71,15 @@
   line-height: normal;
   background-repeat: no-repeat;
 }
+*::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+  background-color: #F5F5F5;
+}
+*::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #03BFA1;
+}
 
 .hr {
   height: 1px;
@@ -1692,7 +1701,19 @@ footer .copyrightDiv {
   @apply mb-10;
 }
 .projectliisting .filterBox {
-  @apply my-10 w-full flex justify-between;
+  @apply my-10 w-full gap-2 flex justify-between overflow-auto pb-2;
+}
+.projectliisting .filterBox::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+  background-color: #F5F5F5;
+}
+.projectliisting .filterBox::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #03BFA1;
+}
+.projectliisting .filterBox * {
+  flex-shrink: 0;
 }
 .projectliisting .filterBox .left,
 .projectliisting .filterBox .right {
@@ -1700,17 +1721,15 @@ footer .copyrightDiv {
 }
 .projectliisting .filterBox .left .dropdown-btn button,
 .projectliisting .filterBox .right .dropdown-btn button {
-  @apply flex items-center px-2 py-3 rounded-md text-base font-medium;
+  @apply flex items-center px-2 md:py-3 py-2 rounded-md text-sm md:text-base font-medium;
   background: #D9D9D9;
 }
 .projectliisting .filterBox .left .dropdown-btn button span,
 .projectliisting .filterBox .right .dropdown-btn button span {
-  height: 1rem;
-  width: 1rem;
-  @apply ml-4;
+  @apply ml-2 md:ml-4 md:w-4 w-3;
 }
 .projectliisting .listing-map-section {
-  @apply grid grid-cols-2 gap-6;
+  @apply grid lg:grid-cols-2 gap-6;
   height: 32rem;
 }
 .projectliisting .listing-map-section iframe {
@@ -1720,11 +1739,11 @@ footer .copyrightDiv {
   @apply h-full overflow-auto rounded-lg;
 }
 .projectliisting .listing-map-section .listingBox p.noOfComments {
-  @apply text-base font-medium;
+  @apply text-sm md:text-base font-medium;
 }
 .projectliisting .listing-map-section .listingBox p.title {
   color: #155147;
-  @apply text-2xl font-semibold;
+  @apply md:text-xl text-lg lg:text-2xl font-semibold;
 }
 .projectliisting .listing-map-section .listingBox .dropdown-btn button {
   @apply whitespace-nowrap flex items-center px-2 py-3 rounded-md text-base font-medium;
@@ -1736,7 +1755,7 @@ footer .copyrightDiv {
   @apply ml-4;
 }
 .projectliisting .listing-map-section .listingBox .project-list-cards {
-  @apply grid grid-cols-2 gap-2 mb-2;
+  @apply grid md:grid-cols-2 gap-2 mb-2;
 }
 .projectliisting .listing-map-section .listingBox .project-list-cards .project-img {
   height: 13rem;
