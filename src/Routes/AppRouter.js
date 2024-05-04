@@ -6,6 +6,7 @@ import ProjectDetails from "../pages/ProjectDetails";
 import ProjectListing from "../pages/ProjectListing";
 import AdminDashboard from "../Admin/pages/AdminDashboard";
 import AddProject from "../Admin/pages/AddProject";
+import AdminLogin from "../Admin/pages/AdminLogin";
 
 function AppRouter() {
     let location = useLocation();

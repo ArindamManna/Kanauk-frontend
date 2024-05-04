@@ -81,6 +81,10 @@
   background-color: #03BFA1;
 }
 
+p {
+  margin: 0px;
+}
+
 .hr {
   height: 1px;
   width: 100%;
@@ -316,16 +320,19 @@ header nav .hamburgerBtn {
   height: 5px;
   transform: rotate(45deg);
 }
-.navbar-mobile-wraper .navbar-mobile ul .has-submenu.open .submenu-list {
+.navbar-mobile-wraper .navbar-mobile ul .has-submenu.open .submenu-list,
+.navbar-mobile-wraper .navbar-mobile ul .has-submenu.open .sub-menu-list {
   max-height: 200px;
 }
-.navbar-mobile-wraper .navbar-mobile ul .submenu-list {
+.navbar-mobile-wraper .navbar-mobile ul .submenu-list,
+.navbar-mobile-wraper .navbar-mobile ul .sub-menu-list {
   overflow: hidden;
   background-color: #05705e;
   max-height: 0px;
   @apply transition-all duration-300 bg-opacity-80;
 }
-.navbar-mobile-wraper .navbar-mobile ul .submenu-list ul li a {
+.navbar-mobile-wraper .navbar-mobile ul .submenu-list ul li a,
+.navbar-mobile-wraper .navbar-mobile ul .sub-menu-list ul li a {
   @apply pl-6;
 }
 .navbar-mobile-wraper .navbar-mobile ul li a {
@@ -336,6 +343,35 @@ header nav .hamburgerBtn {
 }
 .navbar-mobile-wraper .navbar-mobile ul li a .menu-title {
   flex-grow: 1;
+}
+
+.navbar-mobile ul li.has-submenu > a::after {
+  content: "";
+  transition: transform 0.3s;
+  border-right: 2px solid currentcolor;
+  border-bottom: 2px solid currentcolor;
+  width: 5px;
+  height: 5px;
+  transform: rotate(-45deg);
+}
+.navbar-mobile ul .has-submenu.open > a::after {
+  content: "";
+  transition: transform 0.3s;
+  border-right: 2px solid currentcolor;
+  border-bottom: 2px solid currentcolor;
+  width: 5px;
+  height: 5px;
+  transform: rotate(45deg);
+}
+.navbar-mobile ul .has-submenu.open .submenu-list,
+.navbar-mobile ul .has-submenu.open .sub-menu-list {
+  max-height: 2000px;
+}
+.navbar-mobile ul .submenu-list,
+.navbar-mobile ul .sub-menu-list {
+  overflow: hidden;
+  max-height: 0px;
+  @apply transition-all duration-300 bg-opacity-80;
 }
 
 .home-banner {

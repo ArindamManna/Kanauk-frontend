@@ -31,6 +31,10 @@
     }
 }
 
+p {
+    margin: 0px;
+}
+
 .hr {
     height: 1px;
     width: 100%;
@@ -323,12 +327,14 @@ header {
                     }
                 }
 
-                .submenu-list {
+                .submenu-list,
+                .sub-menu-list {
                     max-height: 200px;
                 }
             }
 
-            .submenu-list {
+            .submenu-list,
+            .sub-menu-list {
                 overflow: hidden;
                 background-color: #05705e;
                 max-height: 0px;
@@ -369,6 +375,84 @@ header {
 
         background-color: #2F3C3A;
     }
+
+}
+
+.navbar-mobile {
+    // color: white;
+
+    ul {
+        // @apply pl-4;
+
+        li.has-submenu {
+            >a {
+                &::after {
+                    content: "";
+                    transition: transform 0.3s;
+                    border-right: 2px solid currentcolor;
+                    border-bottom: 2px solid currentcolor;
+                    width: 5px;
+                    height: 5px;
+                    transform: rotate(-45deg);
+                }
+            }
+        }
+
+        .has-submenu.open {
+            >a {
+                &::after {
+                    content: "";
+                    transition: transform 0.3s;
+                    border-right: 2px solid currentcolor;
+                    border-bottom: 2px solid currentcolor;
+                    width: 5px;
+                    height: 5px;
+                    transform: rotate(45deg);
+                }
+            }
+
+            .submenu-list,
+            .sub-menu-list {
+                max-height: 2000px;
+            }
+        }
+
+        .submenu-list,
+        .sub-menu-list {
+            overflow: hidden;
+            // background-color: #05705e;
+            max-height: 0px;
+            @apply transition-all duration-300 bg-opacity-80;
+
+            // ul {
+            //     li {
+            //         a {
+            //             @apply pl-6;
+
+
+            //         }
+            //     }
+            // }
+
+        }
+
+        // li {
+
+        //     a {
+        //         @apply flex items-center gap-3 cursor-pointer pl-4 pr-6 py-2;
+
+
+
+        //         .menu-title {
+        //             flex-grow: 1;
+        //         }
+
+
+        //     }
+        // }
+    }
+
+
 }
 
 .home-banner {
