@@ -71,7 +71,8 @@ a {
 }
 
 .primary-btn {
-    display: inline-block;
+    display: flex;
+    align-items: center;
     background: #5a6981;
     border: none;
     border-radius: 5px;
@@ -79,6 +80,10 @@ a {
     height: 45px;
     padding: 10px 15px;
     vertical-align: middle;
+
+    text-decoration: none;
+
+
 }
 
 .primary-btn:hover {

@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import "../scss/adminStyle.css";
 import kaunuakLogo from "../asset/images/logo/kaunuck_logo_black.png"
+import profileImg from "../asset/images/logo/profile.png"
 function AdminLayout({ }) {
     function submenuToggle(event) {
         event.target.closest('.has-submenu').classList.toggle('open');
@@ -157,11 +158,11 @@ function AdminLayout({ }) {
                     <div className="page-breadcrumb">
                         <nav aria-label="breadcrumb">
                             <ol className="breadcrumb">
-                                <li className="breadcrumb-item">
+                                {/* <li className="breadcrumb-item">
                                     <a href="#"><i className="ri-home-4-line"></i></a>
-                                </li>
+                                </li> */}
                                 <li className="breadcrumb-item">
-                                    <a href="#" className="d-flex align-items-center">Welcome Back, Admin</a>
+                                    <a href="#" className="d-flex align-items-center text-decoration-none">Welcome Back, Admin</a>
                                 </li>
                             </ol>
                         </nav>
@@ -173,11 +174,9 @@ function AdminLayout({ }) {
                                     <h2><i className="ri-arrow-left-line"></i> Customer Management</h2>
                                 </div>
                                 <div className="col-md-6">
-                                    <div className="text-end mb-4">
-                                        <a href="#" className="btn primary-btn"><img src="images/add-accoun-1t.png" /> Add Customer</a>
-                                        <a href="#" className="btn primary-btn">
-                                            <img src="images/upload-1.png" />Bulk upload CSV
-                                        </a>
+                                    <div className="text-end mb-4 flex gap-3 justify-end">
+                                        <a href="#" className=" primary-btn"><img src={profileImg} /> Add Customer</a>
+
                                     </div>
                                 </div>
                             </div>
