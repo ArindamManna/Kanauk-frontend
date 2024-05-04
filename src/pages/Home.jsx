@@ -15,6 +15,7 @@ import Our_blog from '../components/Our_blog'
 import Footer from '../components/Footer'
 import { useDispatch, useSelector } from 'react-redux'
 import { updateGlobalState } from '../Redux/GlobalSlice'
+import OwlCarousel from 'react-owl-carousel';
 
 function Home() {
     // const Dispatch = useDispatch()
@@ -25,6 +26,154 @@ function Home() {
     //     }
     // })
     // console.log(count);
+    let options = {
+        items: 3,
+        loop: true,
+        nav: true,
+        dots: false,
+        margin: 20,
+        autoplay: true,
+        autoplayTimeout: 5000,
+        navText: [`<button class='p-0 carosolBtn backBtn left-0 xl:-left-8 -translate-x-1/2'><span><svg xmlns="http://www.w3.org/2000/svg" className="h-full w-full" viewBox="0 0 20 20" fill="currentColor">
+        <path fillRule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clipRule="evenodd" />
+    </svg></span> </button>`,
+            `  <button class='p-0 carosolBtn forwardBtn right-0 xl:-right-8 translate-x-1/2'><span><svg xmlns="http://www.w3.org/2000/svg" className="h-full w-full" viewBox="0 0 20 20" fill="currentColor">
+        <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
+    </svg></span></button>`],
+        responsive: {
+            0: {
+                items: 1,
+            },
+            300: {
+                items: 1,
+            },
+            450: {
+                items: 2,
+            },
+            570: {
+                items: 2,
+            },
+            768: {
+                items: 3,
+            },
+            992: {
+                items: 3,
+            },
+            1024: {
+                items: 4,
+            },
+            1400: {
+                items: 5,
+            },
+
+        }
+    }
+    let options2 = {
+        items: 3,
+        loop: true,
+        nav: true,
+        dots: false,
+        margin: 20,
+        autoplay: true,
+        autoplayTimeout: 5000,
+        navText: [`<button class='p-0 carosolBtn backBtn left-0 xl:-left-8 -translate-x-1/2'><span><svg xmlns="http://www.w3.org/2000/svg" className="h-full w-full" viewBox="0 0 20 20" fill="currentColor">
+        <path fillRule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clipRule="evenodd" />
+    </svg></span> </button>`,
+            `  <button class='p-0 carosolBtn forwardBtn right-0 xl:-right-8 translate-x-1/2'><span><svg xmlns="http://www.w3.org/2000/svg" className="h-full w-full" viewBox="0 0 20 20" fill="currentColor">
+        <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
+    </svg></span></button>`],
+        responsive: {
+            0: {
+                items: 2,
+            },
+            300: {
+                items: 2,
+            },
+            450: {
+                items: 3,
+            },
+            570: {
+                items: 3,
+            },
+            768: {
+                items: 4,
+            },
+            992: {
+                items: 5,
+            },
+            1024: {
+                items: 5,
+            },
+            1400: {
+                items: 6,
+            },
+
+        }
+    }
+    let options3 = {
+        items: 3,
+        loop: true,
+        nav: false,
+        dots: false,
+        margin: 0,
+        autoplay: true,
+        autoplayTimeout: 5000,
+        navText: [`<button class='p-0 hide carosolBtn backBtn left-0 xl:-left-8 -translate-x-1/2'><span><svg xmlns="http://www.w3.org/2000/svg" className="h-full w-full" viewBox="0 0 20 20" fill="currentColor">
+        <path fillRule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clipRule="evenodd" />
+    </svg></span> </button>`,
+            `  <button class='p-0 hide carosolBtn forwardBtn right-0 xl:-right-8 translate-x-1/2'><span><svg xmlns="http://www.w3.org/2000/svg" className="h-full w-full" viewBox="0 0 20 20" fill="currentColor">
+        <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
+    </svg></span></button>`],
+
+        responsive: {
+            0: {
+                items: 1,
+            },
+            570: {
+                items: 2,
+            },
+            768: {
+                items: 2,
+            },
+            992: {
+                items: 3,
+            },
+
+
+        }
+    }
+    let options4 = {
+        items: 3,
+        loop: true,
+        nav: true,
+        dots: false,
+        margin: 20,
+        autoplay: true,
+        autoplayTimeout: 5000,
+        navText: [`<button class='p-0  carosolBtn backBtn left-0 xl:-left-8 -translate-x-1/2'><span><svg xmlns="http://www.w3.org/2000/svg" className="h-full w-full" viewBox="0 0 20 20" fill="currentColor">
+        <path fillRule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clipRule="evenodd" />
+    </svg></span> </button>`,
+            `  <button class='p-0  carosolBtn forwardBtn right-0 xl:-right-8 translate-x-1/2'><span><svg xmlns="http://www.w3.org/2000/svg" className="h-full w-full" viewBox="0 0 20 20" fill="currentColor">
+        <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
+    </svg></span></button>`],
+
+        responsive: {
+            0: {
+                items: 1,
+            },
+            570: {
+                items: 2,
+            },
+            768: {
+                items: 2,
+            },
+            992: {
+                items: 3,
+            },
+
+
+        }
+    }
 
     return (
         <>
@@ -36,7 +185,7 @@ function Home() {
                 <h3 className='mb-3'>
                     Find your new construction home
                 </h3>
-                <div className="searchBox mb-10 w-[32rem]">
+                <div className="searchBox mb-10 w-full md:w-[32rem]">
                     <input type="text" placeholder='Find your new construction ' />
                     <button>
                         <span className='h-5 w-5'>
@@ -63,7 +212,7 @@ function Home() {
                     </div>
                 </div>
             </section>
-            <section className='featured-projects-banner padding'>
+            <section className='featured-projects-banner padding '>
                 <h3>
                     Featured Projects
                 </h3>
@@ -72,7 +221,7 @@ function Home() {
                 </p>
 
                 <div className="projects_slider">
-                    <button className='carosolBtn backBtn -left-8 -translate-x-1/2'>
+                    {/* <button className='carosolBtn backBtn -left-8 -translate-x-1/2'>
 
                         <span>
 
@@ -84,15 +233,30 @@ function Home() {
 
                             {right}
                         </span>
-                    </button>
-                    <Featured_Project_Card />
-                    <Featured_Project_Card />
-                    <Featured_Project_Card />
-                    <Featured_Project_Card />
+                    </button> */}
+                    <OwlCarousel className='owl-theme px-4 lg:px-0'{...options}>
+
+                        <div class='item'>
+                            <Featured_Project_Card />
+
+                        </div>
+                        <div class='item'>
+                            <Featured_Project_Card />
+
+                        </div>
+                        <div class='item'>
+                            <Featured_Project_Card />
+
+                        </div>
+                        <div class='item'>
+                            <Featured_Project_Card />
+
+                        </div>
+                    </OwlCarousel>
                 </div>
             </section>
             <section className='padding assignments-sales-banner'>
-                <div className="flex justify-between items-center mb-24">
+                <div className="flex flex-col md:flex-row gap-6 md:justify-between items-center mb-10 md:mb-16 xl:mb-24">
                     <h3>
                         Assignment Sales
                     </h3>
@@ -113,14 +277,48 @@ function Home() {
                     <Assignments_Sales_Card />
                 </div>
             </section>
-            <section className='padding featured-builder-banner'>
-                <div className="flex justify-between items-center mb-24">
+            <section className='padding featured-builder-banner '>
+                <div className=" mb-10 md:mb-16 xl:mb-24">
                     <h3>
                         Featured Builders
                     </h3>
 
                 </div>
                 <div className="featured-builder-slider">
+                    <OwlCarousel className='owl-theme px-4 lg:px-0'{...options2}>
+
+                        <div class='item'>
+                            <img src={builder1} alt="" />
+
+                        </div>
+                        <div class='item'>
+                            <img src={builder1} alt="" />
+
+                        </div>
+                        <div class='item'>
+                            <img src={builder1} alt="" />
+
+                        </div>
+                        <div class='item'>
+                            <img src={builder1} alt="" />
+
+                        </div>
+                        <div class='item'>
+                            <img src={builder1} alt="" />
+
+                        </div>
+                        <div class='item'>
+                            <img src={builder1} alt="" />
+
+                        </div>
+                        <div class='item'>
+                            <img src={builder1} alt="" />
+
+                        </div>
+                    </OwlCarousel>
+
+
+                    {/* 
                     <button className='carosolBtn backBtn -left-8 -translate-x-1/2'>
                         <span>
                             {left}
@@ -135,80 +333,106 @@ function Home() {
                     <img src={builder1} alt="" />
                     <img src={builder1} alt="" />
                     <img src={builder1} alt="" />
-                    <img src={builder1} alt="" />
+                    <img src={builder1} alt="" /> */}
                 </div>
             </section>
-            <section className='featured-properties-banner'>
+            <section className='featured-properties-banner '>
                 <div className="flex flex-col items-center ">
                     <h3 className='mb-9'>
                         Featured Properties
                     </h3>
                     <div className="properties-box">
-                        <div className="properties">
-                            <div className="bottom">
-                                <p className="title">
-                                    Lorem Ipsum
-                                </p>
-                                <p className="description">
-                                    orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                                </p>
-                                <button className='viewMoreBtn'>
-                                    View More <span>
-                                        {rightArrow}
-                                    </span>
-                                </button>
-                            </div>
+                        <OwlCarousel className='owl-theme '{...options3}>
 
-                        </div>
-                        <div className="properties">
-                            <div className="bottom">
-                                <p className="title">
-                                    Lorem Ipsum
-                                </p>
-                                <p className="description">
-                                    orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                                </p>
-                                <button className='viewMoreBtn'>
-                                    View More <span>
-                                        {rightArrow}
-                                    </span>
-                                </button>
-                            </div>
+                            <div class='item'>
+                                <div className="properties">
+                                    <div className="bottom">
+                                        <p className="title">
+                                            Lorem Ipsum
+                                        </p>
+                                        <p className="description">
+                                            orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+                                        </p>
+                                        <button className='viewMoreBtn'>
+                                            View More <span>
+                                                {rightArrow}
+                                            </span>
+                                        </button>
+                                    </div>
 
-                        </div>
-                        <div className="properties">
-                            <div className="bottom">
-                                <p className="title">
-                                    Lorem Ipsum
-                                </p>
-                                <p className="description">
-                                    orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                                </p>
-                                <button className='viewMoreBtn'>
-                                    View More <span>
-                                        {rightArrow}
-                                    </span>
-                                </button>
-                            </div>
+                                </div>
 
-                        </div>
+                            </div>
+                            <div class='item'>
+                                <div className="properties">
+                                    <div className="bottom">
+                                        <p className="title">
+                                            Lorem Ipsum
+                                        </p>
+                                        <p className="description">
+                                            orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+                                        </p>
+                                        <button className='viewMoreBtn'>
+                                            View More <span>
+                                                {rightArrow}
+                                            </span>
+                                        </button>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <div class='item'>
+                                <div className="properties">
+                                    <div className="bottom">
+                                        <p className="title">
+                                            Lorem Ipsum
+                                        </p>
+                                        <p className="description">
+                                            orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+                                        </p>
+                                        <button className='viewMoreBtn'>
+                                            View More <span>
+                                                {rightArrow}
+                                            </span>
+                                        </button>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </OwlCarousel>
+
+
 
                     </div>
 
                 </div>
 
             </section>
-            <section className='featured-agents-banner padding'>
+            <section className='featured-agents-banner padding '>
                 <div className="flex flex-col items-center">
                     <h3 className='mb-9'>
                         Featured Agents
                     </h3>
                     <div className="agents-box">
-                        <Featured_Agents_Card />
-                        <Featured_Agents_Card />
-                        <Featured_Agents_Card />
+                        <OwlCarousel className='owl-theme px-4 lg:px-0'{...options4}>
 
-                        <button className='carosolBtn backBtn -left-8 -translate-x-1/2'>
+                            <div class='item'>
+
+                                <Featured_Agents_Card />
+                            </div>
+                            <div class='item'>
+
+                                <Featured_Agents_Card />
+                            </div>
+                            <div class='item'>
+
+                                <Featured_Agents_Card />
+                            </div>
+                        </OwlCarousel>
+
+                        {/* <button className='carosolBtn backBtn -left-8 -translate-x-1/2'>
 
                             <span>
 
@@ -220,16 +444,16 @@ function Home() {
 
                                 {right}
                             </span>
-                        </button>
+                        </button> */}
                     </div>
 
                 </div>
 
             </section>
-            <section className='popular-cities-banner padding'>
-                <div className="flex items-center mb-14">
+            <section className='popular-cities-banner padding '>
+                <div className="flex items-center flex-col md:flex-row mb-14">
 
-                    <div className="left w-1/2">
+                    <div className="left md:w-1/2">
                         <h3 className='mb-9'>
                             Popular Cities
                         </h3>
@@ -237,17 +461,35 @@ function Home() {
                             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
                         </p>
                     </div>
-                    <div className="right w-1/2">
+                    <div className="right md:w-1/2">
                         <img src={popularCitiesBanner} alt="" />
                     </div>
                 </div>
 
 
                 <div className="popularCities-box">
-                    <PopularCities />
-                    <PopularCities />
-                    <PopularCities />
-                    <button className='carosolBtn backBtn -left-8 -translate-x-1/2'>
+                    <OwlCarousel className='owl-theme px-4 lg:px-0'{...options4}>
+
+                        <div class='item'>
+                            <PopularCities />
+                        </div>
+                        <div class='item'>
+                            <PopularCities />
+                        </div>
+                        <div class='item'>
+                            <PopularCities />
+                        </div>
+                        <div class='item'>
+                            <PopularCities />
+                        </div>
+                        <div class='item'>
+                            <PopularCities />
+                        </div>
+                        <div class='item'>
+                            <PopularCities />
+                        </div>
+                    </OwlCarousel>
+                    {/* <button className='carosolBtn backBtn -left-8 -translate-x-1/2'>
 
                         <span>
 
@@ -259,23 +501,23 @@ function Home() {
 
                             {right}
                         </span>
-                    </button>
+                    </button> */}
 
                 </div>
 
 
 
             </section>
-            <section className='our-blogs-banner padding'>
-                <Our_blog className="col-span-2 " />
+            <section className='our-blogs-banner padding '>
+                <Our_blog className="col-span-2 hidden lg:block" />
 
 
 
 
                 <div className=' col-span-3 flex flex-col justify-between'>
 
-                    <div className="top-right ">
-                        <div className="flex mb-9 items-center justify-between w-full">
+                    <div className="top-right mb-4 md:mb-6 xl:mb-8">
+                        <div className="flex md:mb-6  mb-4 lg:mb-9 items-center justify-between w-full">
 
                             <h3 className=''>
                                 Our Blogs
@@ -297,7 +539,7 @@ function Home() {
                             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. <a href="#">Read More</a>
                         </p>
                     </div>
-                    <div className="grid grid-cols-2 gap-5">
+                    <div className="grid md:grid-cols-2 gap-5">
                         <Our_blog className="small" />
                         <Our_blog className="small" />
                     </div>
@@ -309,7 +551,7 @@ function Home() {
                 <div className="left">
                     <img src={contactUs} alt="" />
                 </div>
-                <div className="right padding-r">
+                <div className="right ">
                     <h3 className='mb-12'>
                         Contact us
                     </h3>
@@ -317,7 +559,7 @@ function Home() {
                         <img src={callLogo} alt="" />
                         +91 6362482947
                     </p>
-                    <div className="flex gap-6 items-center mb-8">
+                    <div className="flex gap-3 flex-wrap  md:gap-6 items-center mb-8">
                         <p className="email">
                             <img src={emailLogo} alt="" />
                             kanauk@Gmail.com

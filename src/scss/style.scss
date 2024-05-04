@@ -22,8 +22,22 @@
     width: 100%;
 }
 
+.owl-carousel .owl-nav.disabled,
+.owl-carousel .owl-dots.disabled {
+    display: block !important;
+}
+
+.max-h-0-force {
+    max-height: 0px !important;
+}
+
+.w-0-force {
+    width: 0px !important;
+}
+
+
 .carosolBtn {
-    @apply absolute top-1/2 -translate-y-1/2 p-3 rounded-full flex items-center justify-center;
+    @apply absolute top-1/2 -translate-y-1/2 rounded-full flex items-center justify-center;
     color: #155147;
 
     span {
@@ -35,16 +49,52 @@
     // }
 }
 
-.hidden {
+.hide {
     display: none !important;
 }
 
 .padding-l {
-    padding-left: 7rem;
+    @include breakpoint-up("md") {
+        padding-left: 3rem;
+    }
+
+    @include breakpoint-up("lg") {
+
+        padding-left: 5rem;
+    }
+
+    @include breakpoint-up("xl") {
+
+        padding-left: 7rem;
+    }
+
+
+
+
+
+    padding-left: 1rem;
 }
 
 .padding-r {
-    padding-right: 7rem;
+    @include breakpoint-up("md") {
+        padding-right: 3rem;
+    }
+
+    @include breakpoint-up("lg") {
+
+        padding-right: 5rem;
+    }
+
+    @include breakpoint-up("xl") {
+
+        padding-right: 7rem;
+    }
+
+
+
+
+
+    padding-right: 1rem;
 }
 
 .padding {
@@ -92,18 +142,38 @@ textarea {
     }
 }
 
+.searchBoxBtn {
+    @apply h-10 w-10 rounded-full flex items-center justify-center;
+    background: #155147eb;
+    color: white;
+    flex-shrink: 0;
+}
+
 .header-bg {
     background: #05241EDE;
 
 }
 
 header {
-    padding: 1.652rem 2.125rem;
+    @include breakpoint-down("xl") {
+        background: #05241ede;
+    }
+
+    @include breakpoint-up("xl") {
+
+        padding: 1.652rem 2.125rem;
+    }
+
+    padding: 1rem 1.5rem;
 
     @apply flex items-center justify-between top-0 left-0 w-full z-50;
 
     .left {
         @apply flex items-center gap-9;
+    }
+
+    .searchBox {
+        @apply xl:flex hidden;
     }
 
     nav {
@@ -196,9 +266,107 @@ header {
     }
 }
 
+.navbar-mobile-wraper {
+    @apply h-screen fixed top-0 left-0 z-40 overflow-hidden duration-300 transition-all;
+
+    width: 280px;
+
+    .navbar-mobile {
+        @apply h-full pb-1;
+        width: 280px;
+        padding-top: 6rem;
+        font-size: 1.25rem;
+        line-height: 1.75rem;
+        color: white;
+
+        ul {
+            // @apply pl-4;
+
+            li.has-submenu {
+                >a {
+                    &::after {
+                        content: "";
+                        transition: transform 0.3s;
+                        border-right: 2px solid currentcolor;
+                        border-bottom: 2px solid currentcolor;
+                        width: 5px;
+                        height: 5px;
+                        transform: rotate(-45deg);
+                    }
+                }
+            }
+
+            .has-submenu.open {
+                >a {
+                    &::after {
+                        content: "";
+                        transition: transform 0.3s;
+                        border-right: 2px solid currentcolor;
+                        border-bottom: 2px solid currentcolor;
+                        width: 5px;
+                        height: 5px;
+                        transform: rotate(45deg);
+                    }
+                }
+
+                .submenu-list {
+                    max-height: 200px;
+                }
+            }
+
+            .submenu-list {
+                overflow: hidden;
+                background-color: #05705e;
+                max-height: 0px;
+                @apply transition-all duration-300 bg-opacity-80;
+
+                ul {
+                    li {
+                        a {
+                            @apply pl-6;
+
+
+                        }
+                    }
+                }
+
+            }
+
+            li {
+
+                a {
+                    @apply flex items-center gap-3 cursor-pointer pl-4 pr-6 py-2;
+
+                    &:hover,
+                    &.active {
+                        // background-color: #03bfa1;
+                        color: #03bfa1;
+                    }
+
+                    .menu-title {
+                        flex-grow: 1;
+                    }
+
+
+                }
+            }
+        }
+
+
+        background-color: #2F3C3A;
+    }
+}
+
 .home-banner {
-    @apply w-full flex flex-col items-center pb-24 justify-end;
-    height: 40rem;
+    @apply w-full flex flex-col items-center pb-16 xl:pb-24 justify-end;
+
+    @include breakpoint-up("xl") {
+
+        height: 40rem;
+    }
+
+    height: 30rem;
+
     background: url("../asset/images/banner1.png");
     background-position: center center;
     background-repeat: no-repeat;
@@ -208,7 +376,17 @@ header {
     h1 {
         font-family: "Kaisei HarunoUmi";
 
-        font-size: 55px;
+        @include breakpoint-up("md") {
+            font-size: 40px;
+        }
+
+        @include breakpoint-up("xl") {
+            font-size: 55px;
+        }
+
+
+
+        font-size: 36px;
         font-weight: 700;
         text-align: center;
         // filter: drop-shadow(2px 4px 7px 0px #0000004F);
@@ -216,25 +394,43 @@ header {
     }
 
     h3 {
-        font-size: 30px;
+        @include breakpoint-up("md") {
+            font-size: 24px;
+        }
+
+        @include breakpoint-up("xl") {
+            font-size: 30px;
+        }
+
+        font-size: 18px;
         font-weight: 400;
-        text-align: left;
+        text-align: center;
         // filter: drop-shadow(2px 4px 7px 0px #0000004F);
         filter: drop-shadow(0 4px 3px rgb(0 0 0 / 0.07)) drop-shadow(0 2px 2px rgb(0 0 0 / 0.06));
     }
 
     .latestProject {
-        @apply flex items-center gap-6;
+        @apply flex gap-6;
 
         p {
-            font-size: 29px;
+            @include breakpoint-up("md") {
+                font-size: 24px;
+            }
+
+            @include breakpoint-up("xl") {
+
+                font-size: 29px;
+            }
+
+            font-size: 18px;
             font-weight: 500;
-            line-height: 37.41px;
+            // line-height: 37.41px;
+            white-space: nowrap;
             text-align: left;
         }
 
         .btns {
-            @apply flex items-center gap-2.5;
+            @apply flex items-center gap-2.5 flex-wrap;
 
             .projectBtn {
                 border: 1px solid #03bfa1;
@@ -261,7 +457,19 @@ header {
     @apply w-full pt-6 pb-12;
 
     h3 {
-        font-size: 2.25rem;
+
+        @include breakpoint-up("md") {
+            font-size: 1.75rem;
+            text-align: left;
+        }
+
+        @include breakpoint-up("xl") {
+
+            font-size: 2.25rem;
+        }
+
+        font-size: 1.5rem;
+        text-align: center;
         color: #000000;
         font-weight: 500;
         text-decoration: underline;
@@ -272,13 +480,30 @@ header {
 
     p {
         color: #505655;
-        font-size: 1.25rem;
+
+        @include breakpoint-up("md") {
+
+            // font-size: 1rem;
+            text-align: left;
+        }
+
+        @include breakpoint-up("lg") {
+
+            font-size: 1.25rem;
+        }
+
+        font-size: 1rem;
+        text-align: center;
         @apply mb-10;
     }
 
     .projects_slider {
-        @apply flex gap-6 items-center h-max justify-between w-full relative;
+        @apply flex gap-6 items-center h-max w-full relative;
 
+        .item {
+            display: flex;
+            justify-content: center;
+        }
 
 
         .Featured_Project_Card {
@@ -286,11 +511,18 @@ header {
 
             img {
                 @apply w-full object-contain rounded-2xl;
-                box-shadow: -5px 4px 28px 0px #00000040;
+                // box-shadow: -5px 4px 28px 0px #00000040;
+                // box-shadow: -5px 4px 28px 0px #00000040;
+
             }
 
             .content {
-                padding: 1.75rem 0.375rem 0rem 0.375rem;
+                @include breakpoint-up("md") {
+
+                    padding: 1.75rem 0.375rem 0rem 0.375rem;
+                }
+
+                padding: 1rem 0.375rem 0rem 0.375rem;
 
                 p {
                     @apply mb-0;
@@ -299,12 +531,23 @@ header {
                 .title {
                     color: #155147;
 
-                    font-size: 1.5rem;
+                    @include breakpoint-up("md") {
+
+                        font-size: 1.5rem;
+                    }
+
+                    font-size: 1.25rem;
                     font-weight: 500;
                 }
 
                 .location {
-                    font-size: 1.25rem;
+                    @include breakpoint-up("md") {
+
+                        font-size: 1.25rem;
+                    }
+
+
+                    font-size: 1rem;
                     font-weight: 400;
                     color: #000000;
                 }
@@ -324,7 +567,17 @@ header {
     background: #ededed99;
 
     h3 {
-        font-size: 2.25rem;
+        @include breakpoint-up("md") {
+            font-size: 1.75rem;
+            text-align: left;
+        }
+
+        @include breakpoint-up("xl") {
+
+            font-size: 2.25rem;
+        }
+
+        font-size: 1.5rem;
         color: #000000;
         font-weight: 500;
         text-decoration: underline;
@@ -333,12 +586,17 @@ header {
     }
 
     .viewMoreBtn {
-        font-size: 1.5rem;
+        @include breakpoint-up("md") {
+
+            font-size: 1.5rem;
+        }
+
+        font-size: 1rem;
         color: #000000;
         @apply flex items-end;
 
         span {
-            @apply h-6 w-6 ml-2;
+            @apply h-4 w-4 ml-1 md:h-6 md:w-6 md:ml-2;
             color: #155147;
 
             svg {
@@ -357,7 +615,7 @@ header {
     }
 
     .assignments-salesBox {
-        @apply grid lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-5;
+        @apply grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-5 gap-5;
 
         .Assignments_Sales_Card {
             background-repeat: no-repeat;
@@ -388,13 +646,23 @@ header {
                 background: #FFFFFFF0;
 
                 .title {
-                    font-size: 1.125rem;
+                    @include breakpoint-up("md") {
+
+                        font-size: 1.125rem;
+                    }
+
+                    font-size: 1rem;
                     font-weight: 700;
                     @apply mb-1;
                 }
 
                 .location {
-                    font-size: .975rem;
+                    @include breakpoint-up("md") {
+
+                        font-size: .975rem;
+                    }
+
+                    font-size:.875rem;
                     @apply mb-2;
                 }
 
@@ -722,7 +990,18 @@ header {
     @apply w-full pt-6 pb-12;
 
     h3 {
-        font-size: 2.25rem;
+        @include breakpoint-up("md") {
+            font-size: 1.75rem;
+            text-align: left;
+        }
+
+        @include breakpoint-up("xl") {
+
+            font-size: 2.25rem;
+        }
+
+        font-size: 1.5rem;
+        text-align: center;
         color: #000000;
         font-weight: 500;
         text-decoration: underline;
@@ -734,7 +1013,7 @@ header {
         @apply flex items-center gap-8 relative;
 
         .carosolBtn {
-            @apply absolute top-1/2 -translate-y-1/2 p-3 rounded-full flex items-center justify-center;
+            @apply absolute top-1/2 -translate-y-1/2 rounded-full flex items-center justify-center;
 
 
             span {
@@ -748,6 +1027,7 @@ header {
         img {
             height: 8rem;
             width: auto;
+            object-fit: contain;
         }
     }
 }
@@ -756,7 +1036,18 @@ header {
     @apply w-full pt-6;
 
     h3 {
-        font-size: 2.25rem;
+        @include breakpoint-up("md") {
+            font-size: 1.75rem;
+            text-align: left;
+        }
+
+        @include breakpoint-up("xl") {
+
+            font-size: 2.25rem;
+        }
+
+        font-size: 1.5rem;
+        text-align: center;
         color: #000000;
         font-weight: 500;
         text-decoration: underline;
@@ -767,10 +1058,10 @@ header {
 
     .properties-box {
 
-        @apply grid grid-cols-3 h-[40rem] w-full;
+        @apply w-full;
 
         .properties {
-            @apply h-full relative transition-all duration-300;
+            @apply h-[30rem] md:h-[40rem] relative transition-all duration-300;
             background-image: url("../asset//images/properties1.png");
             background-position: center;
 
@@ -824,20 +1115,42 @@ header {
 
                 .title {
                     color: #155147;
-                    font-size: 2.25rem;
+
+                    @include breakpoint-up("md") {
+                        font-size: 1.75rem;
+                    }
+
+                    @include breakpoint-up("xl") {
+
+                        font-size: 2.25rem;
+                    }
+
+                    font-size: 1.5rem;
                     font-weight: 600;
 
                 }
 
                 .description {
                     color: #535454;
-                    font-size: 1.25rem;
+
+                    @include breakpoint-up("md") {
+
+                        font-size: 1.25rem;
+                    }
+
+                    font-size: 1rem;
 
                 }
 
                 .viewMoreBtn {
                     color: white;
-                    font-size: 1.25rem;
+
+                    @include breakpoint-up("md") {
+
+                        font-size: 1.25rem;
+                    }
+
+                    font-size: 1rem;
                     background: #03BFA1;
                     @apply w-fit flex px-4 py-2 items-center rounded-full;
                     gap: 10px;
@@ -858,7 +1171,18 @@ header {
     @apply w-full pt-6 pb-12;
 
     h3 {
-        font-size: 2.25rem;
+        @include breakpoint-up("md") {
+            font-size: 1.75rem;
+            text-align: left;
+        }
+
+        @include breakpoint-up("xl") {
+
+            font-size: 2.25rem;
+        }
+
+        font-size: 1.5rem;
+        text-align: center;
         color: #000000;
         font-weight: 500;
         text-decoration: underline;
@@ -868,35 +1192,46 @@ header {
     }
 
     .agents-box {
-        @apply flex gap-10 w-full relative;
+        @apply w-full relative;
 
         .Featured_Agents_Card {
-            @apply w-full flex flex-col gap-3 items-center py-5 px-4;
+            @apply w-full flex flex-col gap-1 md:gap-3 items-center py-5 px-4;
             border-radius: 1.25rem;
             background: #E0F0EE;
             box-shadow: 7px 4px 19px 0px #0000000F;
 
             img {
-                height: 7rem;
-                width: 7rem;
+
+                @include breakpoint-up("md") {
+                    height: 6rem;
+                    width: 6rem;
+                }
+
+                @include breakpoint-up("xl") {
+                    height: 7rem;
+                    width: 7rem;
+                }
+
+                height: 5rem;
+                width: 5rem;
                 border-radius: 100%;
             }
 
             .title {
                 color: #155147;
-                @apply text-2xl font-bold text-center;
+                @apply text-lg md:text-xl xl:text-2xl font-bold text-center;
             }
 
             .subTitle {
                 color: #4B5755;
 
-                @apply text-base font-semibold text-center;
+                @apply text-sm lg:text-base font-semibold text-center;
             }
 
             .microTitle {
                 color: #155147;
 
-                @apply text-lg font-bold text-center;
+                @apply text-base lg:text-lg font-bold text-center;
             }
 
             .description {
@@ -906,11 +1241,11 @@ header {
             }
 
             .callUsBtn {
-                @apply py-2 px-7 flex rounded-3xl items-center gap-2 text-sm font-extrabold text-white;
+                @apply py-2 px-7 flex rounded-3xl items-center gap-2 text-xs md:text-sm font-extrabold text-white;
                 background: #155147;
 
                 img {
-                    @apply h-9 w-9;
+                    @apply lg:h-9 lg:w-9 md:w-8 md:h-8 h-6 w-6;
                 }
             }
         }
@@ -923,7 +1258,18 @@ header {
     .left {
 
         h3 {
-            font-size: 2.25rem;
+            @include breakpoint-up("md") {
+                font-size: 1.75rem;
+                text-align: left;
+            }
+
+            @include breakpoint-up("xl") {
+
+                font-size: 2.25rem;
+            }
+
+            font-size: 1.5rem;
+            text-align: center;
             color: #000000;
             font-weight: 500;
             text-decoration: underline;
@@ -934,7 +1280,7 @@ header {
 
         .description {
             color: #505655;
-            @apply text-xl;
+            @apply text-base md:text-lg lg:text-xl;
 
         }
     }
@@ -942,11 +1288,15 @@ header {
     .popularCities-box {
         @apply w-full flex gap-8 relative justify-center;
 
+        .item {
+            @apply flex justify-center;
+        }
+
         .popularCities {
             background-position: center;
 
             background-size: cover;
-            @apply h-[12.5rem] w-[20rem] rounded-2xl relative overflow-hidden;
+            @apply h-[12rem] w-full md:h-[12.5rem] md:w-[20rem] rounded-2xl relative overflow-hidden;
 
             &::after {
                 content: "";
@@ -965,13 +1315,24 @@ header {
                     color: white;
 
                     .title {
-                        font-size: 1.125rem;
+                        font-size: 1rem;
+
+                        @include breakpoint-up("md") {
+
+                            font-size: 1.125rem;
+                        }
+
                         font-weight: 700;
                         @apply mb-1;
                     }
 
                     .location {
-                        font-size: .975rem;
+                        @include breakpoint-up("md") {
+
+                            font-size: .975rem;
+                        }
+
+                        font-size: .875rem;
                         @apply mb-2;
                     }
                 }
@@ -1006,11 +1367,21 @@ header {
 }
 
 .our-blogs-banner {
-    @apply grid grid-cols-5 w-full pt-6 pb-6 gap-5 relative;
+    @apply grid grid-cols-3 lg:grid-cols-5 w-full pt-6 pb-6 gap-5 relative;
     background: #EDEDED99;
 
     h3 {
-        font-size: 2.25rem;
+        @include breakpoint-up("md") {
+            font-size: 1.75rem;
+            text-align: left;
+        }
+
+        @include breakpoint-up("xl") {
+
+            font-size: 2.25rem;
+        }
+
+        font-size: 1.5rem;
         color: #000000;
         font-weight: 500;
         text-decoration: underline;
@@ -1021,10 +1392,10 @@ header {
 
     .description {
         color: #414D4B;
-        @apply text-lg;
+        @apply text-base lg:text-lg;
 
         a {
-            @apply text-xl font-bold;
+            @apply text-lg lg:text-xl font-bold;
         }
     }
 
@@ -1135,10 +1506,27 @@ header {
 }
 
 .contactUs-banner {
-    @apply grid grid-cols-2 w-full pt-6 pb-6 relative;
+    @apply grid md:grid-cols-2 w-full pt-6 pb-6 relative;
+
+    @include breakpoint-up("md") {
+        @apply px-0;
+    }
+
+    @extend .padding;
 
     h3 {
-        font-size: 2.25rem;
+        @include breakpoint-up("md") {
+            font-size: 1.75rem;
+            text-align: left;
+        }
+
+        @include breakpoint-up("xl") {
+
+            font-size: 2.25rem;
+        }
+
+        font-size: 1.5rem;
+        text-align: center;
         color: #000000;
         font-weight: 500;
         text-decoration: underline;
@@ -1154,6 +1542,17 @@ header {
     }
 
     .right {
+        // @include breakpoint-up("md") {
+        //     @extend .padding-r;
+        // }
+        @extend .padding-r;
+
+        @include breakpoint-down("md") {
+            @apply pr-0;
+        }
+
+
+
         .phoneNo {
             @apply text-xl flex items-center gap-2;
 
@@ -1191,25 +1590,29 @@ header {
 }
 
 footer {
-    @apply pt-14 pb-6 grid grid-cols-3 gap-14;
+    @apply pt-14 pb-6;
     background: #2F3C3A;
     color: white;
 
+    .footer {
+        @apply grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10 xl:gap-14;
+    }
+
     .description {
-        @apply text-base;
+        @apply text-sm text-center md:text-left md:text-base;
     }
 
     .title {
-        @apply text-2xl font-bold mb-6;
+        @apply text-center md:text-left text-lg md:text-xl lg:text-2xl font-bold mb-4 md:mb-6;
     }
 
     .contactDetails {
-        @apply text-xl;
+        @apply text-center md:text-left text-lg xl:text-xl;
         font-weight: 300;
     }
 
     .newsletter {
-        @apply text-2xl font-medium mb-6;
+        @apply text-center md:text-left text-lg md:text-xl lg:text-2xl font-medium mb-4 md:mb-6;
     }
 
     input {

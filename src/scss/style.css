@@ -77,24 +77,67 @@
   width: 100%;
 }
 
+.owl-carousel .owl-nav.disabled,
+.owl-carousel .owl-dots.disabled {
+  display: block !important;
+}
+
+.max-h-0-force {
+  max-height: 0px !important;
+}
+
+.w-0-force {
+  width: 0px !important;
+}
+
 .carosolBtn {
-  @apply absolute top-1/2 -translate-y-1/2 p-3 rounded-full flex items-center justify-center;
+  @apply absolute top-1/2 -translate-y-1/2 rounded-full flex items-center justify-center;
   color: #155147;
 }
 .carosolBtn span {
   @apply h-8 w-8;
 }
 
-.hidden {
+.hide {
   display: none !important;
 }
 
-.padding-l, .padding, .builder {
-  padding-left: 7rem;
+.padding-l, .padding, .contactUs-banner, .builder {
+  padding-left: 1rem;
+}
+@media (min-width: 768px) {
+  .padding-l, .padding, .contactUs-banner, .builder {
+    padding-left: 3rem;
+  }
+}
+@media (min-width: 992px) {
+  .padding-l, .padding, .contactUs-banner, .builder {
+    padding-left: 5rem;
+  }
+}
+@media (min-width: 1200px) {
+  .padding-l, .padding, .contactUs-banner, .builder {
+    padding-left: 7rem;
+  }
 }
 
-.padding-r, .padding, .builder {
-  padding-right: 7rem;
+.padding-r, .contactUs-banner .right, .padding, .contactUs-banner, .builder {
+  padding-right: 1rem;
+}
+@media (min-width: 768px) {
+  .padding-r, .contactUs-banner .right, .padding, .contactUs-banner, .builder {
+    padding-right: 3rem;
+  }
+}
+@media (min-width: 992px) {
+  .padding-r, .contactUs-banner .right, .padding, .contactUs-banner, .builder {
+    padding-right: 5rem;
+  }
+}
+@media (min-width: 1200px) {
+  .padding-r, .contactUs-banner .right, .padding, .contactUs-banner, .builder {
+    padding-right: 7rem;
+  }
 }
 
 input,
@@ -138,16 +181,36 @@ textarea::placeholder {
   flex-shrink: 0;
 }
 
+.searchBoxBtn {
+  @apply h-10 w-10 rounded-full flex items-center justify-center;
+  background: rgba(21, 81, 71, 0.9215686275);
+  color: white;
+  flex-shrink: 0;
+}
+
 .header-bg {
   background: rgba(5, 36, 30, 0.8705882353);
 }
 
 header {
-  padding: 1.652rem 2.125rem;
+  padding: 1rem 1.5rem;
   @apply flex items-center justify-between top-0 left-0 w-full z-50;
+}
+@media (max-width: 1199px) {
+  header {
+    background: rgba(5, 36, 30, 0.8705882353);
+  }
+}
+@media (min-width: 1200px) {
+  header {
+    padding: 1.652rem 2.125rem;
+  }
 }
 header .left {
   @apply flex items-center gap-9;
+}
+header .searchBox {
+  @apply xl:flex hidden;
 }
 header nav {
   @apply flex items-center relative;
@@ -213,39 +276,127 @@ header nav .hamburgerBtn {
   color: white;
 }
 
+.navbar-mobile-wraper {
+  @apply h-screen fixed top-0 left-0 z-40 overflow-hidden duration-300 transition-all;
+  width: 280px;
+}
+.navbar-mobile-wraper .navbar-mobile {
+  @apply h-full pb-1;
+  width: 280px;
+  padding-top: 6rem;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  color: white;
+  background-color: #2F3C3A;
+}
+.navbar-mobile-wraper .navbar-mobile ul li.has-submenu > a::after {
+  content: "";
+  transition: transform 0.3s;
+  border-right: 2px solid currentcolor;
+  border-bottom: 2px solid currentcolor;
+  width: 5px;
+  height: 5px;
+  transform: rotate(-45deg);
+}
+.navbar-mobile-wraper .navbar-mobile ul .has-submenu.open > a::after {
+  content: "";
+  transition: transform 0.3s;
+  border-right: 2px solid currentcolor;
+  border-bottom: 2px solid currentcolor;
+  width: 5px;
+  height: 5px;
+  transform: rotate(45deg);
+}
+.navbar-mobile-wraper .navbar-mobile ul .has-submenu.open .submenu-list {
+  max-height: 200px;
+}
+.navbar-mobile-wraper .navbar-mobile ul .submenu-list {
+  overflow: hidden;
+  background-color: #05705e;
+  max-height: 0px;
+  @apply transition-all duration-300 bg-opacity-80;
+}
+.navbar-mobile-wraper .navbar-mobile ul .submenu-list ul li a {
+  @apply pl-6;
+}
+.navbar-mobile-wraper .navbar-mobile ul li a {
+  @apply flex items-center gap-3 cursor-pointer pl-4 pr-6 py-2;
+}
+.navbar-mobile-wraper .navbar-mobile ul li a:hover, .navbar-mobile-wraper .navbar-mobile ul li a.active {
+  color: #03bfa1;
+}
+.navbar-mobile-wraper .navbar-mobile ul li a .menu-title {
+  flex-grow: 1;
+}
+
 .home-banner {
-  @apply w-full flex flex-col items-center pb-24 justify-end;
-  height: 40rem;
+  @apply w-full flex flex-col items-center pb-16 xl:pb-24 justify-end;
+  height: 30rem;
   background: url("../asset/images/banner1.png");
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
   color: white;
 }
+@media (min-width: 1200px) {
+  .home-banner {
+    height: 40rem;
+  }
+}
 .home-banner h1 {
   font-family: "Kaisei HarunoUmi";
-  font-size: 55px;
+  font-size: 36px;
   font-weight: 700;
   text-align: center;
   filter: drop-shadow(0 4px 3px rgba(0, 0, 0, 0.07)) drop-shadow(0 2px 2px rgba(0, 0, 0, 0.06));
 }
+@media (min-width: 768px) {
+  .home-banner h1 {
+    font-size: 40px;
+  }
+}
+@media (min-width: 1200px) {
+  .home-banner h1 {
+    font-size: 55px;
+  }
+}
 .home-banner h3 {
-  font-size: 30px;
+  font-size: 18px;
   font-weight: 400;
-  text-align: left;
+  text-align: center;
   filter: drop-shadow(0 4px 3px rgba(0, 0, 0, 0.07)) drop-shadow(0 2px 2px rgba(0, 0, 0, 0.06));
 }
+@media (min-width: 768px) {
+  .home-banner h3 {
+    font-size: 24px;
+  }
+}
+@media (min-width: 1200px) {
+  .home-banner h3 {
+    font-size: 30px;
+  }
+}
 .home-banner .latestProject {
-  @apply flex items-center gap-6;
+  @apply flex gap-6;
 }
 .home-banner .latestProject p {
-  font-size: 29px;
+  font-size: 18px;
   font-weight: 500;
-  line-height: 37.41px;
+  white-space: nowrap;
   text-align: left;
 }
+@media (min-width: 768px) {
+  .home-banner .latestProject p {
+    font-size: 24px;
+  }
+}
+@media (min-width: 1200px) {
+  .home-banner .latestProject p {
+    font-size: 29px;
+  }
+}
 .home-banner .latestProject .btns {
-  @apply flex items-center gap-2.5;
+  @apply flex items-center gap-2.5 flex-wrap;
 }
 .home-banner .latestProject .btns .projectBtn {
   border: 1px solid #03bfa1;
@@ -267,7 +418,8 @@ header nav .hamburgerBtn {
   @apply w-full pt-6 pb-12;
 }
 .featured-projects-banner h3 {
-  font-size: 2.25rem;
+  font-size: 1.5rem;
+  text-align: center;
   color: #000000;
   font-weight: 500;
   text-decoration: underline;
@@ -275,36 +427,76 @@ header nav .hamburgerBtn {
   text-decoration-color: #03bfa1;
   @apply mb-8;
 }
+@media (min-width: 768px) {
+  .featured-projects-banner h3 {
+    font-size: 1.75rem;
+    text-align: left;
+  }
+}
+@media (min-width: 1200px) {
+  .featured-projects-banner h3 {
+    font-size: 2.25rem;
+  }
+}
 .featured-projects-banner p {
   color: #505655;
-  font-size: 1.25rem;
+  font-size: 1rem;
+  text-align: center;
   @apply mb-10;
 }
+@media (min-width: 768px) {
+  .featured-projects-banner p {
+    text-align: left;
+  }
+}
+@media (min-width: 992px) {
+  .featured-projects-banner p {
+    font-size: 1.25rem;
+  }
+}
 .featured-projects-banner .projects_slider {
-  @apply flex gap-6 items-center h-max justify-between w-full relative;
+  @apply flex gap-6 items-center h-max w-full relative;
+}
+.featured-projects-banner .projects_slider .item {
+  display: flex;
+  justify-content: center;
 }
 .featured-projects-banner .projects_slider .Featured_Project_Card {
   width: 17.5rem;
 }
 .featured-projects-banner .projects_slider .Featured_Project_Card img {
   @apply w-full object-contain rounded-2xl;
-  box-shadow: -5px 4px 28px 0px rgba(0, 0, 0, 0.2509803922);
 }
 .featured-projects-banner .projects_slider .Featured_Project_Card .content {
-  padding: 1.75rem 0.375rem 0rem 0.375rem;
+  padding: 1rem 0.375rem 0rem 0.375rem;
+}
+@media (min-width: 768px) {
+  .featured-projects-banner .projects_slider .Featured_Project_Card .content {
+    padding: 1.75rem 0.375rem 0rem 0.375rem;
+  }
 }
 .featured-projects-banner .projects_slider .Featured_Project_Card .content p {
   @apply mb-0;
 }
 .featured-projects-banner .projects_slider .Featured_Project_Card .content .title {
   color: #155147;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 500;
 }
+@media (min-width: 768px) {
+  .featured-projects-banner .projects_slider .Featured_Project_Card .content .title {
+    font-size: 1.5rem;
+  }
+}
 .featured-projects-banner .projects_slider .Featured_Project_Card .content .location {
-  font-size: 1.25rem;
+  font-size: 1rem;
   font-weight: 400;
   color: #000000;
+}
+@media (min-width: 768px) {
+  .featured-projects-banner .projects_slider .Featured_Project_Card .content .location {
+    font-size: 1.25rem;
+  }
 }
 .featured-projects-banner .projects_slider .Featured_Project_Card .content .price {
   font-size: 1rem;
@@ -317,20 +509,36 @@ header nav .hamburgerBtn {
   background: rgba(237, 237, 237, 0.6);
 }
 .assignments-sales-banner h3 {
-  font-size: 2.25rem;
+  font-size: 1.5rem;
   color: #000000;
   font-weight: 500;
   text-decoration: underline;
   text-underline-offset: 0.75rem;
   text-decoration-color: #03bfa1;
 }
+@media (min-width: 768px) {
+  .assignments-sales-banner h3 {
+    font-size: 1.75rem;
+    text-align: left;
+  }
+}
+@media (min-width: 1200px) {
+  .assignments-sales-banner h3 {
+    font-size: 2.25rem;
+  }
+}
 .assignments-sales-banner .viewMoreBtn {
-  font-size: 1.5rem;
+  font-size: 1rem;
   color: #000000;
   @apply flex items-end;
 }
+@media (min-width: 768px) {
+  .assignments-sales-banner .viewMoreBtn {
+    font-size: 1.5rem;
+  }
+}
 .assignments-sales-banner .viewMoreBtn span {
-  @apply h-6 w-6 ml-2;
+  @apply h-4 w-4 ml-1 md:h-6 md:w-6 md:ml-2;
   color: #155147;
 }
 .assignments-sales-banner .viewMoreBtn span svg {
@@ -344,7 +552,7 @@ header nav .hamburgerBtn {
   @apply translate-x-2;
 }
 .assignments-sales-banner .assignments-salesBox {
-  @apply grid lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-5;
+  @apply grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-5 gap-5;
   text-underline-offset: 0.75rem;
   text-decoration-color: #03bfa1;
 }
@@ -373,13 +581,23 @@ header nav .hamburgerBtn {
   background: rgba(255, 255, 255, 0.9411764706);
 }
 .assignments-sales-banner .assignments-salesBox .Assignments_Sales_Card .bottom .title {
-  font-size: 1.125rem;
+  font-size: 1rem;
   font-weight: 700;
   @apply mb-1;
 }
+@media (min-width: 768px) {
+  .assignments-sales-banner .assignments-salesBox .Assignments_Sales_Card .bottom .title {
+    font-size: 1.125rem;
+  }
+}
 .assignments-sales-banner .assignments-salesBox .Assignments_Sales_Card .bottom .location {
-  font-size: 0.975rem;
+  font-size: 0.875rem;
   @apply mb-2;
+}
+@media (min-width: 768px) {
+  .assignments-sales-banner .assignments-salesBox .Assignments_Sales_Card .bottom .location {
+    font-size: 0.975rem;
+  }
 }
 .assignments-sales-banner .assignments-salesBox .Assignments_Sales_Card .bottom .details-box {
   @apply flex items-center py-1;
@@ -624,18 +842,30 @@ header nav .hamburgerBtn {
   @apply w-full pt-6 pb-12;
 }
 .featured-builder-banner h3 {
-  font-size: 2.25rem;
+  font-size: 1.5rem;
+  text-align: center;
   color: #000000;
   font-weight: 500;
   text-decoration: underline;
   text-underline-offset: 0.75rem;
   text-decoration-color: #03BFA1;
 }
+@media (min-width: 768px) {
+  .featured-builder-banner h3 {
+    font-size: 1.75rem;
+    text-align: left;
+  }
+}
+@media (min-width: 1200px) {
+  .featured-builder-banner h3 {
+    font-size: 2.25rem;
+  }
+}
 .featured-builder-banner .featured-builder-slider {
   @apply flex items-center gap-8 relative;
 }
 .featured-builder-banner .featured-builder-slider .carosolBtn {
-  @apply absolute top-1/2 -translate-y-1/2 p-3 rounded-full flex items-center justify-center;
+  @apply absolute top-1/2 -translate-y-1/2 rounded-full flex items-center justify-center;
 }
 .featured-builder-banner .featured-builder-slider .carosolBtn span {
   @apply h-8 w-8;
@@ -646,13 +876,16 @@ header nav .hamburgerBtn {
 .featured-builder-banner .featured-builder-slider img {
   height: 8rem;
   width: auto;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 
 .featured-properties-banner {
   @apply w-full pt-6;
 }
 .featured-properties-banner h3 {
-  font-size: 2.25rem;
+  font-size: 1.5rem;
+  text-align: center;
   color: #000000;
   font-weight: 500;
   text-decoration: underline;
@@ -660,11 +893,22 @@ header nav .hamburgerBtn {
   text-decoration-color: #03BFA1;
   text-align: center;
 }
+@media (min-width: 768px) {
+  .featured-properties-banner h3 {
+    font-size: 1.75rem;
+    text-align: left;
+  }
+}
+@media (min-width: 1200px) {
+  .featured-properties-banner h3 {
+    font-size: 2.25rem;
+  }
+}
 .featured-properties-banner .properties-box {
-  @apply grid grid-cols-3 h-[40rem] w-full;
+  @apply w-full;
 }
 .featured-properties-banner .properties-box .properties {
-  @apply h-full relative transition-all duration-300;
+  @apply h-[30rem] md:h-[40rem] relative transition-all duration-300;
   background-image: url("../asset//images/properties1.png");
   background-position: center;
   background-size: cover;
@@ -698,19 +942,39 @@ header nav .hamburgerBtn {
 }
 .featured-properties-banner .properties-box .properties .bottom .title {
   color: #155147;
-  font-size: 2.25rem;
+  font-size: 1.5rem;
   font-weight: 600;
+}
+@media (min-width: 768px) {
+  .featured-properties-banner .properties-box .properties .bottom .title {
+    font-size: 1.75rem;
+  }
+}
+@media (min-width: 1200px) {
+  .featured-properties-banner .properties-box .properties .bottom .title {
+    font-size: 2.25rem;
+  }
 }
 .featured-properties-banner .properties-box .properties .bottom .description {
   color: #535454;
-  font-size: 1.25rem;
+  font-size: 1rem;
+}
+@media (min-width: 768px) {
+  .featured-properties-banner .properties-box .properties .bottom .description {
+    font-size: 1.25rem;
+  }
 }
 .featured-properties-banner .properties-box .properties .bottom .viewMoreBtn {
   color: white;
-  font-size: 1.25rem;
+  font-size: 1rem;
   background: #03BFA1;
   @apply w-fit flex px-4 py-2 items-center rounded-full;
   gap: 10px;
+}
+@media (min-width: 768px) {
+  .featured-properties-banner .properties-box .properties .bottom .viewMoreBtn {
+    font-size: 1.25rem;
+  }
 }
 .featured-properties-banner .properties-box .properties .bottom .viewMoreBtn span {
   height: 1rem;
@@ -721,7 +985,8 @@ header nav .hamburgerBtn {
   @apply w-full pt-6 pb-12;
 }
 .featured-agents-banner h3 {
-  font-size: 2.25rem;
+  font-size: 1.5rem;
+  text-align: center;
   color: #000000;
   font-weight: 500;
   text-decoration: underline;
@@ -729,49 +994,73 @@ header nav .hamburgerBtn {
   text-decoration-color: #03BFA1;
   text-align: center;
 }
+@media (min-width: 768px) {
+  .featured-agents-banner h3 {
+    font-size: 1.75rem;
+    text-align: left;
+  }
+}
+@media (min-width: 1200px) {
+  .featured-agents-banner h3 {
+    font-size: 2.25rem;
+  }
+}
 .featured-agents-banner .agents-box {
-  @apply flex gap-10 w-full relative;
+  @apply w-full relative;
 }
 .featured-agents-banner .agents-box .Featured_Agents_Card {
-  @apply w-full flex flex-col gap-3 items-center py-5 px-4;
+  @apply w-full flex flex-col gap-1 md:gap-3 items-center py-5 px-4;
   border-radius: 1.25rem;
   background: #E0F0EE;
   box-shadow: 7px 4px 19px 0px rgba(0, 0, 0, 0.0588235294);
 }
 .featured-agents-banner .agents-box .Featured_Agents_Card img {
-  height: 7rem;
-  width: 7rem;
+  height: 5rem;
+  width: 5rem;
   border-radius: 100%;
+}
+@media (min-width: 768px) {
+  .featured-agents-banner .agents-box .Featured_Agents_Card img {
+    height: 6rem;
+    width: 6rem;
+  }
+}
+@media (min-width: 1200px) {
+  .featured-agents-banner .agents-box .Featured_Agents_Card img {
+    height: 7rem;
+    width: 7rem;
+  }
 }
 .featured-agents-banner .agents-box .Featured_Agents_Card .title {
   color: #155147;
-  @apply text-2xl font-bold text-center;
+  @apply text-lg md:text-xl xl:text-2xl font-bold text-center;
 }
 .featured-agents-banner .agents-box .Featured_Agents_Card .subTitle {
   color: #4B5755;
-  @apply text-base font-semibold text-center;
+  @apply text-sm lg:text-base font-semibold text-center;
 }
 .featured-agents-banner .agents-box .Featured_Agents_Card .microTitle {
   color: #155147;
-  @apply text-lg font-bold text-center;
+  @apply text-base lg:text-lg font-bold text-center;
 }
 .featured-agents-banner .agents-box .Featured_Agents_Card .description {
   color: #4B5755;
   @apply text-sm font-semibold text-center;
 }
 .featured-agents-banner .agents-box .Featured_Agents_Card .callUsBtn {
-  @apply py-2 px-7 flex rounded-3xl items-center gap-2 text-sm font-extrabold text-white;
+  @apply py-2 px-7 flex rounded-3xl items-center gap-2 text-xs md:text-sm font-extrabold text-white;
   background: #155147;
 }
 .featured-agents-banner .agents-box .Featured_Agents_Card .callUsBtn img {
-  @apply h-9 w-9;
+  @apply lg:h-9 lg:w-9 md:w-8 md:h-8 h-6 w-6;
 }
 
 .popular-cities-banner {
   @apply w-full pt-6 pb-12;
 }
 .popular-cities-banner .left h3 {
-  font-size: 2.25rem;
+  font-size: 1.5rem;
+  text-align: center;
   color: #000000;
   font-weight: 500;
   text-decoration: underline;
@@ -779,17 +1068,31 @@ header nav .hamburgerBtn {
   text-decoration-color: #03BFA1;
   text-align: center;
 }
+@media (min-width: 768px) {
+  .popular-cities-banner .left h3 {
+    font-size: 1.75rem;
+    text-align: left;
+  }
+}
+@media (min-width: 1200px) {
+  .popular-cities-banner .left h3 {
+    font-size: 2.25rem;
+  }
+}
 .popular-cities-banner .left .description {
   color: #505655;
-  @apply text-xl;
+  @apply text-base md:text-lg lg:text-xl;
 }
 .popular-cities-banner .popularCities-box {
   @apply w-full flex gap-8 relative justify-center;
 }
+.popular-cities-banner .popularCities-box .item {
+  @apply flex justify-center;
+}
 .popular-cities-banner .popularCities-box .popularCities {
   background-position: center;
   background-size: cover;
-  @apply h-[12.5rem] w-[20rem] rounded-2xl relative overflow-hidden;
+  @apply h-[12rem] w-full md:h-[12.5rem] md:w-[20rem] rounded-2xl relative overflow-hidden;
 }
 .popular-cities-banner .popularCities-box .popularCities::after {
   content: "";
@@ -805,13 +1108,23 @@ header nav .hamburgerBtn {
   color: white;
 }
 .popular-cities-banner .popularCities-box .popularCities .bottom .left .title {
-  font-size: 1.125rem;
+  font-size: 1rem;
   font-weight: 700;
   @apply mb-1;
 }
+@media (min-width: 768px) {
+  .popular-cities-banner .popularCities-box .popularCities .bottom .left .title {
+    font-size: 1.125rem;
+  }
+}
 .popular-cities-banner .popularCities-box .popularCities .bottom .left .location {
-  font-size: 0.975rem;
+  font-size: 0.875rem;
   @apply mb-2;
+}
+@media (min-width: 768px) {
+  .popular-cities-banner .popularCities-box .popularCities .bottom .left .location {
+    font-size: 0.975rem;
+  }
 }
 .popular-cities-banner .popularCities-box .popularCities .bottom .right .ratting span {
   display: inline-block;
@@ -832,11 +1145,11 @@ header nav .hamburgerBtn {
 }
 
 .our-blogs-banner {
-  @apply grid grid-cols-5 w-full pt-6 pb-6 gap-5 relative;
+  @apply grid grid-cols-3 lg:grid-cols-5 w-full pt-6 pb-6 gap-5 relative;
   background: rgba(237, 237, 237, 0.6);
 }
 .our-blogs-banner h3 {
-  font-size: 2.25rem;
+  font-size: 1.5rem;
   color: #000000;
   font-weight: 500;
   text-decoration: underline;
@@ -844,12 +1157,23 @@ header nav .hamburgerBtn {
   text-decoration-color: #03BFA1;
   text-align: center;
 }
+@media (min-width: 768px) {
+  .our-blogs-banner h3 {
+    font-size: 1.75rem;
+    text-align: left;
+  }
+}
+@media (min-width: 1200px) {
+  .our-blogs-banner h3 {
+    font-size: 2.25rem;
+  }
+}
 .our-blogs-banner .description {
   color: #414D4B;
-  @apply text-lg;
+  @apply text-base lg:text-lg;
 }
 .our-blogs-banner .description a {
-  @apply text-xl font-bold;
+  @apply text-lg lg:text-xl font-bold;
 }
 .our-blogs-banner .our_blog {
   @apply h-[36rem] w-full overflow-hidden relative rounded-3xl;
@@ -925,10 +1249,16 @@ header nav .hamburgerBtn {
 }
 
 .contactUs-banner {
-  @apply grid grid-cols-2 w-full pt-6 pb-6 relative;
+  @apply grid md:grid-cols-2 w-full pt-6 pb-6 relative;
+}
+@media (min-width: 768px) {
+  .contactUs-banner {
+    @apply px-0;
+  }
 }
 .contactUs-banner h3 {
-  font-size: 2.25rem;
+  font-size: 1.5rem;
+  text-align: center;
   color: #000000;
   font-weight: 500;
   text-decoration: underline;
@@ -936,8 +1266,24 @@ header nav .hamburgerBtn {
   text-decoration-color: #03BFA1;
   text-align: center;
 }
+@media (min-width: 768px) {
+  .contactUs-banner h3 {
+    font-size: 1.75rem;
+    text-align: left;
+  }
+}
+@media (min-width: 1200px) {
+  .contactUs-banner h3 {
+    font-size: 2.25rem;
+  }
+}
 .contactUs-banner .left img {
   @apply w-full;
+}
+@media (max-width: 767px) {
+  .contactUs-banner .right {
+    @apply pr-0;
+  }
 }
 .contactUs-banner .right .phoneNo {
   @apply text-xl flex items-center gap-2;
@@ -965,22 +1311,25 @@ header nav .hamburgerBtn {
 }
 
 footer {
-  @apply pt-14 pb-6 grid grid-cols-3 gap-14;
+  @apply pt-14 pb-6;
   background: #2F3C3A;
   color: white;
 }
+footer .footer {
+  @apply grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10 xl:gap-14;
+}
 footer .description {
-  @apply text-base;
+  @apply text-sm text-center md:text-left md:text-base;
 }
 footer .title {
-  @apply text-2xl font-bold mb-6;
+  @apply text-center md:text-left text-lg md:text-xl lg:text-2xl font-bold mb-4 md:mb-6;
 }
 footer .contactDetails {
-  @apply text-xl;
+  @apply text-center md:text-left text-lg xl:text-xl;
   font-weight: 300;
 }
 footer .newsletter {
-  @apply text-2xl font-medium mb-6;
+  @apply text-center md:text-left text-lg md:text-xl lg:text-2xl font-medium mb-4 md:mb-6;
 }
 footer input {
   color: rgba(0, 0, 0, 0.5019607843);
