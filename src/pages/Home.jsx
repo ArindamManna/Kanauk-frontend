@@ -16,6 +16,7 @@ import Footer from '../components/Footer'
 import { useDispatch, useSelector } from 'react-redux'
 import { updateGlobalState } from '../Redux/GlobalSlice'
 import OwlCarousel from 'react-owl-carousel';
+import Loader from '../components/Loader'
 
 function Home() {
     // const Dispatch = useDispatch()
@@ -177,6 +178,7 @@ function Home() {
 
     return (
         <>
+            {/* <Loader /> */}
             <Navbar />
             <section className='home-banner padding'>
                 <h1>

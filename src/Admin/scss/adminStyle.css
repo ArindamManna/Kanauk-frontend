@@ -799,7 +799,7 @@ a {
 }
 
 .card {
-  border: none;
+  border: none !important;
 }
 
 .grid-margin {
@@ -1097,9 +1097,9 @@ a {
 }
 
 .grey-primary {
-  background-color: rgba(68, 68, 68, 0.1607843137);
-  padding: 6px 20px;
-  color: #595c5f;
+  background-color: rgba(68, 68, 68, 0.1607843137) !important;
+  padding: 6px 20px !important;
+  color: #595c5f !important;
 }
 
 .big-grey-primary {
@@ -1134,25 +1134,25 @@ a {
   }
 }
 .grey-border-btn:hover {
-  border: solid 1px #e6e6e8;
-  color: #18202b;
+  border: solid 1px #e6e6e8 !important;
+  color: #18202b !important;
 }
 
 .grey-primary:hover {
-  background-color: rgba(79, 79, 79, 0.4784313725);
-  padding: 6px 20px;
+  background-color: rgba(79, 79, 79, 0.4784313725) !important;
+  padding: 6px 20px !important;
   color: #595c5f;
 }
 
 .black-btn {
-  background-color: #222;
-  padding: 6px 20px;
-  color: #fff;
+  background-color: #222 !important;
+  padding: 6px 20px !important;
+  color: #fff !important;
 }
 
 .black-btn:hover {
-  background-color: #353535;
-  padding: 6px 20px;
+  background-color: #353535 !important;
+  padding: 6px 20px !important;
   color: #fff;
 }
 

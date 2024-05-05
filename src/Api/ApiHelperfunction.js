@@ -1,7 +1,7 @@
 import axios from "axios";
 
 
-let API_URL = "";
+let API_URL = "https://kanuck-backend-git-master-arindammannas-projects.vercel.app/api/";
 
 export { API_URL };
 

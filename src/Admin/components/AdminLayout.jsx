@@ -1,8 +1,17 @@
 import React, { useEffect } from 'react'
 import "../scss/adminStyle.css";
 import kaunuakLogo from "../asset/images/logo/kaunuck_logo_black.png"
-import profileImg from "../asset/images/logo/profile.png"
-function AdminLayout({ }) {
+import { Link, useNavigate } from 'react-router-dom';
+function AdminLayout({ children }) {
+    const navigate = useNavigate()
+    useEffect(() => {
+        let usertoken = localStorage.getItem("usertoken")
+        if (usertoken == undefined) {
+            // navigate("./login")
+
+        }
+    }, [])
+
     function submenuToggle(event) {
         event.target.closest('.has-submenu').classList.toggle('open');
     }
@@ -27,17 +36,17 @@ function AdminLayout({ }) {
                             <div className="ul-box mb-3">
                                 <ul className="row">
                                     <li>
-                                        <a href="#"><span className="w-100">
+                                        <Link to={"/admin/project"} ><span className="w-100">
                                             {/* <img src="images/mi_user.png" /> */}
                                             {/* <br /> */}
-                                            Projects</span></a>
+                                            Projects</span></Link>
                                     </li>
                                     <li>
-                                        <a href="#">
+                                        <Link to={"/admin/builder"}>
                                             <span className="w-100">
                                                 {/* <img src="images/customer.png" /> */}
                                                 {/* <br /> */}
-                                                Builders</span></a>
+                                                Builders</span></Link>
                                     </li>
                                     <li>
                                         <a href="#"><span className="w-100">
@@ -168,78 +177,8 @@ function AdminLayout({ }) {
                         </nav>
                     </div>
                     <main className="content">
-                        <div className="page-name">
-                            <div className="row justify-content-between align-items-center">
-                                <div className="col-md-4">
-                                    <h2><i className="ri-arrow-left-line"></i> Customer Management</h2>
-                                </div>
-                                <div className="col-md-6">
-                                    <div className="text-end mb-4 flex gap-3 justify-end">
-                                        <a href="#" className=" primary-btn"><img src={profileImg} /> Add Customer</a>
+                        {children}
 
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="row">
-                            <div className="table-responsive table-sec mb-4">
-                                {/* <table className="table table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th>ID</th>
-                                            <th style="text-align: center">Date</th>
-                                            <th style="text-align: center">Company Name</th>
-                                            <th style="text-align: center">Contact Person</th>
-                                            <th style="text-align: center">City</th>
-                                            <th style="text-align: center">No. of Orders</th>
-                                            <th style="text-align: center">Print Margin</th>
-                                            <th style="text-align: center">Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>1.</td>
-                                            <td style="text-align: center">#01234567</td>
-                                            <td style="text-align: center">Maxbridge Solutions</td>
-                                            <td style="text-align: center">Saikat Mitra</td>
-                                            <td style="text-align: center">Kolkata</td>
-                                            <td style="text-align: center">24</td>
-                                            <td style="text-align: center">2%</td>
-                                            <td style="text-align: center">
-                                                <a href="#"><img src="images/lucide_view.png" /></a>
-                                                <a href="#"><img src="images/akar-icons_edit.png" /></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>1.</td>
-                                            <td style="text-align: center">#01234567</td>
-                                            <td style="text-align: center">Maxbridge Solutions</td>
-                                            <td style="text-align: center">Saikat Mitra</td>
-                                            <td style="text-align: center">Kolkata</td>
-                                            <td style="text-align: center">24</td>
-                                            <td style="text-align: center">2%</td>
-                                            <td style="text-align: center">
-                                                <a href="#"><img src="images/lucide_view.png" /></a>
-                                                <a href="#"><img src="images/akar-icons_edit.png" /></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>1.</td>
-                                            <td style="text-align: center">#01234567</td>
-                                            <td style="text-align: center">Maxbridge Solutions</td>
-                                            <td style="text-align: center">Saikat Mitra</td>
-                                            <td style="text-align: center">Kolkata</td>
-                                            <td style="text-align: center">24</td>
-                                            <td style="text-align: center">2%</td>
-                                            <td style="text-align: center">
-                                                <a href="#"><img src="images/lucide_view.png" /></a>
-                                                <a href="#"><img src="images/akar-icons_edit.png" /></a>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table> */}
-                            </div>
-                        </div>
 
                     </main>
                     <div className="overlay"></div>

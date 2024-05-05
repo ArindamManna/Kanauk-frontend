@@ -81,6 +81,10 @@
   background-color: #03BFA1;
 }
 
+.loading-overlay {
+  background-color: rgba(255, 255, 255, 0.66);
+}
+
 p {
   margin: 0px;
 }
