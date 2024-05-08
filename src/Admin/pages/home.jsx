@@ -1,12 +1,6 @@
-import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { admin_authentication } from "../store/slices/authSlice";
+import React from "react";
 
 const HomeAdmin = () => {
-    const dispatch = useDispatch();
-    useEffect(() => {
-        dispatch(admin_authentication());
-    }, []);
     return (
         <div>
             <button>useDispatch</button>

@@ -945,6 +945,111 @@ header nav .hamburgerBtn {
   @apply rounded-full;
 }
 
+.authentication {
+  @apply grid grid-cols-5;
+}
+.authentication .left {
+  @apply col-span-2;
+  margin: 2rem;
+}
+.authentication .left .head {
+  display: flex;
+  align-items: center;
+  gap: 12rem;
+}
+.authentication .left .head .content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.authentication .left .head .content .title {
+  color: #626665;
+  font-size: 1.8rem;
+  font-weight: 400;
+  padding: 0.1rem;
+}
+.authentication .left .head .content .border {
+  width: 100%;
+  height: 5px;
+  background: #03bfa1;
+  border-radius: 5px;
+}
+.authentication .left .formContainer {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  width: 30rem;
+}
+.authentication .left .formContainer .inputField {
+  padding: 0.2rem 0;
+  margin-top: 2.3rem;
+  width: 100%;
+  border-bottom: 2px solid rgba(83, 84, 84, 0.4) !important;
+}
+.authentication .left .formContainer input::-moz-placeholder {
+  font-size: 0.8rem;
+  color: rgba(0, 0, 0, 0.46);
+}
+.authentication .left .formContainer input::placeholder {
+  font-size: 0.8rem;
+  color: rgba(0, 0, 0, 0.46);
+}
+.authentication .left .formContainer .contryCode {
+  position: absolute;
+  left: 6rem;
+  top: 10.6rem;
+  color: rgba(0, 0, 0, 0.46);
+  font-size: 0.8rem;
+}
+.authentication .left .formContainer .pchecker {
+  position: absolute;
+  top: 14.7rem;
+  left: 2.8rem;
+  font-size: 0.8rem;
+  color: rgba(83, 84, 84, 0.43);
+}
+.authentication .left .formContainer .tcchecker {
+  margin-top: 2rem;
+  display: flex;
+  width: 85%;
+}
+.authentication .left .formContainer .tcchecker input {
+  width: 2rem;
+  margin: 0 0.5rem;
+}
+.authentication .left .formContainer .tcchecker p {
+  font-size: 0.8rem;
+  text-transform: capitalize;
+}
+.authentication .left .formContainer .tcchecker p span {
+  color: rgb(3, 191, 161);
+}
+.authentication .left .formContainer .btn {
+  text-transform: capitalize;
+  color: white;
+  border-radius: 10px;
+  margin-top: 2rem;
+  padding: 0.5rem 0;
+  background: rgb(3, 191, 161);
+}
+.authentication .left .formContainer .orborder {
+  width: 2rem;
+  height: 2rem;
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgb(173, 173, 173);
+}
+.authentication .right {
+  @apply col-span-3;
+}
+.authentication .right img {
+  border-radius: 10px;
+}
+
 .contactUs-banner {
   @apply grid grid-cols-2 w-full pt-6 pb-6 relative;
 }

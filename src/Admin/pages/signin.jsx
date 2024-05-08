@@ -3,7 +3,7 @@ import "../sass/style.css";
 import { svg1, svg2, svg3, svg4 } from "../images/staticData";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { store_token } from "../store/slices/authSlice";
+import { loginFailure, loginSuccess } from "../store/slices/authSlice";
 
 const SigninAdmin = () => {
     const [user, setUser] = useState({
@@ -34,14 +34,15 @@ const SigninAdmin = () => {
             });
             if (response.ok) {
                 const data = await response.json();
-                dispatch(store_token(data.token));
+                const user = { fname: data.fname, lname: data.lname, email: data.email };
+                dispatch(loginSuccess({ user, token: data.token }));
                 setUser({ email: "", password: "" });
-                navigate("/home");
+                navigate("/admin/home");
             } else {
-                console.log("invalid credentials");
+                dispatch(loginFailure({ error: "invalid credentials" }));
             }
         } catch (error) {
-            console.log("Login: ", error.message);
+            dispatch(loginFailure({ error: error.message }));
         }
     };
     return (
