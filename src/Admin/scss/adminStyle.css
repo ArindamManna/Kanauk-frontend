@@ -1923,12 +1923,6 @@ input[type=date]::-webkit-calendar-picker-indicator {
   gap: 6px;
 }
 
-.searchBox span {
-  font-size: 16;
-  font-weight: 600;
-  color: #595C5F;
-}
-
 .searchBox .search {
   border: 1px solid #BFBFBF;
   height: 42px;

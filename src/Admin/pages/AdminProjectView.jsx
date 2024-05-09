@@ -77,49 +77,120 @@ function AdminProjectView() {
                                             {/* <!-- table row --> */}
                                             <div className="col-5 child-table-row">
                                                 <div>
-                                                    GST No.
+                                                    Description
                                                 </div>
                                             </div>
                                             <div className="col-7 child-table-row">
                                                 <div>
-                                                    0123456789
+                                                    {projectdetails.name}
+
                                                 </div>
                                             </div>
                                             {/* <!-- table row end --> */}
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="child-table">
-                                    <div className="container">
-
-                                        <div className="row border-gray">
-                                            <div className="col-12 child-table-row">
-                                                <div>
-                                                    <p className="title">
-                                                        Order Details
-                                                    </p>
-                                                </div>
-                                            </div>
-
                                             {/* <!-- table row --> */}
                                             <div className="col-5 child-table-row">
                                                 <div>
-                                                    No. of Orders
+                                                    Listing status
                                                 </div>
                                             </div>
                                             <div className="col-7 child-table-row">
                                                 <div>
-                                                    24
+                                                    {projectdetails.name}
+
+                                                </div>
+                                            </div>
+                                            {/* <!-- table row end --> */}
+                                            {/* <!-- table row --> */}
+                                            <div className="col-5 child-table-row">
+                                                <div>
+                                                    Price
+                                                </div>
+                                            </div>
+                                            <div className="col-7 child-table-row">
+                                                <div>
+                                                    {projectdetails.name}
+
+                                                </div>
+                                            </div>
+                                            {/* <!-- table row end --> */}
+                                            {/* <!-- table row --> */}
+                                            <div className="col-5 child-table-row">
+                                                <div>
+                                                    Tags
+                                                </div>
+                                            </div>
+                                            <div className="col-7 child-table-row">
+                                                <div>
+                                                    {projectdetails.name}
+
+                                                </div>
+                                            </div>
+                                            {/* <!-- table row end --> */}
+                                            {/* <!-- table row --> */}
+                                            <div className="col-5 child-table-row">
+                                                <div>
+                                                    Highlits
+                                                </div>
+                                            </div>
+                                            <div className="col-7 child-table-row">
+                                                <div>
+                                                    {projectdetails.name}
+
+                                                </div>
+                                            </div>
+                                            {/* <!-- table row end --> */}
+                                            {/* <!-- table row --> */}
+                                            <div className="col-5 child-table-row">
+                                                <div>
+                                                    Builder Name
+                                                </div>
+                                            </div>
+                                            <div className="col-7 child-table-row">
+                                                <div>
+                                                    {projectdetails.name}
 
                                                 </div>
                                             </div>
                                             {/* <!-- table row end --> */}
 
-
                                         </div>
                                     </div>
                                 </div>
+                                {
+                                    projectdetails.properties.map((item, i) => {
+                                        return <div className="child-table" key={i}>
+                                            <div className="container">
+
+                                                <div className="row border-gray">
+                                                    <div className="col-12 child-table-row">
+                                                        <div>
+                                                            <p className="title">
+                                                                Property {i + 1}
+                                                            </p>
+                                                        </div>
+                                                    </div>
+
+                                                    {/* <!-- table row --> */}
+                                                    <div className="col-5 child-table-row">
+                                                        <div>
+                                                            Properties
+                                                        </div>
+                                                    </div>
+                                                    <div className="col-7 child-table-row">
+                                                        <div>
+                                                            24
+
+                                                        </div>
+                                                    </div>
+                                                    {/* <!-- table row end --> */}
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    })
+                                }
+
                             </div>
                         </div>
                     </div>

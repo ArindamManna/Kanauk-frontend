@@ -71,6 +71,10 @@ const loginIcon = <svg xmlns="http://www.w3.org/2000/svg" className="h-full w-fu
 const logoutIcon = <svg xmlns="http://www.w3.org/2000/svg" className="h-full w-full" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
     <path strokeLinecap="round" strokeLinejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
 </svg>
+const crossIcon = <svg className="h-full w-full" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M11.5312 6.46875L6.46875 11.5312M6.46875 6.46875L11.5312 11.5312" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+    <path d="M9 16.0312C12.8833 16.0312 16.0312 12.8833 16.0312 9C16.0312 5.11675 12.8833 1.96875 9 1.96875C5.11675 1.96875 1.96875 5.11675 1.96875 9C1.96875 12.8833 5.11675 16.0312 9 16.0312Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
 
 
 
@@ -91,4 +95,4 @@ const logoutIcon = <svg xmlns="http://www.w3.org/2000/svg" className="h-full w-f
 
 
 
-export { imageIcon, loginIcon, logoutIcon, cardIcon, newsPaperIcon, tickCircle, locationIcon, phoneIcon, downArrow, heartSolid, MailSolid, rightArrow, searchLogo, starFill, hamburgerIcon, left, right, heart, plusCircle, eye }
+export { imageIcon, crossIcon, loginIcon, logoutIcon, cardIcon, newsPaperIcon, tickCircle, locationIcon, phoneIcon, downArrow, heartSolid, MailSolid, rightArrow, searchLogo, starFill, hamburgerIcon, left, right, heart, plusCircle, eye }

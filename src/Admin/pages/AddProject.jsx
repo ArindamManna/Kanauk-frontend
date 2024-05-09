@@ -4,6 +4,7 @@ import { ApiHelperFunction } from '../../Api/ApiHelperfunction';
 import Loader from '../../components/Loader';
 import { toFormData } from 'axios';
 import { useNavigate } from 'react-router-dom';
+import Upload from '../../components/upload';
 
 function AddProject() {
     const navigate = useNavigate()
@@ -188,6 +189,9 @@ function AddProject() {
                                         }, value: e.target.value
                                     })} />
                                 </div>
+                            </div>
+                            <div className="col-md-4">
+                                <Upload />
                             </div>
 
 
