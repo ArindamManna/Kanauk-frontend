@@ -49,24 +49,24 @@ export default authSlice.reducer;
 export const verifyToken = () => async (dispatch, getState) => {
     const token = getState().auth.token;
 
-    try {
-        // Make API request to backend to verify token
-        const response = await fetch("http://localhost:5000/api/admin/verify-token", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ token }),
-        });
-        if (!response.ok) {
-            throw new Error("Token verification failed");
-        }
-        const data = await response.json();
-        const { user } = data;
-        // Dispatch action to update authentication state with verified token
-        dispatch(verifyTokenSuccess({ user, token }));
-    } catch (error) {
-        // Dispatch action for token verification failure
-        dispatch(verifyTokenFailure({ error: error.message }));
-    }
+    // try {
+    //     // Make API request to backend to verify token
+    //     const response = await fetch("http://localhost:5000/api/admin/verify-token", {
+    //         method: "POST",
+    //         headers: {
+    //             "Content-Type": "application/json",
+    //         },
+    //         body: JSON.stringify({ token }),
+    //     });
+    //     if (!response.ok) {
+    //         throw new Error("Token verification failed");
+    //     }
+    //     const data = await response.json();
+    //     const { user } = data;
+    //     // Dispatch action to update authentication state with verified token
+    //     dispatch(verifyTokenSuccess({ user, token }));
+    // } catch (error) {
+    //     // Dispatch action for token verification failure
+    //     dispatch(verifyTokenFailure({ error: error.message }));
+    // }
 };
