@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Navbar from '../components/Navbar'
 import { left, right, rightArrow, searchLogo } from '../asset/staticData'
 import Featured_Project_Card from '../components/Featured_Project_Card'
@@ -17,16 +17,40 @@ import { useDispatch, useSelector } from 'react-redux'
 import { updateGlobalState } from '../Redux/GlobalSlice'
 import OwlCarousel from 'react-owl-carousel';
 import Loader from '../components/Loader'
+import { ApiHelperFunction } from '../Api/ApiHelperfunction'
 
 function Home() {
-    // const Dispatch = useDispatch()
-    // const { count } = useSelector((state, action) => {
-    //     const { count } = state?.GlobalSlice
-    //     return {
-    //         count
-    //     }
-    // })
-    // console.log(count);
+    const [projectList, setProjectList] = useState([])
+    const [loader, setLoader] = useState(false)
+    async function fetchProjectList(e) {
+        // e.preventDefault();
+        setLoader(true)
+        let res = await ApiHelperFunction({
+            urlPath: "users/project/all",
+            method: "get",
+        });
+        console.log(res);
+        if (res.data) {
+            setProjectList(res.data);
+            setLoader(false)
+        } else {
+            alert(res.error.message)
+            setLoader(false)
+        }
+    }
+    useEffect(() => {
+        fetchProjectList()
+    }, [])
+
+
+
+
+    console.log("projectList", projectList);
+
+
+
+
+
     let options = {
         items: 3,
         loop: true,
@@ -35,10 +59,10 @@ function Home() {
         margin: 20,
         autoplay: true,
         autoplayTimeout: 5000,
-        navText: [`<button class='p-0 carosolBtn backBtn left-0 xl:-left-8 -translate-x-1/2'><span><svg xmlns="http://www.w3.org/2000/svg" className="h-full w-full" viewBox="0 0 20 20" fill="currentColor">
+        navText: [`<button className='p-0 carosolBtn backBtn left-0 xl:-left-8 -translate-x-1/2'><span><svg xmlns="http://www.w3.org/2000/svg" className="h-full w-full" viewBox="0 0 20 20" fill="currentColor">
         <path fillRule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clipRule="evenodd" />
     </svg></span> </button>`,
-            `  <button class='p-0 carosolBtn forwardBtn right-0 xl:-right-8 translate-x-1/2'><span><svg xmlns="http://www.w3.org/2000/svg" className="h-full w-full" viewBox="0 0 20 20" fill="currentColor">
+            `  <button className='p-0 carosolBtn forwardBtn right-0 xl:-right-8 translate-x-1/2'><span><svg xmlns="http://www.w3.org/2000/svg" className="h-full w-full" viewBox="0 0 20 20" fill="currentColor">
         <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
     </svg></span></button>`],
         responsive: {
@@ -77,10 +101,10 @@ function Home() {
         margin: 20,
         autoplay: true,
         autoplayTimeout: 5000,
-        navText: [`<button class='p-0 carosolBtn backBtn left-0 xl:-left-8 -translate-x-1/2'><span><svg xmlns="http://www.w3.org/2000/svg" className="h-full w-full" viewBox="0 0 20 20" fill="currentColor">
+        navText: [`<button className='p-0 carosolBtn backBtn left-0 xl:-left-8 -translate-x-1/2'><span><svg xmlns="http://www.w3.org/2000/svg" className="h-full w-full" viewBox="0 0 20 20" fill="currentColor">
         <path fillRule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clipRule="evenodd" />
     </svg></span> </button>`,
-            `  <button class='p-0 carosolBtn forwardBtn right-0 xl:-right-8 translate-x-1/2'><span><svg xmlns="http://www.w3.org/2000/svg" className="h-full w-full" viewBox="0 0 20 20" fill="currentColor">
+            `  <button className='p-0 carosolBtn forwardBtn right-0 xl:-right-8 translate-x-1/2'><span><svg xmlns="http://www.w3.org/2000/svg" className="h-full w-full" viewBox="0 0 20 20" fill="currentColor">
         <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
     </svg></span></button>`],
         responsive: {
@@ -119,10 +143,10 @@ function Home() {
         margin: 0,
         autoplay: true,
         autoplayTimeout: 5000,
-        navText: [`<button class='p-0 hide carosolBtn backBtn left-0 xl:-left-8 -translate-x-1/2'><span><svg xmlns="http://www.w3.org/2000/svg" className="h-full w-full" viewBox="0 0 20 20" fill="currentColor">
+        navText: [`<button className='p-0 hide carosolBtn backBtn left-0 xl:-left-8 -translate-x-1/2'><span><svg xmlns="http://www.w3.org/2000/svg" className="h-full w-full" viewBox="0 0 20 20" fill="currentColor">
         <path fillRule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clipRule="evenodd" />
     </svg></span> </button>`,
-            `  <button class='p-0 hide carosolBtn forwardBtn right-0 xl:-right-8 translate-x-1/2'><span><svg xmlns="http://www.w3.org/2000/svg" className="h-full w-full" viewBox="0 0 20 20" fill="currentColor">
+            `  <button className='p-0 hide carosolBtn forwardBtn right-0 xl:-right-8 translate-x-1/2'><span><svg xmlns="http://www.w3.org/2000/svg" className="h-full w-full" viewBox="0 0 20 20" fill="currentColor">
         <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
     </svg></span></button>`],
 
@@ -151,10 +175,10 @@ function Home() {
         margin: 20,
         autoplay: true,
         autoplayTimeout: 5000,
-        navText: [`<button class='p-0  carosolBtn backBtn left-0 xl:-left-8 -translate-x-1/2'><span><svg xmlns="http://www.w3.org/2000/svg" className="h-full w-full" viewBox="0 0 20 20" fill="currentColor">
+        navText: [`<button className='p-0  carosolBtn backBtn left-0 xl:-left-8 -translate-x-1/2'><span><svg xmlns="http://www.w3.org/2000/svg" className="h-full w-full" viewBox="0 0 20 20" fill="currentColor">
         <path fillRule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clipRule="evenodd" />
     </svg></span> </button>`,
-            `  <button class='p-0  carosolBtn forwardBtn right-0 xl:-right-8 translate-x-1/2'><span><svg xmlns="http://www.w3.org/2000/svg" className="h-full w-full" viewBox="0 0 20 20" fill="currentColor">
+            `  <button className='p-0  carosolBtn forwardBtn right-0 xl:-right-8 translate-x-1/2'><span><svg xmlns="http://www.w3.org/2000/svg" className="h-full w-full" viewBox="0 0 20 20" fill="currentColor">
         <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
     </svg></span></button>`],
 
@@ -178,6 +202,7 @@ function Home() {
 
     return (
         <>
+            {loader ? <Loader /> : ""}
             {/* <Loader /> */}
             <Navbar />
             <section className='home-banner padding'>
@@ -236,25 +261,14 @@ function Home() {
                             {right}
                         </span>
                     </button> */}
-                    <OwlCarousel className='owl-theme px-4 lg:px-0'{...options}>
+                    {/* <OwlCarousel className='owl-theme px-4 lg:px-0'{...options}> */}
+                    {projectList?.map((item, index) => {
+                        console.log(item)
+                        return <div className='item' key={index}><Featured_Project_Card data={item} /> </div>
+                    })}
 
-                        <div class='item'>
-                            <Featured_Project_Card />
 
-                        </div>
-                        <div class='item'>
-                            <Featured_Project_Card />
-
-                        </div>
-                        <div class='item'>
-                            <Featured_Project_Card />
-
-                        </div>
-                        <div class='item'>
-                            <Featured_Project_Card />
-
-                        </div>
-                    </OwlCarousel>
+                    {/* </OwlCarousel> */}
                 </div>
             </section>
             <section className='padding assignments-sales-banner'>
@@ -289,31 +303,31 @@ function Home() {
                 <div className="featured-builder-slider">
                     <OwlCarousel className='owl-theme px-4 lg:px-0'{...options2}>
 
-                        <div class='item'>
+                        <div className='item'>
                             <img src={builder1} alt="" />
 
                         </div>
-                        <div class='item'>
+                        <div className='item'>
                             <img src={builder1} alt="" />
 
                         </div>
-                        <div class='item'>
+                        <div className='item'>
                             <img src={builder1} alt="" />
 
                         </div>
-                        <div class='item'>
+                        <div className='item'>
                             <img src={builder1} alt="" />
 
                         </div>
-                        <div class='item'>
+                        <div className='item'>
                             <img src={builder1} alt="" />
 
                         </div>
-                        <div class='item'>
+                        <div className='item'>
                             <img src={builder1} alt="" />
 
                         </div>
-                        <div class='item'>
+                        <div className='item'>
                             <img src={builder1} alt="" />
 
                         </div>
@@ -346,7 +360,7 @@ function Home() {
                     <div className="properties-box">
                         <OwlCarousel className='owl-theme '{...options3}>
 
-                            <div class='item'>
+                            <div className='item'>
                                 <div className="properties">
                                     <div className="bottom">
                                         <p className="title">
@@ -365,7 +379,7 @@ function Home() {
                                 </div>
 
                             </div>
-                            <div class='item'>
+                            <div className='item'>
                                 <div className="properties">
                                     <div className="bottom">
                                         <p className="title">
@@ -384,7 +398,7 @@ function Home() {
                                 </div>
 
                             </div>
-                            <div class='item'>
+                            <div className='item'>
                                 <div className="properties">
                                     <div className="bottom">
                                         <p className="title">
@@ -420,15 +434,15 @@ function Home() {
                     <div className="agents-box">
                         <OwlCarousel className='owl-theme px-4 lg:px-0'{...options4}>
 
-                            <div class='item'>
+                            <div className='item'>
 
                                 <Featured_Agents_Card />
                             </div>
-                            <div class='item'>
+                            <div className='item'>
 
                                 <Featured_Agents_Card />
                             </div>
-                            <div class='item'>
+                            <div className='item'>
 
                                 <Featured_Agents_Card />
                             </div>
@@ -472,22 +486,22 @@ function Home() {
                 <div className="popularCities-box">
                     <OwlCarousel className='owl-theme px-4 lg:px-0'{...options4}>
 
-                        <div class='item'>
+                        <div className='item'>
                             <PopularCities />
                         </div>
-                        <div class='item'>
+                        <div className='item'>
                             <PopularCities />
                         </div>
-                        <div class='item'>
+                        <div className='item'>
                             <PopularCities />
                         </div>
-                        <div class='item'>
+                        <div className='item'>
                             <PopularCities />
                         </div>
-                        <div class='item'>
+                        <div className='item'>
                             <PopularCities />
                         </div>
-                        <div class='item'>
+                        <div className='item'>
                             <PopularCities />
                         </div>
                     </OwlCarousel>

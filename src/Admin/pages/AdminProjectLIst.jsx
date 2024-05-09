@@ -26,6 +26,24 @@ function AdminProjectLIst() {
             setLoader(false)
         }
     }
+    async function deleteProject(id, index) {
+        // e.preventDefault();
+        setLoader(true)
+        let res = await ApiHelperFunction({
+            urlPath: `admin/project/delete/${id}`,
+            method: "delete",
+        });
+        console.log(res);
+        if (res.data) {
+            setProjectList((prev) => prev?.filter((item, i) => i != index));
+
+            setLoader(false);
+
+        } else {
+            // alert(res.error.message)
+            setLoader(false)
+        }
+    }
     useEffect(() => {
         fetchProjectList()
     }, [])
@@ -75,6 +93,7 @@ function AdminProjectLIst() {
 
                                             <Link to={`/admin/projectview/?project_id=${item?._id}`} ><img src={require("../asset/images/logo/lucide_view.png")} /></Link>
                                             <a ><img src={require("../asset/images/logo/akar-icons_edit.png")} /></a>
+                                            <a onClick={() => { deleteProject(item?._id, index) }} ><img src={require("../asset/images/logo/delete.png")} /></a>
                                         </div>
                                     </td>
                                 </tr>

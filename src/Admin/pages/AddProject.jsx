@@ -5,6 +5,8 @@ import Loader from '../../components/Loader';
 import { toFormData } from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Upload from '../../components/upload';
+import Select from 'react-select'
+import { toBeRequired } from '@testing-library/jest-dom/dist/matchers';
 
 function AddProject() {
     const navigate = useNavigate()
@@ -19,6 +21,11 @@ function AddProject() {
             from: "",
             to: "",
         },
+        images: [
+            {
+                url: ""
+            }
+        ]
 
     };
     const [formdata, setFormdata] = useState(inhitialFormdata)
@@ -155,7 +162,7 @@ function AddProject() {
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label class="form-label">Price To:</label>
+                                    <label class="form-label">Listing status:</label>
                                     <input type="text" class="form-control" name='listingStatus' onChange={(e) => updateFormdata({
                                         e, position: {
                                             name: "listingStatus",
@@ -190,8 +197,62 @@ function AddProject() {
                                     })} />
                                 </div>
                             </div>
+                            <div className="col-md-6">
+                                <div className="mb-3">
+                                    <label class="form-label">Tags:</label>
+                                    <Select className="" isMulti={toBeRequired} options={[
+                                        { value: 'featured', label: 'Featured' },
+                                        { value: 'assignment_sales', label: 'Assignment Sales' },
+                                        { value: 'most_viewed', label: 'Most Viewed' }
+                                    ]} onChange={(value) => {
+                                        updateFormdata({
+                                            position: {
+                                                name: "tags",
+                                            },
+                                            value
+                                        })
+                                    }} />
+                                </div>
+                            </div>
+                            <div className="col-md-6">
+                                <div className="mb-3">
+                                    {/* <label class="form-label">upload Images one by one :</label> */}
+                                    {/* <Select className="" isMulti={toBeRequired} options={[
+                                        { value: 'chocolate', label: 'Chocolate' },
+                                        { value: 'strawberry', label: 'Strawberry' },
+                                        { value: 'vanilla', label: 'Vanilla' }
+                                    ]} /> */}
+                                </div>
+                            </div>
                             <div className="col-md-4">
-                                <Upload />
+                                <div className="mb-3">
+                                    <label class="form-label">upload Images one by one :</label>
+                                    <Upload images={formdata?.images} updateFormdata={(value) => {
+                                        console.log(value)
+                                        updateFormdata({
+                                            position: {
+                                                name: "images",
+                                                index: 0,
+                                                sub: {
+                                                    name: "url"
+
+
+                                                }
+                                            },
+                                            value
+                                        })
+                                    }} />
+                                </div>
+                            </div>
+                            <div className="col-12">
+                                <div className="row">
+                                    {formdata?.images?.map((item, i) => {
+                                        return <div className="col-md-4" key={i}> <img src={item.url} alt="" /> </div>
+                                    })}
+
+
+
+                                </div>
                             </div>
 
 
