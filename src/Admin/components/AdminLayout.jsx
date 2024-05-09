@@ -2,16 +2,28 @@ import React, { useEffect } from 'react'
 import "../scss/adminStyle.css";
 import kaunuakLogo from "../asset/images/logo/kaunuck_logo_black.png"
 import { Link, useNavigate } from 'react-router-dom';
+import { ApiHelperFunction } from '../../Api/ApiHelperfunction';
 function AdminLayout({ children }) {
     const navigate = useNavigate()
     useEffect(() => {
         let usertoken = localStorage.getItem("usertoken")
+        verifyToken()
         if (usertoken == undefined) {
-            // navigate("./login")
+            navigate("./login")
 
         }
     }, [])
+    async function verifyToken() {
+        let res = await ApiHelperFunction({
+            urlPath: "admin/verifytoken",
+            method: "post",
 
+        })
+        if (!res.data?.isAdmin) {
+            navigate("./login")
+        }
+        // console.log(res);
+    }
     function submenuToggle(event) {
         event.target.closest('.has-submenu').classList.toggle('open');
     }

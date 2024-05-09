@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { ApiHelperFunction } from '../../Api/ApiHelperfunction';
 import { useNavigate } from 'react-router-dom';
+import Loader from '../../components/Loader';
 
 function AdminLogin() {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    const [loader, setLoader] = useState(false)
     useEffect(() => {
         let usertoken = localStorage.getItem("usertoken")
         if (usertoken) {
@@ -26,6 +28,7 @@ function AdminLogin() {
     async function AdminLogin(e) {
         e.preventDefault();
         console.log(formdata);
+        setLoader(true)
         let res = await ApiHelperFunction({
             urlPath: "admin/login",
             method: "post",
@@ -33,15 +36,18 @@ function AdminLogin() {
         });
         console.log(res);
         if (res.data) {
+            setLoader(false)
             localStorage.setItem("usertoken", res.data.token);
             navigate("../")
         } else {
+            setLoader(false)
             alert(res.error.message)
         }
     }
 
     return (
         <>
+            {loader ? <Loader /> : ""}
             <div className='h-screen w-screen flex items-center justify-center'>
 
                 <div className="adminLogin-box border-2 rounded-md shadow-md p-6 w-80">
