@@ -1,9 +1,9 @@
 import React from "react";
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 import { useState } from "react";
 import BuilderLeftCard from "../components/Builder_Left_Card";
 import BuilderRightCard from "../components/Builder_Right_Card";
-import Footer from "../components/Footer";
 
 const Builder = () => {
     const [isSubMenuOpen, setIsSubMenuOpen] = useState({
@@ -78,7 +78,7 @@ const Builder = () => {
                     </div>
                 </div>
             </div>
-            <Footer />
+
         </>
     );
 };
