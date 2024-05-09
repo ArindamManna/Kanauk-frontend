@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import AdminLayout from '../components/AdminLayout'
 
 import profileImg from "../asset/images/logo/profile.png"
@@ -7,6 +7,7 @@ import { ApiHelperFunction } from '../../Api/ApiHelperfunction'
 import Loader from '../../components/Loader'
 
 function AdminProjectLIst() {
+    const navigate = useNavigate()
     const [projectList, setProjectList] = useState([])
     const [loader, setLoader] = useState(false)
     async function fetchProjectList(e) {
@@ -72,8 +73,8 @@ function AdminProjectLIst() {
                                     <td >
                                         <div className='flex items-center'>
 
-                                            <a href="#"><img src={require("../asset/images/logo/lucide_view.png")} /></a>
-                                            <a href="#"><img src={require("../asset/images/logo/akar-icons_edit.png")} /></a>
+                                            <Link to={`/admin/projectview/?project_id=${item?._id}`} ><img src={require("../asset/images/logo/lucide_view.png")} /></Link>
+                                            <a ><img src={require("../asset/images/logo/akar-icons_edit.png")} /></a>
                                         </div>
                                     </td>
                                 </tr>

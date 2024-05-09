@@ -1337,22 +1337,23 @@ input[type=date]::-webkit-calendar-picker-indicator {
 }
 
 .customer-details-popup {
-    height: 100vh;
-    width: 100vw;
-    position: fixed;
-    z-index: 10;
-    background: rgba(0, 0, 0, 0.7215686275);
-    padding: 30px;
-    display: flex;
-    justify-content: center;
-    overflow: auto;
+    // height: 100vh;
+    // width: 100vw;
+    // position: fixed;
+    // z-index: 10;
+    // background: rgba(0, 0, 0, 0.7215686275);
+    // padding: 30px;
+    // display: flex;
+    // justify-content: center;
+    // overflow: auto;
 }
 
 .customer-details-popup .popup-content {
     padding: 20px;
     background-color: white;
     position: relative;
-    width: 750px;
+    // width: 750px;
+    width: 100%;
     height: -moz-fit-content;
     height: fit-content;
 }
