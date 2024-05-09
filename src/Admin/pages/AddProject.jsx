@@ -18,19 +18,7 @@ function AddProject() {
             from: "",
             to: "",
         },
-        properties: [
-            {
-                name: "",
-                location: {
-                    url: ""
-                },
-                price: {
-                    from: "",
-                    to: "",
-                },
-                listing_status: ""
-            }
-        ]
+
     };
     const [formdata, setFormdata] = useState(inhitialFormdata)
     async function fetchBuilderlist(e) {
@@ -64,7 +52,7 @@ function AddProject() {
         if (res.data) {
             // localStorage.setItem("usertoken", res.data.token);
             alert("Project Created Successfully");
-            navigate("/admin/project")
+            navigate("/admin/addproperties", { state: res.data })
             setLoader(false)
         } else {
             alert(res.error.message)
@@ -99,18 +87,6 @@ function AddProject() {
         return form;
     }
 
-    function deleteProperty(index) {
-        setFormdata(prev => ({
-            ...prev,
-            properties: prev?.properties?.filter((item, i) => i != index)
-        }))
-    }
-    function addProperty() {
-        setFormdata(prev => ({
-            ...prev,
-            properties: [...prev.properties, inhitialFormdata?.properties[0]]
-        }))
-    }
     return (
         <AdminLayout>
             {loader ? <Loader /> : ""}
@@ -178,6 +154,17 @@ function AddProject() {
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
+                                    <label class="form-label">Price To:</label>
+                                    <input type="text" class="form-control" name='listingStatus' onChange={(e) => updateFormdata({
+                                        e, position: {
+                                            name: "listingStatus",
+
+                                        }, value: e.target.value
+                                    })} />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
                                     <label class="form-label">Choose Builder :</label>
                                     <select class="form-select" aria-label="Default select example" name='builderId' onChange={(e) => updateFormdata({
                                         e, position: {
@@ -192,148 +179,26 @@ function AddProject() {
                                     </select>
                                 </div>
                             </div>
+                            <div class="col-md-12">
+                                <div class="mb-3">
+                                    <label class="form-label">Description:</label>
+                                    <textarea type="text" class="form-control" name='priceto' onChange={(e) => updateFormdata({
+                                        e, position: {
+                                            name: "description",
+                                        }, value: e.target.value
+                                    })} />
+                                </div>
+                            </div>
 
 
 
                         </div>
 
-                        {formdata?.properties.map((item, index, arr) => {
-                            return <div class="row border border-gray-400 rounded-md pt-2 mb-4" key={index}>
-                                <div className="flex justify-between">
-                                    <h4>Propery {index + 1}</h4>
-                                    <div className="right flex gap-2">
-                                        {arr.length == 1 ? "" : <button type="submit" class="btn grey-primary" onClick={(e) => deleteProperty(index)}>delete</button>}
 
-                                        {arr.length - 1 == index ? <button type="submit" class="btn black-btn" onClick={(e) => { addProperty(e) }}>Add New</button> : ""}
-
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <label class="form-label"> Name :</label>
-                                        <input type="text" class="form-control" name='name'
-                                            onChange={(e) => updateFormdata({
-                                                e,
-                                                position: {
-                                                    name: "properties",
-                                                    index,
-                                                    sub: {
-                                                        name: "name"
-                                                    }
-                                                },
-                                                value: e.target.value
-                                            })}
-
-                                        />
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <label class="form-label">Location :</label>
-                                        <input type="text" class="form-control" name='location'
-
-                                            onChange={(e) => updateFormdata({
-                                                e,
-                                                position: {
-                                                    name: "properties",
-                                                    index,
-                                                    sub: {
-                                                        name: "location",
-                                                        sub: {
-                                                            name: "label"
-                                                        }
-                                                    }
-                                                },
-                                                value: e.target.value
-                                            })}
-                                        />
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <label class="form-label">Price From:</label>
-                                        <input type="text" class="form-control" name='pricefrom'
-
-                                            onChange={(e) => updateFormdata({
-                                                e,
-                                                position: {
-                                                    name: "properties",
-                                                    index,
-                                                    sub: {
-                                                        name: "price",
-                                                        sub: {
-                                                            name: "from",
-                                                        }
-                                                    }
-                                                },
-                                                value: e.target.value
-                                            })}
-                                        />
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <label class="form-label">Price To:</label>
-                                        <input type="text" class="form-control" name='priceto'
-
-                                            onChange={(e) => updateFormdata({
-                                                e,
-                                                position: {
-                                                    name: "properties",
-                                                    index,
-                                                    sub: {
-                                                        name: "price",
-                                                        sub: {
-                                                            name: "to",
-                                                        }
-                                                    }
-                                                },
-                                                value: e.target.value
-                                            })}
-                                        />
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <label class="form-label">Listing Status :</label>
-                                        <input type="text" class="form-control" name='listing_status'
-                                            onChange={(e) => updateFormdata({
-                                                e,
-                                                position: {
-                                                    name: "properties",
-                                                    index,
-                                                    sub: {
-                                                        name: "listing_status",
-
-                                                    }
-                                                },
-                                                value: e.target.value
-                                            })} />
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <label class="form-label">Description :</label>
-                                        <input type="text" class="form-control" name='description' onChange={(e) => updateFormdata({
-                                            e,
-                                            position: {
-                                                name: "properties",
-                                                index,
-                                                sub: {
-                                                    name: "description",
-
-                                                }
-                                            },
-                                            value: e.target.value
-                                        })} />
-                                    </div>
-                                </div>
-                            </div>
-                        })}
 
                         <div class="text-end flex gap-2 justify-end">
                             <button type="submit" class="btn grey-primary">Cancle</button>
-                            <button type="submit" class="btn black-btn">Create</button>
+                            <button type="submit" class="btn black-btn">Save & Continue</button>
                         </div>
                     </form>
                 </div>
