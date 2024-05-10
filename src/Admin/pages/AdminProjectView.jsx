@@ -157,7 +157,7 @@ function AdminProjectView() {
                                     </div>
                                 </div>
                                 {
-                                    projectdetails.properties.map((item, i) => {
+                                    projectdetails.properties?.map((item, i) => {
                                         return <div className="child-table" key={i}>
                                             <div className="container">
 

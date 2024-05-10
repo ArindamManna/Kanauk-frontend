@@ -61,9 +61,9 @@ function Navbar() {
                 <div className="left">
 
                     <div className="logo">
-                        <img src={navBg ? kaunuck_logo_white : kaunuck_logo_black} alt="Kanuak Logo" srcset="" className='hidden xl:block' />
-                        <img src={kaunuck_logo_white} alt="Kanuak Logo" srcset="" className='block xl:hidden' />
-                        {/* <img src={kaunuck_logo_white} alt="Kanuak Logo" srcset="" /> */}
+                        <img src={navBg ? kaunuck_logo_white : kaunuck_logo_black} alt="Kanuak Logo" className='hidden xl:block' />
+                        <img src={kaunuck_logo_white} alt="Kanuak Logo" className='block xl:hidden' />
+                        {/* <img src={kaunuck_logo_white} alt="Kanuak Logo"  /> */}
                     </div>
                     <div className={`searchBox  w-[20rem] ${navBg ? "" : "hide"} `}>
                         <input type="text" placeholder='Find your new construction ' />

@@ -123,7 +123,7 @@ function ProjectDetails() {
                             </p>
                             <div className="flex items-center gap-1">
                                 <span>
-                                    <img src={bedImg} alt="" srcset="" />
+                                    <img src={bedImg} alt="" />
                                 </span>
                                 <p>1</p>
 
@@ -135,7 +135,7 @@ function ProjectDetails() {
                             </p>
                             <div className="flex items-center gap-1">
                                 <span>
-                                    <img src={bedImg} alt="" srcset="" />
+                                    <img src={bedImg} alt="" />
                                 </span>
                                 <p>1</p>
 
@@ -147,7 +147,7 @@ function ProjectDetails() {
                             </p>
                             <div className="flex items-center gap-1">
                                 <span>
-                                    <img src={bedImg} alt="" srcset="" />
+                                    <img src={bedImg} alt="" />
                                 </span>
                                 <p>1</p>
 
@@ -159,7 +159,7 @@ function ProjectDetails() {
                             </p>
                             <div className="flex items-center gap-1">
                                 <span>
-                                    <img src={bedImg} alt="" srcset="" />
+                                    <img src={bedImg} alt="" />
                                 </span>
                                 <p>1</p>
 
@@ -171,7 +171,7 @@ function ProjectDetails() {
                             </p>
                             <div className="flex items-center gap-1">
                                 <span>
-                                    <img src={bedImg} alt="" srcset="" />
+                                    <img src={bedImg} alt="" />
                                 </span>
                                 <p>1</p>
 
@@ -183,7 +183,7 @@ function ProjectDetails() {
                             </p>
                             <div className="flex items-center gap-1">
                                 <span>
-                                    <img src={bedImg} alt="" srcset="" />
+                                    <img src={bedImg} alt="" />
                                 </span>
                                 <p>1</p>
 

@@ -517,11 +517,11 @@ header nav .hamburgerBtn {
   @apply w-full object-contain rounded-2xl;
 }
 .featured-projects-banner .projects_slider .Featured_Project_Card .content {
-  padding: 1rem 0.375rem 0rem 0.375rem;
+  padding: 0.75rem 0.375rem 0rem 0.375rem;
 }
 @media (min-width: 768px) {
   .featured-projects-banner .projects_slider .Featured_Project_Card .content {
-    padding: 1.75rem 0.375rem 0rem 0.375rem;
+    padding: 1rem 0.375rem 0rem 0.375rem;
   }
 }
 .featured-projects-banner .projects_slider .Featured_Project_Card .content p {
@@ -665,6 +665,7 @@ header nav .hamburgerBtn {
 .assignments-sales-banner .assignments-salesBox .Assignments_Sales_Card .bottom .details-box .details p {
   font-size: 0.75rem;
   color: #9ca3af;
+  margin-bottom: 0;
 }
 .assignments-sales-banner .assignments-salesBox .Assignments_Sales_Card .bottom .details-box .details:not(:last-child) {
   @apply border-r-2 border-[#9ca3af];
@@ -1002,6 +1003,7 @@ header nav .hamburgerBtn {
 }
 .featured-properties-banner .properties-box .properties:hover .bottom .title,
 .featured-properties-banner .properties-box .properties:hover .bottom .description {
+  margin-bottom: 0rem;
   color: white;
 }
 .featured-properties-banner .properties-box .properties:hover .bottom .viewMoreBtn {
@@ -1022,6 +1024,7 @@ header nav .hamburgerBtn {
   color: #155147;
   font-size: 1.5rem;
   font-weight: 600;
+  margin-bottom: 0rem;
 }
 @media (min-width: 768px) {
   .featured-properties-banner .properties-box .properties .bottom .title {
@@ -1036,6 +1039,7 @@ header nav .hamburgerBtn {
 .featured-properties-banner .properties-box .properties .bottom .description {
   color: #535454;
   font-size: 1rem;
+  margin-bottom: 0rem;
 }
 @media (min-width: 768px) {
   .featured-properties-banner .properties-box .properties .bottom .description {
@@ -1108,6 +1112,9 @@ header nav .hamburgerBtn {
     height: 7rem;
     width: 7rem;
   }
+}
+.featured-agents-banner .agents-box .Featured_Agents_Card p {
+  margin-bottom: 0rem;
 }
 .featured-agents-banner .agents-box .Featured_Agents_Card .title {
   color: #155147;
@@ -1265,7 +1272,7 @@ header nav .hamburgerBtn {
 }
 .our-blogs-banner .our_blog .bottom .titleAndDate {
   color: #0affd8;
-  @apply text-2xl font-bold;
+  @apply text-2xl font-bold mb-0;
 }
 .our-blogs-banner .our_blog .bottom .titleAndDate .date {
   @apply text-xl font-semibold;
@@ -1279,11 +1286,11 @@ header nav .hamburgerBtn {
   @apply h-16 w-16 rounded-full;
 }
 .our-blogs-banner .our_blog .bottom .name {
-  @apply text-2xl;
+  @apply text-2xl mb-0;
   color: white;
 }
 .our-blogs-banner .our_blog .bottom .time {
-  @apply text-base;
+  @apply text-base mb-0;
   font-weight: 300;
   color: white;
 }
