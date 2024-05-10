@@ -11,7 +11,14 @@ function AdminAddBuilder() {
         name: "",
         phone: "",
         email: "",
-        location: ""
+        location: {
+            label: ""
+        },
+        images: [
+            {
+                url: ""
+            }
+        ]
     })
     function updateFormdata(e) {
         let { name, value } = e.target;
@@ -86,6 +93,36 @@ function AdminAddBuilder() {
                                 <div class="mb-3">
                                     <label class="form-label">Mobile No:</label>
                                     <input type="text" class="form-control" name="phone" onChange={(e) => updateFormdata(e)} />
+                                </div>
+                            </div>
+                            <div className="col-md-4">
+                                <div className="mb-3">
+                                    <label class="form-label">upload Images one by one :</label>
+                                    <Upload images={formdata?.images} updateFormdata={(value) => {
+                                        console.log(value)
+                                        updateFormdata({
+                                            position: {
+                                                name: "images",
+                                                index: 0,
+                                                sub: {
+                                                    name: "url"
+
+
+                                                }
+                                            },
+                                            value
+                                        })
+                                    }} />
+                                </div>
+                            </div>
+                            <div className="col-12">
+                                <div className="row">
+                                    {formdata?.images?.map((item, i) => {
+                                        return <div className="col-md-4" key={i}> <img src={item.url} alt="" /> </div>
+                                    })}
+
+
+
                                 </div>
                             </div>
 
