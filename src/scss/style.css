@@ -74,11 +74,11 @@
 *::-webkit-scrollbar {
   width: 6px;
   height: 6px;
-  background-color: #F5F5F5;
+  background-color: #f5f5f5;
 }
 *::-webkit-scrollbar-thumb {
   border-radius: 10px;
-  background-color: #03BFA1;
+  background-color: #03bfa1;
 }
 
 .loading-overlay {
@@ -304,7 +304,7 @@ header nav .hamburgerBtn {
   font-size: 1.25rem;
   line-height: 1.75rem;
   color: white;
-  background-color: #2F3C3A;
+  background-color: #2f3c3a;
 }
 .navbar-mobile-wraper .navbar-mobile ul li.has-submenu > a::after {
   content: "";
@@ -1049,7 +1049,7 @@ header nav .hamburgerBtn {
 .featured-properties-banner .properties-box .properties .bottom .viewMoreBtn {
   color: white;
   font-size: 1rem;
-  background: #03BFA1;
+  background: #03bfa1;
   @apply w-fit flex px-4 py-2 items-center rounded-full;
   gap: 10px;
 }
@@ -1254,7 +1254,7 @@ header nav .hamburgerBtn {
   }
 }
 .our-blogs-banner .description {
-  color: #414D4B;
+  color: #414d4b;
   @apply text-base lg:text-lg;
 }
 .our-blogs-banner .description a {
@@ -1384,8 +1384,9 @@ header nav .hamburgerBtn {
   color: rgba(0, 0, 0, 0.46);
 }
 .authentication .left .formContainer .contryCode {
+  width: 6rem;
   position: absolute;
-  left: 6rem;
+  left: 7rem;
   top: 10.6rem;
   color: rgba(0, 0, 0, 0.46);
   font-size: 0.8rem;
@@ -1393,7 +1394,7 @@ header nav .hamburgerBtn {
 .authentication .left .formContainer .pchecker {
   position: absolute;
   top: 14.7rem;
-  left: 2.8rem;
+  left: 3.2rem;
   font-size: 0.8rem;
   color: rgba(83, 84, 84, 0.43);
 }
@@ -1502,7 +1503,7 @@ header nav .hamburgerBtn {
 
 footer {
   @apply pt-14 pb-6;
-  background: #2F3C3A;
+  background: #2f3c3a;
   color: white;
 }
 footer .footer {
@@ -1547,7 +1548,7 @@ footer .copyrightDiv {
   @apply flex items-center gap-1 text-sm font-medium;
 }
 .pageBreadcrumb button:hover {
-  color: #03BFA1;
+  color: #03bfa1;
 }
 .pageBreadcrumb button span {
   @apply inline-block h-4 w-4;
@@ -1566,7 +1567,7 @@ footer .copyrightDiv {
   @apply text-sm font-medium pb-2 px-1;
 }
 .projectDetails-gallery .top .right button.active {
-  border-bottom: 2px solid #03BFA1;
+  border-bottom: 2px solid #03bfa1;
 }
 .projectDetails-gallery .gallery {
   @apply relative lg:grid grid-cols-4 grid-rows-2 gap-4 mb-8;
@@ -1644,7 +1645,7 @@ footer .copyrightDiv {
 }
 .projectDetails-main .left p.listing-status span {
   @apply font-medium;
-  color: #FF8A00;
+  color: #ff8a00;
 }
 .projectDetails-main .left p.price {
   color: #155147;
@@ -1654,7 +1655,7 @@ footer .copyrightDiv {
   @apply grid grid-cols-3 pr-10 gap-4 mb-4;
 }
 .projectDetails-main .left .project-highlights .item p.title {
-  color: #03BFA1;
+  color: #03bfa1;
   @apply md:text-lg text-base lg:text-xl font-medium;
 }
 .projectDetails-main .left .project-highlights .item span img {
@@ -1686,7 +1687,7 @@ footer .copyrightDiv {
   @apply md:text-lg text-base lg:text-xl font-medium;
 }
 .projectDetails-main .left .avalilable-homes .links button:hover, .projectDetails-main .left .avalilable-homes .links button.active {
-  color: #03BFA1;
+  color: #03bfa1;
 }
 .projectDetails-main .left .avalilable-homes p.gray {
   color: #535454;
@@ -1737,7 +1738,7 @@ footer .copyrightDiv {
 }
 .projectDetails-main .right .contact-sales-center .top .view-profile-link {
   @apply md:text-base text-sm lg:text-lg mb-4 font-medium;
-  color: #0AFFD8;
+  color: #0affd8;
 }
 .projectDetails-main .right .contact-sales-center .top .call-now-btn {
   background-color: white;
@@ -1746,7 +1747,7 @@ footer .copyrightDiv {
 }
 .projectDetails-main .right .contact-sales-center .top .msg-btn {
   color: white;
-  background: #03BFA1;
+  background: #03bfa1;
   @apply mb-8;
 }
 .projectDetails-main .right .contact-sales-center .form {
@@ -1772,7 +1773,7 @@ footer .copyrightDiv {
   font-weight: 300;
 }
 .projectDetails-main .right .contact-sales-center .form form .req-btn {
-  background: #FF8A00;
+  background: #ff8a00;
 }
 .projectDetails-main .right .community-location p.title {
   @apply text-lg md:text-xl font-medium mb-3;
@@ -1800,7 +1801,7 @@ footer .copyrightDiv {
 }
 .projectDetails-main .features-amenitis-details .feature-details {
   @apply rounded-lg md:px-6 px-4 lg:px-9 py-4 md:py-6;
-  background: #F7F7F7;
+  background: #f7f7f7;
 }
 .projectDetails-main .features-amenitis-details .feature-details p.title {
   @apply xl:text-3xl lg:text-2xl md:text-xl text-lg 2xl:text-4xl md:mb-3 mb-2 lg:mb-4 underline underline-offset-2 font-bold text-center;
@@ -1818,7 +1819,7 @@ footer .copyrightDiv {
 }
 .projectDetails-main .features-amenitis-details .amenitis-details {
   @apply rounded-lg md:px-6 px-4 lg:px-9 py-4 md:py-6;
-  background: #F7F7F7;
+  background: #f7f7f7;
 }
 .projectDetails-main .features-amenitis-details .amenitis-details p.title {
   @apply xl:text-3xl lg:text-2xl md:text-xl text-lg 2xl:text-4xl md:mb-3 mb-2 lg:mb-4 underline underline-offset-2 font-bold text-center;
@@ -1890,11 +1891,11 @@ footer .copyrightDiv {
 .projectliisting .filterBox::-webkit-scrollbar {
   width: 6px;
   height: 6px;
-  background-color: #F5F5F5;
+  background-color: #f5f5f5;
 }
 .projectliisting .filterBox::-webkit-scrollbar-thumb {
   border-radius: 10px;
-  background-color: #03BFA1;
+  background-color: #03bfa1;
 }
 .projectliisting .filterBox * {
   flex-shrink: 0;
@@ -1906,7 +1907,7 @@ footer .copyrightDiv {
 .projectliisting .filterBox .left .dropdown-btn button,
 .projectliisting .filterBox .right .dropdown-btn button {
   @apply flex items-center px-2 md:py-3 py-2 rounded-md text-sm md:text-base font-medium;
-  background: #D9D9D9;
+  background: #d9d9d9;
 }
 .projectliisting .filterBox .left .dropdown-btn button span,
 .projectliisting .filterBox .right .dropdown-btn button span {
@@ -1931,7 +1932,7 @@ footer .copyrightDiv {
 }
 .projectliisting .listing-map-section .listingBox .dropdown-btn button {
   @apply whitespace-nowrap flex items-center px-2 py-3 rounded-md text-base font-medium;
-  background: #D9D9D9;
+  background: #d9d9d9;
 }
 .projectliisting .listing-map-section .listingBox .dropdown-btn button span {
   height: 1rem;

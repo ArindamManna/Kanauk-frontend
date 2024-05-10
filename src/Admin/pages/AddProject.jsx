@@ -307,6 +307,7 @@ function AddProject() {
                                         images={formdata?.images}
                                         updateFormdata={(value) => {
                                             console.log(value);
+                                            console.log(formdata);
                                             updateFormdata({
                                                 position: {
                                                     name: "images",
