@@ -13,13 +13,13 @@ const Auth = () => {
     const inhitialFormdata = {
         fname: "",
         lname: "",
-        ccode: "",
         pno: "",
         email: "",
         password: "",
         cpassword: "",
     };
     const [formdata, setFormdata] = useState(inhitialFormdata);
+    console.log(formdata);
     async function createUser(e) {
         e.preventDefault();
         console.log(formdata);
@@ -29,10 +29,11 @@ const Auth = () => {
             method: "post",
             formData: formdata,
         });
+        console.log(res);
         if (res.data) {
             // localStorage.setItem("usertoken", res.data.token);
             alert("User Created Successfully");
-            navigate("/users", { state: res.data });
+            navigate("/", { state: res.data });
             setLoader(false);
         } else {
             alert(res.error.message);
@@ -110,15 +111,24 @@ const Auth = () => {
                                 })
                             }
                         />
-                        <select className="contryCode">
+                        <select
+                            className="contryCode"
+                            aria-label="Default select example"
+                            name="ccode"
+                            onChange={(e) =>
+                                updateFormdata({
+                                    e,
+                                    position: {
+                                        name: "ccode",
+                                    },
+                                    value: e.target.value,
+                                })
+                            }>
                             {contries.map((country, i) => (
                                 <option value={country.code} key={i}>
                                     {country.name}({country.code})
                                 </option>
                             ))}
-                            <option value="+91" selected>
-                                India(+91)
-                            </option>
                         </select>
                         <input
                             placeholder="Pnone Number | "
@@ -150,7 +160,7 @@ const Auth = () => {
                                 })
                             }
                         />
-                        <span className="pchecker">6 + Charecter</span>
+                        <span className={`pchecker ${formdata.email ? "hide" : ""}`}>6 + Charecter</span>
                         <input
                             placeholder="Password"
                             name="password"
