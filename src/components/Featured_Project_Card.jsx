@@ -7,17 +7,17 @@ function Featured_Project_Card({ data }) {
     return (
         <>
             <div className='Featured_Project_Card'>
-                {/* <img src={images[0]?.url} alt="" /> */}
+                <img src={images[0]?.url} alt="" />
 
                 <div className="content">
                     <p className='title'>
                         {name}
                     </p>
                     <p className='location'>
-                        {location}
+                        {location?.label}
                     </p>
                     <p className='price'>
-                        ${price?.from}-{price?.to}
+                        ${price?.from} - {price.to}
                     </p>
 
                 </div>

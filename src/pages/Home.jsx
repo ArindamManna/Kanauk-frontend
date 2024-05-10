@@ -53,7 +53,7 @@ function Home() {
 
     let options = {
         items: 3,
-        loop: true,
+        loop: false,
         nav: true,
         dots: false,
         margin: 20,
@@ -261,14 +261,15 @@ function Home() {
                             {right}
                         </span>
                     </button> */}
-                    {/* <OwlCarousel className='owl-theme px-4 lg:px-0'{...options}> */}
-                    {projectList?.map((item, index) => {
-                        console.log(item)
-                        return <div className='item' key={index}><Featured_Project_Card data={item} /> </div>
-                    })}
+                    {projectList?.length > 0 ?
+                        <OwlCarousel className='owl-theme px-4 lg:px-0'{...options}>
+                            {projectList?.map((item, index) => {
+                                console.log(item)
+                                return <div className='item' key={index}><Featured_Project_Card data={item} /> </div>
+                            })}
 
 
-                    {/* </OwlCarousel> */}
+                        </OwlCarousel> : ""}
                 </div>
             </section>
             <section className='padding assignments-sales-banner'>
