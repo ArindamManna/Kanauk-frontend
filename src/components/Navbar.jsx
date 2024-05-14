@@ -64,7 +64,6 @@ function Navbar() {
     //         elem.addEventListener('click', () => {
     //             elem.parentElement.classList.toggle('active');
     //         })
-
     //     })
     // })
 

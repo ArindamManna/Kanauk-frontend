@@ -1626,6 +1626,9 @@ footer .copyrightDiv {
 .projectDetails-main {
   @apply lg:grid grid-cols-3 gap-4 mb-10;
 }
+.projectDetails-main p {
+  @apply mb-0;
+}
 .projectDetails-main .left {
   @apply col-span-2;
 }
@@ -2078,7 +2081,7 @@ footer .copyrightDiv {
   background-color: #626665;
 }
 .Login-page .left .register-social-para {
-  @apply text-lg text-center;
+  @apply text-lg text-center mb-0;
   color: #535454;
 }
 .Login-page .left .social-login-btn {

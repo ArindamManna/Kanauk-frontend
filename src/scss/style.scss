@@ -1928,6 +1928,10 @@ footer {
 .projectDetails-main {
     @apply lg:grid grid-cols-3 gap-4 mb-10;
 
+    p {
+        @apply mb-0;
+    }
+
     .left {
         @apply col-span-2;
 
@@ -2528,7 +2532,7 @@ footer {
         }
 
         .register-social-para {
-            @apply text-lg text-center;
+            @apply text-lg text-center mb-0;
             color: #535454;
 
         }

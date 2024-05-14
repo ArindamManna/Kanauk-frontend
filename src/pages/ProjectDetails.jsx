@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { MailSolid, heartSolid, imageIcon, left, locationIcon, phoneIcon, right, starFill, tickCircle } from '../asset/staticData'
 import projectDetailsImage1 from "../asset/images/projectDetailsImage1.png"
 import projectDetailsImage2 from "../asset/images/projectDetailsImage2.png"
@@ -9,10 +9,37 @@ import builderLogo from "../asset/images/builderLogo.png"
 import bedImg from "../asset/images/small/bed.png"
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import { useSearchParams } from 'react-router-dom'
+import { ApiHelperFunction } from '../Api/ApiHelperfunction'
+import Loader from '../components/Loader'
 
 function ProjectDetails() {
+    const [projectdetails, setProjectdetails] = useState({})
+    const [loader, setLoader] = useState(false)
+    const [searchParams, setSearchParams] = useSearchParams();
+    let project_id = searchParams.get("project_id")
+
+
+
+
+    useEffect(() => {
+        fetchProjectdetails()
+    }, []);
+    async function fetchProjectdetails() {
+        setLoader(true)
+        let res = await ApiHelperFunction({
+            urlPath: `users/project/${project_id}`,
+            method: "get",
+        });
+        setLoader(false)
+        console.log(res);
+        if (res.data) {
+            setProjectdetails(res.data)
+        }
+    }
     return (
         <>
+            {loader ? <Loader /> : ""}
             <Navbar />
             <section className='pageBreadcrumb padding'>
                 <p>
@@ -38,7 +65,7 @@ function ProjectDetails() {
                 <div className="top">
 
                     <h3>
-                        Spring Valley Construction
+                        {projectdetails?.name}
                     </h3>
                     <div className="right ml-auto">
                         <button className='active'>
@@ -53,7 +80,7 @@ function ProjectDetails() {
                     </div>
                 </div>
                 <div className="gallery">
-                    <img src={projectDetailsImage1} alt="" className='col-span-2 row-span-2' />
+                    <img src={projectdetails?.images[0].url} alt="" className='col-span-2 row-span-2' />
                     <img src={projectDetailsImage2} alt="" className='hidden lg:block' />
                     <img src={projectDetailsImage3} alt="" className='hidden lg:block' />
                     <img src={projectDetailsImage4} alt="" className='col-span-2 hidden lg:block' />
