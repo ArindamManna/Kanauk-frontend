@@ -7,8 +7,8 @@ function AdminLogin() {
     const navigate = useNavigate();
     const [loader, setLoader] = useState(false)
     useEffect(() => {
-        let usertoken = localStorage.getItem("usertoken")
-        if (usertoken) {
+        let adminToken = localStorage.getItem("adminToken")
+        if (adminToken) {
             navigate("../")
 
         }
@@ -37,7 +37,7 @@ function AdminLogin() {
         console.log(res);
         if (res.data) {
             setLoader(false)
-            localStorage.setItem("usertoken", res.data.token);
+            localStorage.setItem("adminToken", res.data.token);
             navigate("../")
         } else {
             setLoader(false)

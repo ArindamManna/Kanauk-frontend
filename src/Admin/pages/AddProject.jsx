@@ -57,7 +57,6 @@ function AddProject() {
             formData: formdata,
         });
         if (res.data) {
-            // localStorage.setItem("usertoken", res.data.token);
             alert("Project Created Successfully");
             navigate("/admin/addproperties", { state: res.data });
             setLoader(false);

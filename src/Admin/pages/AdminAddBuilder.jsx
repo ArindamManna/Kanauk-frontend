@@ -51,7 +51,6 @@ function AdminAddBuilder() {
             formData: formdata
         });
         if (res.data) {
-            // localStorage.setItem("usertoken", res.data.token);
             alert("Builder Created Successfully");
             navigate("/admin/builder")
             setLoader(false)

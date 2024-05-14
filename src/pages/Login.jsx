@@ -8,6 +8,7 @@ import Loader from '../components/Loader';
 function Login() {
     const navigate = useNavigate();
     const [loader, setLoader] = useState(false);
+    const [currentTab, setCurrentTab] = useState("login");
     const inhitialFormdata = {
         fname: "",
         lname: "",
@@ -33,9 +34,9 @@ function Login() {
             formData: formdata,
         });
         if (res.data) {
-            // localStorage.setItem("usertoken", res.data.token);
+            localStorage.setItem("usertoken", res.data.token);
             alert("Account Created Successfully");
-            // navigate("/", { state: res.data });
+            navigate("/", { state: res.data });
             setLoader(false);
         } else {
             alert(res.error.message);
@@ -70,89 +71,119 @@ function Login() {
             <section className="Login-page padding-l">
                 <div className="left">
                     <div className="head">
-                        <div className="tab-btn active">
+                        <div className={`tab-btn  ${currentTab === "login" ? "active" : ""}`} onClick={(e) => { setCurrentTab(prev => (prev === "login" ? "register" : "login")) }} >
                             Sign In
                         </div>
-                        <div className="tab-btn ">
+                        <div className={`tab-btn  ${currentTab !== "login" ? "active" : ""}`} onClick={(e) => { setCurrentTab(prev => (prev === "login" ? "register" : "login")) }} >
                             Register
                         </div>
 
                     </div>
-                    <form action="" onSubmit={(e) => signUp(e)}>
-                        <input type="text" placeholder='First Name' onChange={(e) =>
-                            updateFormdata({
-                                e,
-                                position: {
-                                    name: "fname",
-                                },
-                                value: e.target.value,
-                            })
-                        } />
-                        <input type="text" placeholder='Last Name' onChange={(e) =>
-                            updateFormdata({
-                                e,
-                                position: {
-                                    name: "lname",
-                                },
-                                value: e.target.value,
-                            })
-                        } />
-                        <input type="text" placeholder='Phone No ' onChange={(e) =>
-                            updateFormdata({
-                                e,
-                                position: {
-                                    name: "pno",
-                                },
-                                value: e.target.value,
-                            })
-                        } />
-                        <input type="text" placeholder='Email' onChange={(e) =>
-                            updateFormdata({
-                                e,
-                                position: {
-                                    name: "email",
-                                },
-                                value: e.target.value,
-                            })
-                        } />
-                        <input type="password" placeholder='Password' onChange={(e) =>
-                            updateFormdata({
-                                e,
-                                position: {
-                                    name: "password",
-                                },
-                                value: e.target.value,
-                            })
-                        } />
-                        <input type="password" placeholder='Confirm Password' onChange={(e) =>
-                            updateFormdata({
-                                e,
-                                position: {
-                                    name: "cpassword",
-                                },
-                                value: e.target.value,
-                            })
-                        } />
+                    {currentTab === "login" ?
 
-                        <div className='flex gap-3 terms-conditon items-start'>
-                            <input type="checkbox" name="" id="" onChange={(e) =>
+                        <form action="" onSubmit={(e) => signUp(e)}>
+
+                            <input type="text" placeholder='Email' onChange={(e) =>
                                 updateFormdata({
                                     e,
                                     position: {
-                                        name: "isTermsChecked",
+                                        name: "email",
                                     },
-                                    value: e.target.checked,
+                                    value: e.target.value,
                                 })
                             } />
-                            <p>
-                                Creating account means you're okay with our <a href="#">terms of service</a>, <a href="#">privacy policy</a>, and our default <a href="#">notification settings</a>.
-                            </p>
+                            <input type="password" placeholder='Password' onChange={(e) =>
+                                updateFormdata({
+                                    e,
+                                    position: {
+                                        name: "password",
+                                    },
+                                    value: e.target.value,
+                                })
+                            } />
 
-                        </div>
-                        <button className='submit-btn'>
-                            Create an account
-                        </button>
-                    </form>
+
+                            <button className='submit-btn'>
+                                Login
+                            </button>
+                        </form> :
+                        <form action="" onSubmit={(e) => signUp(e)}>
+                            <input type="text" placeholder='First Name' onChange={(e) =>
+                                updateFormdata({
+                                    e,
+                                    position: {
+                                        name: "fname",
+                                    },
+                                    value: e.target.value,
+                                })
+                            } />
+                            <input type="text" placeholder='Last Name' onChange={(e) =>
+                                updateFormdata({
+                                    e,
+                                    position: {
+                                        name: "lname",
+                                    },
+                                    value: e.target.value,
+                                })
+                            } />
+                            <input type="text" placeholder='Phone No ' onChange={(e) =>
+                                updateFormdata({
+                                    e,
+                                    position: {
+                                        name: "pno",
+                                    },
+                                    value: e.target.value,
+                                })
+                            } />
+                            <input type="text" placeholder='Email' onChange={(e) =>
+                                updateFormdata({
+                                    e,
+                                    position: {
+                                        name: "email",
+                                    },
+                                    value: e.target.value,
+                                })
+                            } />
+                            <input type="password" placeholder='Password' onChange={(e) =>
+                                updateFormdata({
+                                    e,
+                                    position: {
+                                        name: "password",
+                                    },
+                                    value: e.target.value,
+                                })
+                            } />
+                            <input type="password" placeholder='Confirm Password' onChange={(e) =>
+                                updateFormdata({
+                                    e,
+                                    position: {
+                                        name: "cpassword",
+                                    },
+                                    value: e.target.value,
+                                })
+                            } />
+
+                            <div className='flex gap-3 terms-conditon items-start'>
+                                <input type="checkbox" name="" id="" onChange={(e) =>
+                                    updateFormdata({
+                                        e,
+                                        position: {
+                                            name: "isTermsChecked",
+                                        },
+                                        value: e.target.checked,
+                                    })
+                                } />
+                                <p>
+                                    Creating account means you're okay with our <a href="#">terms of service</a>, <a href="#">privacy policy</a>, and our default <a href="#">notification settings</a>.
+                                </p>
+
+                            </div>
+                            <button className='submit-btn'>
+                                Create an account
+                            </button>
+                        </form>
+
+                    }
                     <div className="hr">
                         <div className="or">
                             Or

@@ -6,9 +6,9 @@ import { ApiHelperFunction } from '../../Api/ApiHelperfunction';
 function AdminLayout({ children }) {
     const navigate = useNavigate()
     useEffect(() => {
-        let usertoken = localStorage.getItem("usertoken")
+        let adminToken = localStorage.getItem("adminToken")
         verifyToken()
-        if (usertoken == undefined) {
+        if (adminToken == undefined) {
             navigate("./login")
 
         }

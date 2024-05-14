@@ -31,7 +31,7 @@ const Auth = () => {
         });
         console.log(res);
         if (res.data) {
-            // localStorage.setItem("usertoken", res.data.token);
+            // localStorage.setItem("adminToken", res.data.token);
             alert("User Created Successfully");
             navigate("/", { state: res.data });
             setLoader(false);

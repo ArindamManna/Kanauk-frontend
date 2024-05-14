@@ -14,7 +14,7 @@ export const ApiHelperFunction = async (data) => {
     headers: {
       Accept: "application/json",
       "Content-Type": typecontent ? "multipart/form-data" : "application/json",
-      Authorization: "Bearer " + localStorage.getItem("usertoken"),
+      Authorization: "Bearer " + localStorage.getItem("adminToken"),
     },
     data: formData,
   };
