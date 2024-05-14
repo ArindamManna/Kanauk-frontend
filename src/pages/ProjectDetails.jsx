@@ -80,7 +80,7 @@ function ProjectDetails() {
                     </div>
                 </div>
                 <div className="gallery">
-                    <img src={projectdetails?.images[0].url} alt="" className='col-span-2 row-span-2' />
+                    <img src={projectdetails?.images?.[0]?.url} alt="" className='col-span-2 row-span-2' />
                     <img src={projectDetailsImage2} alt="" className='hidden lg:block' />
                     <img src={projectDetailsImage3} alt="" className='hidden lg:block' />
                     <img src={projectDetailsImage4} alt="" className='col-span-2 hidden lg:block' />
