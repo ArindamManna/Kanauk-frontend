@@ -28,7 +28,24 @@ function AdminBuilderList() {
     useEffect(() => {
         fetchBuilderlist()
     }, [])
+    async function deleteBuilder(id, index) {
+        // e.preventDefault();
+        setLoader(true)
+        let res = await ApiHelperFunction({
+            urlPath: `admin/builder/delete/${id}`,
+            method: "delete",
+        });
+        console.log(res);
+        if (res.data) {
+            setBuilderList((prev) => prev?.filter((item, i) => i != index));
 
+            setLoader(false);
+
+        } else {
+            // alert(res.error.message)
+            setLoader(false)
+        }
+    }
     return (
         <AdminLayout>
             {loader ? <Loader /> : ""}
@@ -72,6 +89,7 @@ function AdminBuilderList() {
                                     <td className='flex items-center'>
                                         <a href="#"><img src={require("../asset/images/logo/lucide_view.png")} /></a>
                                         <a href="#"><img src={require("../asset/images/logo/akar-icons_edit.png")} /></a>
+                                        <a onClick={() => { deleteBuilder(item?._id, index) }} className='cursor-pointer' ><img src={require("../asset/images/logo/delete.png")} /></a>
                                     </td>
                                 </tr>
                             })}

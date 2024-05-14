@@ -4,6 +4,8 @@ import { ApiHelperFunction } from '../../Api/ApiHelperfunction';
 import Loader from '../../components/Loader';
 import { toFormData } from 'axios';
 import { useLocation, useNavigate } from 'react-router-dom';
+import Select from "react-select";
+import { toBeRequired } from "@testing-library/jest-dom/dist/matchers";
 
 function AddProperties() {
     let location = useLocation()
@@ -219,19 +221,31 @@ function AddProperties() {
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label class="form-label">Listing Status :</label>
-                                        <input type="text" class="form-control" name='listing_status'
-                                            onChange={(e) => updateFormdata({
-                                                e,
-                                                position: {
-                                                    name: "properties",
-                                                    index,
-                                                    sub: {
-                                                        name: "listing_status",
+                                        <select
+                                            class="form-select"
+                                            aria-label="Default select example"
+                                            name="listingStatus"
+                                            onChange={(e) =>
+                                                updateFormdata({
+                                                    e,
+                                                    position: {
+                                                        name: "properties",
+                                                        index,
+                                                        sub: {
+                                                            name: "listing_status",
 
-                                                    }
-                                                },
-                                                value: e.target.value
-                                            })} />
+                                                        }
+                                                    },
+                                                    value: e.target.value
+                                                })
+                                            }>
+                                            <option selected>Open this select menu</option>
+                                            <option value="Selling">Selling</option>
+                                            <option value="Under Construction">Under Construction</option>
+                                            <option value="Pre Book">Pre Book</option>
+                                        </select>
+                                        {/* <input type="text" class="form-control" name='listing_status'
+                                            onChange={(e) =>} /> */}
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -249,6 +263,33 @@ function AddProperties() {
                                             },
                                             value: e.target.value
                                         })} />
+                                    </div>
+                                </div>
+                                <div className="col-md-6">
+                                    <div className="mb-3">
+                                        <label class="form-label">Tags:</label>
+                                        <Select
+                                            className=""
+                                            isMulti={toBeRequired}
+                                            options={[
+                                                { value: "featured", label: "Featured" },
+                                                { value: "assignment_sales", label: "Assignment Sales" },
+                                                { value: "most_viewed", label: "Most Viewed" },
+                                            ]}
+                                            onChange={(value) => {
+                                                updateFormdata({
+                                                    position: {
+                                                        name: "properties",
+                                                        index,
+                                                        sub: {
+                                                            name: "tags",
+
+                                                        }
+                                                    },
+                                                    value,
+                                                });
+                                            }}
+                                        />
                                     </div>
                                 </div>
                             </div>

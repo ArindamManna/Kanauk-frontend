@@ -21,6 +21,8 @@ import { ApiHelperFunction } from '../Api/ApiHelperfunction'
 
 function Home() {
     const [projectList, setProjectList] = useState([])
+    const [builderList, setBuilderList] = useState([])
+    const [properties, setProperties] = useState([])
     const [loader, setLoader] = useState(false)
     async function fetchProjectList(e) {
         // e.preventDefault();
@@ -29,7 +31,6 @@ function Home() {
             urlPath: "users/project/all",
             method: "get",
         });
-        console.log(res);
         if (res.data) {
             setProjectList(res.data);
             setLoader(false)
@@ -38,8 +39,42 @@ function Home() {
             setLoader(false)
         }
     }
+    async function fetchBuilders(e) {
+        // e.preventDefault();
+        setLoader(true)
+        let res = await ApiHelperFunction({
+            urlPath: "users/builder/all",
+            method: "get",
+        });
+        console.log(res);
+        if (res.data) {
+            setBuilderList(res.data);
+            setLoader(false)
+        } else {
+            alert(res.error.message)
+            setLoader(false)
+        }
+    }
+    async function fetchProperties(e) {
+        // e.preventDefault();
+        setLoader(true)
+        let res = await ApiHelperFunction({
+            urlPath: "users/property/all",
+            method: "get",
+        });
+        console.log(res);
+        if (res.data) {
+            setProperties(res.data);
+            setLoader(false)
+        } else {
+            alert(res.error.message)
+            setLoader(false)
+        }
+    }
     useEffect(() => {
         fetchProjectList()
+        fetchBuilders()
+        fetchProperties()
     }, [])
 
 
@@ -95,7 +130,7 @@ function Home() {
     }
     let options2 = {
         items: 3,
-        loop: true,
+        loop: false,
         nav: true,
         dots: false,
         margin: 20,
@@ -137,7 +172,7 @@ function Home() {
     }
     let options3 = {
         items: 3,
-        loop: true,
+        loop: false,
         nav: false,
         dots: false,
         margin: 0,
@@ -272,7 +307,7 @@ function Home() {
                         </OwlCarousel> : ""}
                 </div>
             </section>
-            <section className='padding assignments-sales-banner'>
+            <section className='padding assignments-sales-banner d-none'>
                 <div className="flex flex-col md:flex-row gap-6 md:justify-between items-center mb-10 md:mb-16 xl:mb-24">
                     <h3>
                         Assignment Sales
@@ -302,7 +337,20 @@ function Home() {
 
                 </div>
                 <div className="featured-builder-slider">
-                    <OwlCarousel className='owl-theme px-4 lg:px-0'{...options2}>
+
+                    {builderList?.length > 0 ?
+                        <OwlCarousel className='owl-theme px-4 lg:px-0'{...options2}>
+                            {builderList?.map((item, index) => {
+                                console.log(item)
+                                return <div className='item' key={index}>
+                                    <img src={item?.image?.url} alt="" />
+
+                                </div>
+                            })}
+
+
+                        </OwlCarousel> : ""}
+                    {/* <OwlCarousel className='owl-theme  px-4 lg:px-0'{...options2}>
 
                         <div className='item'>
                             <img src={builder1} alt="" />
@@ -332,25 +380,10 @@ function Home() {
                             <img src={builder1} alt="" />
 
                         </div>
-                    </OwlCarousel>
+                    </OwlCarousel> */}
 
 
-                    {/* 
-                    <button className='carosolBtn backBtn -left-8 -translate-x-1/2'>
-                        <span>
-                            {left}
-                        </span>
-                    </button>
-                    <button className='carosolBtn forwardBtn -right-8 translate-x-1/2'>
-                        <span>
-                            {right}
-                        </span>
-                    </button>
-                    <img src={builder1} alt="" />
-                    <img src={builder1} alt="" />
-                    <img src={builder1} alt="" />
-                    <img src={builder1} alt="" />
-                    <img src={builder1} alt="" /> */}
+
                 </div>
             </section>
             <section className='featured-properties-banner '>
@@ -359,66 +392,34 @@ function Home() {
                         Featured Properties
                     </h3>
                     <div className="properties-box">
-                        <OwlCarousel className='owl-theme '{...options3}>
+                        {properties?.length > 0 ?
+                            <OwlCarousel className='owl-theme px-4 lg:px-0'{...options3}>
+                                {properties?.map((item, index) => {
+                                    console.log(item)
+                                    return <div className='item' key={index}>
+                                        <div className="properties">
+                                            <div className="bottom">
+                                                <p className="title">
+                                                    {item?.name}
+                                                </p>
+                                                <p className="description">
+                                                    {item?.description}
+                                                </p>
+                                                <button className='viewMoreBtn'>
+                                                    View More <span>
+                                                        {rightArrow}
+                                                    </span>
+                                                </button>
+                                            </div>
 
-                            <div className='item'>
-                                <div className="properties">
-                                    <div className="bottom">
-                                        <p className="title">
-                                            Lorem Ipsum
-                                        </p>
-                                        <p className="description">
-                                            orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                                        </p>
-                                        <button className='viewMoreBtn'>
-                                            View More <span>
-                                                {rightArrow}
-                                            </span>
-                                        </button>
+                                        </div>
+
                                     </div>
+                                })}
 
-                                </div>
 
-                            </div>
-                            <div className='item'>
-                                <div className="properties">
-                                    <div className="bottom">
-                                        <p className="title">
-                                            Lorem Ipsum
-                                        </p>
-                                        <p className="description">
-                                            orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                                        </p>
-                                        <button className='viewMoreBtn'>
-                                            View More <span>
-                                                {rightArrow}
-                                            </span>
-                                        </button>
-                                    </div>
+                            </OwlCarousel> : ""}
 
-                                </div>
-
-                            </div>
-                            <div className='item'>
-                                <div className="properties">
-                                    <div className="bottom">
-                                        <p className="title">
-                                            Lorem Ipsum
-                                        </p>
-                                        <p className="description">
-                                            orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                                        </p>
-                                        <button className='viewMoreBtn'>
-                                            View More <span>
-                                                {rightArrow}
-                                            </span>
-                                        </button>
-                                    </div>
-
-                                </div>
-
-                            </div>
-                        </OwlCarousel>
 
 
 

@@ -158,6 +158,7 @@ textarea {
 
 .header-bg {
     background: #05241ede;
+    padding: 1rem !important;
 }
 
 header {
@@ -231,7 +232,7 @@ header {
                 text-align: left;
             }
 
-            input:checked + .toggleSlider {
+            input:checked+.toggleSlider {
                 @apply left-1/2;
 
                 // .bg {
@@ -288,7 +289,7 @@ header {
             // @apply pl-4;
 
             li.has-submenu {
-                > a {
+                >a {
                     &::after {
                         content: "";
                         transition: transform 0.3s;
@@ -302,7 +303,7 @@ header {
             }
 
             .has-submenu.open {
-                > a {
+                >a {
                     &::after {
                         content: "";
                         transition: transform 0.3s;
@@ -364,7 +365,7 @@ header {
         // @apply pl-4;
 
         li.has-submenu {
-            > a {
+            >a {
                 &::after {
                     content: "";
                     transition: transform 0.3s;
@@ -378,7 +379,7 @@ header {
         }
 
         .has-submenu.open {
-            > a {
+            >a {
                 &::after {
                     content: "";
                     transition: transform 0.3s;
@@ -1864,7 +1865,7 @@ footer {
             @apply absolute bottom-5 right-4 flex gap-2 items-center;
             color: white;
 
-            > div {
+            >div {
                 background: #000000a1;
                 @apply py-2 px-4 rounded-full;
             }

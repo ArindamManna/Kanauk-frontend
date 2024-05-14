@@ -207,6 +207,7 @@ textarea::placeholder {
 
 .header-bg {
   background: rgba(5, 36, 30, 0.8705882353);
+  padding: 1rem !important;
 }
 
 header {

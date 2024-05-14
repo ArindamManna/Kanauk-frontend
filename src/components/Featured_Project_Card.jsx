@@ -8,11 +8,13 @@ function Featured_Project_Card({ data }) {
     return (
         <>
             <div className="Featured_Project_Card">
-                <Link to={`/admin/projectview/?project_id=${data?._id}`}>
+                <Link to={`/projectdetails/?project_id=${data?._id}`}>
                     <img src={images[0]?.url} alt="" />
                 </Link>
                 <div className="content">
-                    <p className="title">{name}</p>
+                    <Link to={`/projectdetails/?project_id=${data?._id}`} className="text-decoration-none">
+                        <p className="title">{name}</p>
+                    </Link>
                     <p className="location">{location?.label}</p>
                     <p className="price">
                         ${price?.from} - {price.to}
