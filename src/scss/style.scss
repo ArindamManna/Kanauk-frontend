@@ -2549,5 +2549,13 @@ footer {
         clip-path: polygon(0 0, 100% 0, 100% 100%, 20% 100%);
         overflow: hidden;
         @apply rounded-lg col-span-2;
+
+        .pic {
+            @apply h-full w-full;
+
+            img {
+                @apply h-full;
+            }
+        }
     }
 }
