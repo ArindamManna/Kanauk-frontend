@@ -29,6 +29,22 @@
     }
 }
 
+#root {
+    .app {
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+            font-family: "Roboto", sans-serif;
+            // color: #505655;
+            // @apply transition-all;
+            line-height: normal;
+            background-repeat: no-repeat;
+        }
+
+    }
+}
+
 .loading-overlay {
     background-color: rgb(255 255 255 / 66%);
 }
@@ -172,7 +188,7 @@ header {
 
     padding: 1rem 1.5rem;
 
-    @apply flex items-center justify-between top-0 left-0 w-full z-50;
+    @apply top-0 left-0 w-full z-50;
 
     .left {
         @apply flex items-center gap-9;
@@ -270,6 +286,22 @@ header {
             color: white;
         }
     }
+}
+
+.mobile-tab-bottom {
+    @apply fixed justify-between bottom-0 left-0 z-50 p-4 bg-white w-screen md:hidden flex items-center gap-2;
+    box-shadow: 0px 4px 10px #000, 0px 20px 14px #000;
+
+    .tab {
+        @apply text-xs flex flex-col items-center gap-2;
+
+        span {
+            @apply h-5 w-5;
+            color: #05705e;
+
+        }
+    }
+
 }
 
 .navbar-mobile-wraper {
@@ -2417,5 +2449,101 @@ footer {
                 }
             }
         }
+    }
+}
+
+
+.Login-page {
+    @apply md:grid grid-cols-3 py-10 gap-10;
+
+    .left {
+        @apply h-full flex flex-col justify-center gap-10;
+
+        .head {
+            @apply flex justify-between;
+
+            .tab-btn {
+                @apply cursor-pointer text-3xl font-medium;
+                color: #626665;
+
+                &.active {
+                    text-decoration: underline;
+                    text-decoration-color: #03BFA1;
+                    text-underline-offset: 10px;
+
+
+                }
+            }
+        }
+
+        form {
+            @apply flex w-full flex-col gap-8;
+
+            input {
+                color: #00000075;
+                @apply py-1 w-full;
+                border-bottom: 2px solid #53545466;
+                ;
+
+            }
+
+            .terms-conditon {
+                input {
+
+                    @apply mt-1 w-5;
+                }
+
+                p {
+                    @apply text-sm;
+                    color: #535454;
+
+                    a {
+                        // @apply text-decoration-none;
+                        text-decoration: none;
+                        color: #03BFA1;
+                    }
+
+                }
+            }
+
+            .submit-btn {
+                @apply text-white rounded-lg w-full flex justify-center text-xl py-2.5 font-semibold;
+                background-color: #03BFA1;
+                ;
+            }
+        }
+
+        .hr {
+            height: 1px;
+            background-color: #2C302F;
+            width: 100%;
+            position: relative;
+
+            .or {
+                @apply text-lg absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 text-white rounded-full h-10 w-10 flex items-center justify-center;
+                background-color: #626665;
+            }
+
+            ;
+        }
+
+        .register-social-para {
+            @apply text-lg text-center;
+            color: #535454;
+
+        }
+
+        .social-login-btn {
+            border: 1px solid #00000030;
+            @apply px-2.5 py-2 text-xs rounded-md flex gap-2 items-center;
+            color: #494B4B;
+
+        }
+    }
+
+    .right {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 20% 100%);
+        overflow: hidden;
+        @apply rounded-lg col-span-2;
     }
 }

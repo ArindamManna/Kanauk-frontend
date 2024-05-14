@@ -13,6 +13,7 @@ import AdminAddBuilder from "../Admin/pages/AdminAddBuilder";
 import AddProperties from "../Admin/pages/AddProperties";
 import AdminProjectView from "../Admin/pages/AdminProjectView";
 import Auth from "../pages/Auth";
+import Login from "../pages/Login";
 
 function AppRouter() {
     let location = useLocation();
@@ -23,7 +24,7 @@ function AppRouter() {
                 <Route exact={true} path="/projectdetails" element={<ProjectDetails />} />
                 <Route exact={true} path="/projectlisting" element={<ProjectListing />} />
                 <Route exact={true} path="/builder" element={<Builder />} />
-                <Route exact={true} path="/login" element={<Auth />} />
+                <Route exact={true} path="/login" element={<Login />} />
 
                 {/* admin routes */}
                 <Route exact={true} path="/admin">

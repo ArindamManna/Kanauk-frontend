@@ -81,6 +81,15 @@
   background-color: #03bfa1;
 }
 
+#root .app * {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  line-height: normal;
+  background-repeat: no-repeat;
+}
+
 .loading-overlay {
   background-color: rgba(255, 255, 255, 0.66);
 }
@@ -212,7 +221,7 @@ textarea::placeholder {
 
 header {
   padding: 1rem 1.5rem;
-  @apply flex items-center justify-between top-0 left-0 w-full z-50;
+  @apply top-0 left-0 w-full z-50;
 }
 @media (max-width: 1199px) {
   header {
@@ -292,6 +301,18 @@ header nav .loginBtn:hover {
 header nav .hamburgerBtn {
   @apply h-10 w-10;
   color: white;
+}
+
+.mobile-tab-bottom {
+  @apply fixed justify-between bottom-0 left-0 z-50 p-4 bg-white w-screen md:hidden flex items-center gap-2;
+  box-shadow: 0px 4px 10px #000, 0px 20px 14px #000;
+}
+.mobile-tab-bottom .tab {
+  @apply text-xs flex flex-col items-center gap-2;
+}
+.mobile-tab-bottom .tab span {
+  @apply h-5 w-5;
+  color: #05705e;
 }
 
 .navbar-mobile-wraper {
@@ -2003,4 +2024,71 @@ footer .copyrightDiv {
 }
 .projectliisting .listing-map-section .listingBox .project-list-cards .details-box .details:not(:last-child) {
   @apply border-r-2 border-[#9ca3af];
+}
+
+.Login-page {
+  @apply md:grid grid-cols-3 py-10 gap-10;
+}
+.Login-page .left {
+  @apply h-full flex flex-col justify-center gap-10;
+}
+.Login-page .left .head {
+  @apply flex justify-between;
+}
+.Login-page .left .head .tab-btn {
+  @apply cursor-pointer text-3xl font-medium;
+  color: #626665;
+}
+.Login-page .left .head .tab-btn.active {
+  text-decoration: underline;
+  text-decoration-color: #03BFA1;
+  text-underline-offset: 10px;
+}
+.Login-page .left form {
+  @apply flex w-full flex-col gap-8;
+}
+.Login-page .left form input {
+  color: rgba(0, 0, 0, 0.4588235294);
+  @apply py-1 w-full;
+  border-bottom: 2px solid rgba(83, 84, 84, 0.4);
+}
+.Login-page .left form .terms-conditon input {
+  @apply mt-1 w-5;
+}
+.Login-page .left form .terms-conditon p {
+  @apply text-sm;
+  color: #535454;
+}
+.Login-page .left form .terms-conditon p a {
+  text-decoration: none;
+  color: #03BFA1;
+}
+.Login-page .left form .submit-btn {
+  @apply text-white rounded-lg w-full flex justify-center text-xl py-2.5 font-semibold;
+  background-color: #03BFA1;
+}
+.Login-page .left .hr {
+  height: 1px;
+  background-color: #2C302F;
+  width: 100%;
+  position: relative;
+}
+.Login-page .left .hr .or {
+  @apply text-lg absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 text-white rounded-full h-10 w-10 flex items-center justify-center;
+  background-color: #626665;
+}
+.Login-page .left .register-social-para {
+  @apply text-lg text-center;
+  color: #535454;
+}
+.Login-page .left .social-login-btn {
+  border: 1px solid rgba(0, 0, 0, 0.1882352941);
+  @apply px-2.5 py-2 text-xs rounded-md flex gap-2 items-center;
+  color: #494B4B;
+}
+.Login-page .right {
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 20% 100%);
+          clip-path: polygon(0 0, 100% 0, 100% 100%, 20% 100%);
+  overflow: hidden;
+  @apply rounded-lg col-span-2;
 }/*# sourceMappingURL=style.css.map */

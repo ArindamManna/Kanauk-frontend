@@ -75,6 +75,16 @@ const crossIcon = <svg className="h-full w-full" viewBox="0 0 18 18" fill="none"
     <path d="M11.5312 6.46875L6.46875 11.5312M6.46875 6.46875L11.5312 11.5312" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
     <path d="M9 16.0312C12.8833 16.0312 16.0312 12.8833 16.0312 9C16.0312 5.11675 12.8833 1.96875 9 1.96875C5.11675 1.96875 1.96875 5.11675 1.96875 9C1.96875 12.8833 5.11675 16.0312 9 16.0312Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
 </svg>
+const homeIconSolid = <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-full w-full">
+    <path d="M11.47 3.841a.75.75 0 0 1 1.06 0l8.69 8.69a.75.75 0 1 0 1.06-1.061l-8.689-8.69a2.25 2.25 0 0 0-3.182 0l-8.69 8.69a.75.75 0 1 0 1.061 1.06l8.69-8.689Z" />
+    <path d="m12 5.432 8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 0 1-.75-.75v-4.5a.75.75 0 0 0-.75-.75h-3a.75.75 0 0 0-.75.75V21a.75.75 0 0 1-.75.75H5.625a1.875 1.875 0 0 1-1.875-1.875v-6.198a2.29 2.29 0 0 0 .091-.086L12 5.432Z" />
+</svg>
+const profileIcon = <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="h-full w-full">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+</svg>
+const mapIcon = <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="h-full w-full">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M9 6.75V15m6-6v8.25m.503 3.498 4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 0 0-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0Z" />
+</svg>
 
 
 
@@ -95,4 +105,7 @@ const crossIcon = <svg className="h-full w-full" viewBox="0 0 18 18" fill="none"
 
 
 
-export { imageIcon, crossIcon, loginIcon, logoutIcon, cardIcon, newsPaperIcon, tickCircle, locationIcon, phoneIcon, downArrow, heartSolid, MailSolid, rightArrow, searchLogo, starFill, hamburgerIcon, left, right, heart, plusCircle, eye }
+
+
+
+export { imageIcon, mapIcon, crossIcon, profileIcon, homeIconSolid, loginIcon, logoutIcon, cardIcon, newsPaperIcon, tickCircle, locationIcon, phoneIcon, downArrow, heartSolid, MailSolid, rightArrow, searchLogo, starFill, hamburgerIcon, left, right, heart, plusCircle, eye }
