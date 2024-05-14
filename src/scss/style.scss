@@ -214,11 +214,19 @@ header {
                 @apply transition-all;
             }
 
+            &:hover {
+                .nav-submenu {
+                    @apply block;
+                }
+            }
+
             .nav-submenu {
-                @apply py-4 rounded-md shadow-md absolute top-full w-fit;
+                @apply py-4 hidden rounded-md shadow-md absolute top-full w-fit;
                 background-color: white;
 
                 ul {
+                    @apply pl-0 mb-0;
+
                     li {
                         white-space: nowrap;
                         @apply cursor-pointer px-4 py-1;

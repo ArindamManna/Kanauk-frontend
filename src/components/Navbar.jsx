@@ -92,13 +92,17 @@ function Navbar() {
                     <nav className="hidden md:flex">
                         <div
                             className="navlinks clickOutsideElem"
-                            // clickOutsideFunc={(e) => { console.log(e, "manna"); }}
-                            onClick={() => {
-                                setIsSubMenuOpen((prev) => ({ ...prev, gallaery: !prev.gallaery }));
-                            }}>
+                        // clickOutsideFunc={(e) => { console.log(e, "manna"); }}
+                        // onClick={() => {
+                        //     setIsSubMenuOpen((prev) => ({ ...prev, gallaery: !prev.gallaery }));
+                        // }}
+                        >
                             Gallery
                             <span>{downArrow}</span>
-                            <div className={`nav-submenu ${isSubMenuOpen.gallaery ? "" : "hidden"}`}>
+                            <div
+                                className={`nav-submenu "}`}
+                            // className={`nav-submenu ${isSubMenuOpen.gallaery ? "" : "hidden"}`}
+                            >
                                 <ul>
                                     <li>Option 1</li>
                                     <li>Option 2</li>
@@ -107,13 +111,17 @@ function Navbar() {
                         </div>
                         <div
                             className="navlinks clickOutsideElem"
-                            // clickOutsideFunc={(e) => { console.log(e, "manna"); }}
-                            onClick={() => {
-                                setIsSubMenuOpen((prev) => ({ ...prev, articles: !prev.articles }));
-                            }}>
+                        // clickOutsideFunc={(e) => { console.log(e, "manna"); }}
+                        // onClick={() => {
+                        //     setIsSubMenuOpen((prev) => ({ ...prev, articles: !prev.articles }));
+                        // }}
+                        >
                             Articles
                             <span>{downArrow}</span>
-                            <div className={`nav-submenu ${isSubMenuOpen.articles ? "" : "hidden"}`}>
+                            <div
+                                className={`nav-submenu "}`}
+                            // className={`nav-submenu ${isSubMenuOpen.articles ? "" : "hidden"}`}
+                            >
                                 <ul>
                                     <li>Option 1</li>
                                     <li>Option 2</li>
@@ -164,9 +172,10 @@ function Navbar() {
                         <li className="has-submenu">
                             <a
                                 className=""
-                                onClick={(e) => {
+                                on={(e) => {
                                     submenuToggle(e);
-                                }}>
+                                }}
+                            >
                                 <span className="h-5 w-5">{searchLogo}</span>
 
                                 <span className="menu-title">Gallery</span>

@@ -253,9 +253,15 @@ header nav .navlinks:hover {
 header nav .navlinks span {
   @apply transition-all;
 }
+header nav .navlinks:hover .nav-submenu {
+  @apply block;
+}
 header nav .navlinks .nav-submenu {
-  @apply py-4 rounded-md shadow-md absolute top-full w-fit;
+  @apply py-4 hidden rounded-md shadow-md absolute top-full w-fit;
   background-color: white;
+}
+header nav .navlinks .nav-submenu ul {
+  @apply pl-0 mb-0;
 }
 header nav .navlinks .nav-submenu ul li {
   white-space: nowrap;
