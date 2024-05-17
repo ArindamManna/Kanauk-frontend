@@ -3,8 +3,11 @@ import "../scss/adminStyle.css";
 import kaunuakLogo from "../asset/images/logo/kaunuck_logo_black.png"
 import { Link, useNavigate } from 'react-router-dom';
 import { ApiHelperFunction } from '../../Api/ApiHelperfunction';
+import { useDispatch, useSelector } from 'react-redux';
+import { updateGlobalState } from '../../Redux/GlobalSlice';
 function AdminLayout({ children }) {
     const navigate = useNavigate()
+    const Dispatch = useDispatch();
     useEffect(() => {
         let adminToken = localStorage.getItem("adminToken")
         verifyToken()
@@ -13,6 +16,10 @@ function AdminLayout({ children }) {
 
         }
     }, [])
+    const { adminDetails } = useSelector((state) => {
+        const { adminDetails } = state?.GlobalSlice;
+        return { adminDetails }
+    });
     async function verifyToken() {
         let res = await ApiHelperFunction({
             urlPath: "admin/verifytoken",
@@ -20,9 +27,30 @@ function AdminLayout({ children }) {
 
         })
         if (!res.data?.isAdmin) {
+            localStorage.removeItem("adminToken")
+            Dispatch(
+                updateGlobalState({
+                    adminDetails: {}
+                })
+            );
             navigate("./login")
+        } else {
+            Dispatch(
+                updateGlobalState({
+                    adminDetails: res?.data
+                })
+            );
         }
         // console.log(res);
+    }
+    function logout() {
+        localStorage.removeItem("adminToken");
+        Dispatch(
+            updateGlobalState({
+                adminDetails: {}
+            })
+        );
+        navigate("./login")
     }
     function submenuToggle(event) {
         event.target.closest('.has-submenu').classList.toggle('open');
@@ -164,15 +192,15 @@ function AdminLayout({ children }) {
                             <a className="dropdown-toggle align-items-center btn btn-secondary dropdown-toggle" type="button"
                                 id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                 <span className="d-flex">
-                                    <span><img className="img-xs rounded-circle" src="images/face15.jpg" alt="" /></span>
+                                    <span><img className="img-xs rounded-circle" src={require("../../asset/images/logo/profile.png")} alt="" /></span>
                                     <span className="profile-text ms-2">
-                                        <b>Welcome to<br /></b> Henry Klein</span>
+                                        <b>Welcome to<br /></b> {adminDetails?.fname}</span>
                                 </span>
                             </a>
                             <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                 <li><a className="dropdown-item" href="#">Action</a></li>
                                 <li><a className="dropdown-item" href="#">Another action</a></li>
-                                <li><a className="dropdown-item" href="#">Something else here</a></li>
+                                <li><a className="dropdown-item" onClick={(e) => logout()}>Logout</a></li>
                             </ul>
                         </div>
                     </header>

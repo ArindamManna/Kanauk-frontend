@@ -108,4 +108,5 @@ const mapIcon = <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0
 
 
 
+
 export { imageIcon, mapIcon, crossIcon, profileIcon, homeIconSolid, loginIcon, logoutIcon, cardIcon, newsPaperIcon, tickCircle, locationIcon, phoneIcon, downArrow, heartSolid, MailSolid, rightArrow, searchLogo, starFill, hamburgerIcon, left, right, heart, plusCircle, eye }

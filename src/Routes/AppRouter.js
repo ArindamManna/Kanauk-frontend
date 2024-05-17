@@ -12,7 +12,6 @@ import AdminBuilderList from "../Admin/pages/AdminBuilderList";
 import AdminAddBuilder from "../Admin/pages/AdminAddBuilder";
 import AddProperties from "../Admin/pages/AddProperties";
 import AdminProjectView from "../Admin/pages/AdminProjectView";
-import Auth from "../pages/Auth";
 import Login from "../pages/Login";
 
 function AppRouter() {

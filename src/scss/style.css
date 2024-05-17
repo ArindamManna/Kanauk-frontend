@@ -70,6 +70,7 @@
   font-family: "Roboto", sans-serif;
   line-height: normal;
   background-repeat: no-repeat;
+  text-decoration: none;
 }
 *::-webkit-scrollbar {
   width: 6px;
@@ -79,6 +80,10 @@
 *::-webkit-scrollbar-thumb {
   border-radius: 10px;
   background-color: #03bfa1;
+}
+
+a {
+  text-decoration: none;
 }
 
 #root .app * {
@@ -244,7 +249,7 @@ header nav {
   gap: 0.875rem;
 }
 header nav .navlinks {
-  @apply flex items-center cursor-pointer;
+  @apply flex items-center cursor-pointer relative;
   color: white;
 }
 header nav .navlinks:hover {
@@ -256,19 +261,23 @@ header nav .navlinks span {
 header nav .navlinks:hover .nav-submenu {
   @apply block;
 }
-header nav .navlinks .nav-submenu {
+header nav .nav-submenu {
   @apply py-4 hidden rounded-md shadow-md absolute top-full w-fit;
   background-color: white;
 }
-header nav .navlinks .nav-submenu ul {
+header nav .nav-submenu ul {
   @apply pl-0 mb-0;
 }
-header nav .navlinks .nav-submenu ul li {
+header nav .nav-submenu ul li a {
   white-space: nowrap;
-  @apply cursor-pointer px-4 py-1;
+  text-decoration: none;
+  @apply flex gap-1 items-center cursor-pointer text-sm px-4 py-1;
   color: #505655;
 }
-header nav .navlinks .nav-submenu ul li:hover {
+header nav .nav-submenu ul li a span {
+  @apply h-5 w-5;
+}
+header nav .nav-submenu ul li a:hover {
   background-color: #03bfa1;
   color: white;
 }
@@ -298,11 +307,18 @@ header nav .toggle .toggleSlider .bg {
 header nav .loginBtn {
   padding: 0.375rem 1.125rem;
   border: 1px solid rgba(255, 251, 251, 0.3882352941);
+  text-decoration: none;
   @apply rounded-full;
   color: white;
 }
 header nav .loginBtn:hover {
   background-color: #03bfa1;
+}
+header nav .profile_btn {
+  @apply flex flex-col relative items-center text-white text-xs font-semibold;
+}
+header nav .profile_btn:hover .nav-submenu {
+  @apply block;
 }
 header nav .hamburgerBtn {
   @apply h-10 w-10;
@@ -461,6 +477,7 @@ header nav .hamburgerBtn {
   font-weight: 500;
   white-space: nowrap;
   text-align: left;
+  margin-bottom: 0px;
 }
 @media (min-width: 768px) {
   .home-banner .latestProject p {
@@ -946,7 +963,7 @@ header nav .hamburgerBtn {
 }
 
 .featured-builder-banner {
-  @apply w-full pt-6 pb-12;
+  @apply w-full xl:py-6 md:py-4 py-3;
 }
 .featured-builder-banner h3 {
   font-size: 1.5rem;

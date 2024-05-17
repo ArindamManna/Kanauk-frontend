@@ -46,7 +46,7 @@ function Home() {
             urlPath: "users/builder/all",
             method: "get",
         });
-        console.log(res);
+        // console.log(res);
         if (res.data) {
             setBuilderList(res.data);
             setLoader(false)
@@ -62,7 +62,7 @@ function Home() {
             urlPath: "users/property/all",
             method: "get",
         });
-        console.log(res);
+        // console.log(res);
         if (res.data) {
             setProperties(res.data);
             setLoader(false)
@@ -80,7 +80,7 @@ function Home() {
 
 
 
-    console.log("projectList", projectList);
+    // console.log("projectList", projectList);
 
 
 
@@ -147,25 +147,25 @@ function Home() {
                 items: 2,
             },
             300: {
-                items: 2,
+                items: 3,
             },
             450: {
-                items: 3,
+                items: 5,
             },
             570: {
-                items: 3,
+                items: 5,
             },
             768: {
-                items: 4,
+                items: 6,
             },
             992: {
-                items: 5,
+                items: 7,
             },
             1024: {
-                items: 5,
+                items: 7,
             },
             1400: {
-                items: 6,
+                items: 8,
             },
 
         }
@@ -299,7 +299,7 @@ function Home() {
                     {projectList?.length > 0 ?
                         <OwlCarousel className='owl-theme px-4 lg:px-0'{...options}>
                             {projectList?.map((item, index) => {
-                                console.log(item)
+                                // console.log(item)
                                 return <div className='item' key={index}><Featured_Project_Card data={item} /> </div>
                             })}
 
@@ -330,7 +330,7 @@ function Home() {
                 </div>
             </section>
             <section className='padding featured-builder-banner '>
-                <div className=" mb-10 md:mb-16 xl:mb-24">
+                <div className=" mb-6 md:mb-10 xl:mb-16">
                     <h3>
                         Featured Builders
                     </h3>
@@ -341,7 +341,7 @@ function Home() {
                     {builderList?.length > 0 ?
                         <OwlCarousel className='owl-theme px-4 lg:px-0'{...options2}>
                             {builderList?.map((item, index) => {
-                                console.log(item)
+                                // console.log(item)
                                 return <div className='item' key={index}>
                                     <img src={item?.image?.url} alt="" />
 
@@ -395,7 +395,7 @@ function Home() {
                         {properties?.length > 0 ?
                             <OwlCarousel className='owl-theme px-4 lg:px-0'{...options3}>
                                 {properties?.map((item, index) => {
-                                    console.log(item)
+                                    // console.log(item)
                                     return <div className='item' key={index}>
                                         <div className="properties">
                                             <div className="bottom">

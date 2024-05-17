@@ -23,13 +23,13 @@ function Login() {
         e.preventDefault();
         console.log(formdata);
 
-        if (!formdata?.isTermsChecked) {
+        if (!formdata?.isTermsChecked && currentTab !== "login") {
             alert("Please Accept Terms and Conditions");
             return;
         }
         setLoader(true);
         let res = await ApiHelperFunction({
-            urlPath: "users/signup",
+            urlPath: (currentTab === "login") ? "users/login" : "users/signup",
             method: "post",
             formData: formdata,
         });

@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { downArrow, hamburgerIcon, homeIconSolid, imageIcon, loginIcon, mapIcon, newsPaperIcon, phoneIcon, profileIcon, searchLogo } from "../asset/staticData";
+import { downArrow, hamburgerIcon, homeIconSolid, imageIcon, loginIcon, logoutIcon, mapIcon, newsPaperIcon, phoneIcon, profileIcon, searchLogo } from "../asset/staticData";
 import kaunuck_logo_black from "../asset/images/logo/kaunuck_logo_black.png";
 import kaunuck_logo_white from "../asset/images/logo/kaunuck_logo_white.png";
 import profilePic from "../asset/images/logo/profile.png";
 import { Link, useLocation } from "react-router-dom";
 import { ApiHelperFunction } from "../Api/ApiHelperfunction";
 import Loader from "./Loader";
+import { useDispatch, useSelector } from "react-redux";
+import { updateGlobalState } from "../Redux/GlobalSlice";
 
 function Navbar() {
     const [isSubMenuOpen, setIsSubMenuOpen] = useState({
@@ -13,27 +15,50 @@ function Navbar() {
         articles: false,
     });
     const location = useLocation();
-    const [userDetails, setUserDetails] = useState({})
+    // const [userDetails, setUserDetails] = useState({})
+    const [navBg, setNavBg] = useState(false);
     const [loader, setLoader] = useState(false)
-    async function fetchUserDetails(e) {
-        // e.preventDefault();
-        setLoader(true)
+    const Dispatch = useDispatch();
+
+    const { userDetails } = useSelector((state) => {
+        const { userDetails } = state?.GlobalSlice;
+        return { userDetails }
+    });
+
+
+    async function verifyToken() {
         let res = await ApiHelperFunction({
-            urlPath: "users/builder/all",
-            method: "get",
-        });
-        console.log(res);
+            urlPath: "users/verifytoken",
+            method: "post",
+
+        })
         if (res.data) {
-            // setBuilderList(res.data);
-            setLoader(false)
+            Dispatch(
+                updateGlobalState({
+                    userDetails: res?.data
+                })
+            );
         } else {
-            alert(res.error.message);
-            setLoader(false)
+            localStorage.removeItem("usertoken");
+            Dispatch(
+                updateGlobalState({
+                    userDetails: {}
+                })
+            );
         }
+        // console.log(res);
+    }
+
+    function logout() {
+        localStorage.removeItem("usertoken");
+        Dispatch(
+            updateGlobalState({
+                userDetails: {}
+            })
+        );
     }
 
 
-    const [navBg, setNavBg] = useState(false);
     // const isHome = props.name === 'Homepage' ? true : false;
 
     const changeNav = () => {
@@ -44,7 +69,12 @@ function Navbar() {
     };
 
     useEffect(() => {
-        fetchUserDetails()
+
+        let usertoken = localStorage.getItem("usertoken")
+        if (usertoken) {
+
+            verifyToken()
+        }
         window.addEventListener("scroll", changeNav);
         return () => {
             window.removeEventListener("scroll", changeNav);
@@ -100,12 +130,16 @@ function Navbar() {
                             Gallery
                             <span>{downArrow}</span>
                             <div
-                                className={`nav-submenu "}`}
+                                className={`nav-submenu `}
                             // className={`nav-submenu ${isSubMenuOpen.gallaery ? "" : "hidden"}`}
                             >
                                 <ul>
-                                    <li>Option 1</li>
-                                    <li>Option 2</li>
+                                    <li>
+                                        <a href="">option 1</a>
+                                    </li>
+                                    <li>
+                                        <a href="">option 2</a>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -119,12 +153,16 @@ function Navbar() {
                             Articles
                             <span>{downArrow}</span>
                             <div
-                                className={`nav-submenu "}`}
+                                className={`nav-submenu `}
                             // className={`nav-submenu ${isSubMenuOpen.articles ? "" : "hidden"}`}
                             >
                                 <ul>
-                                    <li>Option 1</li>
-                                    <li>Option 2</li>
+                                    <li>
+                                        <a href="">option 1</a>
+                                    </li>
+                                    <li>
+                                        <a href="">option 2</a>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -136,12 +174,26 @@ function Navbar() {
                                 <div className="bg"></div>
                             </div>
                         </label>
-                        <Link to="/login">
-                            <button className="loginBtn">Log In</button>
-                        </Link>
-                        <button>
+                        {userDetails?.fname ? <div className="profile_btn">
                             <img src={profilePic} alt="Profile_pic" />
-                        </button>
+                            {userDetails?.fname}
+
+                            <div className=" nav-submenu">
+                                <ul>
+                                    <li>
+                                        <Link to="/profile"> <span>{profileIcon}</span> Profile</Link>
+                                    </li>
+                                    <li>
+                                        <Link onClick={() => logout()}><span >{logoutIcon}</span>  Logout</Link>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div> :
+                            <Link to="/login" className="loginBtn">Log In</Link>
+
+                        }
+
+
                         <button className="hamburgerBtn">{hamburgerIcon}</button>
                     </nav>
                     <nav className="flex md:hidden">
