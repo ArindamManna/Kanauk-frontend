@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import AdminLayout from "../components/AdminLayout";
 import { ApiHelperFunction } from "../../Api/ApiHelperfunction";
 import Loader from "../../components/Loader";
@@ -7,6 +7,7 @@ import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import Upload from "../../components/upload";
 import Select from "react-select";
 import { toBeRequired } from "@testing-library/jest-dom/dist/matchers";
+import { listning_ststus_list } from "../../asset/staticLists";
 
 function AddProject() {
     const navigate = useNavigate();
@@ -62,7 +63,8 @@ function AddProject() {
         console.log(formdata);
         setLoader(true);
         let res = await ApiHelperFunction({
-            urlPath: `admin/project/add/${formdata.builderId}`,
+            // urlPath: `admin/project/add/${formdata.builderId}`,
+            urlPath: `admin/project/update/?project_id=${formdata._id}&builderId=${formdata.builderId}`,
             method: "post",
             formData: formdata,
         });
@@ -97,7 +99,18 @@ function AddProject() {
         }
         return form;
     }
-
+    function deleteImage(index) {
+        setFormdata(prev => ({
+            ...prev,
+            images: prev?.images?.filter((item, i) => i != index)
+        }))
+    }
+    function addImage() {
+        setFormdata(prev => ({
+            ...prev,
+            images: [...prev.images, inhitialFormdata?.images[0]]
+        }))
+    }
     return (
         <AdminLayout>
             {loader ? <Loader /> : ""}
@@ -228,10 +241,10 @@ function AddProject() {
                                                 value: e.target.value,
                                             })
                                         }>
-                                        <option selected>Open this select menu</option>
-                                        <option value="Selling">Selling</option>
-                                        <option value="Under Construction">Under Construction</option>
-                                        <option value="Pre Book">Pre Book</option>
+                                        <option >Open this select menu</option>
+                                        {listning_ststus_list?.map((item, i) => {
+                                            return <option value={item.value} key={i} selected={item.value == formdata?.listingStatus}>{item.label}</option>
+                                        })}
                                     </select>
                                 </div>
                             </div>
@@ -315,38 +328,36 @@ function AddProject() {
                                     ]} /> */}
                                 </div>
                             </div>
-                            <div className="col-md-4">
-                                <div className="mb-3">
-                                    <label class="form-label">upload Images one by one :</label>
-                                    <Upload
-                                        images={formdata?.images}
-                                        updateFormdata={(value) => {
-                                            console.log(value);
-                                            console.log(formdata);
-                                            updateFormdata({
-                                                position: {
-                                                    name: "images",
-                                                    index: 0,
-                                                    sub: {
-                                                        name: "url",
-                                                    },
-                                                },
-                                                value,
-                                            });
-                                        }}
-                                    />
-                                </div>
-                            </div>
+
                             <div className="col-12">
                                 <div className="row">
-                                    {formdata?.images?.map((item, i) => {
-                                        return (
-                                            <div className="col-md-4" key={i}>
-                                                {" "}
-                                                <img src={item.url} alt="" />{" "}
+                                    {formdata?.images?.map((item, i, arr) => {
+                                        return <div className="col-md-4" key={i}>
+                                            <div className="mb-3">
+
+                                                <Upload
+                                                    currentImage={formdata?.images?.[i]}
+                                                    updateFormdata={(value) => {
+                                                        updateFormdata({
+                                                            position: {
+                                                                name: "images",
+                                                                index: i,
+                                                                sub: {
+                                                                    name: "url",
+                                                                },
+                                                            },
+                                                            value,
+                                                        });
+                                                    }}
+                                                    deleteImage={() => { deleteImage(i) }}
+                                                />
                                             </div>
-                                        );
+                                        </div>
                                     })}
+
+                                    <div className="col-auto">
+                                        <button type="button" class="btn black-btn" onClick={(e) => { addImage() }}>Add Image</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
