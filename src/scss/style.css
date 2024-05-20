@@ -82,6 +82,10 @@
   background-color: #03bfa1;
 }
 
+::-webkit-input-placeholder {
+  color: currentColor !important;
+}
+
 a {
   text-decoration: none;
 }
@@ -500,6 +504,7 @@ header nav .hamburgerBtn {
   padding: 0.375rem 0.875rem;
   color: #155147;
   background-color: white;
+  text-decoration: none;
   @apply rounded-full flex items-center justify-center;
 }
 .home-banner .latestProject .btns .projectBtn.active, .home-banner .latestProject .btns .projectBtn:hover {

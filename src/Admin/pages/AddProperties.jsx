@@ -9,7 +9,7 @@ import { toBeRequired } from "@testing-library/jest-dom/dist/matchers";
 
 function AddProperties() {
     let location = useLocation()
-    // console.log(location);
+    console.log(location, "location");
     const navigate = useNavigate()
     const [builderList, setBuilderList] = useState([])
     const [loader, setLoader] = useState(false)

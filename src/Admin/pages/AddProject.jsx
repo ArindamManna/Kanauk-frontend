@@ -3,13 +3,17 @@ import AdminLayout from "../components/AdminLayout";
 import { ApiHelperFunction } from "../../Api/ApiHelperfunction";
 import Loader from "../../components/Loader";
 import { toFormData } from "axios";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import Upload from "../../components/upload";
 import Select from "react-select";
 import { toBeRequired } from "@testing-library/jest-dom/dist/matchers";
 
 function AddProject() {
     const navigate = useNavigate();
+    let location = useLocation()
+    console.log(location, "location");
+    const [searchParams, setSearchParams] = useSearchParams();
+    let project_id = searchParams.get("project_id")
     const [builderList, setBuilderList] = useState([]);
     const [loader, setLoader] = useState(false);
     const inhitialFormdata = {
@@ -35,7 +39,7 @@ function AddProject() {
             urlPath: "users/builder/all",
             method: "get",
         });
-        console.log(res);
+        //console.log(res);
         if (res.data) {
             setBuilderList(res.data);
             setLoader(false);
@@ -44,6 +48,12 @@ function AddProject() {
             setLoader(false);
         }
     }
+
+    useEffect(() => {
+        if (project_id) {
+            setFormdata(location?.state)
+        }
+    }, [location])
     useEffect(() => {
         fetchBuilderlist();
     }, []);
@@ -114,6 +124,7 @@ function AddProject() {
                                         type="text"
                                         class="form-control"
                                         name="name"
+                                        value={formdata?.name}
                                         onChange={(e) =>
                                             updateFormdata({
                                                 e,
@@ -133,6 +144,7 @@ function AddProject() {
                                         type="text"
                                         class="form-control"
                                         name="location"
+                                        value={formdata?.location?.label}
                                         onChange={(e) =>
                                             updateFormdata({
                                                 e,
@@ -155,6 +167,7 @@ function AddProject() {
                                         type="text"
                                         class="form-control"
                                         name="pricefrom"
+                                        value={formdata?.price?.from}
                                         onChange={(e) =>
                                             updateFormdata({
                                                 e,
@@ -177,6 +190,7 @@ function AddProject() {
                                         type="text"
                                         class="form-control"
                                         name="priceto"
+                                        value={formdata?.price?.to}
                                         onChange={(e) =>
                                             updateFormdata({
                                                 e,
@@ -240,7 +254,7 @@ function AddProject() {
                                         <option selected>Open this select menu</option>
                                         {builderList?.map((item, index) => {
                                             return (
-                                                <option value={item._id} key={index}>
+                                                <option value={item._id} key={index} defaultChecked={formdata?.builderId == item._id}>
                                                     {item?.name}
                                                 </option>
                                             );
@@ -255,6 +269,7 @@ function AddProject() {
                                         type="text"
                                         class="form-control"
                                         name="priceto"
+                                        value={formdata?.description}
                                         onChange={(e) =>
                                             updateFormdata({
                                                 e,
@@ -273,6 +288,7 @@ function AddProject() {
                                     <Select
                                         className=""
                                         isMulti={toBeRequired}
+                                        value={formdata?.tags}
                                         options={[
                                             { value: "featured", label: "Featured" },
                                             { value: "assignment_sales", label: "Assignment Sales" },

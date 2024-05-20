@@ -18,6 +18,7 @@ import { updateGlobalState } from '../Redux/GlobalSlice'
 import OwlCarousel from 'react-owl-carousel';
 import Loader from '../components/Loader'
 import { ApiHelperFunction } from '../Api/ApiHelperfunction'
+import { Link } from 'react-router-dom'
 
 function Home() {
     const [projectList, setProjectList] = useState([])
@@ -262,15 +263,18 @@ function Home() {
                         Latest Projects:
                     </p>
                     <div className="btns">
-                        <button className="projectBtn active">
-                            Project 1
-                        </button>
-                        <button className="projectBtn">
-                            Project 2
-                        </button>
-                        <button className="projectBtn">
-                            Project 3
-                        </button>
+                        {projectList?.toReversed().map((item, i) => {
+                            if (i < 4) {
+                                return <Link className="projectBtn" key={i} to={`/projectdetails/?project_id=${item?._id}`}>
+                                    Project {i + 1}
+                                </Link>
+                            } else {
+                                return <></>
+                            }
+
+                        })}
+
+
                     </div>
                 </div>
             </section>

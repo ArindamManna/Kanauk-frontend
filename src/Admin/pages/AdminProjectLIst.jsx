@@ -92,8 +92,8 @@ function AdminProjectLIst() {
                                         <div className='flex items-center'>
 
                                             <Link to={`/admin/projectview/?project_id=${item?._id}`} ><img src={require("../asset/images/logo/lucide_view.png")} /></Link>
-                                            <a ><img src={require("../asset/images/logo/akar-icons_edit.png")} /></a>
-                                            <a onClick={() => { deleteProject(item?._id, index) }} ><img src={require("../asset/images/logo/delete.png")} /></a>
+                                            <Link to={`/admin/addproject/?project_id=${item?._id}`} state={item} ><img src={require("../asset/images/logo/akar-icons_edit.png")} /></Link>
+                                            <a onClick={() => { deleteProject(item?._id, index) }} className='cursor-pointer' ><img src={require("../asset/images/logo/delete.png")} /></a>
                                         </div>
                                     </td>
                                 </tr>
