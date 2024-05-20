@@ -32,7 +32,7 @@ const Upload = ({ updateFormdata, currentImage, deleteImage }) => {
             {loader ? <Loader /> : ""}
             {currentImage?.url == "" ?
                 <div >
-                    <label class="form-label">upload Images one by one :</label>
+                    <label className="form-label">upload Images one by one :</label>
                     <div className="uploadDocInputBox">
                         <button className="cancleBtn" type="button" onClick={() => { deleteImage() }}>
                             <span className="h-5 w-5 block mb-0">
@@ -41,7 +41,7 @@ const Upload = ({ updateFormdata, currentImage, deleteImage }) => {
                             </span>
                         </button>
 
-                        <label for="file1" type="submit" className="btn black-btn">
+                        <label type="submit" className="btn black-btn">
                             Browse File
                         </label>
 

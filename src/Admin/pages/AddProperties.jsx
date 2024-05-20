@@ -108,34 +108,34 @@ function AddProperties() {
     return (
         <AdminLayout>
             {loader ? <Loader /> : ""}
-            <div class="page-name">
-                <div class="row justify-content-between align-items-center">
-                    <div class="col-md-4">
-                        <h2><i class="ri-arrow-left-line"></i> Add Properties</h2>
+            <div className="page-name">
+                <div className="row justify-content-between align-items-center">
+                    <div className="col-md-4">
+                        <h2><i className="ri-arrow-left-line"></i> Add Properties</h2>
                     </div>
 
                 </div>
             </div>
-            <div class="card add-new-location mt-2">
-                <div class="card-body">
+            <div className="card add-new-location mt-2">
+                <div className="card-body">
                     <form onSubmit={(e) => { createProject(e) }}>
 
 
                         {formdata?.properties.map((item, index, arr) => {
-                            return <div class="row border border-gray-400 rounded-md pt-2 mb-4" key={index}>
+                            return <div className="row border border-gray-400 rounded-md pt-2 mb-4" key={index}>
                                 <div className="flex justify-between">
                                     <h4>Propery {index + 1}</h4>
                                     <div className="right flex gap-2">
-                                        {arr.length == 1 ? "" : <button type="submit" class="btn grey-primary" onClick={(e) => deleteProperty(index)}>delete</button>}
+                                        {arr.length == 1 ? "" : <button type="submit" className="btn grey-primary" onClick={(e) => deleteProperty(index)}>delete</button>}
 
-                                        {arr.length - 1 == index ? <button type="submit" class="btn black-btn" onClick={(e) => { addProperty(e) }}>Add New</button> : ""}
+                                        {arr.length - 1 == index ? <button type="submit" className="btn black-btn" onClick={(e) => { addProperty(e) }}>Add New</button> : ""}
 
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <label class="form-label"> Name :</label>
-                                        <input type="text" class="form-control" name='name'
+                                <div className="col-md-6">
+                                    <div className="mb-3">
+                                        <label className="form-label"> Name :</label>
+                                        <input type="text" className="form-control" name='name'
                                             onChange={(e) => updateFormdata({
                                                 e,
                                                 position: {
@@ -151,10 +151,10 @@ function AddProperties() {
                                         />
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <label class="form-label">Location :</label>
-                                        <input type="text" class="form-control" name='location'
+                                <div className="col-md-6">
+                                    <div className="mb-3">
+                                        <label className="form-label">Location :</label>
+                                        <input type="text" className="form-control" name='location'
 
                                             onChange={(e) => updateFormdata({
                                                 e,
@@ -173,10 +173,10 @@ function AddProperties() {
                                         />
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <label class="form-label">Price From:</label>
-                                        <input type="text" class="form-control" name='pricefrom'
+                                <div className="col-md-6">
+                                    <div className="mb-3">
+                                        <label className="form-label">Price From:</label>
+                                        <input type="text" className="form-control" name='pricefrom'
 
                                             onChange={(e) => updateFormdata({
                                                 e,
@@ -195,10 +195,10 @@ function AddProperties() {
                                         />
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <label class="form-label">Price To:</label>
-                                        <input type="text" class="form-control" name='priceto'
+                                <div className="col-md-6">
+                                    <div className="mb-3">
+                                        <label className="form-label">Price To:</label>
+                                        <input type="text" className="form-control" name='priceto'
 
                                             onChange={(e) => updateFormdata({
                                                 e,
@@ -217,11 +217,11 @@ function AddProperties() {
                                         />
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <label class="form-label">Listing Status :</label>
+                                <div className="col-md-6">
+                                    <div className="mb-3">
+                                        <label className="form-label">Listing Status :</label>
                                         <select
-                                            class="form-select"
+                                            className="form-select"
                                             aria-label="Default select example"
                                             name="listingStatus"
                                             onChange={(e) =>
@@ -243,14 +243,14 @@ function AddProperties() {
                                             <option value="Under Construction">Under Construction</option>
                                             <option value="Pre Book">Pre Book</option>
                                         </select>
-                                        {/* <input type="text" class="form-control" name='listing_status'
+                                        {/* <input type="text" className="form-control" name='listing_status'
                                             onChange={(e) =>} /> */}
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <label class="form-label">Description :</label>
-                                        <input type="text" class="form-control" name='description' onChange={(e) => updateFormdata({
+                                <div className="col-md-6">
+                                    <div className="mb-3">
+                                        <label className="form-label">Description :</label>
+                                        <input type="text" className="form-control" name='description' onChange={(e) => updateFormdata({
                                             e,
                                             position: {
                                                 name: "properties",
@@ -266,7 +266,7 @@ function AddProperties() {
                                 </div>
                                 <div className="col-md-6">
                                     <div className="mb-3">
-                                        <label class="form-label">Tags:</label>
+                                        <label className="form-label">Tags:</label>
                                         <Select
                                             className=""
                                             isMulti={toBeRequired}
@@ -294,9 +294,9 @@ function AddProperties() {
                             </div>
                         })}
 
-                        <div class="text-end flex gap-2 justify-end">
-                            <button type="submit" class="btn grey-primary">Cancle</button>
-                            <button type="submit" class="btn black-btn">Create</button>
+                        <div className="text-end flex gap-2 justify-end">
+                            <button type="submit" className="btn grey-primary">Cancle</button>
+                            <button type="submit" className="btn black-btn">Create</button>
                         </div>
                     </form>
                 </div>

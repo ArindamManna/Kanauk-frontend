@@ -64,13 +64,13 @@ function AddProject() {
         setLoader(true);
         let res = await ApiHelperFunction({
             // urlPath: `admin/project/add/${formdata.builderId}`,
-            urlPath: `admin/project/update/?project_id=${formdata._id}&builderId=${formdata.builderId}`,
-            method: "post",
+            urlPath: project_id ? `admin/project/update/?project_id=${formdata._id}` : `admin/project/add/${formdata.builderId}`,
+            method: project_id ? "put" : "post",
             formData: formdata,
         });
         if (res.data) {
             alert("Project Created Successfully");
-            navigate("/admin/addproperties", { state: res.data });
+            // navigate("/admin/addproperties", { state: res.data });
             setLoader(false);
         } else {
             alert(res.error.message);
@@ -114,30 +114,30 @@ function AddProject() {
     return (
         <AdminLayout>
             {loader ? <Loader /> : ""}
-            <div class="page-name">
-                <div class="row justify-content-between align-items-center">
-                    <div class="col-md-4">
+            <div className="page-name" >
+                <div className="row justify-content-between align-items-center">
+                    <div className="col-md-4">
                         <h2>
-                            <i class="ri-arrow-left-line"></i> Add Project
+                            <i className="ri-arrow-left-line"></i> Add Project
                         </h2>
                     </div>
                 </div>
             </div>
-            <div class="card add-new-location mt-2">
-                <div class="card-body">
+            <div className="card add-new-location mt-2">
+                <div className="card-body">
                     <form
                         onSubmit={(e) => {
                             createProject(e);
                         }}>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label class="form-label">Project Name :</label>
+                        <div className="row">
+                            <div className="col-md-6">
+                                <div className="mb-3">
+                                    <label className="form-label">Project Name :</label>
                                     <input
                                         type="text"
-                                        class="form-control"
+                                        className="form-control"
                                         name="name"
-                                        value={formdata?.name}
+                                        defaultValue={formdata?.name}
                                         onChange={(e) =>
                                             updateFormdata({
                                                 e,
@@ -150,14 +150,14 @@ function AddProject() {
                                     />
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label class="form-label">Location :</label>
+                            <div className="col-md-6">
+                                <div className="mb-3">
+                                    <label className="form-label">Location :</label>
                                     <input
                                         type="text"
-                                        class="form-control"
+                                        className="form-control"
                                         name="location"
-                                        value={formdata?.location?.label}
+                                        defaultValue={formdata?.location?.label}
                                         onChange={(e) =>
                                             updateFormdata({
                                                 e,
@@ -173,14 +173,14 @@ function AddProject() {
                                     />
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label class="form-label">Price From:</label>
+                            <div className="col-md-6">
+                                <div className="mb-3">
+                                    <label className="form-label">Price From:</label>
                                     <input
                                         type="text"
-                                        class="form-control"
+                                        className="form-control"
                                         name="pricefrom"
-                                        value={formdata?.price?.from}
+                                        defaultValue={formdata?.price?.from}
                                         onChange={(e) =>
                                             updateFormdata({
                                                 e,
@@ -196,14 +196,14 @@ function AddProject() {
                                     />
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label class="form-label">Price To:</label>
+                            <div className="col-md-6">
+                                <div className="mb-3">
+                                    <label className="form-label">Price To:</label>
                                     <input
                                         type="text"
-                                        class="form-control"
+                                        className="form-control"
                                         name="priceto"
-                                        value={formdata?.price?.to}
+                                        defaultValue={formdata?.price?.to}
                                         onChange={(e) =>
                                             updateFormdata({
                                                 e,
@@ -219,17 +219,17 @@ function AddProject() {
                                     />
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label class="form-label">Listing status:</label>
-                                    {/* <input type="text" class="form-control" name='listingStatus' onChange={(e) => updateFormdata({
+                            <div className="col-md-6">
+                                <div className="mb-3">
+                                    <label className="form-label">Listing status:</label>
+                                    {/* <input type="text" className="form-control" name='listingStatus' onChange={(e) => updateFormdata({
                                         e, position: {
                                             name: "listingStatus",
 
                                         }, value: e.target.value
                                     })} /> */}
                                     <select
-                                        class="form-select"
+                                        className="form-select"
                                         aria-label="Default select example"
                                         name="listingStatus"
                                         onChange={(e) =>
@@ -248,11 +248,11 @@ function AddProject() {
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label class="form-label">Choose Builder :</label>
+                            <div className="col-md-6">
+                                <div className="mb-3">
+                                    <label className="form-label">Choose Builder :</label>
                                     <select
-                                        class="form-select"
+                                        className="form-select"
                                         aria-label="Default select example"
                                         name="builderId"
                                         onChange={(e) =>
@@ -264,10 +264,10 @@ function AddProject() {
                                                 value: e.target.value,
                                             })
                                         }>
-                                        <option selected>Open this select menu</option>
+                                        <option >Open this select menu</option>
                                         {builderList?.map((item, index) => {
                                             return (
-                                                <option value={item._id} key={index} defaultChecked={formdata?.builderId == item._id}>
+                                                <option value={item._id} key={index} selected={formdata?.builderId == item._id}>
                                                     {item?.name}
                                                 </option>
                                             );
@@ -275,14 +275,14 @@ function AddProject() {
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-md-12">
-                                <div class="mb-3">
-                                    <label class="form-label">Description:</label>
+                            <div className="col-md-12">
+                                <div className="mb-3">
+                                    <label className="form-label">Description:</label>
                                     <textarea
                                         type="text"
-                                        class="form-control"
+                                        className="form-control"
                                         name="priceto"
-                                        value={formdata?.description}
+                                        defaultValue={formdata?.description}
                                         onChange={(e) =>
                                             updateFormdata({
                                                 e,
@@ -297,11 +297,11 @@ function AddProject() {
                             </div>
                             <div className="col-md-6">
                                 <div className="mb-3">
-                                    <label class="form-label">Tags:</label>
+                                    <label className="form-label">Tags:</label>
                                     <Select
                                         className=""
                                         isMulti={toBeRequired}
-                                        value={formdata?.tags}
+                                        defaultValue={formdata?.tags}
                                         options={[
                                             { value: "featured", label: "Featured" },
                                             { value: "assignment_sales", label: "Assignment Sales" },
@@ -320,7 +320,7 @@ function AddProject() {
                             </div>
                             <div className="col-md-6">
                                 <div className="mb-3">
-                                    {/* <label class="form-label">upload Images one by one :</label> */}
+                                    {/* <label className="form-label">upload Images one by one :</label> */}
                                     {/* <Select className="" isMulti={toBeRequired} options={[
                                         { value: 'chocolate', label: 'Chocolate' },
                                         { value: 'strawberry', label: 'Strawberry' },
@@ -356,17 +356,17 @@ function AddProject() {
                                     })}
 
                                     <div className="col-auto">
-                                        <button type="button" class="btn black-btn" onClick={(e) => { addImage() }}>Add Image</button>
+                                        <button type="button" className="btn black-btn" onClick={(e) => { addImage() }}>Add Image</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="text-end flex gap-2 justify-end">
-                            <button type="submit" class="btn grey-primary">
+                        <div className="text-end flex gap-2 justify-end">
+                            <button type="submit" className="btn grey-primary">
                                 Cancle
                             </button>
-                            <button type="submit" class="btn black-btn">
+                            <button type="submit" className="btn black-btn">
                                 Save & Continue
                             </button>
                         </div>

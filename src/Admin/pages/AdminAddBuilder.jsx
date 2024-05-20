@@ -62,22 +62,22 @@ function AdminAddBuilder() {
     return (
         <AdminLayout>
             {loader ? <Loader /> : ""}
-            <div class="page-name">
-                <div class="row justify-content-between align-items-center">
-                    <div class="col-md-4">
-                        <h2><i class="ri-arrow-left-line"></i> Add Bilder</h2>
+            <div className="page-name">
+                <div className="row justify-content-between align-items-center">
+                    <div className="col-md-4">
+                        <h2><i className="ri-arrow-left-line"></i> Add Bilder</h2>
                     </div>
 
                 </div>
             </div>
-            <div class="card add-new-location mt-2">
-                <div class="card-body">
+            <div className="card add-new-location mt-2">
+                <div className="card-body">
                     <form onSubmit={(e) => createBuilder(e)}>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label class="form-label">Builder Name :</label>
-                                    <input type="text" class="form-control" name='name' onChange={(e) => {
+                        <div className="row">
+                            <div className="col-md-6">
+                                <div className="mb-3">
+                                    <label className="form-label">Builder Name :</label>
+                                    <input type="text" className="form-control" name='name' onChange={(e) => {
                                         updateFormdata({
                                             e,
                                             position: {
@@ -88,10 +88,10 @@ function AdminAddBuilder() {
                                     }} />
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label class="form-label">Location :</label>
-                                    <input type="text" class="form-control" name='location' onChange={(e) => {
+                            <div className="col-md-6">
+                                <div className="mb-3">
+                                    <label className="form-label">Location :</label>
+                                    <input type="text" className="form-control" name='location' onChange={(e) => {
                                         updateFormdata({
                                             e,
                                             position: {
@@ -102,10 +102,10 @@ function AdminAddBuilder() {
                                     }} />
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label class="form-label">Email:</label>
-                                    <input type="text" class="form-control" name='email' onChange={(e) => {
+                            <div className="col-md-6">
+                                <div className="mb-3">
+                                    <label className="form-label">Email:</label>
+                                    <input type="text" className="form-control" name='email' onChange={(e) => {
                                         updateFormdata({
                                             e,
                                             position: {
@@ -116,10 +116,10 @@ function AdminAddBuilder() {
                                     }} />
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label class="form-label">Mobile No:</label>
-                                    <input type="text" class="form-control" name="phone" onChange={(e) => {
+                            <div className="col-md-6">
+                                <div className="mb-3">
+                                    <label className="form-label">Mobile No:</label>
+                                    <input type="text" className="form-control" name="phone" onChange={(e) => {
                                         updateFormdata({
                                             e,
                                             position: {
@@ -132,7 +132,7 @@ function AdminAddBuilder() {
                             </div>
                             <div className="col-md-4">
                                 <div className="mb-3">
-                                    <label class="form-label">upload Images one by one :</label>
+                                    <label className="form-label">upload Images one by one :</label>
                                     {formdata?.image?.url == "" ? <Upload images={formdata?.image} updateFormdata={(value) => {
                                         console.log(value)
                                         updateFormdata({
@@ -158,9 +158,9 @@ function AdminAddBuilder() {
 
 
 
-                        <div class="flex gap-2 justify-end text-end">
-                            <button type="button" class="btn grey-primary">Cancle</button>
-                            <button type="submit" class="btn black-btn">Create</button>
+                        <div className="flex gap-2 justify-end text-end">
+                            <button type="button" className="btn grey-primary">Cancle</button>
+                            <button type="submit" className="btn black-btn">Create</button>
                         </div>
                     </form>
                 </div>
