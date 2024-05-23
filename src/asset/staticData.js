@@ -85,6 +85,12 @@ const profileIcon = <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox=
 const mapIcon = <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="h-full w-full">
     <path strokeLinecap="round" strokeLinejoin="round" d="M9 6.75V15m6-6v8.25m.503 3.498 4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 0 0-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0Z" />
 </svg>
+const warningIcon = <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="h-full w-full">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z" />
+</svg>
+const errorIcon = <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="h-full w-full">
+    <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z" />
+</svg>
 
 
 
@@ -109,4 +115,6 @@ const mapIcon = <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0
 
 
 
-export { imageIcon, mapIcon, crossIcon, profileIcon, homeIconSolid, loginIcon, logoutIcon, cardIcon, newsPaperIcon, tickCircle, locationIcon, phoneIcon, downArrow, heartSolid, MailSolid, rightArrow, searchLogo, starFill, hamburgerIcon, left, right, heart, plusCircle, eye }
+
+
+export { imageIcon, warningIcon, errorIcon, mapIcon, crossIcon, profileIcon, homeIconSolid, loginIcon, logoutIcon, cardIcon, newsPaperIcon, tickCircle, locationIcon, phoneIcon, downArrow, heartSolid, MailSolid, rightArrow, searchLogo, starFill, hamburgerIcon, left, right, heart, plusCircle, eye }

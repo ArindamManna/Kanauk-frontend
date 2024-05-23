@@ -6,6 +6,7 @@ import { toFormData } from 'axios';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Select from "react-select";
 import { toBeRequired } from "@testing-library/jest-dom/dist/matchers";
+import { update } from '../../asset/commonFuntions';
 
 function AddProperties() {
     let location = useLocation()
@@ -75,23 +76,7 @@ function AddProperties() {
     }
 
 
-    function update({ e, position, value, form }) {
-        // let { name, value } = e.target;
-        let { name, index } = position;
-        if (position?.sub == undefined) {
-            form[name] = value;
-        } else {
-            if (index !== undefined) {
-                let result = update({ position: position.sub, value, form: form[name][index] })
-                form[name][index] = result;
-            } else {
 
-                let result = update({ position: position.sub, value, form: form[name] })
-                form[name] = result;
-            }
-        }
-        return form;
-    }
 
     function deleteProperty(index) {
         setFormdata(prev => ({
@@ -136,6 +121,7 @@ function AddProperties() {
                                     <div className="mb-3">
                                         <label className="form-label"> Name :</label>
                                         <input type="text" className="form-control" name='name'
+                                            defaultValue={formdata?.properties?.[index]?.name}
                                             onChange={(e) => updateFormdata({
                                                 e,
                                                 position: {
@@ -155,7 +141,7 @@ function AddProperties() {
                                     <div className="mb-3">
                                         <label className="form-label">Location :</label>
                                         <input type="text" className="form-control" name='location'
-
+                                            defaultValue={formdata?.properties?.[index]?.location?.label}
                                             onChange={(e) => updateFormdata({
                                                 e,
                                                 position: {
@@ -177,7 +163,7 @@ function AddProperties() {
                                     <div className="mb-3">
                                         <label className="form-label">Price From:</label>
                                         <input type="text" className="form-control" name='pricefrom'
-
+                                            defaultValue={formdata?.properties?.[index]?.price?.from}
                                             onChange={(e) => updateFormdata({
                                                 e,
                                                 position: {
@@ -199,7 +185,7 @@ function AddProperties() {
                                     <div className="mb-3">
                                         <label className="form-label">Price To:</label>
                                         <input type="text" className="form-control" name='priceto'
-
+                                            defaultValue={formdata?.properties?.[index]?.price?.to}
                                             onChange={(e) => updateFormdata({
                                                 e,
                                                 position: {
@@ -224,6 +210,7 @@ function AddProperties() {
                                             className="form-select"
                                             aria-label="Default select example"
                                             name="listingStatus"
+                                            defaultValue={formdata?.properties?.[index]?.listing_status}
                                             onChange={(e) =>
                                                 updateFormdata({
                                                     e,

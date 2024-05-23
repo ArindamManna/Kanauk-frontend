@@ -8,6 +8,8 @@ import Upload from "../../components/upload";
 import Select from "react-select";
 import { toBeRequired } from "@testing-library/jest-dom/dist/matchers";
 import { listning_ststus_list } from "../../asset/staticLists";
+import { update } from '../../asset/commonFuntions';
+
 
 function AddProject() {
     const navigate = useNavigate();
@@ -70,7 +72,7 @@ function AddProject() {
         });
         if (res.data) {
             alert("Project Created Successfully");
-            // navigate("/admin/addproperties", { state: res.data });
+            navigate("/admin/addproperties", { state: res.data });
             setLoader(false);
         } else {
             alert(res.error.message);
@@ -83,22 +85,7 @@ function AddProject() {
         setFormdata(result);
     }
 
-    function update({ e, position, value, form }) {
-        // let { name, value } = e.target;
-        let { name, index } = position;
-        if (position?.sub == undefined) {
-            form[name] = value;
-        } else {
-            if (index !== undefined) {
-                let result = update({ position: position.sub, value, form: form[name][index] });
-                form[name][index] = result;
-            } else {
-                let result = update({ position: position.sub, value, form: form[name] });
-                form[name] = result;
-            }
-        }
-        return form;
-    }
+
     function deleteImage(index) {
         setFormdata(prev => ({
             ...prev,
@@ -301,7 +288,7 @@ function AddProject() {
                                     <Select
                                         className=""
                                         isMulti={toBeRequired}
-                                        defaultValue={formdata?.tags}
+                                        // defaultInputValue={formdata?.tags}
                                         options={[
                                             { value: "featured", label: "Featured" },
                                             { value: "assignment_sales", label: "Assignment Sales" },

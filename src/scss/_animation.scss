@@ -1,61 +1,127 @@
 // animation: name duration timing-funtion delay itaration-count direction;
-@keyframes fade-in{
-    from{
-    visibility: hidden;
-    opacity: 0;
+@keyframes fade-in {
+    from {
+        visibility: hidden;
+        opacity: 0;
     }
-    1%{
+
+    1% {
         visibility: visible;
         opacity: 0;
     }
-    to{
+
+    to {
         visibility: visible;
         opacity: 1;
     }
 }
-.fade-in{
+
+.fade-in {
     animation: fade-in 300ms ease-in-out forwards;
 }
-@keyframes fade-out{
-    from{
-    visibility: visible;
-    opacity: 1;
+
+@keyframes fade-out {
+    from {
+        visibility: visible;
+        opacity: 1;
     }
-    99%{
+
+    99% {
         visibility: visible;
         opacity: 0;
     }
-    to{
+
+    to {
         visibility: hidden;
         opacity: 0;
     }
 }
-.fade-out{
+
+.fade-out {
     animation: fade-out 300ms ease-in-out forwards;
 }
 
 
 
-@keyframes fade-width-increase{
-    from{
-    width: 0vw;
+@keyframes fade-width-increase {
+    from {
+        width: 0vw;
     }
-    to{
+
+    to {
         width: $width+vw;
     }
 }
-.fade-width-increase{
+
+.fade-width-increase {
     animation: fade-width-increase 300ms ease-in-out forwards;
 }
-@keyframes fade-width-decrease{
-    from{
-    width: $width+vw;
+
+@keyframes fade-width-decrease {
+    from {
+        width: $width+vw;
     }
-    to{
+
+    to {
         width: 0vw;
     }
 }
-.fade-width-decrease{
+
+.fade-width-decrease {
     animation: fade-width-decrease 300ms ease-in-out forwards;
 }
 
+
+
+
+.imgHoverAnimation {
+    overflow: hidden;
+    position: relative;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 5%;
+        left: 5%;
+        width: 90%;
+        height: 90%;
+        border: 2px #fff solid;
+        // background: rgba(0, 0, 0, 0.5);
+        transform: scale(0);
+        transition: all 0.3s ease-in-out;
+        z-index: 2;
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        // background: rgba(0, 0, 0, 0.5);
+        transition: all 0.3s ease-in-out;
+        z-index: 1;
+    }
+
+    img {
+        transition: all 0.3s ease-in-out;
+        transform: scale(1) rotate(0deg);
+    }
+
+
+    &:hover {
+        img {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        &::after {
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        &::before {
+
+            transform: scale(1);
+        }
+    }
+}

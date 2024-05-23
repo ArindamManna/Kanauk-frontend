@@ -63,6 +63,46 @@
   animation: fade-width-decrease 300ms ease-in-out forwards;
 }
 
+.imgHoverAnimation {
+  overflow: hidden;
+  position: relative;
+}
+.imgHoverAnimation::before {
+  content: "";
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  width: 90%;
+  height: 90%;
+  border: 2px #fff solid;
+  transform: scale(0);
+  transition: all 0.3s ease-in-out;
+  z-index: 2;
+}
+.imgHoverAnimation::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: all 0.3s ease-in-out;
+  z-index: 1;
+}
+.imgHoverAnimation img {
+  transition: all 0.3s ease-in-out;
+  transform: scale(1) rotate(0deg);
+}
+.imgHoverAnimation:hover img {
+  transform: scale(1.1) rotate(5deg);
+}
+.imgHoverAnimation:hover::after {
+  background: rgba(0, 0, 0, 0.4);
+}
+.imgHoverAnimation:hover::before {
+  transform: scale(1);
+}
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -1764,7 +1804,7 @@ footer .copyrightDiv {
   padding: 2rem 1rem;
 }
 .projectDetails-main .right .contact-sales-center .btn {
-  @apply w-full py-3.5 rounded-lg flex justify-center gap-1;
+  @apply w-full py-3.5 rounded-lg flex justify-center items-center gap-1;
 }
 .projectDetails-main .right .contact-sales-center .btn span {
   @apply h-5 w-5;

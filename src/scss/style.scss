@@ -2114,7 +2114,7 @@ footer {
             padding: 2rem 1rem;
 
             .btn {
-                @apply w-full py-3.5 rounded-lg flex justify-center gap-1;
+                @apply w-full py-3.5 rounded-lg flex justify-center items-center gap-1;
 
                 span {
                     @apply h-5 w-5;

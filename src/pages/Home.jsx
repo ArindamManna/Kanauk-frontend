@@ -19,8 +19,15 @@ import OwlCarousel from 'react-owl-carousel';
 import Loader from '../components/Loader'
 import { ApiHelperFunction } from '../Api/ApiHelperfunction'
 import { Link } from 'react-router-dom'
+import Swal from '../components/Swal'
+import { type } from '@testing-library/user-event/dist/type'
 
 function Home() {
+    const { isSwalOpen } = useSelector((state) => {
+        const { swalDetails } = state?.GlobalSlice;
+        return { ...swalDetails }
+    });
+    const dispatch = useDispatch()
     const [projectList, setProjectList] = useState([])
     const [builderList, setBuilderList] = useState([])
     const [properties, setProperties] = useState([])
@@ -35,9 +42,18 @@ function Home() {
         if (res.data) {
             setProjectList(res.data);
             setLoader(false)
+
         } else {
             alert(res.error.message)
             setLoader(false)
+            dispatch(updateGlobalState({
+                swalDetails: {
+                    isSwalOpen: true,
+                    type: "error",
+                    title: "Something went wrong",
+                    text: "Please contact your administrator"
+                }
+            }))
         }
     }
     async function fetchBuilders(e) {
@@ -54,6 +70,14 @@ function Home() {
         } else {
             alert(res.error.message)
             setLoader(false)
+            dispatch(updateGlobalState({
+                swalDetails: {
+                    isSwalOpen: true,
+                    type: "error",
+                    title: "Something went wrong",
+                    text: "Please contact your administrator"
+                }
+            }))
         }
     }
     async function fetchProperties(e) {
@@ -70,6 +94,14 @@ function Home() {
         } else {
             alert(res.error.message)
             setLoader(false)
+            dispatch(updateGlobalState({
+                swalDetails: {
+                    isSwalOpen: true,
+                    type: "error",
+                    title: "Something went wrong",
+                    text: "Please contact your administrator"
+                }
+            }))
         }
     }
     useEffect(() => {
@@ -77,6 +109,9 @@ function Home() {
         fetchBuilders()
         fetchProperties()
     }, [])
+
+
+
 
 
 
@@ -238,6 +273,8 @@ function Home() {
 
     return (
         <>
+            {isSwalOpen ? <Swal /> : ""}
+
             {loader ? <Loader /> : ""}
             {/* <Loader /> */}
             <Navbar />
@@ -266,7 +303,7 @@ function Home() {
                         {projectList?.toReversed().map((item, i) => {
                             if (i < 4) {
                                 return <Link className="projectBtn" key={i} to={`/projectdetails/?project_id=${item?._id}`}>
-                                    Project {i + 1}
+                                    {item?.name}
                                 </Link>
                             } else {
                                 return <></>
