@@ -50,7 +50,7 @@ function AdminLayout({ children }) {
                 adminDetails: {}
             })
         );
-        navigate("./login")
+        navigate("../login")
     }
     function submenuToggle(event) {
         event.target.closest('.has-submenu').classList.toggle('open');
