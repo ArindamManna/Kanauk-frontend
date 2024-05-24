@@ -32,6 +32,12 @@ let buildingType_list = [
         value: "condo"
     }
 ];
+let propertieType_list = [
+    {
+        label: "Condo",
+        value: "condo"
+    }
+];
 let highlights_type_list = [
     {
         label: "Condo",
@@ -48,4 +54,4 @@ let highlights_type_list = [
 ];
 
 
-export { listning_ststus_list, Selling_ststus_list, buildingType_list, highlights_type_list }
+export { listning_ststus_list, propertieType_list, Selling_ststus_list, buildingType_list, highlights_type_list }

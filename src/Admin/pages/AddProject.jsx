@@ -127,7 +127,7 @@ function AddProject() {
                     type: "success",
                     title: "Success",
                     text: project_id ? "Project updated successfully" : "Project Created successfully",
-                    okBtnOnclick: () => { navigate("/admin/addproperties", { state: res.data }); }
+                    okBtnOnclick: () => { navigate(project_id ? `/admin/addproperties/?project_id=${project_id}` : "/admin/addproperties", { state: formdata }); }
                 }
             }))
 
@@ -187,7 +187,7 @@ function AddProject() {
                                         type="text"
                                         className="form-control"
                                         name="name"
-                                        defaultValue={formdata?.name}
+                                        value={formdata?.name}
                                         onChange={(e) =>
                                             updateFormdata({
                                                 e,
@@ -207,7 +207,7 @@ function AddProject() {
                                         type="text"
                                         className="form-control"
                                         name="location"
-                                        defaultValue={formdata?.location?.label}
+                                        value={formdata?.location?.label}
                                         onChange={(e) =>
                                             updateFormdata({
                                                 e,
@@ -230,7 +230,7 @@ function AddProject() {
                                         type="text"
                                         className="form-control"
                                         name="pricefrom"
-                                        defaultValue={formdata?.price?.from}
+                                        value={formdata?.price?.from}
                                         onChange={(e) =>
                                             updateFormdata({
                                                 e,
@@ -253,7 +253,7 @@ function AddProject() {
                                         type="text"
                                         className="form-control"
 
-                                        defaultValue={formdata?.price?.to}
+                                        value={formdata?.price?.to}
                                         onChange={(e) =>
                                             updateFormdata({
                                                 e,
@@ -276,7 +276,7 @@ function AddProject() {
                                         type="text"
                                         className="form-control"
 
-                                        defaultValue={formdata?.floorPlans?.heading}
+                                        value={formdata?.floorPlans?.heading}
                                         onChange={(e) =>
                                             updateFormdata({
                                                 e,
@@ -299,7 +299,7 @@ function AddProject() {
                                         type="text"
                                         className="form-control"
 
-                                        defaultValue={formdata?.floorPlans?.text}
+                                        value={formdata?.floorPlans?.text}
                                         onChange={(e) =>
                                             updateFormdata({
                                                 e,
@@ -372,7 +372,7 @@ function AddProject() {
                                         type="text"
                                         className="form-control"
 
-                                        defaultValue={formdata?.description}
+                                        value={formdata?.description}
                                         onChange={(e) =>
                                             updateFormdata({
                                                 e,
@@ -392,7 +392,7 @@ function AddProject() {
                                         type="text"
                                         className="form-control"
 
-                                        defaultValue={formdata?.overview}
+                                        value={formdata?.overview}
                                         onChange={(e) =>
                                             updateFormdata({
                                                 e,
@@ -458,7 +458,7 @@ function AddProject() {
                                                         type="text"
                                                         className="form-control"
 
-                                                        defaultValue={item?.quantity}
+                                                        value={item?.quantity}
                                                         onChange={(e) =>
                                                             updateFormdata({
                                                                 e,
@@ -518,7 +518,7 @@ function AddProject() {
                                                         type="text"
                                                         className="form-control"
 
-                                                        defaultValue={item?.label}
+                                                        value={item?.label}
                                                         onChange={(e) =>
                                                             updateFormdata({
                                                                 e,
@@ -579,7 +579,7 @@ function AddProject() {
                                         <input
                                             type="text"
                                             className="form-control"
-                                            defaultValue={formdata?.features_finises?.subTitle}
+                                            value={formdata?.features_finises?.subTitle}
                                             onChange={(e) =>
                                                 updateFormdata({
                                                     e,
@@ -601,7 +601,7 @@ function AddProject() {
                                         <textarea
                                             type="text"
                                             className="form-control"
-                                            defaultValue={formdata?.features_finises?.description}
+                                            value={formdata?.features_finises?.description}
                                             onChange={(e) =>
                                                 updateFormdata({
                                                     e,
@@ -684,7 +684,7 @@ function AddProject() {
                                                 type="text"
                                                 className="form-control"
 
-                                                defaultValue={formdata?.details?.ownership?.ownerName}
+                                                value={formdata?.details?.ownership?.ownerName}
                                                 onChange={(e) =>
                                                     updateFormdata({
                                                         e,
@@ -710,7 +710,7 @@ function AddProject() {
                                                 type="text"
                                                 className="form-control"
 
-                                                defaultValue={formdata?.details?.interiorDesigner?.name}
+                                                value={formdata?.details?.interiorDesigner?.name}
                                                 onChange={(e) =>
                                                     updateFormdata({
                                                         e,
@@ -736,7 +736,7 @@ function AddProject() {
                                                 type="text"
                                                 className="form-control"
 
-                                                defaultValue={formdata?.details?.architect?.name}
+                                                value={formdata?.details?.architect?.name}
                                                 onChange={(e) =>
                                                     updateFormdata({
                                                         e,
@@ -762,7 +762,7 @@ function AddProject() {
                                                 type="text"
                                                 className="form-control"
 
-                                                defaultValue={formdata?.details?.marketingCompany?.name}
+                                                value={formdata?.details?.marketingCompany?.name}
                                                 onChange={(e) =>
                                                     updateFormdata({
                                                         e,
@@ -788,7 +788,7 @@ function AddProject() {
                                                 type="text"
                                                 className="form-control"
 
-                                                defaultValue={formdata?.details?.marketingCompany?.marketingSummery}
+                                                value={formdata?.details?.marketingCompany?.marketingSummery}
                                                 onChange={(e) =>
                                                     updateFormdata({
                                                         e,
@@ -814,7 +814,7 @@ function AddProject() {
                                                 type="text"
                                                 className="form-control"
 
-                                                defaultValue={formdata?.details?.salesCompany?.name}
+                                                value={formdata?.details?.salesCompany?.name}
                                                 onChange={(e) =>
                                                     updateFormdata({
                                                         e,
@@ -841,7 +841,7 @@ function AddProject() {
                                     <Select
                                         className=""
                                         isMulti={toBeRequired}
-                                        // defaultInputValue={formdata?.tags}
+                                        value={formdata?.tags}
                                         options={[
                                             { value: "featured", label: "Featured" },
                                             { value: "assignment_sales", label: "Assignment Sales" },

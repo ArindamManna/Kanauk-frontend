@@ -3,15 +3,22 @@ import AdminLayout from '../components/AdminLayout'
 import { ApiHelperFunction } from '../../Api/ApiHelperfunction';
 import Loader from '../../components/Loader';
 import { toFormData } from 'axios';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import Select from "react-select";
 import { toBeRequired } from "@testing-library/jest-dom/dist/matchers";
-import { update } from '../../asset/commonFuntions';
+import { add_remove_elem_fromdata_recursion, update } from '../../asset/commonFuntions';
+import { highlights_type_list, propertieType_list } from '../../asset/staticLists';
+import Upload from '../../components/upload';
+import { updateGlobalState } from '../../Redux/GlobalSlice';
+import { useDispatch } from 'react-redux';
 
 function AddProperties() {
     let location = useLocation()
-    console.log(location, "location");
-    const navigate = useNavigate()
+    // console.log(location, "location");
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const [searchParams, setSearchParams] = useSearchParams();
+    let project_id = searchParams.get("project_id")
     const [builderList, setBuilderList] = useState([])
     const [loader, setLoader] = useState(false)
     const inhitialFormdata = {
@@ -19,37 +26,47 @@ function AddProperties() {
             {
                 name: "",
                 location: {
-                    url: ""
+                    url: "",
+                    label: ""
                 },
                 price: {
                     from: "",
                     to: "",
                 },
-                listing_status: ""
+                listing_status: "",
+                highlights: [
+                    {
+                        label: "",
+                        quantity: "",
+                        type: ""
+                    }
+                ],
+                details: {
+                    buildingType: "",
+                    ownership: {
+                        ownerName: ""
+                    },
+
+
+                },
+                images: [
+                    {
+                        url: "",
+                    },
+                ],
             }
         ]
     };
     const [formdata, setFormdata] = useState(inhitialFormdata)
-    async function fetchBuilderlist(e) {
-        // e.preventDefault();
-        setLoader(true)
-        let res = await ApiHelperFunction({
-            urlPath: "users/builder/all",
-            method: "get",
-        });
-        console.log(res);
-        if (res.data) {
-            setBuilderList(res.data)
-            setLoader(false)
-        } else {
-            alert(res.error.message)
-            setLoader(false)
-        }
-    }
+    console.log(formdata, "formdata");
     useEffect(() => {
-        fetchBuilderlist()
+        // fetchBuilderlist()
+        if (project_id) {
+            setFormdata(prev => ({ ...prev, ...location?.state }))
+
+        }
     }, [])
-    async function createProject(e) {
+    async function createProperties(e) {
         e.preventDefault();
         setLoader(true)
         let res = await ApiHelperFunction({
@@ -58,12 +75,31 @@ function AddProperties() {
             formData: formdata.properties
         });
         if (res.data) {
-            alert("Project Created Successfully");
-            navigate("/admin/project")
             setLoader(false)
+            dispatch(updateGlobalState({
+                swalDetails: {
+                    isSwalOpen: true,
+                    type: "success",
+                    title: "Success",
+                    text: project_id ? "Properties updated successfully" : "Properties Created successfully",
+                    okBtnOnclick: () => {
+                        navigate("/admin/project")
+                    }
+                }
+            }))
+
+
         } else {
-            alert(res.error.message)
+
             setLoader(false)
+            dispatch(updateGlobalState({
+                swalDetails: {
+                    isSwalOpen: true,
+                    type: "error",
+                    title: "Something went wrong",
+                    text: res.error.message
+                }
+            }))
         }
     }
 
@@ -71,24 +107,18 @@ function AddProperties() {
 
     function updateFormdata({ e, position, value }) {
         let result = update({ position, value, form: formdata })
-        setFormdata(result);
+        setFormdata(prev => ({ ...prev, ...result }));
 
     }
 
 
 
 
-    function deleteProperty(index) {
-        setFormdata(prev => ({
-            ...prev,
-            properties: prev?.properties?.filter((item, i) => i != index)
-        }))
-    }
-    function addProperty() {
-        setFormdata(prev => ({
-            ...prev,
-            properties: [...prev.properties, inhitialFormdata?.properties[0]]
-        }))
+
+    function add_remove_elem_fromdata({ position, doAdd, indexToremove }) {
+        // debugger
+        let result = add_remove_elem_fromdata_recursion({ position, form: formdata, doAdd, indexToremove, inhitialFormdata });
+        setFormdata(prev => ({ ...prev, ...result }));
     }
     return (
         <AdminLayout>
@@ -103,7 +133,15 @@ function AddProperties() {
             </div>
             <div className="card add-new-location mt-2">
                 <div className="card-body">
-                    <form onSubmit={(e) => { createProject(e) }}>
+                    <form onSubmit={(e) => { createProperties(e) }}>
+                        {formdata?.properties?.length == 0 ? <button type="submit" className="btn black-btn" onClick={(e) => {
+                            add_remove_elem_fromdata({
+                                position: {
+                                    name: "properties",
+                                },
+                                doAdd: true
+                            })
+                        }}>Add Property</button> : ""}
 
 
                         {formdata?.properties.map((item, index, arr) => {
@@ -111,9 +149,24 @@ function AddProperties() {
                                 <div className="flex justify-between">
                                     <h4>Propery {index + 1}</h4>
                                     <div className="right flex gap-2">
-                                        {arr.length == 1 ? "" : <button type="submit" className="btn grey-primary" onClick={(e) => deleteProperty(index)}>delete</button>}
+                                        {arr.length == 1 ? "" : <button type="button" className="btn grey-primary" onClick={(e) => {
+                                            add_remove_elem_fromdata({
+                                                position: {
+                                                    name: "properties",
+                                                },
+                                                indexToremove: index,
+                                                doAdd: false
+                                            })
+                                        }}>delete</button>}
 
-                                        {arr.length - 1 == index ? <button type="submit" className="btn black-btn" onClick={(e) => { addProperty(e) }}>Add New</button> : ""}
+                                        {arr.length - 1 == index ? <button type="button" className="btn black-btn" onClick={(e) => {
+                                            add_remove_elem_fromdata({
+                                                position: {
+                                                    name: "properties",
+                                                },
+                                                doAdd: true
+                                            })
+                                        }}>Add Property</button> : ""}
 
                                     </div>
                                 </div>
@@ -121,7 +174,7 @@ function AddProperties() {
                                     <div className="mb-3">
                                         <label className="form-label"> Name :</label>
                                         <input type="text" className="form-control" name='name'
-                                            defaultValue={formdata?.properties?.[index]?.name}
+                                            value={item?.name}
                                             onChange={(e) => updateFormdata({
                                                 e,
                                                 position: {
@@ -141,7 +194,8 @@ function AddProperties() {
                                     <div className="mb-3">
                                         <label className="form-label">Location :</label>
                                         <input type="text" className="form-control" name='location'
-                                            defaultValue={formdata?.properties?.[index]?.location?.label}
+                                            value={item?.location?.label}
+                                            // value={item?.location?.label}
                                             onChange={(e) => updateFormdata({
                                                 e,
                                                 position: {
@@ -163,7 +217,7 @@ function AddProperties() {
                                     <div className="mb-3">
                                         <label className="form-label">Price From:</label>
                                         <input type="text" className="form-control" name='pricefrom'
-                                            defaultValue={formdata?.properties?.[index]?.price?.from}
+                                            value={item?.price?.from}
                                             onChange={(e) => updateFormdata({
                                                 e,
                                                 position: {
@@ -185,7 +239,7 @@ function AddProperties() {
                                     <div className="mb-3">
                                         <label className="form-label">Price To:</label>
                                         <input type="text" className="form-control" name='priceto'
-                                            defaultValue={formdata?.properties?.[index]?.price?.to}
+                                            value={item?.price?.to}
                                             onChange={(e) => updateFormdata({
                                                 e,
                                                 position: {
@@ -210,7 +264,7 @@ function AddProperties() {
                                             className="form-select"
                                             aria-label="Default select example"
                                             name="listingStatus"
-                                            defaultValue={formdata?.properties?.[index]?.listing_status}
+                                            value={item?.listing_status}
                                             onChange={(e) =>
                                                 updateFormdata({
                                                     e,
@@ -276,6 +330,241 @@ function AddProperties() {
                                                 });
                                             }}
                                         />
+                                    </div>
+                                </div>
+
+
+
+                                <div className="form-group border py-3 mb-3">
+                                    <div className="row items-end">
+                                        {item?.highlights?.map((item, i, arr) => {
+                                            return <React.Fragment key={i} >
+
+                                                <div className="col-md-4">
+                                                    <div className="mb-3">
+                                                        <label className="form-label">HighLights Type:</label>
+                                                        <select
+                                                            className="form-select"
+                                                            aria-label="Default select example"
+                                                            onChange={(e) =>
+                                                                updateFormdata({
+                                                                    e,
+                                                                    position: {
+                                                                        name: "properties",
+                                                                        index,
+                                                                        sub: {
+
+                                                                            name: "highlights",
+                                                                            index: i,
+                                                                            sub: {
+                                                                                name: "type",
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    value: e.target.value,
+                                                                })
+                                                            }>
+                                                            <option >Open this select menu</option>
+                                                            {highlights_type_list?.map((option, i) => {
+                                                                return <option value={option.value} key={i} selected={option.value == item?.type}>{option.label}</option>
+                                                            })}
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div className="col-md-6">
+                                                    <div className="mb-3">
+                                                        <label className="form-label">Quantity:</label>
+                                                        <input
+                                                            type="text"
+                                                            className="form-control"
+
+                                                            value={item?.quantity}
+                                                            onChange={(e) =>
+                                                                updateFormdata({
+                                                                    e,
+                                                                    position: {
+                                                                        name: "properties",
+                                                                        index,
+                                                                        sub: {
+                                                                            name: "highlights",
+                                                                            index: i,
+                                                                            sub: {
+                                                                                name: "quantity",
+                                                                            }
+                                                                        }
+
+                                                                    },
+                                                                    value: e.target.value,
+                                                                })
+                                                            }
+                                                        />
+                                                    </div>
+                                                </div>
+                                                <div className="col-auto">
+                                                    {i + 1 === arr.length ? <button type="button" className="btn black-btn mb-3" onClick={(e) => {
+                                                        // addImage()
+                                                        add_remove_elem_fromdata({
+                                                            position: {
+                                                                name: "properties",
+                                                                index,
+                                                                sub: {
+                                                                    name: "highlights",
+                                                                }
+                                                            },
+                                                            doAdd: true
+                                                        })
+                                                    }}>Add New</button> :
+                                                        <button type="button" className="btn btn-danger mb-3" onClick={(e) => {
+                                                            // addImage()
+                                                            add_remove_elem_fromdata({
+                                                                position: {
+                                                                    name: "properties",
+                                                                    index,
+                                                                    sub: {
+                                                                        name: "highlights",
+                                                                    }
+                                                                },
+                                                                indexToremove: i,
+                                                                doAdd: false
+                                                            })
+                                                        }}>Remove</button>
+                                                    }
+
+                                                </div>
+                                            </React.Fragment>
+                                        })}
+                                    </div>
+
+                                </div>
+
+                                <div className="form-group border py-3 mb-3">
+                                    {/* <h3>Project Details</h3> */}
+                                    <div className="row">
+
+
+                                        <div className="col-md-6">
+                                            <div className="mb-3">
+                                                <label className="form-label">Propertie Type:</label>
+                                                <select
+                                                    className="form-select"
+                                                    aria-label="Default select example"
+                                                    name="propertieType"
+                                                    onChange={(e) =>
+                                                        updateFormdata({
+                                                            e,
+                                                            position: {
+                                                                name: "properties",
+                                                                index,
+                                                                sub: {
+                                                                    name: "details",
+                                                                    sub: {
+                                                                        name: "propertieType",
+                                                                    },
+                                                                },
+                                                            },
+                                                            value: e.target.value,
+                                                        })
+                                                    }>
+                                                    <option >Open this select menu</option>
+                                                    {propertieType_list?.map((item, i) => {
+                                                        return <option value={item.value} key={i} selected={item.value == formdata?.properties?.[index]?.details?.propertieType}>{item.label}</option>
+                                                    })}
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div className="col-md-6">
+                                            <div className="mb-3">
+                                                <label className="form-label">Owner Name:</label>
+                                                <input
+                                                    type="text"
+                                                    className="form-control"
+
+                                                    value={item?.details?.ownership?.ownerName}
+                                                    onChange={(e) =>
+                                                        updateFormdata({
+                                                            e,
+                                                            position: {
+                                                                name: "properties",
+                                                                index,
+                                                                sub: {
+                                                                    name: "details",
+                                                                    sub: {
+                                                                        name: "ownership",
+                                                                        sub: {
+                                                                            name: "ownerName",
+                                                                        }
+                                                                    },
+                                                                },
+                                                            },
+                                                            value: e.target.value,
+                                                        })
+                                                    }
+                                                />
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+                                <div className="col-12">
+                                    <div className="row">
+                                        {item?.images?.map((item, i, arr) => {
+                                            return <div className="col-md-4" key={i}>
+                                                <div className="mb-3">
+
+                                                    <Upload
+                                                        currentImage={item}
+                                                        updateFormdata={(value) => {
+                                                            updateFormdata({
+                                                                position: {
+                                                                    name: "properties",
+                                                                    index,
+                                                                    sub: {
+                                                                        name: "images",
+                                                                        index: i,
+                                                                        sub: {
+                                                                            name: "url",
+                                                                        },
+                                                                    },
+                                                                },
+                                                                value,
+                                                            });
+                                                        }}
+                                                        deleteImage={() => {
+                                                            add_remove_elem_fromdata({
+                                                                position: {
+                                                                    name: "properties",
+                                                                    index,
+                                                                    sub: {
+                                                                        name: "images",
+                                                                    },
+                                                                },
+                                                                doAdd: false,
+                                                                indexToremove: i
+                                                            })
+                                                        }}
+                                                    />
+                                                </div>
+                                            </div>
+                                        })}
+
+                                        <div className="col-auto">
+                                            <button type="button" className="btn black-btn" onClick={(e) => {
+                                                // addImage()
+                                                add_remove_elem_fromdata({
+                                                    position: {
+                                                        name: "properties",
+                                                        index,
+                                                        sub: {
+                                                            name: "images",
+                                                        },
+                                                    },
+                                                    doAdd: true
+                                                })
+                                            }}>Add Image</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
