@@ -7,14 +7,17 @@ import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import Upload from "../../components/upload";
 import Select from "react-select";
 import { toBeRequired } from "@testing-library/jest-dom/dist/matchers";
-import { listning_ststus_list } from "../../asset/staticLists";
-import { update } from '../../asset/commonFuntions';
+import { Selling_ststus_list, buildingType_list, highlights_type_list, listning_ststus_list } from "../../asset/staticLists";
+import { add_remove_elem_fromdata_recursion, update } from '../../asset/commonFuntions';
+import { useDispatch } from "react-redux";
+import { updateGlobalState } from "../../Redux/GlobalSlice";
 
 
 function AddProject() {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
     let location = useLocation()
-    console.log(location, "location");
+    // console.log(location, "location");
     const [searchParams, setSearchParams] = useSearchParams();
     let project_id = searchParams.get("project_id")
     const [builderList, setBuilderList] = useState([]);
@@ -33,6 +36,52 @@ function AddProject() {
                 url: "",
             },
         ],
+        floorPlans: {
+            heading: "",
+            text: ""
+        },
+        description: "",
+        overview: "",
+        details: {
+            buildingType: "",
+            ownership: {
+                ownerName: ""
+            },
+            sellingStatus: "",
+            interiorDesigner: {
+                name: ""
+            },
+            architect: {
+                name: ""
+            },
+            marketingCompany: {
+                name: "",
+                marketingSummery: ""
+            },
+            salesCompany: {
+                name: ""
+            },
+
+        },
+        amenitiesList: [
+            {
+                label: ""
+            }
+        ],
+        highlights: [
+            {
+                label: "",
+                quantity: "",
+                type: "condo"
+            }
+        ],
+
+        features_finises: {
+            title: "",
+            subTitle: "",
+            description: "",
+        },
+
     };
     const [formdata, setFormdata] = useState(inhitialFormdata);
     async function fetchBuilderlist(e) {
@@ -71,33 +120,46 @@ function AddProject() {
             formData: formdata,
         });
         if (res.data) {
-            alert("Project Created Successfully");
-            navigate("/admin/addproperties", { state: res.data });
             setLoader(false);
+            dispatch(updateGlobalState({
+                swalDetails: {
+                    isSwalOpen: true,
+                    type: "success",
+                    title: "Success",
+                    text: project_id ? "Project updated successfully" : "Project Created successfully",
+                    okBtnOnclick: () => { navigate("/admin/addproperties", { state: res.data }); }
+                }
+            }))
+
+
+
+
         } else {
-            alert(res.error.message);
+            // alert(res.error.message);
             setLoader(false);
+            dispatch(updateGlobalState({
+                swalDetails: {
+                    isSwalOpen: true,
+                    type: "error",
+                    title: "Something went wrong",
+                    text: res.error.message
+                }
+            }))
         }
     }
 
     function updateFormdata({ e, position, value }) {
         let result = update({ position, value, form: formdata });
-        setFormdata(result);
+        setFormdata(prev => ({ ...prev, ...result }));
+    }
+
+    function add_remove_elem_fromdata({ position, doAdd, indexToremove }) {
+        let result = add_remove_elem_fromdata_recursion({ position, form: formdata, doAdd, indexToremove, inhitialFormdata });
+        setFormdata(prev => ({ ...prev, ...result }));
     }
 
 
-    function deleteImage(index) {
-        setFormdata(prev => ({
-            ...prev,
-            images: prev?.images?.filter((item, i) => i != index)
-        }))
-    }
-    function addImage() {
-        setFormdata(prev => ({
-            ...prev,
-            images: [...prev.images, inhitialFormdata?.images[0]]
-        }))
-    }
+
     return (
         <AdminLayout>
             {loader ? <Loader /> : ""}
@@ -189,7 +251,7 @@ function AddProject() {
                                     <input
                                         type="text"
                                         className="form-control"
-                                        name="priceto"
+
                                         defaultValue={formdata?.price?.to}
                                         onChange={(e) =>
                                             updateFormdata({
@@ -208,13 +270,53 @@ function AddProject() {
                             </div>
                             <div className="col-md-6">
                                 <div className="mb-3">
-                                    <label className="form-label">Listing status:</label>
-                                    {/* <input type="text" className="form-control" name='listingStatus' onChange={(e) => updateFormdata({
-                                        e, position: {
-                                            name: "listingStatus",
+                                    <label className="form-label">Floor Plans Heading:</label>
+                                    <input
+                                        type="text"
+                                        className="form-control"
 
-                                        }, value: e.target.value
-                                    })} /> */}
+                                        defaultValue={formdata?.floorPlans?.heading}
+                                        onChange={(e) =>
+                                            updateFormdata({
+                                                e,
+                                                position: {
+                                                    name: "floorPlans",
+                                                    sub: {
+                                                        name: "heading",
+                                                    },
+                                                },
+                                                value: e.target.value,
+                                            })
+                                        }
+                                    />
+                                </div>
+                            </div>
+                            <div className="col-md-6">
+                                <div className="mb-3">
+                                    <label className="form-label">FloorPlans Text:</label>
+                                    <textarea
+                                        type="text"
+                                        className="form-control"
+
+                                        defaultValue={formdata?.floorPlans?.text}
+                                        onChange={(e) =>
+                                            updateFormdata({
+                                                e,
+                                                position: {
+                                                    name: "floorPlans",
+                                                    sub: {
+                                                        name: "text",
+                                                    },
+                                                },
+                                                value: e.target.value,
+                                            })
+                                        }
+                                    />
+                                </div>
+                            </div>
+                            <div className="col-md-6">
+                                <div className="mb-3">
+                                    <label className="form-label">Listing status:</label>
                                     <select
                                         className="form-select"
                                         aria-label="Default select example"
@@ -268,7 +370,7 @@ function AddProject() {
                                     <textarea
                                         type="text"
                                         className="form-control"
-                                        name="priceto"
+
                                         defaultValue={formdata?.description}
                                         onChange={(e) =>
                                             updateFormdata({
@@ -280,6 +382,456 @@ function AddProject() {
                                             })
                                         }
                                     />
+                                </div>
+                            </div>
+                            <div className="col-md-12">
+                                <div className="mb-3">
+                                    <label className="form-label">Overview:</label>
+                                    <textarea
+                                        type="text"
+                                        className="form-control"
+
+                                        defaultValue={formdata?.overview}
+                                        onChange={(e) =>
+                                            updateFormdata({
+                                                e,
+                                                position: {
+                                                    name: "overview",
+                                                },
+                                                value: e.target.value,
+                                            })
+                                        }
+                                    />
+                                </div>
+                            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            <div className="form-group border py-3 mb-3">
+                                <div className="row items-end">
+                                    {formdata?.highlights?.map((item, i, arr) => {
+                                        return <React.Fragment key={i} >
+
+                                            <div className="col-md-4">
+                                                <div className="mb-3">
+                                                    <label className="form-label">HighLights Type:</label>
+                                                    <select
+                                                        className="form-select"
+                                                        aria-label="Default select example"
+                                                        onChange={(e) =>
+                                                            updateFormdata({
+                                                                e,
+                                                                position: {
+                                                                    name: "highlights",
+                                                                    index: i,
+                                                                    sub: {
+                                                                        name: "type",
+                                                                    }
+                                                                },
+                                                                value: e.target.value,
+                                                            })
+                                                        }>
+                                                        <option >Open this select menu</option>
+                                                        {highlights_type_list?.map((option, i) => {
+                                                            return <option value={option.value} key={i} selected={option.value == item?.type}>{option.label}</option>
+                                                        })}
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div className="col-md-6">
+                                                <div className="mb-3">
+                                                    <label className="form-label">Quantity:</label>
+                                                    <input
+                                                        type="text"
+                                                        className="form-control"
+
+                                                        defaultValue={item?.quantity}
+                                                        onChange={(e) =>
+                                                            updateFormdata({
+                                                                e,
+                                                                position: {
+
+                                                                    name: "highlights",
+                                                                    index: i,
+                                                                    sub: {
+                                                                        name: "quantity",
+                                                                    }
+
+                                                                },
+                                                                value: e.target.value,
+                                                            })
+                                                        }
+                                                    />
+                                                </div>
+                                            </div>
+                                            <div className="col-auto">
+                                                {i + 1 === arr.length ? <button type="button" className="btn black-btn mb-3" onClick={(e) => {
+                                                    // addImage()
+                                                    add_remove_elem_fromdata({
+                                                        position: {
+                                                            name: "highlights",
+                                                        },
+                                                        doAdd: true
+                                                    })
+                                                }}>Add New</button> :
+                                                    <button type="button" className="btn btn-danger mb-3" onClick={(e) => {
+                                                        // addImage()
+                                                        add_remove_elem_fromdata({
+                                                            position: {
+                                                                name: "highlights",
+                                                            },
+                                                            indexToremove: i,
+                                                            doAdd: false
+                                                        })
+                                                    }}>Remove</button>
+                                                }
+
+                                            </div>
+                                        </React.Fragment>
+                                    })}
+                                </div>
+
+                            </div>
+                            <div className="form-group border py-3 mb-3">
+                                <div className="row items-end">
+                                    {formdata?.amenitiesList?.map((item, i, arr) => {
+                                        return <React.Fragment key={i} >
+
+
+                                            <div className="col-md-6">
+                                                <div className="mb-3">
+                                                    <label className="form-label">Amenities Point {i + 1}:</label>
+                                                    <input
+                                                        type="text"
+                                                        className="form-control"
+
+                                                        defaultValue={item?.label}
+                                                        onChange={(e) =>
+                                                            updateFormdata({
+                                                                e,
+                                                                position: {
+
+                                                                    name: "amenitiesList",
+                                                                    index: i,
+                                                                    sub: {
+                                                                        name: "label",
+                                                                    }
+
+                                                                },
+                                                                value: e.target.value,
+                                                            })
+                                                        }
+                                                    />
+                                                </div>
+                                            </div>
+                                            <div className="col-auto">
+                                                {i + 1 === arr.length ? <button type="button" className="btn black-btn mb-3" onClick={(e) => {
+                                                    // addImage()
+                                                    add_remove_elem_fromdata({
+                                                        position: {
+                                                            name: "amenitiesList",
+                                                        },
+                                                        doAdd: true
+                                                    })
+                                                }}>Add New</button> :
+                                                    <button type="button" className="btn btn-danger mb-3" onClick={(e) => {
+                                                        // addImage()
+                                                        add_remove_elem_fromdata({
+                                                            position: {
+                                                                name: "amenitiesList",
+                                                            },
+                                                            indexToremove: i,
+                                                            doAdd: false
+                                                        })
+                                                    }}>Remove</button>
+                                                }
+
+                                            </div>
+                                        </React.Fragment>
+                                    })}
+                                </div>
+
+                            </div>
+
+
+
+
+                            {/*  */}
+                            <div className="form-group border py-3 mb-3">
+
+
+                                <div className="col-md-6">
+                                    <div className="mb-3">
+                                        <label className="form-label">Features Finishes Subtitle:</label>
+                                        <input
+                                            type="text"
+                                            className="form-control"
+                                            defaultValue={formdata?.features_finises?.subTitle}
+                                            onChange={(e) =>
+                                                updateFormdata({
+                                                    e,
+                                                    position: {
+                                                        name: "features_finises",
+                                                        sub: {
+                                                            name: "subTitle",
+                                                        },
+                                                    },
+                                                    value: e.target.value,
+                                                })
+                                            }
+                                        />
+                                    </div>
+                                </div>
+                                <div className="col-md-12">
+                                    <div className="mb-3">
+                                        <label className="form-label">Features Finishes Description:</label>
+                                        <textarea
+                                            type="text"
+                                            className="form-control"
+                                            defaultValue={formdata?.features_finises?.description}
+                                            onChange={(e) =>
+                                                updateFormdata({
+                                                    e,
+                                                    position: {
+                                                        name: "features_finises",
+                                                        sub: {
+                                                            name: "description",
+                                                        },
+                                                    },
+                                                    value: e.target.value,
+                                                })
+                                            }
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                            {/* small details details */}
+
+                            <div className="form-group border py-3 mb-3">
+                                {/* <h3>Project Details</h3> */}
+                                <div className="row">
+
+
+                                    <div className="col-md-6">
+                                        <div className="mb-3">
+                                            <label className="form-label">Building Type:</label>
+                                            <select
+                                                className="form-select"
+                                                aria-label="Default select example"
+                                                name="buildingType"
+                                                onChange={(e) =>
+                                                    updateFormdata({
+                                                        e,
+                                                        position: {
+                                                            name: "details",
+                                                            sub: {
+                                                                name: "buildingType",
+                                                            },
+                                                        },
+                                                        value: e.target.value,
+                                                    })
+                                                }>
+                                                <option >Open this select menu</option>
+                                                {buildingType_list?.map((item, i) => {
+                                                    return <option value={item.value} key={i} selected={item.value == formdata?.details?.buildingType}>{item.label}</option>
+                                                })}
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div className="col-md-6">
+                                        <div className="mb-3">
+                                            <label className="form-label">Selling status:</label>
+                                            <select
+                                                className="form-select"
+                                                aria-label="Default select example"
+                                                name="sellingStatus"
+                                                onChange={(e) =>
+                                                    updateFormdata({
+                                                        e,
+                                                        position: {
+                                                            name: "details",
+                                                            sub: {
+                                                                name: "sellingStatus",
+                                                            },
+                                                        },
+                                                        value: e.target.value,
+                                                    })
+                                                }>
+                                                <option >Open this select menu</option>
+                                                {Selling_ststus_list?.map((item, i) => {
+                                                    return <option value={item.value} key={i} selected={item.value == formdata?.details?.sellingStatus}>{item.label}</option>
+                                                })}
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div className="col-md-6">
+                                        <div className="mb-3">
+                                            <label className="form-label">Owner Name:</label>
+                                            <input
+                                                type="text"
+                                                className="form-control"
+
+                                                defaultValue={formdata?.details?.ownership?.ownerName}
+                                                onChange={(e) =>
+                                                    updateFormdata({
+                                                        e,
+                                                        position: {
+                                                            name: "details",
+                                                            sub: {
+                                                                name: "ownership",
+                                                                sub: {
+                                                                    name: "ownerName",
+                                                                }
+                                                            },
+                                                        },
+                                                        value: e.target.value,
+                                                    })
+                                                }
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="col-md-6">
+                                        <div className="mb-3">
+                                            <label className="form-label">Interior Designer:</label>
+                                            <input
+                                                type="text"
+                                                className="form-control"
+
+                                                defaultValue={formdata?.details?.interiorDesigner?.name}
+                                                onChange={(e) =>
+                                                    updateFormdata({
+                                                        e,
+                                                        position: {
+                                                            name: "details",
+                                                            sub: {
+                                                                name: "interiorDesigner",
+                                                                sub: {
+                                                                    name: "name",
+                                                                }
+                                                            },
+                                                        },
+                                                        value: e.target.value,
+                                                    })
+                                                }
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="col-md-6">
+                                        <div className="mb-3">
+                                            <label className="form-label">Architect:</label>
+                                            <input
+                                                type="text"
+                                                className="form-control"
+
+                                                defaultValue={formdata?.details?.architect?.name}
+                                                onChange={(e) =>
+                                                    updateFormdata({
+                                                        e,
+                                                        position: {
+                                                            name: "details",
+                                                            sub: {
+                                                                name: "architect",
+                                                                sub: {
+                                                                    name: "name",
+                                                                }
+                                                            },
+                                                        },
+                                                        value: e.target.value,
+                                                    })
+                                                }
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="col-md-6">
+                                        <div className="mb-3">
+                                            <label className="form-label">Marketing Company Name:</label>
+                                            <input
+                                                type="text"
+                                                className="form-control"
+
+                                                defaultValue={formdata?.details?.marketingCompany?.name}
+                                                onChange={(e) =>
+                                                    updateFormdata({
+                                                        e,
+                                                        position: {
+                                                            name: "details",
+                                                            sub: {
+                                                                name: "marketingCompany",
+                                                                sub: {
+                                                                    name: "name",
+                                                                }
+                                                            },
+                                                        },
+                                                        value: e.target.value,
+                                                    })
+                                                }
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="col-md-6">
+                                        <div className="mb-3">
+                                            <label className="form-label">Marketing Summery:</label>
+                                            <textarea
+                                                type="text"
+                                                className="form-control"
+
+                                                defaultValue={formdata?.details?.marketingCompany?.marketingSummery}
+                                                onChange={(e) =>
+                                                    updateFormdata({
+                                                        e,
+                                                        position: {
+                                                            name: "details",
+                                                            sub: {
+                                                                name: "marketingCompany",
+                                                                sub: {
+                                                                    name: "marketingSummery",
+                                                                }
+                                                            },
+                                                        },
+                                                        value: e.target.value,
+                                                    })
+                                                }
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="col-md-6">
+                                        <div className="mb-3">
+                                            <label className="form-label">Sales Company:</label>
+                                            <input
+                                                type="text"
+                                                className="form-control"
+
+                                                defaultValue={formdata?.details?.salesCompany?.name}
+                                                onChange={(e) =>
+                                                    updateFormdata({
+                                                        e,
+                                                        position: {
+                                                            name: "details",
+                                                            sub: {
+                                                                name: "salesCompany",
+                                                                sub: {
+                                                                    name: "name",
+                                                                }
+                                                            },
+                                                        },
+                                                        value: e.target.value,
+                                                    })
+                                                }
+                                            />
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div className="col-md-6">
@@ -318,7 +870,7 @@ function AddProject() {
 
                             <div className="col-12">
                                 <div className="row">
-                                    {formdata?.images?.map((item, i, arr) => {
+                                    {formdata.images.map((item, i, arr) => {
                                         return <div className="col-md-4" key={i}>
                                             <div className="mb-3">
 
@@ -336,18 +888,35 @@ function AddProject() {
                                                             value,
                                                         });
                                                     }}
-                                                    deleteImage={() => { deleteImage(i) }}
+                                                    deleteImage={() => {
+                                                        add_remove_elem_fromdata({
+                                                            position: {
+                                                                name: "images",
+                                                            },
+                                                            doAdd: false,
+                                                            indexToremove: i
+                                                        })
+                                                    }}
                                                 />
                                             </div>
                                         </div>
                                     })}
 
                                     <div className="col-auto">
-                                        <button type="button" className="btn black-btn" onClick={(e) => { addImage() }}>Add Image</button>
+                                        <button type="button" className="btn black-btn" onClick={(e) => {
+                                            // addImage()
+                                            add_remove_elem_fromdata({
+                                                position: {
+                                                    name: "images",
+                                                },
+                                                doAdd: true
+                                            })
+                                        }}>Add Image</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
 
                         <div className="text-end flex gap-2 justify-end">
                             <button type="submit" className="btn grey-primary">
@@ -359,8 +928,8 @@ function AddProject() {
                         </div>
                     </form>
                 </div>
-            </div>
-        </AdminLayout>
+            </div >
+        </AdminLayout >
     );
 }
 

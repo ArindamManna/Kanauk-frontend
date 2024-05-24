@@ -9,12 +9,14 @@ import builderLogo from "../asset/images/builderLogo.png"
 import bedImg from "../asset/images/small/bed.png"
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
-import { useSearchParams } from 'react-router-dom'
+import { useLocation, useSearchParams } from 'react-router-dom'
 import { ApiHelperFunction } from '../Api/ApiHelperfunction'
 import Loader from '../components/Loader'
 
 function ProjectDetails() {
-    const [projectdetails, setProjectdetails] = useState({})
+    const [projectdetails, setProjectdetails] = useState({});
+    let location = useLocation()
+    // console.log(location, "location");
     const [loader, setLoader] = useState(false)
     const [searchParams, setSearchParams] = useSearchParams();
     let project_id = searchParams.get("project_id")

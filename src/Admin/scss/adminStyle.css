@@ -1571,7 +1571,6 @@ textarea.form-control {
   cursor: pointer;
   outline: none;
   color: #18202B;
-  z-index: 3;
 }
 
 .uploadDocInputBox .cancleBtn:hover {
@@ -1607,7 +1606,6 @@ textarea.form-control {
 
 .uploadDocInputBox label {
   position: relative;
-  z-index: 2;
 }
 
 .checkbox {

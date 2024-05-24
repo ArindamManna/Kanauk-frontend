@@ -905,7 +905,6 @@ only screen and (min-resolution: 2dppx) {
     cursor: pointer;
     outline: none;
     color: #18202B;
-    z-index: 3;
 }
 
 .uploadDocInputBox .cancleBtn:hover {
@@ -941,7 +940,6 @@ only screen and (min-resolution: 2dppx) {
 
 .uploadDocInputBox label {
     position: relative;
-    z-index: 2;
 }
 
 .checkbox {

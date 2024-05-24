@@ -8,7 +8,7 @@ function Swal({ data }) {
     // let { type, title, text } = data ? data : {}
 
     const dispatch = useDispatch();
-    const { type, title, text } = useSelector((state) => {
+    const { type, title, text, okBtnOnclick } = useSelector((state) => {
         const { swalDetails } = state?.GlobalSlice;
         return { ...swalDetails }
     });
@@ -16,6 +16,9 @@ function Swal({ data }) {
         dispatch(updateGlobalState({
             swalDetails: { isSwalOpen: false }
         }))
+        if (okBtnOnclick) {
+            okBtnOnclick()
+        }
 
     }
 
