@@ -12,9 +12,11 @@ import { useLocation, useSearchParams } from 'react-router-dom'
 import { ApiHelperFunction } from '../Api/ApiHelperfunction'
 import Loader from '../components/Loader'
 import { getObjFromList, update } from '../asset/commonFuntions'
-import { highlights_type_list, listning_ststus_list } from '../asset/staticLists'
+import { Selling_ststus_list, buildingType_list, highlights_type_list, listning_ststus_list } from '../asset/staticLists'
 import { updateGlobalState } from '../Redux/GlobalSlice'
 import { useDispatch } from 'react-redux'
+import { options, projectDetailsImagesOptions } from '../asset/carouselOptions'
+import OwlCarousel from 'react-owl-carousel';
 
 function ProjectDetails() {
     const dispatch = useDispatch();
@@ -137,17 +139,45 @@ function ProjectDetails() {
                     </div>
                 </div>
                 <div className="gallery">
-                    <img src={projectdetails?.images?.[0]?.url} alt="" className='col-span-2 row-span-2' />
-                    <img src={projectDetailsImage2} alt="" className='hidden lg:block' />
-                    <img src={projectDetailsImage3} alt="" className='hidden lg:block' />
-                    <img src={projectDetailsImage4} alt="" className='col-span-2 hidden lg:block' />
-                    <div className="imageCount-carosel">
-                        <div className="count">
-                            <span>
-                                {imageIcon}
-                            </span>
-                            26
-                        </div>
+                    {projectdetails?.images?.length > 0 ?
+                        <OwlCarousel className='owl-theme '{...projectDetailsImagesOptions}>
+
+                            {projectdetails?.images?.map((item, index, arr) => {
+                                console.log(index, index % 4)
+                                if (index % 4 == 0) {
+
+                                    return <div className='item' key={index}>
+                                        <div className='col-span-2 row-span-2 imgHoverAnimation' >
+                                            <img src={projectdetails?.images[index]?.url} alt="" />
+                                        </div>
+
+                                        {
+                                            projectdetails?.images[index + 1] &&
+                                            <div className=' imgHoverAnimation' >
+                                                <img src={projectdetails?.images[index + 1]?.url} alt="" />
+                                            </div>
+                                        }
+                                        {
+                                            projectdetails?.images[index + 2] &&
+                                            <div className=' imgHoverAnimation' >
+                                                <img src={projectdetails?.images[index + 2]?.url} alt="" />
+                                            </div>
+                                        }
+                                        {
+                                            projectdetails?.images[index + 3] &&
+                                            <div className='col-span-2  imgHoverAnimation' >
+                                                <img src={projectdetails?.images[index + 3]?.url} alt="" />
+                                            </div>
+                                        }
+                                    </div>
+                                }
+                            })}
+
+                            {/* <img src={projectDetailsImage2} alt="" className='hidden lg:block' />
+                            <img src={projectDetailsImage3} alt="" className='hidden lg:block' />
+                            <img src={projectDetailsImage4} alt="" className='col-span-2 hidden lg:block' /> */}
+                            {/* <div className="imageCount-carosel">
+                        
                         <div className="btns">
                             <button>
                                 <span>
@@ -162,6 +192,14 @@ function ProjectDetails() {
                                 </span>
                             </button>
                         </div>
+                    </div> */}
+
+                        </OwlCarousel> : ""}
+                    <div className="count">
+                        <span>
+                            {imageIcon}
+                        </span>
+                        {projectdetails?.images?.length}
                     </div>
                 </div>
             </section>
@@ -394,15 +432,13 @@ function ProjectDetails() {
                         {projectdetails?.name}
                     </p>
                     <p className="para">
-                        Building Type:{projectdetails?.details?.buildingType} | Ownership:{projectdetails?.details?.ownership?.ownerName}  | Selling Status: Selling | Construction Status:Complete Builder(s): Dajia Insurance Group | Architect(s): Skidmore, Owings & Merrill LLP | Interior Designer(s): Pierre Yves Rochon and Jean-Louis Deniot | Marketing Company: Douglas Elliman | Sales Company: Douglas Elliman
-                    </p>
-                </div>
-                <div className="highlited-details">
-                    <p className="title">
-                        Spring Valley Construction
-                    </p>
-                    <p className="para">
-                        Building Type:Condo | <a href="">Ownership:Condominium</a> | Selling Status:Selling | Construction Status:Complete Builder(s): Dajia Insurance Group | Architect(s): Skidmore, Owings & Merrill LLP | Interior Designer(s): Pierre Yves Rochon and Jean-Louis Deniot | Marketing Company: Douglas Elliman | Sales Company: Douglas Elliman
+                        Building Type:{getObjFromList({
+                            list: buildingType_list,
+                            matchdata: { name: "value", value: projectdetails?.details?.buildingType }
+                        })?.label} | Ownership:{projectdetails?.details?.ownership?.ownerName}  | Selling Status: {getObjFromList({
+                            list: Selling_ststus_list,
+                            matchdata: { name: "value", value: projectdetails?.details?.sellingStatus }
+                        })?.label} | Construction Status:Complete Builder(s): Dajia Insurance Group | Architect(s): {projectdetails?.details?.architect?.name} | Interior Designer(s): {projectdetails?.details?.interiorDesigner?.name} | Marketing Company: {projectdetails?.details?.marketingCompany?.name} | Sales Company: {projectdetails?.details?.salesCompany?.name}
                     </p>
                 </div>
 
@@ -413,38 +449,17 @@ function ProjectDetails() {
                             Amenities
                         </p>
                         <div className='list'>
-                            <div className="item">
-                                <span>
-                                    {tickCircle}
-                                </span>
-                                <p>
-                                    Board Room
-                                </p>
-                            </div>
-                            <div className="item">
-                                <span>
-                                    {tickCircle}
-                                </span>
-                                <p>
-                                    Board Room
-                                </p>
-                            </div>
-                            <div className="item">
-                                <span>
-                                    {tickCircle}
-                                </span>
-                                <p>
-                                    Board Room
-                                </p>
-                            </div>
-                            <div className="item">
-                                <span>
-                                    {tickCircle}
-                                </span>
-                                <p>
-                                    Board Room
-                                </p>
-                            </div>
+                            {projectdetails?.amenitiesList?.map((item, i) => {
+                                return <div className="item" key={i}>
+                                    <span>
+                                        {tickCircle}
+                                    </span>
+                                    <p>
+                                        {item?.label}
+                                    </p>
+                                </div>
+                            })}
+
 
                         </div>
 
@@ -455,13 +470,13 @@ function ProjectDetails() {
                             Features & Finishes
                         </p>
                         <p className="subtitle">
-                            CLASSIC GRANDEUR AND MODERN COMFORT
+                            {projectdetails?.features_finises?.subTitle}
                         </p>
                         <p className="para">
-                            <span>
+                            {/* <span>
                                 RESIDENCES
-                            </span> <br />
-                            Inspired by the hotel’s classic grandeur, internationally acclaimed designer Jean-Louis Deniot has created residences that balance modern comfort with Art Deco opulence; blending the old and the new; the European and the American; the grand and the intimate. Each residence celebrates the scale and beauty of the original architecture—a perfect balance of aesthetic and practical considerations—with windows that replicate the building’s original design and flood the rooms with dynamic views of the New York cityscape. Kitchens feature wood and lacquer cabinetry custom-designed by Deniot and fabricated by Italian design house Molteni&C, cleverly concealing top-of-the-line German appliances by Gaggenau. Elegant primary bathrooms offer heated floors, rain showers, and custom Italian vanities. Handcrafted finishes, natural materials, and subtle Art Deco references bring a sense of history to these gracious contemporary spaces.THE SCALE AND BEAUTY OF THE ORIGINAL ART DECO ARCHITECTURE, WITH ITS DISTINCTIVE DETAILING AND SET-BACK TERRACES, EXISTS IN PERFECT HARMONY WITH CONTEMPORARY DESIGN—BLENDING THE OLD AND THE NEW, THE COSMOPOLITAN AND THE AMERICAN, THE GRAND AND THE INTIMATE.
+                            </span> <br /> */}
+                            {projectdetails?.features_finises?.description}
                         </p>
 
 
@@ -477,10 +492,10 @@ function ProjectDetails() {
                     <img src={projectDetailsImage1} alt="" />
                     <div className="content">
                         <p className="title">
-                            Spring Valley Construction Marketing Summary
+                            {projectdetails?.name} Marketing Summary
                         </p>
                         <p className="para">
-                            INSPIRED BY HERITAGE, GLAMOUR, AND SOPHISTICATIONThe story of the Waldorf Astoria is, in many ways a story of New York City—a story of ambition, innovation, and achievement. From residential interior designer Jean-Louis Deniot, to architect Skidmore, Owings & Merrill, to hotel interior designer Pierre-Yves Rochon, the team behind the restoration of the Waldorf Astoria are all global icons in their own right.
+                            {projectdetails?.details?.marketingCompany?.marketingSummery}
                             <br />
                             <span>
                                 Source: The Towers of the Waldorf Astoria

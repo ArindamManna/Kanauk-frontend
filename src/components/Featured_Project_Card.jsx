@@ -8,7 +8,7 @@ function Featured_Project_Card({ data }) {
     return (
         <>
             <div className="Featured_Project_Card">
-                <Link to={`/projectdetails/?project_id=${data?._id}`}>
+                <Link to={`/projectdetails/?project_id=${data?._id}`} className="imgLink">
                     <img src={images[0]?.url} alt="" />
                 </Link>
                 <div className="content">

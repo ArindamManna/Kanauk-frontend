@@ -607,8 +607,13 @@ header nav .hamburgerBtn {
 .featured-projects-banner .projects_slider .Featured_Project_Card {
   width: 17.5rem;
 }
-.featured-projects-banner .projects_slider .Featured_Project_Card img {
-  @apply w-full object-contain rounded-2xl;
+.featured-projects-banner .projects_slider .Featured_Project_Card .imgLink {
+  height: 10rem;
+  overflow: hidden;
+  @apply rounded-2xl overflow-hidden block;
+}
+.featured-projects-banner .projects_slider .Featured_Project_Card .imgLink img {
+  @apply w-full object-contain;
 }
 .featured-projects-banner .projects_slider .Featured_Project_Card .content {
   padding: 0.75rem 0.375rem 0rem 0.375rem;
@@ -1664,37 +1669,69 @@ footer .copyrightDiv {
   border-bottom: 2px solid #03bfa1;
 }
 .projectDetails-gallery .gallery {
+  @apply relative;
+}
+.projectDetails-gallery .gallery .item {
   @apply relative lg:grid grid-cols-4 grid-rows-2 gap-4 mb-8;
 }
 @media (min-width: 992px) {
-  .projectDetails-gallery .gallery {
+  .projectDetails-gallery .gallery .item {
     max-height: 32rem;
   }
 }
-.projectDetails-gallery .gallery img {
-  @apply rounded-md w-full lg:h-full;
+.projectDetails-gallery .gallery .item .imgHoverAnimation {
+  @apply rounded-md;
 }
-.projectDetails-gallery .gallery .imageCount-carosel {
-  @apply absolute bottom-5 right-4 flex gap-2 items-center;
+.projectDetails-gallery .gallery .item .imgHoverAnimation img {
+  @apply h-auto w-auto min-h-full min-w-full;
+}
+.projectDetails-gallery .gallery .count {
+  @apply absolute bottom-10 z-10 right-28 text-xl flex items-center gap-2 py-1 px-4 rounded-full;
   color: white;
-}
-.projectDetails-gallery .gallery .imageCount-carosel > div {
   background: rgba(0, 0, 0, 0.631372549);
-  @apply py-2 px-4 rounded-full;
 }
-.projectDetails-gallery .gallery .imageCount-carosel .count {
-  @apply text-xl flex items-center gap-2;
-}
-.projectDetails-gallery .gallery .imageCount-carosel .count span {
+.projectDetails-gallery .gallery .count span {
   @apply inline-block h-5;
 }
-.projectDetails-gallery .gallery .imageCount-carosel .btns button:hover {
-  color: #757575;
+.projectDetails-gallery .gallery .imageCount-carosel,
+.projectDetails-gallery .gallery .owl-nav {
+  @apply absolute bottom-10 mt-0 right-4 flex gap-2 items-center py-1 px-4 rounded-full;
+  color: white;
+  background: rgba(0, 0, 0, 0.631372549);
 }
-.projectDetails-gallery .gallery .imageCount-carosel .btns button span {
+.projectDetails-gallery .gallery .imageCount-carosel button,
+.projectDetails-gallery .gallery .imageCount-carosel .owl-prev,
+.projectDetails-gallery .gallery .imageCount-carosel .owl-next,
+.projectDetails-gallery .gallery .owl-nav button,
+.projectDetails-gallery .gallery .owl-nav .owl-prev,
+.projectDetails-gallery .gallery .owl-nav .owl-next {
+  @apply m-0;
+}
+.projectDetails-gallery .gallery .imageCount-carosel button:hover,
+.projectDetails-gallery .gallery .imageCount-carosel .owl-prev:hover,
+.projectDetails-gallery .gallery .imageCount-carosel .owl-next:hover,
+.projectDetails-gallery .gallery .owl-nav button:hover,
+.projectDetails-gallery .gallery .owl-nav .owl-prev:hover,
+.projectDetails-gallery .gallery .owl-nav .owl-next:hover {
+  color: #757575;
+  background: transparent;
+}
+.projectDetails-gallery .gallery .imageCount-carosel button span,
+.projectDetails-gallery .gallery .imageCount-carosel .owl-prev span,
+.projectDetails-gallery .gallery .imageCount-carosel .owl-next span,
+.projectDetails-gallery .gallery .owl-nav button span,
+.projectDetails-gallery .gallery .owl-nav .owl-prev span,
+.projectDetails-gallery .gallery .owl-nav .owl-next span {
   @apply inline-block h-6 w-6;
 }
-
+.projectDetails-gallery .gallery .imageCount-carosel button span svg,
+.projectDetails-gallery .gallery .imageCount-carosel .owl-prev span svg,
+.projectDetails-gallery .gallery .imageCount-carosel .owl-next span svg,
+.projectDetails-gallery .gallery .owl-nav button span svg,
+.projectDetails-gallery .gallery .owl-nav .owl-prev span svg,
+.projectDetails-gallery .gallery .owl-nav .owl-next span svg {
+  @apply h-full w-full;
+}
 .projectDetails-main {
   @apply lg:grid grid-cols-3 gap-4 mb-10;
 }

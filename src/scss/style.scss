@@ -647,11 +647,18 @@ header {
         .Featured_Project_Card {
             width: 17.5rem;
 
-            img {
-                @apply w-full object-contain rounded-2xl;
-                // box-shadow: -5px 4px 28px 0px #00000040;
-                // box-shadow: -5px 4px 28px 0px #00000040;
+            .imgLink {
+                height: 10rem;
+                overflow: hidden;
+                @apply rounded-2xl overflow-hidden block;
+
+                img {
+                    @apply w-full object-contain;
+                    // box-shadow: -5px 4px 28px 0px #00000040;
+                    // box-shadow: -5px 4px 28px 0px #00000040;
+                }
             }
+
 
             .content {
                 @include breakpoint-up("md") {
@@ -1927,44 +1934,67 @@ footer {
     }
 
     .gallery {
-        @apply relative lg:grid grid-cols-4 grid-rows-2 gap-4 mb-8;
+        @apply relative;
 
-        @include breakpoint-up("lg") {
-            max-height: 32rem;
+        .item {
+
+            @apply relative lg:grid grid-cols-4 grid-rows-2 gap-4 mb-8;
+
+            @include breakpoint-up("lg") {
+                max-height: 32rem;
+            }
+
+            .imgHoverAnimation {
+                @apply rounded-md;
+
+                img {
+                    @apply h-auto w-auto min-h-full min-w-full;
+                }
+            }
+
         }
 
-        img {
-            @apply rounded-md w-full lg:h-full;
-        }
-
-        .imageCount-carosel {
-            @apply absolute bottom-5 right-4 flex gap-2 items-center;
+        .count {
+            @apply absolute bottom-10 z-10 right-28 text-xl flex items-center gap-2 py-1 px-4 rounded-full;
             color: white;
 
-            >div {
-                background: #000000a1;
-                @apply py-2 px-4 rounded-full;
-            }
+            background: #000000a1;
 
-            .count {
-                @apply text-xl flex items-center gap-2;
+            span {
+                @apply inline-block h-5;
+            }
+        }
+
+        .imageCount-carosel,
+        .owl-nav {
+            @apply absolute bottom-10 mt-0 right-4 flex gap-2 items-center py-1 px-4 rounded-full;
+            color: white;
+
+            background: #000000a1;
+
+            // >div {}
+
+
+            button,
+            .owl-prev,
+            .owl-next {
+                @apply m-0;
+
+                &:hover {
+                    color: #757575;
+                    background: transparent
+                }
 
                 span {
-                    @apply inline-block h-5;
-                }
-            }
+                    @apply inline-block h-6 w-6;
 
-            .btns {
-                button {
-                    &:hover {
-                        color: #757575;
-                    }
-
-                    span {
-                        @apply inline-block h-6 w-6;
+                    svg {
+                        @apply h-full w-full;
                     }
                 }
             }
+
+            .btns {}
         }
     }
 }
