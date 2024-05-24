@@ -41,16 +41,35 @@ let propertieType_list = [
 let highlights_type_list = [
     {
         label: "Condo",
-        value: "condo"
+        value: "condo",
+        img: require("../asset/images/highlightsImg/condo.png")
     },
     {
-        label: "Beds",
-        value: "beds"
+        label: "Bedrooms",
+        value: "bedrooms",
+        img: require("../asset/images/highlightsImg/bed.png")
     },
     {
-        label: "Washrooms",
-        value: "washrooms"
+        label: "SqFt",
+        value: "sqft",
+        img: require("../asset/images/highlightsImg/sqft.png")
     },
+    {
+        label: "Price/SqFt",
+        value: "price/sqft",
+        img: require("../asset/images/highlightsImg/pricePerSqft.png")
+    },
+    {
+        label: "Units",
+        value: "units",
+        img: require("../asset/images/highlightsImg/units.png")
+    },
+    {
+        label: "Status",
+        value: "status",
+        img: require("../asset/images/highlightsImg/status.png")
+    },
+
 ];
 
 

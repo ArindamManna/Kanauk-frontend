@@ -85,7 +85,7 @@ function AdminBuilderList() {
                                     <td >{item?.location?.label}</td>
                                     <td >{item?.email}</td>
                                     <td >{item?.phone}</td>
-                                    <td >0</td>
+                                    <td >{item?.projects?.length}</td>
                                     <td className='flex items-center'>
                                         <a href="#"><img src={require("../asset/images/logo/lucide_view.png")} /></a>
                                         <Link to={`/admin/addbuilder/?builderId=${item?._id}`} state={item}><img src={require("../asset/images/logo/akar-icons_edit.png")} /></Link>

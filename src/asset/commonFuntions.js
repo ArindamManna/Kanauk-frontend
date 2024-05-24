@@ -44,4 +44,12 @@ function add_remove_elem_fromdata_recursion({ e, position, form, doAdd, indexTor
     return form;
 }
 
-export { update, add_remove_elem_fromdata_recursion }
+
+function getObjFromList({ list, matchdata: { name, value } }) {
+    let arr = list.filter((item) => {
+        return item[name] == value;
+    });
+
+    return arr[0];
+}
+export { update, add_remove_elem_fromdata_recursion, getObjFromList }

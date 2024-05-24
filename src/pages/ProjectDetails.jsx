@@ -6,14 +6,18 @@ import projectDetailsImage3 from "../asset/images/projectDetailsImage3.png"
 import projectDetailsImage4 from "../asset/images/projectDetailsImage4.png"
 import agents1 from "../asset/images/agents1.png"
 import builderLogo from "../asset/images/builderLogo.png"
-import bedImg from "../asset/images/small/bed.png"
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import { useLocation, useSearchParams } from 'react-router-dom'
 import { ApiHelperFunction } from '../Api/ApiHelperfunction'
 import Loader from '../components/Loader'
+import { getObjFromList, update } from '../asset/commonFuntions'
+import { highlights_type_list, listning_ststus_list } from '../asset/staticLists'
+import { updateGlobalState } from '../Redux/GlobalSlice'
+import { useDispatch } from 'react-redux'
 
 function ProjectDetails() {
+    const dispatch = useDispatch();
     const [projectdetails, setProjectdetails] = useState({});
     let location = useLocation()
     // console.log(location, "location");
@@ -21,8 +25,21 @@ function ProjectDetails() {
     const [searchParams, setSearchParams] = useSearchParams();
     let project_id = searchParams.get("project_id")
 
+    const inhitialFormdata = {
+        fname: "",
+        lname: "",
+        pnone: "",
+        email: "",
+        message: "",
 
 
+    };
+    const [formdata, setFormdata] = useState(inhitialFormdata);
+
+    function updateFormdata({ e, position, value }) {
+        let result = update({ position, value, form: formdata });
+        setFormdata(prev => ({ ...prev, ...result }));
+    }
 
     useEffect(() => {
         fetchProjectdetails()
@@ -37,6 +54,44 @@ function ProjectDetails() {
         console.log(res);
         if (res.data) {
             setProjectdetails(res.data)
+        }
+    }
+    async function contactSalesCenter(e) {
+        e.preventDefault();
+        console.log(formdata);
+        setLoader(true);
+        let res = await ApiHelperFunction({
+            urlPath: "users/contactus",
+            method: "post",
+            formData: formdata,
+        });
+        if (res.data) {
+            setLoader(false);
+            dispatch(updateGlobalState({
+                swalDetails: {
+                    isSwalOpen: true,
+                    type: "success",
+                    title: "Success",
+                    text: "Request is sent successfully",
+                    okBtnOnclick: () => { }
+                }
+            }))
+
+
+
+
+        } else {
+            console.log(res);
+            // alert(res.error.message);
+            setLoader(false);
+            dispatch(updateGlobalState({
+                swalDetails: {
+                    isSwalOpen: true,
+                    type: "error",
+                    title: "Something went wrong",
+                    text: res.error.message
+                }
+            }))
         }
     }
     return (
@@ -124,7 +179,7 @@ function ProjectDetails() {
                             {locationIcon}
                         </span>
                         <p>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                            {projectdetails?.location?.label}
                         </p>
                     </div>
                     <div className="review">
@@ -135,94 +190,42 @@ function ProjectDetails() {
                             4.8
 
                             <span>
-                                (256 Reviews)
+                                ({projectdetails?.reviews?.length} Reviews)
                             </span>
                         </p>
                     </div>
                     <p className='listing-status'>
-                        Listing status :  <span>Selling</span>
+                        Listing status :  <span>{getObjFromList({ list: listning_ststus_list, matchdata: { name: "value", value: projectdetails?.listingStatus } })?.label}</span>
                     </p>
                     <p className="price ">
-                        Price : $6,500,000 to $195,000,000
+                        Price : ${projectdetails?.price?.from} to ${projectdetails?.price?.to}
                     </p>
                     <div className="project-highlights">
-                        <div className="item">
-                            <p className="title">
-                                Condo
-                            </p>
-                            <div className="flex items-center gap-1">
-                                <span>
-                                    <img src={bedImg} alt="" />
-                                </span>
-                                <p>1</p>
+                        {projectdetails?.highlights?.map((item, i) => {
+                            let obj = getObjFromList({
+                                list: highlights_type_list,
+                                matchdata: { name: "value", value: item?.type }
+                            })
+                            return <div className="item" key={i}>
+                                <p className="title">
+                                    {obj?.label}
+                                </p>
+                                <div className="flex items-center gap-1">
+                                    <span>
+                                        <img src={obj?.img} alt="" />
+                                    </span>
+                                    <p>{item?.quantity}</p>
 
+                                </div>
                             </div>
-                        </div>
-                        <div className="item">
-                            <p className="title">
-                                Condo
-                            </p>
-                            <div className="flex items-center gap-1">
-                                <span>
-                                    <img src={bedImg} alt="" />
-                                </span>
-                                <p>1</p>
+                        })}
 
-                            </div>
-                        </div>
-                        <div className="item">
-                            <p className="title">
-                                Condo
-                            </p>
-                            <div className="flex items-center gap-1">
-                                <span>
-                                    <img src={bedImg} alt="" />
-                                </span>
-                                <p>1</p>
 
-                            </div>
-                        </div>
-                        <div className="item">
-                            <p className="title">
-                                Condo
-                            </p>
-                            <div className="flex items-center gap-1">
-                                <span>
-                                    <img src={bedImg} alt="" />
-                                </span>
-                                <p>1</p>
-
-                            </div>
-                        </div>
-                        <div className="item">
-                            <p className="title">
-                                Condo
-                            </p>
-                            <div className="flex items-center gap-1">
-                                <span>
-                                    <img src={bedImg} alt="" />
-                                </span>
-                                <p>1</p>
-
-                            </div>
-                        </div>
-                        <div className="item">
-                            <p className="title">
-                                Condo
-                            </p>
-                            <div className="flex items-center gap-1">
-                                <span>
-                                    <img src={bedImg} alt="" />
-                                </span>
-                                <p>1</p>
-
-                            </div>
-                        </div>
 
                     </div>
                     <p className="description">
                         <span> Description:</span>
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                        {projectdetails?.description}
                     </p>
 
                     <div className="avalilable-homes">
@@ -244,11 +247,10 @@ function ProjectDetails() {
 
                         <p className='gray'>
                             <span>
-                                Floor plans are coming soon!
+                                {projectdetails?.floorPlans?.heading}
                             </span>
                             <br />
-                            Save this community to receive email alerts when more <a href="">information</a> becomes available.
-                            Alternatively, you can request more information to inquire about floor plans.
+                            {projectdetails?.floorPlans?.text}
 
 
                         </p>
@@ -258,7 +260,7 @@ function ProjectDetails() {
                             </span>
                             <br />
 
-                            Central Park Tower is a new condo community by Extell Development Company and SMI USA at 217 West 57th Street, Manhattan. Available units range in price from $6,500,000 to $195,000,000. <a href="">Central Park</a> Tower has a total of 179 units. Sizes range from 1435 to 17545 square feet.
+                            {projectdetails?.overview}
 
                         </p>
                     </div>
@@ -295,28 +297,80 @@ function ProjectDetails() {
                             <p className="title">
                                 Contact sales center
                             </p>
-                            <form action="">
+                            <form action="" onSubmit={(e) => { contactSalesCenter(e) }}>
                                 <div className="inputBox">
-                                    <input type="text" placeholder='First Name' />
+                                    <input type="text" placeholder='First Name'
+
+                                        onChange={(e) => {
+                                            updateFormdata({
+                                                position: {
+
+                                                    name: "fname",
+                                                },
+                                                value: e.target.value
+                                            })
+                                        }}
+                                    />
                                 </div>
                                 <div className="inputBox">
-                                    <input type="text" placeholder='Last Name' />
+                                    <input type="text" placeholder='Last Name'
+                                        onChange={(e) => {
+                                            updateFormdata({
+                                                position: {
+
+                                                    name: "lname",
+                                                },
+                                                value: e.target.value
+                                            })
+                                        }} />
                                 </div>
                                 <div className="inputBox col-span-2">
-                                    <input type="text" placeholder='Phone Number' />
+                                    <input type="text" placeholder='Phone Number'
+                                        onChange={(e) => {
+                                            updateFormdata({
+                                                position: {
+
+                                                    name: "phone",
+                                                },
+                                                value: e.target.value
+                                            })
+                                        }}
+
+                                    />
                                 </div>
                                 <div className="inputBox col-span-2">
-                                    <input type="text" placeholder='Email' />
+                                    <input type="text" placeholder='Email'
+
+                                        onChange={(e) => {
+                                            updateFormdata({
+                                                position: {
+
+                                                    name: "email",
+                                                },
+                                                value: e.target.value
+                                            })
+                                        }}
+                                    />
                                 </div>
                                 <div className="inputBox col-span-2">
-                                    <textarea name="" id="" rows="3" placeholder='Messege...'></textarea>
+                                    <textarea name="" id="" rows="3" placeholder='Messege...'
+                                        onChange={(e) => {
+                                            updateFormdata({
+                                                position: {
+
+                                                    name: "message",
+                                                },
+                                                value: e.target.value
+                                            })
+                                        }}
+                                    ></textarea>
                                 </div>
                                 <p className='note-para col-span-2'>
                                     Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
                                 </p>
                                 <div className='col-span-2 px-10'>
 
-                                    <button className='req-btn btn '>
+                                    <button type='submit' className='req-btn btn '>
 
                                         Request Info
                                     </button>
@@ -337,10 +391,10 @@ function ProjectDetails() {
 
                 <div className="highlited-details mt-8">
                     <p className="title">
-                        Spring Valley Construction
+                        {projectdetails?.name}
                     </p>
                     <p className="para">
-                        Building Type:Condo | <a href="">Ownership:Condominium</a> | Selling Status:Selling | Construction Status:Complete Builder(s): Dajia Insurance Group | Architect(s): Skidmore, Owings & Merrill LLP | Interior Designer(s): Pierre Yves Rochon and Jean-Louis Deniot | Marketing Company: Douglas Elliman | Sales Company: Douglas Elliman
+                        Building Type:{projectdetails?.details?.buildingType} | Ownership:{projectdetails?.details?.ownership?.ownerName}  | Selling Status: Selling | Construction Status:Complete Builder(s): Dajia Insurance Group | Architect(s): Skidmore, Owings & Merrill LLP | Interior Designer(s): Pierre Yves Rochon and Jean-Louis Deniot | Marketing Company: Douglas Elliman | Sales Company: Douglas Elliman
                     </p>
                 </div>
                 <div className="highlited-details">
