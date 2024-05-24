@@ -207,9 +207,9 @@ function ProjectDetails() {
             <section className='projectDetails-main padding'>
                 <div className="left">
                     <div className="bilder">
-                        <img src={builderLogo} alt="" />
+                        <img src={projectdetails?.builder?.image?.url} alt="" />
                         <p className="name">
-                            By Pearl Valley Inc.
+                            {projectdetails?.builder?.name}
                         </p>
                     </div>
                     <div className="locaiton">
