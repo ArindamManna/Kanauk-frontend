@@ -108,7 +108,7 @@ function AdminAddBuilder() {
                                 <div className="mb-3">
                                     <label className="form-label">Location :</label>
                                     <input type="text" className="form-control" name='location'
-                                        value={formdata?.name}
+                                        value={formdata?.location?.label}
                                         onChange={(e) => {
                                             updateFormdata({
                                                 e,
