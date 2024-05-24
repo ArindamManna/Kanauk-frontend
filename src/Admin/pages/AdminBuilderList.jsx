@@ -88,7 +88,7 @@ function AdminBuilderList() {
                                     <td >0</td>
                                     <td className='flex items-center'>
                                         <a href="#"><img src={require("../asset/images/logo/lucide_view.png")} /></a>
-                                        <a href="#"><img src={require("../asset/images/logo/akar-icons_edit.png")} /></a>
+                                        <Link to={`/admin/addbuilder/?builderId=${item?._id}`} state={item}><img src={require("../asset/images/logo/akar-icons_edit.png")} /></Link>
                                         <a onClick={() => { deleteBuilder(item?._id, index) }} className='cursor-pointer' ><img src={require("../asset/images/logo/delete.png")} /></a>
                                     </td>
                                 </tr>

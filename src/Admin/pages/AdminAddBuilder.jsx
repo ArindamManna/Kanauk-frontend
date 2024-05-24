@@ -1,12 +1,19 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import AdminLayout from '../components/AdminLayout'
 import { ApiHelperFunction } from '../../Api/ApiHelperfunction';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import Loader from '../../components/Loader';
 import Upload from "../../components/upload";
+import { update } from '../../asset/commonFuntions';
+import { updateGlobalState } from '../../Redux/GlobalSlice';
+import { useDispatch } from 'react-redux';
 
 function AdminAddBuilder() {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+    let location = useLocation()
+    const [searchParams, setSearchParams] = useSearchParams();
+    let builderId = searchParams.get("builderId")
     const [loader, setLoader] = useState(false)
     const [formdata, setFormdata] = useState({
         name: "",
@@ -19,44 +26,51 @@ function AdminAddBuilder() {
             url: ""
         }
     })
+    useEffect(() => {
+        if (builderId) {
+            setFormdata(prev => ({ ...prev, ...location?.state }))
+        }
+    }, [location])
 
     function updateFormdata({ e, position, value }) {
         let result = update({ position, value, form: formdata });
-        setFormdata(result);
+        setFormdata(prev => ({ ...prev, ...result }));
     }
 
-    function update({ e, position, value, form }) {
-        // let { name, value } = e.target;
-        let { name, index } = position;
-        if (position?.sub == undefined) {
-            form[name] = value;
-        } else {
-            if (index !== undefined) {
-                let result = update({ position: position.sub, value, form: form[name][index] });
-                form[name][index] = result;
-            } else {
-                let result = update({ position: position.sub, value, form: form[name] });
-                form[name] = result;
-            }
-        }
-        return form;
-    }
+
     async function createBuilder(e) {
         e.preventDefault();
         console.log(formdata);
         setLoader(true)
         let res = await ApiHelperFunction({
-            urlPath: "admin/builder/add",
-            method: "post",
+            urlPath: builderId ? `admin/builder/update/${builderId}` : "admin/builder/add",
+            method: builderId ? "put" : "post",
             formData: formdata
         });
         if (res.data) {
-            alert("Builder Created Successfully");
-            navigate("/admin/builder")
-            setLoader(false)
+
+
+            setLoader(false);
+            dispatch(updateGlobalState({
+                swalDetails: {
+                    isSwalOpen: true,
+                    type: "success",
+                    title: "Success",
+                    text: builderId ? "Builder updated successfully" : "Builder Created successfully",
+                    okBtnOnclick: () => { navigate("/admin/builder"); }
+                }
+            }))
         } else {
-            alert(res.error.message)
+
             setLoader(false)
+            dispatch(updateGlobalState({
+                swalDetails: {
+                    isSwalOpen: true,
+                    type: "error",
+                    title: "Something went wrong",
+                    text: res.error.message
+                }
+            }))
         }
     }
     return (
@@ -77,78 +91,95 @@ function AdminAddBuilder() {
                             <div className="col-md-6">
                                 <div className="mb-3">
                                     <label className="form-label">Builder Name :</label>
-                                    <input type="text" className="form-control" name='name' onChange={(e) => {
-                                        updateFormdata({
-                                            e,
-                                            position: {
-                                                name: "name",
-                                            },
-                                            value: e.target.value,
-                                        })
-                                    }} />
+                                    <input type="text" className="form-control" name='name'
+                                        value={formdata?.name}
+                                        onChange={(e) => {
+                                            updateFormdata({
+                                                e,
+                                                position: {
+                                                    name: "name",
+                                                },
+                                                value: e.target.value,
+                                            })
+                                        }} />
                                 </div>
                             </div>
                             <div className="col-md-6">
                                 <div className="mb-3">
                                     <label className="form-label">Location :</label>
-                                    <input type="text" className="form-control" name='location' onChange={(e) => {
-                                        updateFormdata({
-                                            e,
-                                            position: {
-                                                name: "location",
-                                            },
-                                            value: e.target.value,
-                                        })
-                                    }} />
+                                    <input type="text" className="form-control" name='location'
+                                        value={formdata?.name}
+                                        onChange={(e) => {
+                                            updateFormdata({
+                                                e,
+                                                position: {
+                                                    name: "location",
+                                                    sub: {
+                                                        name: "label"
+                                                    }
+                                                },
+                                                value: e.target.value,
+                                            })
+                                        }} />
                                 </div>
                             </div>
                             <div className="col-md-6">
                                 <div className="mb-3">
                                     <label className="form-label">Email:</label>
-                                    <input type="text" className="form-control" name='email' onChange={(e) => {
-                                        updateFormdata({
-                                            e,
-                                            position: {
-                                                name: "email",
-                                            },
-                                            value: e.target.value,
-                                        })
-                                    }} />
+                                    <input type="text" className="form-control" name='email'
+                                        value={formdata?.email}
+                                        onChange={(e) => {
+                                            updateFormdata({
+                                                e,
+                                                position: {
+                                                    name: "email",
+                                                },
+                                                value: e.target.value,
+                                            })
+                                        }} />
                                 </div>
                             </div>
                             <div className="col-md-6">
                                 <div className="mb-3">
                                     <label className="form-label">Mobile No:</label>
-                                    <input type="text" className="form-control" name="phone" onChange={(e) => {
-                                        updateFormdata({
-                                            e,
-                                            position: {
-                                                name: "phone",
-                                            },
-                                            value: e.target.value,
-                                        })
-                                    }} />
+                                    <input type="text" className="form-control" name="phone"
+                                        value={formdata?.phone}
+                                        onChange={(e) => {
+                                            updateFormdata({
+                                                e,
+                                                position: {
+                                                    name: "phone",
+                                                },
+                                                value: e.target.value,
+                                            })
+                                        }} />
                                 </div>
                             </div>
                             <div className="col-md-4">
                                 <div className="mb-3">
-                                    <label className="form-label">upload Images one by one :</label>
-                                    {formdata?.image?.url == "" ? <Upload images={formdata?.image} updateFormdata={(value) => {
-                                        console.log(value)
-                                        updateFormdata({
-                                            position: {
-                                                name: "image",
-                                                sub: {
-                                                    name: "url"
 
-
-                                                }
-                                            },
-                                            value
-                                        })
-                                    }} /> :
-                                        <img src={formdata?.image?.url} alt="" />
-                                    }
+                                    <Upload
+                                        currentImage={formdata?.image}
+                                        updateFormdata={(value) => {
+                                            updateFormdata({
+                                                position: {
+                                                    name: "image",
+                                                    sub: {
+                                                        name: "url",
+                                                    },
+                                                },
+                                                value,
+                                            });
+                                        }}
+                                    // deleteImage={() => {
+                                    //     add_remove_elem_fromdata({
+                                    //         position: {
+                                    //             name: "image",
+                                    //         },
+                                    //         doAdd: false,
+                                    //     })
+                                    // }}
+                                    />
 
                                 </div>
                             </div>

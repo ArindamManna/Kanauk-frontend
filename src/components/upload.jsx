@@ -57,7 +57,15 @@ const Upload = ({ updateFormdata, currentImage, deleteImage }) => {
                     </div>
                 </div> :
                 <div className="relative">
-                    <button className="cancleBtn absolute top-2 bg-white text-[#bdbdbd] rounded-full right-2" type="button" onClick={() => { deleteImage() }}>
+                    <button className="cancleBtn absolute top-2 bg-white text-[#bdbdbd] rounded-full right-2" type="button" onClick={() => {
+
+                        if (currentImage?.url !== "") {
+                            updateFormdata("")
+                        } else if (deleteImage) {
+
+                            deleteImage()
+                        }
+                    }}>
                         <span className="h-5 w-5 block mb-0">
 
                             {crossIcon}
