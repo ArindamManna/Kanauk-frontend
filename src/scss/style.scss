@@ -2505,7 +2505,7 @@ footer {
     @apply md:grid grid-cols-3 py-10 gap-10;
 
     .left {
-        @apply h-full flex flex-col justify-center gap-10;
+        @apply h-full flex flex-col gap-10;
 
         .head {
             @apply flex justify-between;
@@ -2598,7 +2598,7 @@ footer {
             @apply h-full w-full;
 
             img {
-                @apply h-full;
+                // @apply ;
             }
         }
     }

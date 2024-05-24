@@ -2105,7 +2105,7 @@ footer .copyrightDiv {
   @apply md:grid grid-cols-3 py-10 gap-10;
 }
 .Login-page .left {
-  @apply h-full flex flex-col justify-center gap-10;
+  @apply h-full flex flex-col gap-10;
 }
 .Login-page .left .head {
   @apply flex justify-between;
@@ -2169,7 +2169,4 @@ footer .copyrightDiv {
 }
 .Login-page .right .pic {
   @apply h-full w-full;
-}
-.Login-page .right .pic img {
-  @apply h-full;
 }/*# sourceMappingURL=style.css.map */

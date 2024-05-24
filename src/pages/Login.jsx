@@ -4,9 +4,12 @@ import Footer from '../components/Footer'
 import { ApiHelperFunction } from '../Api/ApiHelperfunction';
 import { useNavigate } from 'react-router-dom';
 import Loader from '../components/Loader';
+import { updateGlobalState } from '../Redux/GlobalSlice';
+import { useDispatch } from 'react-redux';
 
 function Login() {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
     const [loader, setLoader] = useState(false);
     const [currentTab, setCurrentTab] = useState("login");
     const inhitialFormdata = {
@@ -35,12 +38,28 @@ function Login() {
         });
         if (res.data) {
             localStorage.setItem("usertoken", res.data.token);
-            alert("Account Created Successfully");
-            navigate("/", { state: res.data });
+
             setLoader(false);
+
+            dispatch(updateGlobalState({
+                swalDetails: {
+                    isSwalOpen: true,
+                    type: "success",
+                    title: "Success",
+                    text: (currentTab === "login") ? "You Logged In successfully" : "Account Created successfully",
+                    okBtnOnclick: () => { navigate("/", { state: res.data }); }
+                }
+            }))
         } else {
-            alert(res.error.message);
-            setLoader(false);
+            setLoader(false)
+            dispatch(updateGlobalState({
+                swalDetails: {
+                    isSwalOpen: true,
+                    type: "error",
+                    title: "Something went wrong",
+                    text: res.error.message
+                }
+            }))
         }
     }
     function updateFormdata({ e, position, value }) {
@@ -209,7 +228,7 @@ function Login() {
                 </div>
                 <div className="right">
                     <div className="pic">
-                        <img src={require("../asset/images/auth.png")} alt="" />
+                        <img src={require("../asset/images/loginBanner.png")} alt="" />
                     </div>
                 </div>
 
