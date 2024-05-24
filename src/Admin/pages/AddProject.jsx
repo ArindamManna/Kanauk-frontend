@@ -135,6 +135,7 @@ function AddProject() {
 
 
         } else {
+            console.log(res);
             // alert(res.error.message);
             setLoader(false);
             dispatch(updateGlobalState({

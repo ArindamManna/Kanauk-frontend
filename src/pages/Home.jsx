@@ -23,10 +23,7 @@ import Swal from '../components/Swal'
 import { type } from '@testing-library/user-event/dist/type'
 
 function Home() {
-    const { isSwalOpen } = useSelector((state) => {
-        const { swalDetails } = state?.GlobalSlice;
-        return { ...swalDetails }
-    });
+
     const dispatch = useDispatch()
     const [projectList, setProjectList] = useState([])
     const [builderList, setBuilderList] = useState([])
@@ -273,7 +270,7 @@ function Home() {
 
     return (
         <>
-            {isSwalOpen ? <Swal /> : ""}
+
 
             {loader ? <Loader /> : ""}
             {/* <Loader /> */}
