@@ -18,8 +18,8 @@ let Selling_ststus_list = [
         value: "selling"
     },
     {
-        label: "Under Construction",
-        value: "under_construction"
+        label: "Sold",
+        value: "sold"
     },
     {
         label: "Pre Book",

@@ -17,10 +17,13 @@ import { updateGlobalState } from '../Redux/GlobalSlice'
 import { useDispatch } from 'react-redux'
 import { options, projectDetailsImagesOptions } from '../asset/carouselOptions'
 import OwlCarousel from 'react-owl-carousel';
+import Unit_card from '../components/Unit_card'
 
 function ProjectDetails() {
     const dispatch = useDispatch();
     const [projectdetails, setProjectdetails] = useState({});
+
+    const [currentTab, setCurrentTab] = useState("floorplans")
     let location = useLocation()
     // console.log(location, "location");
     const [loader, setLoader] = useState(false)
@@ -271,27 +274,44 @@ function ProjectDetails() {
                             Available Homes
                         </p>
                         <div className="links">
-                            <button className='active'>
+                            <button type='button' className={`${currentTab == "floorplans" ? "active" : ""}`} onClick={(e) => setCurrentTab("floorplans")}>
                                 Floor plans
                             </button>
-                            <button>
+                            <button type='button' className={`${currentTab == "units" ? "active" : ""}`} onClick={(e) => setCurrentTab("units")}>
                                 Uits(9)
                             </button>
-                            <button>
-                                Floor plans
+                            <button type='button' className={`${currentTab == "sold" ? "active" : ""}`} onClick={(e) => setCurrentTab("sold")}>
+                                Sold
                             </button>
 
                         </div>
 
-                        <p className='gray'>
-                            <span>
-                                {projectdetails?.floorPlans?.heading}
-                            </span>
-                            <br />
-                            {projectdetails?.floorPlans?.text}
 
+                        {(currentTab == "floorplans") &&
+                            <p className='gray'>
+                                <span>
+                                    {projectdetails?.floorPlans?.heading}
+                                </span>
+                                <br />
+                                {projectdetails?.floorPlans?.text}
+                            </p>
+                        }
 
-                        </p>
+                        {(currentTab == "units") &&
+                            <div className='unitsTab'>
+                                {projectdetails?.properties?.map((item, i) => {
+                                    return <Unit_card item={item} key={i} />
+                                })}
+                            </div>
+                        }
+                        {(currentTab == "sold") &&
+                            <div className='unitsTab'>
+                                {projectdetails?.properties?.filter((item) => (item?.details?.sellingStatus == "sold"))?.map((item, i) => {
+                                    return <Unit_card item={item} key={i} />
+                                })}
+                            </div>
+                        }
+
                         <p className=''>
                             <span>
                                 Overview

@@ -7,14 +7,14 @@ import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import Select from "react-select";
 import { toBeRequired } from "@testing-library/jest-dom/dist/matchers";
 import { add_remove_elem_fromdata_recursion, update } from '../../asset/commonFuntions';
-import { highlights_type_list, propertieType_list } from '../../asset/staticLists';
+import { Selling_ststus_list, highlights_type_list, listning_ststus_list, propertieType_list } from '../../asset/staticLists';
 import Upload from '../../components/upload';
 import { updateGlobalState } from '../../Redux/GlobalSlice';
 import { useDispatch } from 'react-redux';
 
 function AddProperties() {
     let location = useLocation()
-    // console.log(location, "location");
+    console.log(location, "location");
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const [searchParams, setSearchParams] = useSearchParams();
@@ -42,7 +42,7 @@ function AddProperties() {
                     }
                 ],
                 details: {
-                    buildingType: "",
+                    propertieType: "",
                     ownership: {
                         ownerName: ""
                     },
@@ -58,7 +58,7 @@ function AddProperties() {
         ]
     };
     const [formdata, setFormdata] = useState(inhitialFormdata)
-    console.log(formdata, "formdata");
+    // console.log(formdata, "formdata");
     useEffect(() => {
         // fetchBuilderlist()
         if (project_id) {
@@ -70,8 +70,9 @@ function AddProperties() {
         e.preventDefault();
         setLoader(true)
         let res = await ApiHelperFunction({
-            urlPath: `admin/property/add/${location.state._id}`,
-            method: "post",
+            // urlPath: `admin/property/add/${location.state._id}`,
+            urlPath: project_id ? `admin/property/update/?project_id=${location.state._id}` : `admin/property/add/${location.state._id}`,
+            method: project_id ? "put" : "post",
             formData: formdata.properties
         });
         if (res.data) {
@@ -280,9 +281,43 @@ function AddProperties() {
                                                 })
                                             }>
                                             <option selected>Open this select menu</option>
-                                            <option value="Selling">Selling</option>
-                                            <option value="Under Construction">Under Construction</option>
-                                            <option value="Pre Book">Pre Book</option>
+                                            {listning_ststus_list?.map((option, i) => {
+                                                return <option value={option.value} key={i} selected={option.value == item?.listing_status}>{option.label}</option>
+                                            })}
+                                        </select>
+                                        {/* <input type="text" className="form-control" name='listing_status'
+                                            onChange={(e) =>} /> */}
+                                    </div>
+                                </div>
+                                <div className="col-md-6">
+                                    <div className="mb-3">
+                                        <label className="form-label">Selling Status :</label>
+                                        <select
+                                            className="form-select"
+                                            aria-label="Default select example"
+                                            name="listingStatus"
+                                            value={item?.details?.sellingStatus}
+                                            onChange={(e) =>
+                                                updateFormdata({
+                                                    e,
+                                                    position: {
+                                                        name: "properties",
+                                                        index,
+                                                        sub: {
+                                                            name: "details",
+                                                            sub: {
+                                                                name: "sellingStatus",
+                                                            },
+
+                                                        }
+                                                    },
+                                                    value: e.target.value
+                                                })
+                                            }>
+                                            <option selected>Open this select menu</option>
+                                            {Selling_ststus_list?.map((option, i) => {
+                                                return <option value={option.value} key={i} selected={option.value == item?.details?.sellingStatus}>{option.label}</option>
+                                            })}
                                         </select>
                                         {/* <input type="text" className="form-control" name='listing_status'
                                             onChange={(e) =>} /> */}
@@ -311,6 +346,7 @@ function AddProperties() {
                                         <Select
                                             className=""
                                             isMulti={toBeRequired}
+                                            value={item?.tags}
                                             options={[
                                                 { value: "featured", label: "Featured" },
                                                 { value: "assignment_sales", label: "Assignment Sales" },
@@ -571,8 +607,8 @@ function AddProperties() {
                         })}
 
                         <div className="text-end flex gap-2 justify-end">
-                            <button type="submit" className="btn grey-primary">Cancle</button>
-                            <button type="submit" className="btn black-btn">Create</button>
+                            <button type="button" className="btn grey-primary">Cancle</button>
+                            <button type="submit" className="btn black-btn">  {project_id ? "Update" : "Create"}  </button>
                         </div>
                     </form>
                 </div>

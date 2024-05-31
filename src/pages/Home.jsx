@@ -288,7 +288,9 @@ function Home() {
                                 {properties?.map((item, index) => {
                                     // console.log(item)
                                     return <div className='item' key={index}>
-                                        <div className="properties">
+                                        <div className="properties" style={{
+                                            backgroundImage: `url(${item?.images?.[0]?.url})`
+                                        }}>
                                             <div className="bottom">
                                                 <p className="title">
                                                     {item?.name}

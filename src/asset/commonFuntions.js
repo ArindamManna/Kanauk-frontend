@@ -33,7 +33,11 @@ function add_remove_elem_fromdata_recursion({ e, position, form, doAdd, indexTor
         // form[name] = value;
     } else {
         if (index !== undefined) {
-            let result = add_remove_elem_fromdata_recursion({ position: position.sub, form: form[name][index], inhitialFormdata: inhitialFormdata[name][index], doAdd, indexToremove })
+            let sendinhitialFormdata = inhitialFormdata[name][index];
+            if (sendinhitialFormdata == undefined) {
+                sendinhitialFormdata = inhitialFormdata[name][0]
+            }
+            let result = add_remove_elem_fromdata_recursion({ position: position.sub, form: form[name][index], inhitialFormdata: sendinhitialFormdata, doAdd, indexToremove })
             form[name][index] = result;
         } else {
 

@@ -1650,127 +1650,127 @@ header {
     }
 }
 
-// Authorization css
-.authentication {
-    @apply grid grid-cols-5;
+// // Authorization css
+// .authentication {
+//     @apply grid grid-cols-5;
 
-    .left {
-        @apply col-span-2;
-        margin: 2rem;
+//     .left {
+//         @apply col-span-2;
+//         margin: 2rem;
 
-        .head {
-            display: flex;
-            align-items: center;
-            gap: 12rem;
+//         .head {
+//             display: flex;
+//             align-items: center;
+//             gap: 12rem;
 
-            .content {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
+//             .content {
+//                 display: flex;
+//                 flex-direction: column;
+//                 justify-content: center;
+//                 align-items: center;
 
-                .title {
-                    color: #626665;
-                    font-size: 1.8rem;
-                    font-weight: 400;
-                    padding: 0.1rem;
-                }
+//                 .title {
+//                     color: #626665;
+//                     font-size: 1.8rem;
+//                     font-weight: 400;
+//                     padding: 0.1rem;
+//                 }
 
-                .border {
-                    width: 100%;
-                    height: 5px;
-                    background: #03bfa1;
-                    border-radius: 5px;
-                }
-            }
-        }
+//                 .border {
+//                     width: 100%;
+//                     height: 5px;
+//                     background: #03bfa1;
+//                     border-radius: 5px;
+//                 }
+//             }
+//         }
 
-        .formContainer {
-            position: absolute;
-            display: flex;
-            flex-direction: column;
-            width: 30rem;
+//         .formContainer {
+//             position: absolute;
+//             display: flex;
+//             flex-direction: column;
+//             width: 30rem;
 
-            .inputField {
-                padding: 0.2rem 0;
-                margin-top: 2.3rem;
-                width: 100%;
-                border-bottom: 2px solid rgba(83, 84, 84, 0.4) !important;
-            }
+//             .inputField {
+//                 padding: 0.2rem 0;
+//                 margin-top: 2.3rem;
+//                 width: 100%;
+//                 border-bottom: 2px solid rgba(83, 84, 84, 0.4) !important;
+//             }
 
-            input::placeholder {
-                font-size: 0.8rem;
-                color: rgba(0, 0, 0, 0.46);
-            }
+//             input::placeholder {
+//                 font-size: 0.8rem;
+//                 color: rgba(0, 0, 0, 0.46);
+//             }
 
-            .contryCode {
-                width: 6rem;
-                position: absolute;
-                left: 7rem;
-                top: 10.6rem;
-                color: rgba(0, 0, 0, 0.46);
-                font-size: 0.8rem;
-            }
+//             .contryCode {
+//                 width: 6rem;
+//                 position: absolute;
+//                 left: 7rem;
+//                 top: 10.6rem;
+//                 color: rgba(0, 0, 0, 0.46);
+//                 font-size: 0.8rem;
+//             }
 
-            .pchecker {
-                position: absolute;
-                top: 14.7rem;
-                left: 3.2rem;
-                font-size: 0.8rem;
-                color: rgba(83, 84, 84, 0.43);
-            }
+//             .pchecker {
+//                 position: absolute;
+//                 top: 14.7rem;
+//                 left: 3.2rem;
+//                 font-size: 0.8rem;
+//                 color: rgba(83, 84, 84, 0.43);
+//             }
 
-            .tcchecker {
-                margin-top: 2rem;
-                display: flex;
-                width: 85%;
+//             .tcchecker {
+//                 margin-top: 2rem;
+//                 display: flex;
+//                 width: 85%;
 
-                input {
-                    width: 2rem;
-                    margin: 0 0.5rem;
-                }
+//                 input {
+//                     width: 2rem;
+//                     margin: 0 0.5rem;
+//                 }
 
-                p {
-                    font-size: 0.8rem;
-                    text-transform: capitalize;
+//                 p {
+//                     font-size: 0.8rem;
+//                     text-transform: capitalize;
 
-                    span {
-                        color: rgba(3, 191, 161, 1);
-                    }
-                }
-            }
+//                     span {
+//                         color: rgba(3, 191, 161, 1);
+//                     }
+//                 }
+//             }
 
-            .btn {
-                text-transform: capitalize;
-                color: white;
-                border-radius: 10px;
-                margin-top: 2rem;
-                padding: 0.5rem 0;
-                background: rgba(3, 191, 161, 1);
-            }
+//             .btn {
+//                 text-transform: capitalize;
+//                 color: white;
+//                 border-radius: 10px;
+//                 margin-top: 2rem;
+//                 padding: 0.5rem 0;
+//                 background: rgba(3, 191, 161, 1);
+//             }
 
-            .orborder {
-                width: 2rem;
-                height: 2rem;
-                margin-top: 2rem;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                border-radius: 50%;
-                background: rgba(173, 173, 173, 1);
-            }
-        }
-    }
+//             .orborder {
+//                 width: 2rem;
+//                 height: 2rem;
+//                 margin-top: 2rem;
+//                 display: flex;
+//                 align-items: center;
+//                 justify-content: center;
+//                 border-radius: 50%;
+//                 background: rgba(173, 173, 173, 1);
+//             }
+//         }
+//     }
 
-    .right {
-        @apply col-span-3;
+//     .right {
+//         @apply col-span-3;
 
-        // background: blue;
-        img {
-            border-radius: 10px;
-        }
-    }
-}
+//         // background: blue;
+//         img {
+//             border-radius: 10px;
+//         }
+//     }
+// }
 
 .contactUs-banner {
     @apply grid md:grid-cols-2 w-full pt-6 pb-6 relative;
@@ -2631,5 +2631,86 @@ footer {
                 // @apply ;
             }
         }
+    }
+}
+
+
+
+
+
+.unitsTab {
+    max-height: 300px;
+    overflow: auto;
+
+    .unit {
+        @apply flex gap-4 text-black justify-between w-full py-5 px-2 cursor-pointer hover:bg-slate-200;
+        border-bottom: 1px solid #ebebeb;
+
+        &:first-child {
+            border-top: 1px solid #ebebeb;
+        }
+
+        text-decoration: none;
+
+
+
+        .left {
+            @apply flex gap-3;
+
+            .img-box {
+                @apply h-20 w-20 rounded p-2 border border-gray-300;
+
+                img {
+                    @apply w-full object-contain max-w-full max-h-full;
+                }
+            }
+
+            .title {
+                @apply text-xl font-medium;
+
+            }
+
+            .property-highlights {
+                @apply grid grid-cols-3 pr-10 gap-2;
+
+                .item {
+                    p.title {
+                        color: #03bfa1;
+                        @apply md:text-base text-sm lg:text-lg font-medium;
+                        text-decoration: none;
+                    }
+
+                    span {
+                        img {
+                            width: 1.5rem;
+                            height: auto;
+                        }
+                    }
+
+                    p {
+                        color: #000000;
+                        @apply text-sm font-medium;
+                    }
+                }
+            }
+        }
+
+        .right {
+            .price {
+                @apply text-xl font-medium;
+            }
+
+            .btn-box {
+                .btn {
+                    @apply h-6 w-6 ml-auto rounded-full bg-[#03BFA1] text-white flex items-center justify-center;
+
+                    span {
+                        @apply flex-shrink-0;
+                    }
+                }
+            }
+        }
+
+
     }
 }
