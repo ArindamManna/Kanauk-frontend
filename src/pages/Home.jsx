@@ -298,11 +298,11 @@ function Home() {
                                                 <p className="description">
                                                     {item?.description}
                                                 </p>
-                                                <button className='viewMoreBtn'>
+                                                <Link to={`/propertyDetails/?property_id=${item?._id}`} className='viewMoreBtn'>
                                                     View More <span>
                                                         {rightArrow}
                                                     </span>
-                                                </button>
+                                                </Link>
                                             </div>
 
                                         </div>

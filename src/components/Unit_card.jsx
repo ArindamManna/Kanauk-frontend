@@ -9,7 +9,7 @@ function Unit_card({ item }) {
     console.log(item, "items");
     return (
         <>
-            <Link className='unit'>
+            <Link className='unit' to={`/propertyDetails/?property_id=${item?._id}`}>
                 <div className="left">
                     <div className="img-box">
                         <img src={images?.[0]?.url} alt="" />

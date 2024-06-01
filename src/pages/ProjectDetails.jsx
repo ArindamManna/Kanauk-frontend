@@ -1,50 +1,26 @@
 import React, { useEffect, useState } from 'react'
-import { MailSolid, heartSolid, imageIcon, left, locationIcon, phoneIcon, right, starFill, tickCircle } from '../asset/staticData'
+import { MailSolid, heartSolid, imageIcon, locationIcon, starFill, tickCircle } from '../asset/staticData'
 import projectDetailsImage1 from "../asset/images/projectDetailsImage1.png"
-import projectDetailsImage2 from "../asset/images/projectDetailsImage2.png"
-import projectDetailsImage3 from "../asset/images/projectDetailsImage3.png"
-import projectDetailsImage4 from "../asset/images/projectDetailsImage4.png"
-import agents1 from "../asset/images/agents1.png"
-import builderLogo from "../asset/images/builderLogo.png"
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
-import { useLocation, useSearchParams } from 'react-router-dom'
 import { ApiHelperFunction } from '../Api/ApiHelperfunction'
 import Loader from '../components/Loader'
 import { getObjFromList, update } from '../asset/commonFuntions'
 import { Selling_ststus_list, buildingType_list, highlights_type_list, listning_ststus_list } from '../asset/staticLists'
-import { updateGlobalState } from '../Redux/GlobalSlice'
-import { useDispatch } from 'react-redux'
-import { options, projectDetailsImagesOptions } from '../asset/carouselOptions'
+import { projectDetailsImagesOptions } from '../asset/carouselOptions'
 import OwlCarousel from 'react-owl-carousel';
 import Unit_card from '../components/Unit_card'
+import Contact_Sales_Center from '../components/Contact_Sales_Center'
+import { useSearchParams } from 'react-router-dom'
 
 function ProjectDetails() {
-    const dispatch = useDispatch();
     const [projectdetails, setProjectdetails] = useState({});
 
     const [currentTab, setCurrentTab] = useState("floorplans")
-    let location = useLocation()
-    // console.log(location, "location");
+
     const [loader, setLoader] = useState(false)
     const [searchParams, setSearchParams] = useSearchParams();
     let project_id = searchParams.get("project_id")
-
-    const inhitialFormdata = {
-        fname: "",
-        lname: "",
-        pnone: "",
-        email: "",
-        message: "",
-
-
-    };
-    const [formdata, setFormdata] = useState(inhitialFormdata);
-
-    function updateFormdata({ e, position, value }) {
-        let result = update({ position, value, form: formdata });
-        setFormdata(prev => ({ ...prev, ...result }));
-    }
 
     useEffect(() => {
         fetchProjectdetails()
@@ -59,44 +35,6 @@ function ProjectDetails() {
         console.log(res);
         if (res.data) {
             setProjectdetails(res.data)
-        }
-    }
-    async function contactSalesCenter(e) {
-        e.preventDefault();
-        console.log(formdata);
-        setLoader(true);
-        let res = await ApiHelperFunction({
-            urlPath: "users/contactus",
-            method: "post",
-            formData: formdata,
-        });
-        if (res.data) {
-            setLoader(false);
-            dispatch(updateGlobalState({
-                swalDetails: {
-                    isSwalOpen: true,
-                    type: "success",
-                    title: "Success",
-                    text: "Request is sent successfully",
-                    okBtnOnclick: () => { }
-                }
-            }))
-
-
-
-
-        } else {
-            console.log(res);
-            // alert(res.error.message);
-            setLoader(false);
-            dispatch(updateGlobalState({
-                swalDetails: {
-                    isSwalOpen: true,
-                    type: "error",
-                    title: "Something went wrong",
-                    text: res.error.message
-                }
-            }))
         }
     }
     return (
@@ -300,14 +238,14 @@ function ProjectDetails() {
                         {(currentTab == "units") &&
                             <div className='unitsTab'>
                                 {projectdetails?.properties?.map((item, i) => {
-                                    return <Unit_card item={item} key={i} />
+                                    return <Unit_card to={`/propertyDetails/?property_id=${item?._id}`} item={item} key={i} />
                                 })}
                             </div>
                         }
                         {(currentTab == "sold") &&
                             <div className='unitsTab'>
                                 {projectdetails?.properties?.filter((item) => (item?.details?.sellingStatus == "sold"))?.map((item, i) => {
-                                    return <Unit_card item={item} key={i} />
+                                    return <Unit_card to={`/propertyDetails/?property_id=${item?._id}`} item={item} key={i} />
                                 })}
                             </div>
                         }
@@ -325,119 +263,7 @@ function ProjectDetails() {
 
                 </div>
                 <div className="right">
-                    <div className="contact-sales-center">
-                        <div className="top">
-                            <div className="img">
-                                <img src={agents1} alt="" />
-                            </div>
-                            <p className="name">
-                                Jhon Trawres
-                            </p>
-                            <p className="designation">
-                                Sales Reprenststive
-                            </p>
-                            <a href="#" className='view-profile-link'>View Profile</a>
-                            <button className='call-now-btn btn'>
-                                <span>
-                                    {phoneIcon}
-                                </span>
-                                Call Now
-                            </button>
-                            <button className='msg-btn btn'>
-                                <span>
-                                    {MailSolid}
-                                </span>
-                                Send A Message
-                            </button>
-                            <div className='hr bg-white'></div>
-                        </div>
-                        <div className="form">
-                            <p className="title">
-                                Contact sales center
-                            </p>
-                            <form action="" onSubmit={(e) => { contactSalesCenter(e) }}>
-                                <div className="inputBox">
-                                    <input type="text" placeholder='First Name'
-
-                                        onChange={(e) => {
-                                            updateFormdata({
-                                                position: {
-
-                                                    name: "fname",
-                                                },
-                                                value: e.target.value
-                                            })
-                                        }}
-                                    />
-                                </div>
-                                <div className="inputBox">
-                                    <input type="text" placeholder='Last Name'
-                                        onChange={(e) => {
-                                            updateFormdata({
-                                                position: {
-
-                                                    name: "lname",
-                                                },
-                                                value: e.target.value
-                                            })
-                                        }} />
-                                </div>
-                                <div className="inputBox col-span-2">
-                                    <input type="text" placeholder='Phone Number'
-                                        onChange={(e) => {
-                                            updateFormdata({
-                                                position: {
-
-                                                    name: "phone",
-                                                },
-                                                value: e.target.value
-                                            })
-                                        }}
-
-                                    />
-                                </div>
-                                <div className="inputBox col-span-2">
-                                    <input type="text" placeholder='Email'
-
-                                        onChange={(e) => {
-                                            updateFormdata({
-                                                position: {
-
-                                                    name: "email",
-                                                },
-                                                value: e.target.value
-                                            })
-                                        }}
-                                    />
-                                </div>
-                                <div className="inputBox col-span-2">
-                                    <textarea name="" id="" rows="3" placeholder='Messege...'
-                                        onChange={(e) => {
-                                            updateFormdata({
-                                                position: {
-
-                                                    name: "message",
-                                                },
-                                                value: e.target.value
-                                            })
-                                        }}
-                                    ></textarea>
-                                </div>
-                                <p className='note-para col-span-2'>
-                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                                </p>
-                                <div className='col-span-2 px-10'>
-
-                                    <button type='submit' className='req-btn btn '>
-
-                                        Request Info
-                                    </button>
-                                </div>
-
-                            </form>
-
-                        </div>
-                    </div>
+                    <Contact_Sales_Center />
                     <div className="community-location">
                         <p className="title">
                             Community location

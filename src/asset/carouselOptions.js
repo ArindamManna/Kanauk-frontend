@@ -56,6 +56,20 @@ const projectDetailsImagesOptions = {
 </svg></span>`],
 
 }
+const propertyDetailsImagesOptions = {
+    items: 1,
+    loop: false,
+    nav: true,
+    dots: false,
+    autoplay: false,
+    autoplayTimeout: 5000,
+    navText: [` <span><svg xmlns="http://www.w3.org/2000/svg" className="h-full w-full" viewBox="0 0 20 20" fill="currentColor">
+    <path fillRule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clipRule="evenodd" />
+</svg></span>`, `<span><svg xmlns="http://www.w3.org/2000/svg" className="h-full w-full" viewBox="0 0 20 20" fill="currentColor">
+<path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
+</svg></span>`],
+
+}
 const options2 = {
     items: 3,
     loop: false,
@@ -164,4 +178,4 @@ const options4 = {
 }
 
 
-export { options, options2, options3, options4, projectDetailsImagesOptions }
+export { options, options2, options3, options4, projectDetailsImagesOptions, propertyDetailsImagesOptions }
