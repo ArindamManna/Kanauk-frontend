@@ -160,7 +160,9 @@ function Home() {
                             }
 
                         })}
-
+                        <Link className="projectBtn" to={`/projects`}>
+                            View All
+                        </Link>
 
                     </div>
                 </div>

@@ -1,15 +1,17 @@
 import React from 'react'
-import banner1 from "../asset/images/banner1.png"
+import { getObjFromList } from '../asset/commonFuntions'
+import { Selling_ststus_list, buildingType_list, highlights_type_list, listning_ststus_list } from '../asset/staticLists'
 import { cardIcon, heart } from '../asset/staticData'
 
-function Project_List_Card() {
+function Project_List_Card({ data }) {
+    const { name, listingStatus, price, builder, location, highlights, images } = data ? data : {}
     return (
         <>
             <div className="project-list-card">
                 <div className="project-img">
-                    <img src={banner1} alt="" />
+                    <img src={images?.[0]?.url} alt="" />
                     <div className="status">
-                        Under Contruction
+                        {listingStatus}
                     </div>
                     <div className="watchList">
                         {heart}
@@ -19,36 +21,35 @@ function Project_List_Card() {
                     </div>
 
                 </div>
-                <p className="project-name">
-                    The Rockwall
+                <p className="project-name mb-0">
+                    {name}
                 </p>
-                <p className="price">
-                    From 2500
+                <p className="price mb-0">
+                    From {price?.from}
                 </p>
                 <p className="builder-name">
-                    raj industries
+                    {builder?.name}
                 </p>
                 <p className="location">
-                    2815 Broadway, New York, NY
+                    {location?.label}
                 </p>
-                <div className=" details-box">
+                <div className=" details-box flex-wrap gap-2">
+                    {highlights?.map((item, i) => {
+                        let obj = getObjFromList({
+                            list: highlights_type_list,
+                            matchdata: { name: "value", value: item?.type }
+                        })
+                        return <div className="details pr-2 pl-0 ">
+                            <div className="flex items-center ">
+                                <span>
+                                    <img src={obj?.img} alt="" />
+                                </span>
+                                <p className='ml-1 mb-0'>{obj?.label} {item?.quantity}</p>
+                            </div>
+                        </div>
 
-                    <div className="details">
-                        <div className="flex items-center ">
-                            <span>
-                                {cardIcon}
-                            </span>
-                            <p className='ml-1'>Bedrooms</p>
-                        </div>
-                    </div>
-                    <div className="details">
-                        <div className="flex items-center ">
-                            <span>
-                                {cardIcon}
-                            </span>
-                            <p className='ml-1'>Bedrooms</p>
-                        </div>
-                    </div>
+                    })}
+
 
 
 

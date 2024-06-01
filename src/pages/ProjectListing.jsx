@@ -1,12 +1,49 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { downArrow, hamburgerIcon, heartSolid } from '../asset/staticData'
 import Project_List_Card from '../components/Project_List_Card'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import ProjectsList_Maps from '../components/ProjectsList_Maps'
+import { useDispatch } from 'react-redux'
+import { ApiHelperFunction } from '../Api/ApiHelperfunction'
+import { updateGlobalState } from '../Redux/GlobalSlice'
+import Loader from '../components/Loader'
 
 function ProjectListing() {
+
+    const dispatch = useDispatch()
+    const [projectList, setProjectList] = useState([])
+    const [loader, setLoader] = useState(false)
+    async function fetchProjectList(e) {
+        // e.preventDefault();
+        setLoader(true)
+        let res = await ApiHelperFunction({
+            urlPath: "users/project/all",
+            method: "get",
+        });
+        if (res.data) {
+            setProjectList(res.data);
+            setLoader(false)
+
+        } else {
+            alert(res.error.message)
+            setLoader(false)
+            dispatch(updateGlobalState({
+                swalDetails: {
+                    isSwalOpen: true,
+                    type: "error",
+                    title: "Something went wrong",
+                    text: "Please contact your administrator"
+                }
+            }))
+        }
+    }
+    useEffect(() => {
+        fetchProjectList()
+    }, [])
     return (
         <>
+            {loader ? <Loader /> : ""}
             <Navbar />
             <section className="projectliisting padding">
 
@@ -65,7 +102,7 @@ function ProjectListing() {
 
                 </div>
                 <div className="listing-map-section">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d52518.04296442333!2d88.39201804754333!3d22.566220579850853!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a02771346ae015d%3A0xb540e4bce39763!2sVictoria%20Memorial!5e0!3m2!1sen!2sin!4v1713609339242!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <ProjectsList_Maps />
                     <div className="listingBox">
                         <p className="noOfComments">
                             256 Comments
@@ -87,13 +124,9 @@ function ProjectListing() {
                         </div>
 
                         <div className="project-list-cards">
-                            <Project_List_Card />
-                            <Project_List_Card />
-                            <Project_List_Card />
-                            <Project_List_Card />
-                            <Project_List_Card />
-                            <Project_List_Card />
-                            <Project_List_Card />
+                            {projectList?.map((item, i) => {
+                                return <Project_List_Card key={i} data={item} />
+                            })}
 
                         </div>
 

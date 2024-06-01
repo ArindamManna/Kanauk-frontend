@@ -5,7 +5,7 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import { ApiHelperFunction } from '../Api/ApiHelperfunction'
 import Loader from '../components/Loader'
-import { getObjFromList, update } from '../asset/commonFuntions'
+import { getObjFromList } from '../asset/commonFuntions'
 import { Selling_ststus_list, buildingType_list, highlights_type_list, listning_ststus_list } from '../asset/staticLists'
 import { projectDetailsImagesOptions } from '../asset/carouselOptions'
 import OwlCarousel from 'react-owl-carousel';

@@ -23,7 +23,7 @@ function AppRouter() {
                 <Route exact={true} path="/" element={<Home />} />
                 <Route exact={true} path="/projectdetails" element={<ProjectDetails />} />
                 <Route exact={true} path="/propertyDetails" element={<PropertyDetails />} />
-                <Route exact={true} path="/projectlisting" element={<ProjectListing />} />
+                <Route exact={true} path="/projects" element={<ProjectListing />} />
                 <Route exact={true} path="/builder" element={<Builder />} />
                 <Route exact={true} path="/login" element={<Login />} />
 
