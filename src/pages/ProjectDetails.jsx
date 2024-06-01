@@ -238,14 +238,14 @@ function ProjectDetails() {
                         {(currentTab == "units") &&
                             <div className='unitsTab'>
                                 {projectdetails?.properties?.map((item, i) => {
-                                    return <Unit_card to={`/propertyDetails/?property_id=${item?._id}`} item={item} key={i} />
+                                    return <Unit_card item={item} key={i} />
                                 })}
                             </div>
                         }
                         {(currentTab == "sold") &&
                             <div className='unitsTab'>
                                 {projectdetails?.properties?.filter((item) => (item?.details?.sellingStatus == "sold"))?.map((item, i) => {
-                                    return <Unit_card to={`/propertyDetails/?property_id=${item?._id}`} item={item} key={i} />
+                                    return <Unit_card item={item} key={i} />
                                 })}
                             </div>
                         }
