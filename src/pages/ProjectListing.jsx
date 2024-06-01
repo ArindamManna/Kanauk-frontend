@@ -102,7 +102,7 @@ function ProjectListing() {
 
                 </div>
                 <div className="listing-map-section">
-                    <ProjectsList_Maps />
+                    <ProjectsList_Maps projectList={projectList} />
                     <div className="listingBox">
                         <p className="noOfComments">
                             256 Comments

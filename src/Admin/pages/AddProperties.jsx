@@ -27,7 +27,9 @@ function AddProperties() {
                 name: "",
                 location: {
                     url: "",
-                    label: ""
+                    label: "",
+                    lat: "",
+                    lng: ""
                 },
                 price: {
                     from: "",
@@ -206,6 +208,52 @@ function AddProperties() {
                                                         name: "location",
                                                         sub: {
                                                             name: "label"
+                                                        }
+                                                    }
+                                                },
+                                                value: e.target.value
+                                            })}
+                                        />
+                                    </div>
+                                </div>
+                                <div className="col-md-6">
+                                    <div className="mb-3">
+                                        <label className="form-label">Location Latitude :</label>
+                                        <input type="text" className="form-control" name='location'
+                                            value={item?.location?.lat}
+                                            // value={item?.location?.label}
+                                            onChange={(e) => updateFormdata({
+                                                e,
+                                                position: {
+                                                    name: "properties",
+                                                    index,
+                                                    sub: {
+                                                        name: "location",
+                                                        sub: {
+                                                            name: "lat"
+                                                        }
+                                                    }
+                                                },
+                                                value: e.target.value
+                                            })}
+                                        />
+                                    </div>
+                                </div>
+                                <div className="col-md-6">
+                                    <div className="mb-3">
+                                        <label className="form-label">Location Longtitude :</label>
+                                        <input type="text" className="form-control" name='location'
+                                            value={item?.location?.lng}
+                                            // value={item?.location?.label}
+                                            onChange={(e) => updateFormdata({
+                                                e,
+                                                position: {
+                                                    name: "properties",
+                                                    index,
+                                                    sub: {
+                                                        name: "location",
+                                                        sub: {
+                                                            name: "lng"
                                                         }
                                                     }
                                                 },

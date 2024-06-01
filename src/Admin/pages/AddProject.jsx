@@ -26,6 +26,9 @@ function AddProject() {
         name: "",
         location: {
             url: "",
+            label: "",
+            lat: "",
+            lng: ""
         },
         price: {
             from: "",
@@ -215,6 +218,52 @@ function AddProject() {
                                                     name: "location",
                                                     sub: {
                                                         name: "label",
+                                                    },
+                                                },
+                                                value: e.target.value,
+                                            })
+                                        }
+                                    />
+                                </div>
+                            </div>
+                            <div className="col-md-6">
+                                <div className="mb-3">
+                                    <label className="form-label">Location Latitude:</label>
+                                    <input
+                                        type="text"
+                                        className="form-control"
+                                        name="location"
+                                        value={formdata?.location?.lat}
+                                        onChange={(e) =>
+                                            updateFormdata({
+                                                e,
+                                                position: {
+                                                    name: "location",
+                                                    sub: {
+                                                        name: "lat",
+                                                    },
+                                                },
+                                                value: e.target.value,
+                                            })
+                                        }
+                                    />
+                                </div>
+                            </div>
+                            <div className="col-md-6">
+                                <div className="mb-3">
+                                    <label className="form-label">Location Longtitude :</label>
+                                    <input
+                                        type="text"
+                                        className="form-control"
+                                        name="location"
+                                        value={formdata?.location?.lng}
+                                        onChange={(e) =>
+                                            updateFormdata({
+                                                e,
+                                                position: {
+                                                    name: "location",
+                                                    sub: {
+                                                        name: "lng",
                                                     },
                                                 },
                                                 value: e.target.value,
