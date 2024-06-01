@@ -12,42 +12,42 @@ const usaCenter = {
 
 // AIzaSyBo-uNgOc-9az84PkqZpEyYCv7yul4RRn0
 function ProjectsList_Maps({ projectList }) {
-    // let dummy = [
-    //     {
-    //         location: {
-    //             lat: 22.5452029,
-    //             lng: 88.3411707
-    //         },
+    let dummy = [
+        {
+            location: {
+                lat: 22.5452029,
+                lng: 88.3411707
+            },
 
-    //         properties: [
-    //             {
-    //                 location: {
-    //                     lat: 22.5452029,
-    //                     lng: 88.3411707
-    //                 },
-    //             },
+            properties: [
+                {
+                    location: {
+                        lat: 22.5452029,
+                        lng: 88.3411707
+                    },
+                },
 
-    //             {
-    //                 location: {
-    //                     lat: 22.5542489,
-    //                     lng: 88.3236605
-    //                 },
-    //             }
+                {
+                    location: {
+                        lat: 22.5542489,
+                        lng: 88.3236605
+                    },
+                }
 
-    //         ]
-    //     },
-    //     {
-    //         location: {
-    //             lat: 22.5686578,
-    //             lng: 88.3285858
-    //         }
-    //     },
-    // ]
+            ]
+        },
+        {
+            location: {
+                lat: 22.5686578,
+                lng: 88.3285858
+            }
+        },
+    ]
     const position = { lat: 53.54992, lng: 10.00678 };
     const [locationList, setLocationList] = useState([])
     useEffect(() => {
         if (projectList) {
-            setLocationList(projectList)
+            setLocationList(dummy)
         }
     }, [])
     return (
@@ -55,7 +55,7 @@ function ProjectsList_Maps({ projectList }) {
             <APIProvider apiKey={'AIzaSyBo-uNgOc-9az84PkqZpEyYCv7yul4RRn0'}>
                 <Map defaultCenter={usaCenter} defaultZoom={5} zoomControl={true}>
                     {locationList?.map((item, key) => {
-                        return <Marker position={item?.location} onClick={(e) => { setLocationList(prev => (item?.properties)) }} />
+                        return <Marker key={key} title={`${item?.name}`} label={`${key}`} position={item?.location} onClick={(e) => { setLocationList(prev => (item?.properties)) }} />
                     })}
 
                 </Map>
