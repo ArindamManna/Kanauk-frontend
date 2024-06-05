@@ -17,6 +17,7 @@
     background-repeat: no-repeat;
     text-decoration: none;
 
+
     &::-webkit-scrollbar {
         width: 6px;
         height: 6px;
@@ -40,6 +41,13 @@ a {
 
 .css-b62m3t-container {
     z-index: 9 !important;
+}
+
+.green-btn {
+    color: white;
+    background: #03bfa1;
+
+    @apply flex items-center gap-2 py-2 px-3 rounded;
 }
 
 #root {
@@ -1307,6 +1315,8 @@ header {
 
                 .viewMoreBtn {
                     color: white;
+                    text-decoration: none;
+
 
                     @include breakpoint-up("md") {
                         font-size: 1.25rem;

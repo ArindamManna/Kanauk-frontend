@@ -55,7 +55,7 @@ function ProjectsList_Maps({ projectList }) {
             <APIProvider apiKey={'AIzaSyBo-uNgOc-9az84PkqZpEyYCv7yul4RRn0'}>
                 <Map defaultCenter={usaCenter} defaultZoom={5} zoomControl={true}>
                     {locationList?.map((item, key) => {
-                        return <Marker key={key} title={`${item?.name}`} label={`${key}`} position={item?.location} onClick={(e) => { setLocationList(prev => (item?.properties)) }} />
+                        return <Marker key={key} title={`${item?.name}`} label={`${key + 1}`} position={item?.location} onClick={(e) => { setLocationList(prev => (item?.properties)) }} />
                     })}
 
                 </Map>

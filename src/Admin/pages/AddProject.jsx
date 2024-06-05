@@ -205,7 +205,7 @@ function AddProject() {
                             </div>
                             <div className="col-md-6">
                                 <div className="mb-3">
-                                    <label className="form-label">Location :</label>
+                                    <label className="form-label">Address :</label>
                                     <input
                                         type="text"
                                         className="form-control"
@@ -227,6 +227,29 @@ function AddProject() {
                                 </div>
                             </div>
                             <div className="col-md-6">
+                                <div className="mb-3">
+                                    <label className="form-label">Location Url:</label>
+                                    <input
+                                        type="text"
+                                        className="form-control"
+                                        name="location"
+                                        value={formdata?.location?.url}
+                                        onChange={(e) =>
+                                            updateFormdata({
+                                                e,
+                                                position: {
+                                                    name: "location",
+                                                    sub: {
+                                                        name: "url",
+                                                    },
+                                                },
+                                                value: e.target.value,
+                                            })
+                                        }
+                                    />
+                                </div>
+                            </div>
+                            {/* <div className="col-md-6">
                                 <div className="mb-3">
                                     <label className="form-label">Location Latitude:</label>
                                     <input
@@ -271,7 +294,7 @@ function AddProject() {
                                         }
                                     />
                                 </div>
-                            </div>
+                            </div> */}
                             <div className="col-md-6">
                                 <div className="mb-3">
                                     <label className="form-label">Price From:</label>

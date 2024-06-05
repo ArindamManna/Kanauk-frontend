@@ -162,14 +162,14 @@ function AddProperties() {
                                             })
                                         }}>delete</button>}
 
-                                        {arr.length - 1 == index ? <button type="button" className="btn black-btn" onClick={(e) => {
+                                        {/* {arr.length - 1 == index ? <button type="button" className="btn black-btn" onClick={(e) => {
                                             add_remove_elem_fromdata({
                                                 position: {
                                                     name: "properties",
                                                 },
                                                 doAdd: true
                                             })
-                                        }}>Add Property</button> : ""}
+                                        }}>Add Property</button> : ""} */}
 
                                     </div>
                                 </div>
@@ -195,7 +195,7 @@ function AddProperties() {
                                 </div>
                                 <div className="col-md-6">
                                     <div className="mb-3">
-                                        <label className="form-label">Location :</label>
+                                        <label className="form-label">Address :</label>
                                         <input type="text" className="form-control" name='location'
                                             value={item?.location?.label}
                                             // value={item?.location?.label}
@@ -217,6 +217,29 @@ function AddProperties() {
                                     </div>
                                 </div>
                                 <div className="col-md-6">
+                                    <div className="mb-3">
+                                        <label className="form-label">Location Url :</label>
+                                        <input type="text" className="form-control" name='location'
+                                            value={item?.location?.url}
+                                            // value={item?.location?.label}
+                                            onChange={(e) => updateFormdata({
+                                                e,
+                                                position: {
+                                                    name: "properties",
+                                                    index,
+                                                    sub: {
+                                                        name: "location",
+                                                        sub: {
+                                                            name: "url"
+                                                        }
+                                                    }
+                                                },
+                                                value: e.target.value
+                                            })}
+                                        />
+                                    </div>
+                                </div>
+                                {/* <div className="col-md-6">
                                     <div className="mb-3">
                                         <label className="form-label">Location Latitude :</label>
                                         <input type="text" className="form-control" name='location'
@@ -261,7 +284,7 @@ function AddProperties() {
                                             })}
                                         />
                                     </div>
-                                </div>
+                                </div> */}
                                 <div className="col-md-6">
                                     <div className="mb-3">
                                         <label className="form-label">Price From:</label>
@@ -655,6 +678,14 @@ function AddProperties() {
                         })}
 
                         <div className="text-end flex gap-2 justify-end">
+                            <button type="button" className=" green-btn" onClick={(e) => {
+                                add_remove_elem_fromdata({
+                                    position: {
+                                        name: "properties",
+                                    },
+                                    doAdd: true
+                                })
+                            }}>Add Property</button>
                             <button type="button" className="btn grey-primary">Cancle</button>
                             <button type="submit" className="btn black-btn">  {project_id ? "Update" : "Create"}  </button>
                         </div>

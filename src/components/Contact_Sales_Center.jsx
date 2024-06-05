@@ -73,7 +73,7 @@ function Contact_Sales_Center() {
                     <div className="img">
                         <img src={agents1} alt="" />
                     </div>
-                    <p className="name">
+                    <p className="name hidden">
                         Jhon Trawres
                     </p>
                     <p className="designation">

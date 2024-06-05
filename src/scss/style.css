@@ -134,6 +134,12 @@ a {
   z-index: 9 !important;
 }
 
+.green-btn {
+  color: white;
+  background: #03bfa1;
+  @apply flex items-center gap-2 py-2 px-3 rounded;
+}
+
 #root .app * {
   box-sizing: border-box;
   padding: 0;
@@ -1147,6 +1153,7 @@ header nav .hamburgerBtn {
 }
 .featured-properties-banner .properties-box .properties .bottom .viewMoreBtn {
   color: white;
+  text-decoration: none;
   font-size: 1rem;
   background: #03bfa1;
   @apply w-fit flex px-4 py-2 items-center rounded-full;
