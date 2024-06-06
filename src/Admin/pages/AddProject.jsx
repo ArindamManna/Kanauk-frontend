@@ -183,73 +183,78 @@ function AddProject() {
                             createProject(e);
                         }}>
                         <div className="row">
-                            <div className="col-md-6">
-                                <div className="mb-3">
-                                    <label className="form-label">Project Name :</label>
-                                    <input
-                                        type="text"
-                                        className="form-control"
-                                        name="name"
-                                        value={formdata?.name}
-                                        onChange={(e) =>
-                                            updateFormdata({
-                                                e,
-                                                position: {
-                                                    name: "name",
-                                                },
-                                                value: e.target.value,
-                                            })
-                                        }
-                                    />
-                                </div>
-                            </div>
-                            <div className="col-md-6">
-                                <div className="mb-3">
-                                    <label className="form-label">Address :</label>
-                                    <input
-                                        type="text"
-                                        className="form-control"
-                                        name="location"
-                                        value={formdata?.location?.label}
-                                        onChange={(e) =>
-                                            updateFormdata({
-                                                e,
-                                                position: {
-                                                    name: "location",
-                                                    sub: {
-                                                        name: "label",
-                                                    },
-                                                },
-                                                value: e.target.value,
-                                            })
-                                        }
-                                    />
-                                </div>
-                            </div>
-                            <div className="col-md-6">
-                                <div className="mb-3">
-                                    <label className="form-label">Location Url:</label>
-                                    <input
-                                        type="text"
-                                        className="form-control"
-                                        name="location"
-                                        value={formdata?.location?.url}
-                                        onChange={(e) =>
-                                            updateFormdata({
-                                                e,
-                                                position: {
-                                                    name: "location",
-                                                    sub: {
-                                                        name: "url",
-                                                    },
-                                                },
-                                                value: e.target.value,
-                                            })
-                                        }
-                                    />
-                                </div>
-                            </div>
-                            {/* <div className="col-md-6">
+                            <div className="form-group border py-3 mb-3 bg-slate-100">
+                                <div className="row">
+
+
+
+                                    <div className="col-md-6">
+                                        <div className="mb-3">
+                                            <label className="form-label">Project Name :</label>
+                                            <input
+                                                type="text"
+                                                className="form-control"
+                                                name="name"
+                                                value={formdata?.name}
+                                                onChange={(e) =>
+                                                    updateFormdata({
+                                                        e,
+                                                        position: {
+                                                            name: "name",
+                                                        },
+                                                        value: e.target.value,
+                                                    })
+                                                }
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="col-md-6">
+                                        <div className="mb-3">
+                                            <label className="form-label">Address :</label>
+                                            <input
+                                                type="text"
+                                                className="form-control"
+                                                name="location"
+                                                value={formdata?.location?.label}
+                                                onChange={(e) =>
+                                                    updateFormdata({
+                                                        e,
+                                                        position: {
+                                                            name: "location",
+                                                            sub: {
+                                                                name: "label",
+                                                            },
+                                                        },
+                                                        value: e.target.value,
+                                                    })
+                                                }
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="col-md-6">
+                                        <div className="mb-3">
+                                            <label className="form-label">Location Url:</label>
+                                            <input
+                                                type="text"
+                                                className="form-control"
+                                                name="location"
+                                                value={formdata?.location?.url}
+                                                onChange={(e) =>
+                                                    updateFormdata({
+                                                        e,
+                                                        position: {
+                                                            name: "location",
+                                                            sub: {
+                                                                name: "url",
+                                                            },
+                                                        },
+                                                        value: e.target.value,
+                                                    })
+                                                }
+                                            />
+                                        </div>
+                                    </div>
+                                    {/* <div className="col-md-6">
                                 <div className="mb-3">
                                     <label className="form-label">Location Latitude:</label>
                                     <input
@@ -295,188 +300,190 @@ function AddProject() {
                                     />
                                 </div>
                             </div> */}
-                            <div className="col-md-6">
-                                <div className="mb-3">
-                                    <label className="form-label">Price From:</label>
-                                    <input
-                                        type="text"
-                                        className="form-control"
-                                        name="pricefrom"
-                                        value={formdata?.price?.from}
-                                        onChange={(e) =>
-                                            updateFormdata({
-                                                e,
-                                                position: {
-                                                    name: "price",
-                                                    sub: {
-                                                        name: "from",
-                                                    },
-                                                },
-                                                value: e.target.value,
-                                            })
-                                        }
-                                    />
+                                    <div className="col-md-6">
+                                        <div className="mb-3">
+                                            <label className="form-label">Price From:</label>
+                                            <input
+                                                type="text"
+                                                className="form-control"
+                                                name="pricefrom"
+                                                value={formdata?.price?.from}
+                                                onChange={(e) =>
+                                                    updateFormdata({
+                                                        e,
+                                                        position: {
+                                                            name: "price",
+                                                            sub: {
+                                                                name: "from",
+                                                            },
+                                                        },
+                                                        value: e.target.value,
+                                                    })
+                                                }
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="col-md-6">
+                                        <div className="mb-3">
+                                            <label className="form-label">Price To:</label>
+                                            <input
+                                                type="text"
+                                                className="form-control"
+
+                                                value={formdata?.price?.to}
+                                                onChange={(e) =>
+                                                    updateFormdata({
+                                                        e,
+                                                        position: {
+                                                            name: "price",
+                                                            sub: {
+                                                                name: "to",
+                                                            },
+                                                        },
+                                                        value: e.target.value,
+                                                    })
+                                                }
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="col-md-6">
+                                        <div className="mb-3">
+                                            <label className="form-label">Floor Plans Heading:</label>
+                                            <input
+                                                type="text"
+                                                className="form-control"
+
+                                                value={formdata?.floorPlans?.heading}
+                                                onChange={(e) =>
+                                                    updateFormdata({
+                                                        e,
+                                                        position: {
+                                                            name: "floorPlans",
+                                                            sub: {
+                                                                name: "heading",
+                                                            },
+                                                        },
+                                                        value: e.target.value,
+                                                    })
+                                                }
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="col-md-6">
+                                        <div className="mb-3">
+                                            <label className="form-label">FloorPlans Text:</label>
+                                            <textarea
+                                                type="text"
+                                                className="form-control"
+
+                                                value={formdata?.floorPlans?.text}
+                                                onChange={(e) =>
+                                                    updateFormdata({
+                                                        e,
+                                                        position: {
+                                                            name: "floorPlans",
+                                                            sub: {
+                                                                name: "text",
+                                                            },
+                                                        },
+                                                        value: e.target.value,
+                                                    })
+                                                }
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="col-md-6">
+                                        <div className="mb-3">
+                                            <label className="form-label">Listing status:</label>
+                                            <select
+                                                className="form-select"
+                                                aria-label="Default select example"
+                                                name="listingStatus"
+                                                onChange={(e) =>
+                                                    updateFormdata({
+                                                        e,
+                                                        position: {
+                                                            name: "listingStatus",
+                                                        },
+                                                        value: e.target.value,
+                                                    })
+                                                }>
+                                                <option >Open this select menu</option>
+                                                {listning_ststus_list?.map((item, i) => {
+                                                    return <option value={item.value} key={i} selected={item.value == formdata?.listingStatus}>{item.label}</option>
+                                                })}
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div className="col-md-6">
+                                        <div className="mb-3">
+                                            <label className="form-label">Choose Builder :</label>
+                                            <select
+                                                className="form-select"
+                                                aria-label="Default select example"
+                                                name="builderId"
+                                                onChange={(e) =>
+                                                    updateFormdata({
+                                                        e,
+                                                        position: {
+                                                            name: "builderId",
+                                                        },
+                                                        value: e.target.value,
+                                                    })
+                                                }>
+                                                <option >Open this select menu</option>
+                                                {builderList?.map((item, index) => {
+                                                    return (
+                                                        <option value={item._id} key={index} selected={formdata?.builderId == item._id}>
+                                                            {item?.name}
+                                                        </option>
+                                                    );
+                                                })}
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div className="col-md-12">
+                                        <div className="mb-3">
+                                            <label className="form-label">Description:</label>
+                                            <textarea
+                                                type="text"
+                                                className="form-control"
+
+                                                value={formdata?.description}
+                                                onChange={(e) =>
+                                                    updateFormdata({
+                                                        e,
+                                                        position: {
+                                                            name: "description",
+                                                        },
+                                                        value: e.target.value,
+                                                    })
+                                                }
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="col-md-12">
+                                        <div className="mb-3">
+                                            <label className="form-label">Overview:</label>
+                                            <textarea
+                                                type="text"
+                                                className="form-control"
+
+                                                value={formdata?.overview}
+                                                onChange={(e) =>
+                                                    updateFormdata({
+                                                        e,
+                                                        position: {
+                                                            name: "overview",
+                                                        },
+                                                        value: e.target.value,
+                                                    })
+                                                }
+                                            />
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div className="col-md-6">
-                                <div className="mb-3">
-                                    <label className="form-label">Price To:</label>
-                                    <input
-                                        type="text"
-                                        className="form-control"
-
-                                        value={formdata?.price?.to}
-                                        onChange={(e) =>
-                                            updateFormdata({
-                                                e,
-                                                position: {
-                                                    name: "price",
-                                                    sub: {
-                                                        name: "to",
-                                                    },
-                                                },
-                                                value: e.target.value,
-                                            })
-                                        }
-                                    />
-                                </div>
-                            </div>
-                            <div className="col-md-6">
-                                <div className="mb-3">
-                                    <label className="form-label">Floor Plans Heading:</label>
-                                    <input
-                                        type="text"
-                                        className="form-control"
-
-                                        value={formdata?.floorPlans?.heading}
-                                        onChange={(e) =>
-                                            updateFormdata({
-                                                e,
-                                                position: {
-                                                    name: "floorPlans",
-                                                    sub: {
-                                                        name: "heading",
-                                                    },
-                                                },
-                                                value: e.target.value,
-                                            })
-                                        }
-                                    />
-                                </div>
-                            </div>
-                            <div className="col-md-6">
-                                <div className="mb-3">
-                                    <label className="form-label">FloorPlans Text:</label>
-                                    <textarea
-                                        type="text"
-                                        className="form-control"
-
-                                        value={formdata?.floorPlans?.text}
-                                        onChange={(e) =>
-                                            updateFormdata({
-                                                e,
-                                                position: {
-                                                    name: "floorPlans",
-                                                    sub: {
-                                                        name: "text",
-                                                    },
-                                                },
-                                                value: e.target.value,
-                                            })
-                                        }
-                                    />
-                                </div>
-                            </div>
-                            <div className="col-md-6">
-                                <div className="mb-3">
-                                    <label className="form-label">Listing status:</label>
-                                    <select
-                                        className="form-select"
-                                        aria-label="Default select example"
-                                        name="listingStatus"
-                                        onChange={(e) =>
-                                            updateFormdata({
-                                                e,
-                                                position: {
-                                                    name: "listingStatus",
-                                                },
-                                                value: e.target.value,
-                                            })
-                                        }>
-                                        <option >Open this select menu</option>
-                                        {listning_ststus_list?.map((item, i) => {
-                                            return <option value={item.value} key={i} selected={item.value == formdata?.listingStatus}>{item.label}</option>
-                                        })}
-                                    </select>
-                                </div>
-                            </div>
-                            <div className="col-md-6">
-                                <div className="mb-3">
-                                    <label className="form-label">Choose Builder :</label>
-                                    <select
-                                        className="form-select"
-                                        aria-label="Default select example"
-                                        name="builderId"
-                                        onChange={(e) =>
-                                            updateFormdata({
-                                                e,
-                                                position: {
-                                                    name: "builderId",
-                                                },
-                                                value: e.target.value,
-                                            })
-                                        }>
-                                        <option >Open this select menu</option>
-                                        {builderList?.map((item, index) => {
-                                            return (
-                                                <option value={item._id} key={index} selected={formdata?.builderId == item._id}>
-                                                    {item?.name}
-                                                </option>
-                                            );
-                                        })}
-                                    </select>
-                                </div>
-                            </div>
-                            <div className="col-md-12">
-                                <div className="mb-3">
-                                    <label className="form-label">Description:</label>
-                                    <textarea
-                                        type="text"
-                                        className="form-control"
-
-                                        value={formdata?.description}
-                                        onChange={(e) =>
-                                            updateFormdata({
-                                                e,
-                                                position: {
-                                                    name: "description",
-                                                },
-                                                value: e.target.value,
-                                            })
-                                        }
-                                    />
-                                </div>
-                            </div>
-                            <div className="col-md-12">
-                                <div className="mb-3">
-                                    <label className="form-label">Overview:</label>
-                                    <textarea
-                                        type="text"
-                                        className="form-control"
-
-                                        value={formdata?.overview}
-                                        onChange={(e) =>
-                                            updateFormdata({
-                                                e,
-                                                position: {
-                                                    name: "overview",
-                                                },
-                                                value: e.target.value,
-                                            })
-                                        }
-                                    />
-                                </div>
-                            </div>
 
 
 
@@ -492,7 +499,7 @@ function AddProject() {
 
 
 
-                            <div className="form-group border py-3 mb-3">
+                            <div className="form-group border py-3 mb-3 bg-cyan-100">
                                 <div className="row items-end">
                                     {formdata?.highlights?.map((item, i, arr) => {
                                         return <React.Fragment key={i} >
@@ -577,7 +584,7 @@ function AddProject() {
                                 </div>
 
                             </div>
-                            <div className="form-group border py-3 mb-3">
+                            <div className="form-group border py-3 mb-3 bg-yellow-100">
                                 <div className="row items-end">
                                     {formdata?.amenitiesList?.map((item, i, arr) => {
                                         return <React.Fragment key={i} >
@@ -642,7 +649,7 @@ function AddProject() {
 
 
                             {/*  */}
-                            <div className="form-group border py-3 mb-3">
+                            <div className="form-group border py-3 mb-3 bg-slate-100">
 
 
                                 <div className="col-md-6">
@@ -692,7 +699,7 @@ function AddProject() {
                             </div>
                             {/* small details details */}
 
-                            <div className="form-group border py-3 mb-3">
+                            <div className="form-group border py-3 mb-3 bg-red-100">
                                 {/* <h3>Project Details</h3> */}
                                 <div className="row">
 
@@ -907,84 +914,93 @@ function AddProject() {
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-md-6">
-                                <div className="mb-3">
-                                    <label className="form-label">Tags:</label>
-                                    <Select
-                                        className=""
-                                        isMulti={toBeRequired}
-                                        value={formdata?.tags}
-                                        options={[
-                                            { value: "featured", label: "Featured" },
-                                            { value: "assignment_sales", label: "Assignment Sales" },
-                                            { value: "most_viewed", label: "Most Viewed" },
-                                        ]}
-                                        onChange={(value) => {
-                                            updateFormdata({
-                                                position: {
-                                                    name: "tags",
-                                                },
-                                                value,
-                                            });
-                                        }}
-                                    />
-                                </div>
-                            </div>
-                            <div className="col-md-6">
-                                <div className="mb-3">
-                                    {/* <label className="form-label">upload Images one by one :</label> */}
-                                    {/* <Select className="" isMulti={toBeRequired} options={[
+
+                            <div className="form-group border py-3 mb-3 bg-slate-100">
+                                <div className="row">
+
+                                    <div className="col-md-6">
+                                        <div className="mb-3">
+                                            <label className="form-label">Tags:</label>
+                                            <Select
+                                                className=""
+                                                isMulti={toBeRequired}
+                                                value={formdata?.tags}
+                                                options={[
+                                                    { value: "featured", label: "Featured" },
+                                                    { value: "assignment_sales", label: "Assignment Sales" },
+                                                    { value: "most_viewed", label: "Most Viewed" },
+                                                ]}
+                                                onChange={(value) => {
+                                                    updateFormdata({
+                                                        position: {
+                                                            name: "tags",
+                                                        },
+                                                        value,
+                                                    });
+                                                }}
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="col-md-6">
+                                        <div className="mb-3">
+                                            {/* <label className="form-label">upload Images one by one :</label> */}
+                                            {/* <Select className="" isMulti={toBeRequired} options={[
                                         { value: 'chocolate', label: 'Chocolate' },
                                         { value: 'strawberry', label: 'Strawberry' },
                                         { value: 'vanilla', label: 'Vanilla' }
                                     ]} /> */}
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-
-                            <div className="col-12">
+                            <div className="form-group border py-3 mb-3 bg-cyan-100">
                                 <div className="row">
-                                    {formdata.images.map((item, i, arr) => {
-                                        return <div className="col-md-4" key={i}>
-                                            <div className="mb-3">
+                                    <div className="col-12">
+                                        <div className="row">
+                                            {formdata.images.map((item, i, arr) => {
+                                                return <div className="col-md-4" key={i}>
+                                                    <div className="mb-3">
 
-                                                <Upload
-                                                    currentImage={formdata?.images?.[i]}
-                                                    updateFormdata={(value) => {
-                                                        updateFormdata({
-                                                            position: {
-                                                                name: "images",
-                                                                index: i,
-                                                                sub: {
-                                                                    name: "url",
-                                                                },
-                                                            },
-                                                            value,
-                                                        });
-                                                    }}
-                                                    deleteImage={() => {
-                                                        add_remove_elem_fromdata({
-                                                            position: {
-                                                                name: "images",
-                                                            },
-                                                            doAdd: false,
-                                                            indexToremove: i
-                                                        })
-                                                    }}
-                                                />
+                                                        <Upload
+                                                            currentImage={formdata?.images?.[i]}
+                                                            updateFormdata={(value) => {
+                                                                updateFormdata({
+                                                                    position: {
+                                                                        name: "images",
+                                                                        index: i,
+                                                                        sub: {
+                                                                            name: "url",
+                                                                        },
+                                                                    },
+                                                                    value,
+                                                                });
+                                                            }}
+                                                            deleteImage={() => {
+                                                                add_remove_elem_fromdata({
+                                                                    position: {
+                                                                        name: "images",
+                                                                    },
+                                                                    doAdd: false,
+                                                                    indexToremove: i
+                                                                })
+                                                            }}
+                                                        />
+                                                    </div>
+                                                </div>
+                                            })}
+
+                                            <div className="col-auto">
+                                                <button type="button" className="btn black-btn" onClick={(e) => {
+                                                    // addImage()
+                                                    add_remove_elem_fromdata({
+                                                        position: {
+                                                            name: "images",
+                                                        },
+                                                        doAdd: true
+                                                    })
+                                                }}>Add Image</button>
                                             </div>
                                         </div>
-                                    })}
-
-                                    <div className="col-auto">
-                                        <button type="button" className="btn black-btn" onClick={(e) => {
-                                            // addImage()
-                                            add_remove_elem_fromdata({
-                                                position: {
-                                                    name: "images",
-                                                },
-                                                doAdd: true
-                                            })
-                                        }}>Add Image</button>
                                     </div>
                                 </div>
                             </div>

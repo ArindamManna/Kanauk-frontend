@@ -148,7 +148,7 @@ function AddProperties() {
 
 
                         {formdata?.properties.map((item, index, arr) => {
-                            return <div className="row border border-gray-400 rounded-md pt-2 mb-4" key={index}>
+                            return <div className={`row border border-gray-400 rounded-md pt-2 mb-4 ${index % 2 == 0 ? "bg-cyan-100" : "bg-yellow-100"} `} key={index}>
                                 <div className="flex justify-between">
                                     <h4>Propery {index + 1}</h4>
                                     <div className="right flex gap-2">
