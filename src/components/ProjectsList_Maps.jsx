@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
-import { APIProvider, Map, Marker } from '@vis.gl/react-google-maps';
+import { APIProvider, AdvancedMarker, Map, Marker } from '@vis.gl/react-google-maps';
 import { set } from 'firebase/database';
 const usaCenter = {
     lat: 39.8097343,
     lng: - 98.5556199
+}
+const canadaCenter = {
+    lat: 62.3217359,
+    lng: -107.7599325,
 }
 
 
@@ -53,9 +57,13 @@ function ProjectsList_Maps({ projectList }) {
     return (
         <>
             <APIProvider apiKey={'AIzaSyBo-uNgOc-9az84PkqZpEyYCv7yul4RRn0'}>
-                <Map defaultCenter={usaCenter} defaultZoom={5} zoomControl={true}>
+                <Map defaultCenter={canadaCenter} defaultZoom={3} zoomControl={true}>
                     {locationList?.map((item, key) => {
-                        return <Marker key={key} title={`${item?.name}`} label={`${key + 1}`} position={item?.location} onClick={(e) => { setLocationList(prev => (item?.properties)) }} />
+                        return <AdvancedMarker key={key} title={`${item?.name}`} label={`${key + 1}`} position={item?.location} onClick={(e) => { setLocationList(prev => (item?.properties)) }}>
+                            <div className='h-16 w-16 rounded-full d-flex items-center justify-center bg-[#03bfa1] text-white text-sm'>
+                                {item?.properties?.length}
+                            </div>
+                        </AdvancedMarker>
                     })}
 
                 </Map>

@@ -114,7 +114,48 @@ function AddProject() {
     }, []);
     async function createProject(e) {
         e.preventDefault();
-        console.log(formdata);
+
+
+        //#region setup lat lng from url 
+        let str = formdata.location.url;
+        let index = str.indexOf('@');
+        str = str.substring(index + 1);
+
+        index = str.indexOf(',');
+        // str = str.substring(0, index);
+        updateFormdata({
+            e,
+            position: {
+                name: "location",
+                sub: {
+                    name: "lat",
+                },
+            },
+            value: str.substring(0, index),
+        })
+        str = str.substring(index + 1);
+
+        index = str.indexOf(',');
+        updateFormdata({
+            e,
+            position: {
+                name: "location",
+                sub: {
+                    name: "lng",
+                },
+            },
+            value: str.substring(0, index),
+        })
+
+        // console.log(formdata.location, "manna");
+
+        //#endregion
+
+
+
+
+
+        // return;
         setLoader(true);
         let res = await ApiHelperFunction({
             // urlPath: `admin/project/add/${formdata.builderId}`,

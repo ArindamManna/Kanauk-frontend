@@ -70,6 +70,61 @@ function AddProperties() {
     }, [])
     async function createProperties(e) {
         e.preventDefault();
+        formdata.properties.forEach((property, i) => {
+            //#region setup lat lng from url 
+            let str = property.location.url;
+            let index = str.indexOf('@');
+            str = str.substring(index + 1);
+
+            index = str.indexOf(',');
+            // str = str.substring(0, index);
+            updateFormdata({
+                e,
+                position: {
+                    name: "properties",
+                    index: i,
+                    sub: {
+                        name: "location",
+                        sub: {
+                            name: "lat"
+                        }
+                    }
+                },
+                value: str.substring(0, index),
+            })
+            str = str.substring(index + 1);
+
+            index = str.indexOf(',');
+            updateFormdata({
+                e,
+                position: {
+                    name: "properties",
+                    index: i,
+                    sub: {
+                        name: "location",
+                        sub: {
+                            name: "lng"
+                        }
+                    }
+                },
+                value: str.substring(0, index),
+            })
+
+            // console.log(formdata.location, "manna");
+
+            //#endregion
+
+        })
+
+        console.log(formdata, "manna");
+
+
+
+
+
+
+
+        // return;
         setLoader(true)
         let res = await ApiHelperFunction({
             // urlPath: `admin/property/add/${location.state._id}`,
